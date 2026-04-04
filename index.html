@@ -154,7 +154,7 @@
                 </div>
                 <div class="flex items-center gap-2 min-[375px]:gap-3 sm:gap-6 md:gap-8 font-gta text-[10px] min-[375px]:text-xs sm:text-lg md:text-2xl tracking-widest pt-1 flex-wrap justify-end">
                     <button id="nav-home" onclick="navigate('home')" class="nav-link text-[var(--gta-pink)] hover:text-[var(--gta-pink)] transition-colors outline-none">HOME</button>
-                    <button id="nav-crew" onclick="navigate('crew')" class="nav-link text-white hover:text-[var(--gta-pink)] transition-colors outline-none">CREW</button>
+                    <button id="nav-crew" onclick="navigate('crew')" class="nav-link text-white hover:text-[var(--gta-pink)] transition-colors outline-none">DATABASE</button>
                     <button id="nav-news" onclick="navigate('news')" class="nav-link text-white hover:text-[var(--gta-pink)] transition-colors outline-none">NEWS</button>
                     <button id="nav-counter" onclick="navigate('counter')" class="nav-link text-white hover:text-[var(--gta-pink)] transition-colors outline-none">COUNTER</button>
                 </div>
@@ -174,35 +174,35 @@
             <header class="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-6 mb-8 text-center lg:text-left">
                 <div class="w-full lg:w-1/2 flex flex-col justify-center items-center lg:items-start relative drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)]">
                     <div class="flex flex-col items-center lg:items-end w-fit mb-4 lg:mb-0">
-                        <h1 class="font-gta text-[2.2rem] sm:text-[3.5rem] md:text-[5rem] lg:text-[6.5rem] leading-none text-white tracking-tight text-center" style="text-shadow: 4px 4px 0 #000;">
+                        <h1 class="font-gta text-[2.8rem] min-[375px]:text-[3.2rem] sm:text-[3.5rem] md:text-[5rem] lg:text-[6.5rem] leading-none text-white tracking-tight text-center" style="text-shadow: 4px 4px 0 #000;">
                             GRAND THEFT<br>AUTO <span class="inline-block" style="text-shadow: none; filter: drop-shadow(4px 4px 0px #000);"><span class="bg-gradient-to-b from-[#f8d070] via-[#ff6eb4] to-[#9b4edd] text-transparent bg-clip-text inline-block">VI</span></span>
                         </h1>
-                        <h2 class="font-handwriting text-[1.5rem] sm:text-[2rem] md:text-[3.2rem] lg:text-[4.5rem] text-[var(--gta-blue)] mt-0 md:-mt-2 lg:-mt-4 -rotate-[6deg] pr-2 sm:pr-6 md:pr-10 lg:pr-8" style="text-shadow: 3px 3px 0 #000;">
+                        <h2 class="font-handwriting text-[2rem] min-[375px]:text-[2.3rem] sm:text-[2rem] md:text-[3.2rem] lg:text-[4.5rem] text-[var(--gta-blue)] mt-0 md:-mt-2 lg:-mt-4 -rotate-[6deg] pr-2 sm:pr-6 md:pr-10 lg:pr-8" style="text-shadow: 3px 3px 0 #000;">
                             COUNTDOWN
                         </h2>
                     </div>
                 </div>
                 <div class="w-full lg:w-auto flex justify-center lg:justify-end mt-2 md:mt-6 lg:mt-10 lg:mr-8">
                     <div class="bg-[var(--gta-yellow)] border-4 border-black p-3 sm:p-4 md:p-6 rounded-xl flex flex-col items-center shadow-[6px_6px_0_rgba(0,0,0,0.5)] w-full sm:w-auto max-w-full overflow-hidden">
-                        <div class="flex justify-center gap-1 sm:gap-3 text-white font-gta text-2xl min-[375px]:text-3xl sm:text-5xl md:text-7xl hud-timer tracking-wide tabular-nums">
-                            <div class="flex flex-col items-center">
-                                <span class="timer-days text-white inline-block text-center min-w-[3.5ch]">000</span>
-                                <span class="text-[10px] md:text-sm text-black font-roboto mt-1" style="text-shadow: none;">DAYS</span>
+                        <div class="flex justify-center items-start gap-1.5 sm:gap-3 text-white font-gta text-[2.2rem] min-[375px]:text-4xl sm:text-5xl md:text-7xl hud-timer tracking-wide tabular-nums leading-none">
+                            <div class="flex flex-col items-center w-[3.2ch]">
+                                <span class="timer-days text-white inline-block text-center">000</span>
+                                <span class="text-[9px] md:text-sm text-black font-roboto mt-1 sm:mt-2 tracking-normal" style="text-shadow: none;">DAYS</span>
                             </div>
-                            <span class="text-black animate-pulse" style="text-shadow: none;">:</span>
-                            <div class="flex flex-col items-center">
-                                <span class="timer-hours inline-block text-center min-w-[2.5ch]">00</span>
-                                <span class="text-[10px] md:text-sm text-black font-roboto mt-1" style="text-shadow: none;">HRS</span>
+                            <span class="text-black animate-pulse pt-0.5 sm:pt-1 md:pt-2" style="text-shadow: none;">:</span>
+                            <div class="flex flex-col items-center w-[2.2ch]">
+                                <span class="timer-hours inline-block text-center">00</span>
+                                <span class="text-[9px] md:text-sm text-black font-roboto mt-1 sm:mt-2 tracking-normal" style="text-shadow: none;">HRS</span>
                             </div>
-                            <span class="text-black animate-pulse" style="text-shadow: none;">:</span>
-                            <div class="flex flex-col items-center">
-                                <span class="timer-minutes inline-block text-center min-w-[2.5ch]">00</span>
-                                <span class="text-[10px] md:text-sm text-black font-roboto mt-1" style="text-shadow: none;">MIN</span>
+                            <span class="text-black animate-pulse pt-0.5 sm:pt-1 md:pt-2" style="text-shadow: none;">:</span>
+                            <div class="flex flex-col items-center w-[2.2ch]">
+                                <span class="timer-minutes inline-block text-center">00</span>
+                                <span class="text-[9px] md:text-sm text-black font-roboto mt-1 sm:mt-2 tracking-normal" style="text-shadow: none;">MIN</span>
                             </div>
-                            <span class="text-black animate-pulse" style="text-shadow: none;">:</span>
-                            <div class="flex flex-col items-center">
-                                <span class="timer-seconds text-[var(--gta-blue)] inline-block text-center min-w-[2.5ch]">00</span>
-                                <span class="text-[10px] md:text-sm text-black font-roboto mt-1" style="text-shadow: none;">SEC</span>
+                            <span class="text-black animate-pulse pt-0.5 sm:pt-1 md:pt-2" style="text-shadow: none;">:</span>
+                            <div class="flex flex-col items-center w-[2.2ch]">
+                                <span class="timer-seconds text-[var(--gta-blue)] inline-block text-center">00</span>
+                                <span class="text-[9px] md:text-sm text-black font-roboto mt-1 sm:mt-2 tracking-normal" style="text-shadow: none;">SEC</span>
                             </div>
                         </div>
                         <div class="holiday-message hidden mt-3 text-right font-gta text-[#00ffff] text-lg sm:text-2xl drop-shadow-[2px_2px_0_#000]"></div>
@@ -251,7 +251,7 @@
                         <div class="flex items-center justify-between p-3 border-b-4 border-black">
                             <div class="flex items-center gap-3">
                                 <i data-lucide="users" class="text-black w-6 h-6 md:w-8 md:h-8"></i>
-                                <h2 class="text-2xl sm:text-3xl md:text-4xl font-gta tracking-widest text-black">KNOWN SUSPECTS</h2>
+                                <h2 class="text-2xl sm:text-3xl md:text-4xl font-gta tracking-widest text-black">VCPD DATABASE</h2>
                             </div>
                             <div class="bg-black text-[var(--gta-blue)] font-gta text-xl px-3 py-1 hidden md:block shadow-[2px_2px_0_#fff]">DATABASE</div>
                         </div>
@@ -286,12 +286,21 @@
 
                         <!-- Dossier View -->
                         <div class="dossier-view flex-1 flex flex-col md:flex-row transition-all duration-300 opacity-0 translate-y-4 min-w-0 bg-[#e0e0e0] text-black relative z-10">
+                            
+                            <!-- MOBILE-ONLY HEADER (Shows above image) -->
+                            <div class="w-full p-4 block md:hidden bg-white border-b-4 border-black relative z-20 flex flex-col items-center text-center">
+                                <h3 class="dos-name text-4xl sm:text-5xl font-gta text-black leading-none drop-shadow-[2px_2px_0_rgba(0,0,0,0.2)] break-words mb-1">NAME</h3>
+                                <div class="dos-alias text-xl font-handwriting text-[var(--gta-pink)] mb-2">"Alias"</div>
+                                <div class="bg-black text-white px-3 py-1 shadow-[3px_3px_0_var(--gta-blue)] border-2 border-black inline-block mt-1">
+                                    <span class="dos-role font-gta text-sm">ROLE</span>
+                                </div>
+                            </div>
+
                             <div class="w-full md:w-5/12 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] bg-gray-300 border-b-4 md:border-b-0 md:border-r-4 border-black relative p-4 sm:p-6 pt-8 sm:pt-12 md:pt-14 flex flex-col items-center justify-start">
                                 <div class="w-full max-w-[200px] sm:max-w-[220px] aspect-square border-4 border-black shadow-[6px_6px_0_rgba(0,0,0,0.3)] bg-white p-1 relative z-10 hover:scale-105 hover:shadow-[10px_10px_0_rgba(0,0,0,0.5)] transition-all duration-300">
                                     <img src="" class="dos-img w-full h-full object-cover">
                                 </div>
                                 <div class="w-full max-w-[200px] sm:max-w-[220px] bg-black border-4 border-black p-2 mt-4 text-center shadow-[4px_4px_0_rgba(0,0,0,0.4)] hover:scale-105 transition-transform duration-300">
-                                    <div class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">WANTED LEVEL</div>
                                     <div class="dos-stars flex justify-center gap-1 text-[var(--gta-yellow)] text-xl drop-shadow-[0_0_5px_rgba(255,204,0,0.5)]"></div>
                                 </div>
                                 <div class="w-full max-w-[200px] sm:max-w-[220px] mt-5 bg-white border-4 border-black shadow-[4px_4px_0_rgba(0,0,0,0.3)] p-3 text-black font-roboto hover:scale-105 hover:shadow-[8px_8px_0_rgba(0,0,0,0.4)] transition-all duration-300">
@@ -335,12 +344,13 @@
                             </div>
 
                             <div class="w-full md:w-7/12 p-4 sm:p-6 md:p-8 flex flex-col relative z-10 bg-white">
-                                <div class="border-b-4 border-black pb-4 mb-5">
-                                    <div class="bg-black text-white px-3 py-1 mb-2 shadow-[3px_3px_0_var(--gta-blue)] border-2 border-black inline-block hover:scale-105 transition-transform cursor-default">
+                                <!-- DESKTOP HEADER (Hidden on mobile) -->
+                                <div class="border-b-4 border-black pb-4 mb-5 hidden md:block">
+                                    <h3 class="dos-name text-4xl sm:text-5xl md:text-6xl font-gta text-black leading-none drop-shadow-[2px_2px_0_rgba(0,0,0,0.2)] break-words">NAME</h3>
+                                    <div class="dos-alias text-xl sm:text-3xl font-handwriting text-[var(--gta-pink)] mt-1 mb-3">"Alias"</div>
+                                    <div class="bg-black text-white px-3 py-1 shadow-[3px_3px_0_var(--gta-blue)] border-2 border-black inline-block hover:scale-105 transition-transform cursor-default">
                                         <span class="dos-role font-gta text-sm sm:text-lg">ROLE</span>
                                     </div>
-                                    <h3 class="dos-name text-4xl sm:text-5xl md:text-6xl font-gta text-black leading-none drop-shadow-[2px_2px_0_rgba(0,0,0,0.2)] break-words">NAME</h3>
-                                    <div class="dos-alias text-xl sm:text-3xl font-handwriting text-[var(--gta-pink)] mt-1">"Alias"</div>
                                 </div>
                                 <div class="grid grid-cols-2 gap-1 sm:gap-3 font-gta text-sm sm:text-base md:text-lg mb-3">
                                 <div class="flex flex-col border-l-2 sm:border-l-4 border-[var(--gta-blue)] pl-1.5 sm:pl-2">
@@ -437,6 +447,12 @@
                     <span class="font-gta text-xl sm:text-2xl tracking-widest">WARRANT FILE: <span class="dos-alias text-[var(--gta-pink)]"></span></span>
                     <i data-lucide="fingerprint" class="w-6 h-6 sm:w-8 sm:h-8"></i>
                 </div>
+
+                <!-- MOBILE-ONLY HEADER -->
+                <div class="w-full px-4 pt-8 block md:hidden flex flex-col items-center justify-center text-center relative z-20">
+                    <h3 class="dos-name text-5xl font-gta text-[var(--gta-pink)] leading-none drop-shadow-[2px_2px_0_#fff] mb-1 uppercase"></h3>
+                    <div class="dos-alias text-3xl font-handwriting text-white mb-2">"Alias"</div>
+                </div>
                 
                 <div class="flex flex-col md:flex-row w-full p-4 sm:p-6 md:p-8 gap-6 md:gap-8 relative overflow-hidden">
                     <!-- Faded Background Watermark -->
@@ -449,16 +465,19 @@
                         </div>
                         <div class="w-3/4 md:w-full bg-[var(--gta-red)] text-white font-gta text-2xl sm:text-3xl text-center py-2 border-2 border-white shadow-[4px_4px_0_rgba(0,0,0,1)] uppercase"><span class="dos-role"></span></div>
                         <div class="w-3/4 md:w-full bg-black border-2 border-white p-3 shadow-[4px_4px_0_rgba(0,0,0,1)]">
-                            <div class="text-center text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1.5">THREAT LEVEL</div>
                             <div class="dos-stars flex justify-center gap-1 text-[var(--gta-yellow)] text-xl sm:text-2xl drop-shadow-[0_0_5px_rgba(255,204,0,0.5)]"></div>
                         </div>
                     </div>
 
                     <!-- Right: Massive Database Stats -->
                     <div class="w-full md:w-2/3 z-10 flex flex-col justify-center">
-                        <h3 class="dos-name text-4xl sm:text-6xl md:text-7xl font-gta text-[var(--gta-pink)] leading-none drop-shadow-[2px_2px_0_#fff] mb-1 uppercase text-center md:text-left"></h3>
-                        <div class="dos-alias text-2xl sm:text-4xl font-handwriting text-white mb-4 text-center md:text-left">"Alias"</div>
                         
+                        <!-- DESKTOP HEADER (Hidden on mobile) -->
+                        <div class="hidden md:block">
+                            <h3 class="dos-name text-4xl sm:text-6xl md:text-7xl font-gta text-[var(--gta-pink)] leading-none drop-shadow-[2px_2px_0_#fff] mb-1 uppercase text-center md:text-left"></h3>
+                            <div class="dos-alias text-2xl sm:text-4xl font-handwriting text-white mb-4 text-center md:text-left">"Alias"</div>
+                        </div>
+
                         <div class="flex flex-wrap justify-center md:justify-start gap-1.5 sm:gap-2 font-roboto font-bold text-gray-400 mb-3 text-[8px] sm:text-[10px] uppercase tracking-widest border-b-2 border-gray-800 pb-2 md:pb-3">
                             <span class="bg-gray-800 px-1.5 py-0.5 text-white border border-gray-600 shadow-sm">LOC: <span class="dos-location text-[var(--gta-blue)]"></span></span>
                             <span class="bg-gray-800 px-1.5 py-0.5 text-white border border-gray-600 shadow-sm">BASE: <span class="dos-hangout text-[var(--gta-blue)]"></span></span>
@@ -587,35 +606,35 @@
             
             <div class="flex flex-col items-center drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)] z-20 text-center w-full mb-6 md:mb-10">
                 <div class="flex flex-col items-end w-fit">
-                    <h1 class="font-gta text-[2.5rem] sm:text-[4rem] md:text-[6rem] lg:text-[8rem] leading-none text-white tracking-tight text-center" style="text-shadow: 6px 6px 0 #000;">
+                    <h1 class="font-gta text-[3.2rem] min-[375px]:text-[3.8rem] sm:text-[4rem] md:text-[6rem] lg:text-[8rem] leading-none text-white tracking-tight text-center" style="text-shadow: 6px 6px 0 #000;">
                         GRAND THEFT<br>AUTO <span class="inline-block" style="text-shadow: none; filter: drop-shadow(6px 6px 0px #000);"><span class="bg-gradient-to-b from-[#f8d070] via-[#ff6eb4] to-[#9b4edd] text-transparent bg-clip-text inline-block">VI</span></span>
                     </h1>
-                    <h2 class="font-handwriting text-[1.6rem] sm:text-[2.4rem] md:text-[4rem] lg:text-[5rem] text-[var(--gta-blue)] mt-0 md:-mt-2 lg:-mt-6 -rotate-[6deg] pr-4 sm:pr-8 md:pr-12" style="text-shadow: 4px 4px 0 #000;">
+                    <h2 class="font-handwriting text-[2.2rem] min-[375px]:text-[2.8rem] sm:text-[2.4rem] md:text-[4rem] lg:text-[5rem] text-[var(--gta-blue)] mt-0 md:-mt-2 lg:-mt-6 -rotate-[6deg] pr-4 sm:pr-8 md:pr-12" style="text-shadow: 4px 4px 0 #000;">
                         COUNTDOWN
                     </h2>
                 </div>
             </div>
 
             <div class="bg-[var(--gta-yellow)] border-4 border-black p-2 sm:p-6 md:p-10 rounded-xl flex flex-col items-center shadow-[10px_10px_0_rgba(0,0,0,0.6)] transform scale-100 lg:scale-125 z-10 mt-2 md:mt-6 w-[95%] sm:w-auto max-w-full overflow-hidden">
-                <div class="flex justify-center gap-1 sm:gap-4 text-white font-gta text-2xl min-[375px]:text-3xl sm:text-6xl md:text-8xl hud-timer tracking-wide tabular-nums">
-                    <div class="flex flex-col items-center">
-                        <span class="timer-days text-white inline-block text-center min-w-[3.5ch]">000</span>
-                        <span class="text-[10px] sm:text-sm md:text-lg text-black font-roboto mt-1 sm:mt-2" style="text-shadow: none;">DAYS</span>
+                <div class="flex justify-center items-start gap-1 sm:gap-4 text-white font-gta text-[2.5rem] min-[375px]:text-5xl sm:text-6xl md:text-8xl hud-timer tracking-wide tabular-nums leading-none">
+                    <div class="flex flex-col items-center w-[3.2ch]">
+                        <span class="timer-days text-white inline-block text-center">000</span>
+                        <span class="text-[10px] sm:text-sm md:text-lg text-black font-roboto mt-2 sm:mt-3 tracking-normal" style="text-shadow: none;">DAYS</span>
                     </div>
-                    <span class="text-black animate-pulse" style="text-shadow: none;">:</span>
-                    <div class="flex flex-col items-center">
-                        <span class="timer-hours inline-block text-center min-w-[2.5ch]">00</span>
-                        <span class="text-[10px] sm:text-sm md:text-lg text-black font-roboto mt-1 sm:mt-2" style="text-shadow: none;">HRS</span>
+                    <span class="text-black animate-pulse pt-1 sm:pt-2 md:pt-3" style="text-shadow: none;">:</span>
+                    <div class="flex flex-col items-center w-[2.2ch]">
+                        <span class="timer-hours inline-block text-center">00</span>
+                        <span class="text-[10px] sm:text-sm md:text-lg text-black font-roboto mt-2 sm:mt-3 tracking-normal" style="text-shadow: none;">HRS</span>
                     </div>
-                    <span class="text-black animate-pulse" style="text-shadow: none;">:</span>
-                    <div class="flex flex-col items-center">
-                        <span class="timer-minutes inline-block text-center min-w-[2.5ch]">00</span>
-                        <span class="text-[10px] sm:text-sm md:text-lg text-black font-roboto mt-1 sm:mt-2" style="text-shadow: none;">MIN</span>
+                    <span class="text-black animate-pulse pt-1 sm:pt-2 md:pt-3" style="text-shadow: none;">:</span>
+                    <div class="flex flex-col items-center w-[2.2ch]">
+                        <span class="timer-minutes inline-block text-center">00</span>
+                        <span class="text-[10px] sm:text-sm md:text-lg text-black font-roboto mt-2 sm:mt-3 tracking-normal" style="text-shadow: none;">MIN</span>
                     </div>
-                    <span class="text-black animate-pulse" style="text-shadow: none;">:</span>
-                    <div class="flex flex-col items-center">
-                        <span class="timer-seconds text-[var(--gta-blue)] inline-block text-center min-w-[2.5ch]">00</span>
-                        <span class="text-[10px] sm:text-sm md:text-lg text-black font-roboto mt-1 sm:mt-2" style="text-shadow: none;">SEC</span>
+                    <span class="text-black animate-pulse pt-1 sm:pt-2 md:pt-3" style="text-shadow: none;">:</span>
+                    <div class="flex flex-col items-center w-[2.2ch]">
+                        <span class="timer-seconds text-[var(--gta-blue)] inline-block text-center">00</span>
+                        <span class="text-[10px] sm:text-sm md:text-lg text-black font-roboto mt-2 sm:mt-3 tracking-normal" style="text-shadow: none;">SEC</span>
                     </div>
                 </div>
                 <div class="holiday-message hidden mt-4 text-center font-gta text-[#00ffff] text-xl sm:text-3xl drop-shadow-[3px_3px_0_#000]"></div>
