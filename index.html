@@ -397,24 +397,16 @@
                     </div>
                 </div>
 
-                <!-- LSPD SCANNER FEED (Mobile: Bottom, Desktop: Bottom Left under Weazel) -->
+                <!-- MESSAGE OF THE DAY (Mobile: Bottom, Desktop: Bottom Left under Weazel) -->
                 <div class="lg:col-span-4 flex flex-col items-center lg:items-start w-full">
-                    <div class="w-full max-w-sm bg-[#0a0a0a] text-[#00ff00] border-4 border-black py-2 px-3 sm:p-4 shadow-[4px_4px_0_rgba(0,0,0,0.5)] sm:shadow-[8px_8px_0_rgba(0,0,0,0.5)] hover:shadow-[8px_8px_0_var(--gta-blue)] transition-all duration-300 relative overflow-hidden group font-mono">
-                        <!-- CRT Scanline effect -->
-                        <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:100%_4px] pointer-events-none z-10"></div>
-                        
-                        <div class="flex justify-between items-center border-b-2 border-gray-800 pb-1 sm:pb-2 mb-2 relative z-20">
-                            <div class="flex items-center gap-2">
-                                <i data-lucide="radio" class="w-4 h-4 text-[var(--gta-blue)] animate-pulse"></i>
-                                <span class="font-gta text-[11px] sm:text-sm text-white tracking-widest pt-0.5">VCPD DISPATCH INTERCEPT</span>
-                            </div>
-                            <span class="text-[8px] sm:text-[10px] text-red-500 font-bold animate-pulse">LIVE <span class="text-white ml-0.5 opacity-50">REC</span></span>
+                    <div class="w-full max-w-sm bg-[#e8f4ea] text-black border-2 border-black py-2 px-3 sm:p-4 shadow-[4px_4px_0_rgba(0,0,0,0.5)] sm:shadow-[8px_8px_0_rgba(0,0,0,0.5)] hover:scale-105 sm:hover:shadow-[12px_12px_0_rgba(0,0,0,0.7)] transition-all duration-300 relative">
+                        <div class="absolute -top-1.5 sm:-top-3 left-1/2 transform -translate-x-1/2 w-8 h-3 sm:w-12 sm:h-5 bg-white/60 border border-gray-300 shadow-sm backdrop-blur-sm z-10 rotate-2"></div>
+                        <div class="flex justify-between items-center border-b border-dashed border-gray-400 pb-1 sm:pb-2 mb-2">
+                            <span class="font-gta text-[11px] sm:text-sm text-gray-800 leading-none pt-0.5">MESSAGE OF THE DAY</span>
+                            <i data-lucide="quote" class="w-3 h-3 sm:w-4 sm:h-4 text-[var(--gta-green)]"></i>
                         </div>
-                        
-                        <div class="text-[10px] sm:text-[11px] leading-relaxed text-[#00ff00] min-h-[4.5rem] sm:min-h-[5.5rem] flex flex-col justify-end relative z-20 drop-shadow-[0_0_5px_rgba(0,255,0,0.5)]" id="lspd-feed">
-                            <div class="opacity-50">[SYSTEM] Decrypting VCPD frequency...</div>
-                            <div class="opacity-75">[SYSTEM] Establishing secure connection...</div>
-                            <div><span class="animate-pulse">_</span></div>
+                        <div class="font-handwriting text-[16px] sm:text-2xl leading-tight text-gray-900 text-center px-1" id="motd-text">
+                            "Loading message..."
                         </div>
                     </div>
                 </div>
@@ -803,7 +795,8 @@
             { name: "Argin", alias: "The Machine", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Street Racer", desc: "An underground street racing phenom who has completely dominated the Los Santos midnight racing circuits. Piloting highly modified, imported JDM vehicles, Argin boasts a staggering 90% win rate. His unparalleled reaction times and intimate knowledge of the city's alleyways make him the ultimate high-speed pursuit specialist when a standard getaway driver won't cut it.", stats: { hangout: "Street Races", vehicle: "JDM Vehicles", location: "Los Santos", attributes: { stamina: 67, shooting: 80, strength: 80, driving: 98 } }, stars: 5, hidden: true },
             { name: "Unknown", alias: "Slim", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Mentor", desc: "A rare success story in the criminal underworld. Slim is a fiercely intelligent, street-smart mentor who managed to turn his life around after a lengthy stint in Bolingbroke Penitentiary. He now dedicates his time to helping at-risk youth stay off the streets, though his encyclopedic knowledge of rival gangs and police patrol routes makes him a highly sought-after tactical consultant.", stats: { hangout: "Los Santos", vehicle: "Unknown", location: "Los Santos", attributes: { stamina: 67, shooting: 82, strength: 77, driving: 55 } }, stars: 5, hidden: true },
             { name: "Jake", alias: "MJ Verde", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Producer", desc: "A rising star in the Los Santos underground hip-hop scene, working as both a rapper and a platinum-tier music producer. Behind the platinum plaques and sold-out club appearances, Jake uses his sprawling recording studios to launder syndicate money and facilitate discrete communication networks embedded within audio tracks. His VIP parties are notorious for closing high-stakes deals.", stats: { hangout: "Los Santos", vehicle: "Unknown", location: "Los Santos", attributes: { stamina: 62, shooting: 80, strength: 80, driving: 60 } }, stars: 5, hidden: true },
-            { name: "Alicia", alias: "Unknown", img: "https://i.imgur.com/TBG9sQ3.jpeg", role: "Biker Leader", desc: "Leader of a Los Santos heavy metal and black metal based motorcycle gang. She is tough as nails, and although in a notorious biker gang, she fiercely defends her city and its people from outside threats.", stats: { hangout: "Los Santos", vehicle: "Harley Davidson Motorcycles", location: "Los Santos", attributes: { stamina: 75, shooting: 75, strength: 80, driving: 25 } }, stars: 5, hidden: true }
+            { name: "Alicia", alias: "Unknown", img: "https://i.imgur.com/TBG9sQ3.jpeg", role: "Biker Leader", desc: "Leader of a Los Santos heavy metal and black metal based motorcycle gang. She is tough as nails, and although in a notorious biker gang, she fiercely defends her city and its people from outside threats.", stats: { hangout: "Los Santos", vehicle: "Harley Davidson Motorcycles", location: "Los Santos", attributes: { stamina: 75, shooting: 75, strength: 80, driving: 25 } }, stars: 5, hidden: true },
+            { name: "Vlad", alias: "Big Gucci", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Arms Dealer", desc: "When it comes to guns, you go to Vlad. He has a huge supply of weapons and deep-rooted connections worldwide, making him the ultimate supplier for high-grade, untraceable firepower.", stats: { hangout: "Shooting Range", vehicle: "Toyota Prius", location: "Los Santos", attributes: { stamina: 75, shooting: 94, strength: 90, driving: 80 } }, stars: 5, hidden: true }
             // NOTE: To add a hidden associate, just add:  hidden: true  to their object!
         ];
 
@@ -1000,64 +993,37 @@
             }
         }
 
-        // --- LSPD SCANNER LOGIC ---
-        function initLSPDScanner() {
-            const feedEl = document.getElementById('lspd-feed');
-            if (!feedEl) return;
-            
-            const codes = ["10-10", "10-31", "10-71", "10-80", "211", "11-99", "415", "10-50"];
-            const crimes = ["Shots fired", "Armed robbery", "High-speed pursuit", "Officer requesting backup", "Gang activity", "Suspicious vehicle", "Grand Theft Auto", "Aggravated assault"];
-            const locations = ["Ocean Beach", "Little Haiti", "Downtown Vice", "Port Gellhorn", "Vice Point", "Kelly County", "Escobar Int.", "Vice City Port", "Washington Beach"];
-            const units = ["Air-1", "Unit 4-Adam", "Unit 2-Lincoln", "SWAT", "Unit 7-Mary", "Vice Squad", "K9 Unit"];
-            
-            let feedLines = [
-                "[SYSTEM] Decryption successful.",
-                "[SYSTEM] Monitoring frequency 154.830..."
+        // --- MESSAGE OF THE DAY LOGIC ---
+        function setDailyMessage() {
+            const messages = [
+                "Stay focused. The biggest score is yet to come.",
+                "Trust the plan, but always watch your six.",
+                "Patience is a weapon. Use it.",
+                "Loyalty is currency. Don't go broke.",
+                "Every locked door is just a puzzle waiting to be solved.",
+                "Success is 90% preparation and 10% execution.",
+                "A smooth getaway never made a skilled driver.",
+                "Keep a low profile and a high caliber.",
+                "Never leave a trace. Never leave a friend behind."
             ];
-
-            function addLine() {
-                const now = new Date();
-                const timeStr = String(now.getHours()).padStart(2, '0') + ":" + String(now.getMinutes()).padStart(2, '0') + ":" + String(now.getSeconds()).padStart(2, '0');
-                
-                const code = codes[Math.floor(Math.random() * codes.length)];
-                const crime = crimes[Math.floor(Math.random() * crimes.length)];
-                const loc = locations[Math.floor(Math.random() * locations.length)];
-                const unit = units[Math.floor(Math.random() * units.length)];
-                
-                const templates = [
-                    `[${timeStr}] DISPATCH: ${code} - ${crime} at ${loc}. ${unit} respond.`,
-                    `[${timeStr}] DISPATCH: Reports of ${crime} near ${loc}.`,
-                    `[${timeStr}] ${unit}: In pursuit of suspect, heading north on ${loc}.`,
-                    `[${timeStr}] DISPATCH: Code 3 to ${loc}, ${code} in progress.`,
-                    `[${timeStr}] ${unit}: On scene at ${loc}. Code 4.`
-                ];
-                
-                const newLine = templates[Math.floor(Math.random() * templates.length)];
-                
-                feedLines.push(newLine);
-                if (feedLines.length > 4) feedLines.shift(); // Keep last 4 lines to prevent overflow
-                
-                let html = '';
-                feedLines.forEach((line, i) => {
-                    const opacity = (i === feedLines.length - 1) ? 'opacity-100' : (i === feedLines.length - 2 ? 'opacity-75' : 'opacity-50');
-                    html += `<div class="${opacity}">${line}</div>`;
-                });
-                html += `<div><span class="animate-pulse">_</span></div>`;
-                feedEl.innerHTML = html;
-                
-                // Random next interval between 3 and 8 seconds
-                setTimeout(addLine, Math.random() * 5000 + 3000);
-            }
             
-            // Start feed after a brief load-in delay
-            setTimeout(addLine, 2000);
+            // Create a daily index based on the date string
+            const todayStr = new Date().toDateString();
+            let hash = 0;
+            for(let i = 0; i < todayStr.length; i++) hash += todayStr.charCodeAt(i);
+            
+            const motdIndex = hash % messages.length;
+            const motdEl = document.getElementById('motd-text');
+            if (motdEl) {
+                motdEl.innerText = `"${messages[motdIndex]}"`;
+            }
         }
 
-        // Initialize Menus, Profiles, Grids & Scanner
+        // Initialize Menus, Profiles, Grids & MOTD
         renderCrewMenu();
         renderSuspectGrid();
         openDossier(currentIdx);
-        initLSPDScanner();
+        setDailyMessage();
 
         // --- LIGHTBOX ---
         function openLightbox(src) {
