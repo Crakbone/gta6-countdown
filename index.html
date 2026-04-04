@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GTA VI // CREW HUB</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Caveat:wght@700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --gta-pink: #ff6eb4;
+            --gta-blue: #00ffff;
+            --gta-orange: #ff5e00;
+            --gta-green: #55a838;
+            --gta-yellow: #ffcc00;
+            --gta-red: #cc0000;
+            --weazel-red: #d32f2f;
+        }
+
+        body {
+            background-color: #000;
+            font-family: 'Roboto', sans-serif;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* --- BACKGROUND LAYERS (Halftone Comic Fade to Black) --- */
+        .bg-sunset {
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(180deg, #ff7e5f 0%, #feb47b 40%, #86a8e7 80%, #91eae4 100%);
+            z-index: -4;
+        }
+
+        .bg-halftone {
+            position: fixed;
+            inset: 0;
+            background-image: radial-gradient(#000 45%, transparent 50%);
+            background-size: 8px 8px;
+            /* Mask creates the effect where dots only appear heavily towards the edges */
+            -webkit-mask-image: radial-gradient(ellipse at center, transparent 20%, black 80%);
+            mask-image: radial-gradient(ellipse at center, transparent 20%, black 80%);
+            z-index: -3;
+        }
+
+        .bg-vignette {
+            position: fixed;
+            inset: 0;
+            /* Combines a radial dark fade with hard black edges for Google Sites blending */
+            background: 
+                linear-gradient(90deg, #000 0%, transparent 15%, transparent 85%, #000 100%),
+                radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.8) 80%, #000 100%);
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        /* Abstract Texture Overlay */
+        .bg-overlay {
+            position: fixed;
+            inset: 0;
+            background-image: 
+                linear-gradient(45deg, rgba(0,0,0,0.4) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.4) 75%, rgba(0,0,0,0.4)), 
+                linear-gradient(45deg, rgba(0,0,0,0.4) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.4) 75%, rgba(0,0,0,0.4));
+            background-size: 4px 4px;
+            background-position: 0 0, 2px 2px;
+            opacity: 0.3;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* FONTS */
+        .font-gta { font-family: 'Anton', sans-serif; text-transform: uppercase; letter-spacing: 0.02em; }
+        .font-handwriting { font-family: 'Caveat', cursive; font-weight: 700; }
+
+        /* --- UI ELEMENTS --- */
+        .gta-panel {
+            background: rgba(0, 0, 0, 0.85);
+            border: 2px solid #000;
+            box-shadow: 8px 8px 0px rgba(0,0,0,0.5);
+            position: relative;
+        }
+
+        /* --- HUD TIMER --- */
+        .hud-timer {
+            text-shadow: 2px 2px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        }
+
+        /* --- iFRUIT PHONE --- */
+        .ifruit-phone {
+            background: #111;
+            border-radius: 30px;
+            border: 8px solid #222;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.8), 5px 10px 15px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        .ifruit-screen {
+            background: #e5e5e5;
+            color: #111;
+            height: 100%;
+        }
+        .ifruit-notch {
+            position: absolute;
+            top: 0; left: 50%; transform: translateX(-50%);
+            width: 40%; height: 20px;
+            background: #222;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+        /* --- SNAPMATIC --- */
+        .snapmatic-badge {
+            position: absolute;
+            bottom: 10px; right: 10px;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 900;
+            font-size: 1.5rem;
+            color: rgba(255,255,255,0.8);
+            text-shadow: 1px 1px 0 #000;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Vertical text for closed sidebar */
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            transform: rotate(180deg);
+        }
+
+        /* CUSTOM SCROLLBAR */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: rgba(0,0,0,0.8); }
+        ::-webkit-scrollbar-thumb { background: #fff; border: 2px solid #000; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gta-pink); }
+    </style>
+</head>
+<body class="min-h-screen relative pb-10 selection:bg-[var(--gta-pink)] selection:text-white">
+
+    <!-- Background Layers -->
+    <div class="bg-sunset"></div>
+    <div class="bg-halftone"></div>
+    <div class="bg-vignette"></div>
+    <div class="bg-overlay"></div>
+
+    <!-- === TOP NAVIGATION BAR === -->
+    <nav class="bg-black border-b-4 border-[var(--gta-pink)] sticky top-0 z-[100] shadow-[0_4px_15px_rgba(0,0,0,0.8)]">
+        <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-14 md:h-16">
+                <div class="flex items-center gap-1 md:gap-2 flex-shrink-0 mr-2">
+                    <span class="font-gta text-lg min-[375px]:text-xl sm:text-2xl md:text-3xl text-white tracking-widest pt-1">COUNT<span class="text-[var(--gta-pink)]">DOWN</span></span>
+                </div>
+                <div class="flex items-center gap-2 min-[375px]:gap-3 sm:gap-6 md:gap-8 font-gta text-[10px] min-[375px]:text-xs sm:text-lg md:text-2xl tracking-widest pt-1 flex-wrap justify-end">
+                    <button id="nav-home" onclick="navigate('home')" class="nav-link text-[var(--gta-pink)] hover:text-[var(--gta-pink)] transition-colors outline-none">HOME</button>
+                    <button id="nav-crew" onclick="navigate('crew')" class="nav-link text-white hover:text-[var(--gta-pink)] transition-colors outline-none">CREW</button>
+                    <button id="nav-news" onclick="navigate('news')" class="nav-link text-white hover:text-[var(--gta-pink)] transition-colors outline-none">NEWS</button>
+                    <button id="nav-counter" onclick="navigate('counter')" class="nav-link text-white hover:text-[var(--gta-pink)] transition-colors outline-none">COUNTER</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- === MAIN PAGES WRAPPER === -->
+    <main class="relative z-10 w-full">
+
+        <!-- ========================================== -->
+        <!--                PAGE: HOME                  -->
+        <!-- ========================================== -->
+        <div id="page-home" class="page-section max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+            
+            <!-- HEADER & HUD (COUNTDOWN) -->
+            <header class="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-6 mb-8 text-center lg:text-left">
+                <div class="w-full lg:w-1/2 flex flex-col justify-center items-center lg:items-start relative drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)]">
+                    <div class="flex flex-col items-center lg:items-end w-fit mb-4 lg:mb-0">
+                        <h1 class="font-gta text-[2.2rem] sm:text-[3.5rem] md:text-[5rem] lg:text-[6.5rem] leading-none text-white tracking-tight text-center" style="text-shadow: 4px 4px 0 #000;">
+                            GRAND THEFT<br>AUTO <span class="inline-block" style="text-shadow: none; filter: drop-shadow(4px 4px 0px #000);"><span class="bg-gradient-to-b from-[#f8d070] via-[#ff6eb4] to-[#9b4edd] text-transparent bg-clip-text inline-block">VI</span></span>
+                        </h1>
+                        <h2 class="font-handwriting text-[1.5rem] sm:text-[2rem] md:text-[3.2rem] lg:text-[4.5rem] text-[var(--gta-blue)] mt-0 md:-mt-2 lg:-mt-4 -rotate-[6deg] pr-2 sm:pr-6 md:pr-10 lg:pr-8" style="text-shadow: 3px 3px 0 #000;">
+                            COUNTDOWN
+                        </h2>
+                    </div>
+                </div>
+                <div class="w-full lg:w-auto flex justify-center lg:justify-end mt-2 md:mt-6 lg:mt-10 lg:mr-8">
+                    <div class="bg-[var(--gta-yellow)] border-4 border-black p-3 sm:p-4 md:p-6 rounded-xl flex flex-col items-center shadow-[6px_6px_0_rgba(0,0,0,0.5)] w-full sm:w-auto max-w-full overflow-hidden">
+                        <div class="flex justify-center gap-1 sm:gap-3 text-white font-gta text-2xl min-[375px]:text-3xl sm:text-5xl md:text-7xl hud-timer tracking-wide tabular-nums">
+                            <div class="flex flex-col items-center">
+                                <span class="timer-days text-white inline-block text-center min-w-[3.5ch]">000</span>
+                                <span class="text-[10px] md:text-sm text-black font-roboto mt-1" style="text-shadow: none;">DAYS</span>
+                            </div>
+                            <span class="text-black animate-pulse" style="text-shadow: none;">:</span>
+                            <div class="flex flex-col items-center">
+                                <span class="timer-hours inline-block text-center min-w-[2.5ch]">00</span>
+                                <span class="text-[10px] md:text-sm text-black font-roboto mt-1" style="text-shadow: none;">HRS</span>
+                            </div>
+                            <span class="text-black animate-pulse" style="text-shadow: none;">:</span>
+                            <div class="flex flex-col items-center">
+                                <span class="timer-minutes inline-block text-center min-w-[2.5ch]">00</span>
+                                <span class="text-[10px] md:text-sm text-black font-roboto mt-1" style="text-shadow: none;">MIN</span>
+                            </div>
+                            <span class="text-black animate-pulse" style="text-shadow: none;">:</span>
+                            <div class="flex flex-col items-center">
+                                <span class="timer-seconds text-[var(--gta-blue)] inline-block text-center min-w-[2.5ch]">00</span>
+                                <span class="text-[10px] md:text-sm text-black font-roboto mt-1" style="text-shadow: none;">SEC</span>
+                            </div>
+                        </div>
+                        <div class="holiday-message hidden mt-3 text-right font-gta text-[#00ffff] text-lg sm:text-2xl drop-shadow-[2px_2px_0_#000]"></div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                <!-- Left Col: Note & Weazel News -->
+                <div class="lg:col-span-4 space-y-6 flex flex-col items-center lg:items-start">
+                    
+                    <!-- Crew Memo Note -->
+                    <div class="w-full max-w-sm bg-[#fdf8e4] text-black border-2 border-black py-2 px-3 sm:p-6 shadow-[4px_4px_0_rgba(0,0,0,0.5)] sm:shadow-[8px_8px_0_rgba(0,0,0,0.5)] hover:scale-105 sm:hover:shadow-[12px_12px_0_rgba(0,0,0,0.7)] transition-all duration-300 relative">
+                        <div class="absolute -top-1.5 sm:-top-3 left-1/2 transform -translate-x-1/2 w-10 h-3 sm:w-16 sm:h-6 bg-white/60 border border-gray-300 shadow-sm backdrop-blur-sm z-10"></div>
+                        <div class="flex justify-between items-center border-b border-dashed border-gray-400 pb-1 sm:pb-2 mb-1 sm:mb-4">
+                            <span class="font-gta text-[11px] sm:text-lg text-gray-800 leading-none pt-0.5">CREW MEMO</span>
+                            <i data-lucide="paperclip" class="w-3 h-3 sm:w-5 sm:h-5 text-gray-500"></i>
+                        </div>
+                        <div class="font-handwriting text-[14px] sm:text-2xl leading-tight sm:leading-relaxed text-gray-900">
+                            <span class="hidden sm:inline">Message for </span><strong class="text-[var(--gta-red)] text-lg sm:text-3xl">Richard (Big Buff)</strong><span class="inline sm:hidden">:</span><br class="hidden sm:block"><br class="hidden sm:block">
+                            <span class="inline sm:hidden"> We're all rooting for a speedy recovery—you got this! The Crew needs you for the big score.</span>
+                            <span class="hidden sm:inline">We're all rooting for a speedy recovery—you got this! Need you back out here soon at full strength. The Crew needs you for the big score.</span>
+                        </div>
+                    </div>
+
+                    <div class="gta-panel p-0 w-full hover:scale-[1.02] hover:shadow-[12px_12px_0_rgba(0,0,0,0.7)] transition-all duration-300">
+                        <div class="bg-[var(--weazel-red)] p-2 md:p-3 flex items-center gap-2 border-b-2 border-black">
+                            <i data-lucide="globe" class="text-white w-5 h-5 animate-pulse"></i>
+                            <h2 class="font-gta text-2xl text-white tracking-widest">WEAZEL NEWS</h2>
+                        </div>
+                        <div class="p-4 bg-white text-black">
+                            <h3 class="font-gta text-2xl sm:text-3xl mb-2 leading-none text-black">THE LONG WAIT IS ALMOST OVER</h3>
+                            <div class="w-12 h-1 bg-black mb-3"></div>
+                            <div class="space-y-2 text-xs md:text-sm font-bold text-gray-800">
+                                <p>It's been over a decade. Inside sources confirm that <strong class="text-[var(--weazel-red)]">Alex, Daniel</strong>, and their notorious syndicate have been laying low across the state.</p>
+                                <p>With the release date locked in for <strong class="text-[var(--weazel-red)]">November 19th</strong>, chatter on LifeInvader suggests schedules are clearing. The LSPD is bracing for impact.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Col: Expandable Roster & Profile -->
+                <div class="lg:col-span-8 flex flex-col h-auto">
+                    <!-- Home Page Associates Header & Search -->
+                    <div class="flex flex-col border-4 border-b-0 border-black bg-[var(--gta-blue)] rounded-t-xl shadow-[8px_8px_0_rgba(0,0,0,0.5)] relative z-10 overflow-hidden">
+                        <div class="flex items-center justify-between p-3 border-b-4 border-black">
+                            <div class="flex items-center gap-3">
+                                <i data-lucide="users" class="text-black w-6 h-6 md:w-8 md:h-8"></i>
+                                <h2 class="text-2xl sm:text-3xl md:text-4xl font-gta tracking-widest text-black">KNOWN SUSPECTS</h2>
+                            </div>
+                            <div class="bg-black text-[var(--gta-blue)] font-gta text-xl px-3 py-1 hidden md:block shadow-[2px_2px_0_#fff]">DATABASE</div>
+                        </div>
+                        <!-- Search Bar Row -->
+                        <div class="bg-[#111] p-2 md:p-3 flex items-center relative">
+                            <i data-lucide="search" class="text-gray-400 w-5 h-5 ml-2 mr-3 flex-shrink-0"></i>
+                            <input type="text" id="home-search" placeholder="SEARCH DATABASE (PRESS ENTER)..." class="w-full bg-transparent border-none outline-none text-white font-gta tracking-widest text-lg sm:text-xl placeholder-gray-600 uppercase" onkeyup="handleSearch(event, this.value)">
+                            <span id="home-search-status" class="absolute right-4 text-[var(--gta-pink)] font-gta text-sm sm:text-base hidden">NOT FOUND</span>
+                        </div>
+                    </div>
+
+                    <div class="gta-panel p-0 flex flex-col md:flex-row w-full items-stretch border-4 border-black rounded-b-xl shadow-[8px_8px_0_rgba(0,0,0,0.5)] flex-1 overflow-hidden md:overflow-clip">
+                        
+                        <!-- Sidebar -->
+                        <div class="associates-sidebar bg-[#111] border-b-4 md:border-b-0 md:border-r-4 border-black flex flex-col md:flex-row transition-all duration-300 w-full md:w-16 flex-shrink-0 z-20">
+                            <button onclick="toggleSidebar()" class="sidebar-btn w-full md:w-16 md:h-full flex flex-row md:flex-col items-center justify-between md:justify-center bg-[var(--gta-yellow)] hover:bg-[var(--gta-orange)] text-black transition-colors p-2 md:py-4 cursor-pointer border-none shadow-[inset_0_-4px_0_rgba(0,0,0,0.2)] md:shadow-[inset_-4px_0_0_rgba(0,0,0,0.2)] group outline-none flex-shrink-0 z-10 relative">
+                                <div class="flex flex-row md:flex-col items-center gap-2">
+                                    <i data-lucide="contact" class="w-5 h-5 md:w-7 md:h-7 flex-shrink-0"></i>
+                                    <span class="sidebar-text font-gta text-sm sm:text-base tracking-widest mt-1 block md:hidden whitespace-nowrap">NOTORIOUS SUSPECTS</span>
+                                    <div class="sidebar-text-vertical hidden md:flex flex-col items-center gap-2 mt-4 text-black/60 group-hover:text-black">
+                                        <i data-lucide="chevron-right" class="w-4 h-4 vertical-arrow transition-transform duration-300"></i>
+                                        <span class="font-gta text-base sm:text-lg tracking-widest vertical-text text-black">NOTORIOUS SUSPECTS</span>
+                                        <i data-lucide="chevron-right" class="w-4 h-4 vertical-arrow transition-transform duration-300"></i>
+                                    </div>
+                                </div>
+                                <i data-lucide="chevron-down" class="sidebar-arrow w-5 h-5 transition-transform md:hidden duration-300"></i>
+                            </button>
+                            <div class="crew-menu-container hidden flex-col w-full md:w-[160px] flex-shrink-0 overflow-y-auto custom-scrollbar p-2 space-y-1 bg-[#111]">
+                                <!-- Menu injected here -->
+                            </div>
+                        </div>
+
+                        <!-- Dossier View -->
+                        <div class="dossier-view flex-1 flex flex-col md:flex-row transition-all duration-300 opacity-0 translate-y-4 min-w-0 bg-[#e0e0e0] text-black relative z-10">
+                            <div class="w-full md:w-5/12 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] bg-gray-300 border-b-4 md:border-b-0 md:border-r-4 border-black relative p-4 sm:p-6 pt-8 sm:pt-12 md:pt-14 flex flex-col items-center justify-start">
+                                <div class="w-full max-w-[200px] sm:max-w-[220px] aspect-square border-4 border-black shadow-[6px_6px_0_rgba(0,0,0,0.3)] bg-white p-1 relative z-10 hover:scale-105 hover:shadow-[10px_10px_0_rgba(0,0,0,0.5)] transition-all duration-300">
+                                    <img src="" class="dos-img w-full h-full object-cover">
+                                </div>
+                                <div class="w-full max-w-[200px] sm:max-w-[220px] bg-black border-4 border-black p-2 mt-4 text-center shadow-[4px_4px_0_rgba(0,0,0,0.4)] hover:scale-105 transition-transform duration-300">
+                                    <div class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">WANTED LEVEL</div>
+                                    <div class="dos-stars flex justify-center gap-1 text-[var(--gta-yellow)] text-xl drop-shadow-[0_0_5px_rgba(255,204,0,0.5)]"></div>
+                                </div>
+                                <div class="w-full max-w-[200px] sm:max-w-[220px] mt-5 bg-white border-4 border-black shadow-[4px_4px_0_rgba(0,0,0,0.3)] p-3 text-black font-roboto hover:scale-105 hover:shadow-[8px_8px_0_rgba(0,0,0,0.4)] transition-all duration-300">
+                                    <div class="mb-2">
+                                        <div class="flex justify-between text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-0.5">
+                                            <span>Stamina</span>
+                                            <span class="stat-stamina-val font-gta text-[10px] text-gray-800">80/100</span>
+                                        </div>
+                                        <div class="w-full h-2.5 bg-gray-200 border-2 border-black p-[1px]"><div class="stat-stamina h-full bg-[var(--gta-blue)] transition-all duration-500" style="width: 80%"></div></div>
+                                    </div>
+                                    <div class="mb-2">
+                                        <div class="flex justify-between text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-0.5">
+                                            <span>Shooting</span>
+                                            <span class="stat-shooting-val font-gta text-[10px] text-gray-800">95/100</span>
+                                        </div>
+                                        <div class="w-full h-2.5 bg-gray-200 border-2 border-black p-[1px]"><div class="stat-shooting h-full bg-[var(--gta-red)] transition-all duration-500" style="width: 95%"></div></div>
+                                    </div>
+                                    <div class="mb-2">
+                                        <div class="flex justify-between text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-0.5">
+                                            <span>Strength</span>
+                                            <span class="stat-strength-val font-gta text-[10px] text-gray-800">60/100</span>
+                                        </div>
+                                        <div class="w-full h-2.5 bg-gray-200 border-2 border-black p-[1px]"><div class="stat-strength h-full bg-[var(--gta-green)] transition-all duration-500" style="width: 60%"></div></div>
+                                    </div>
+                                    <div>
+                                        <div class="flex justify-between text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-0.5">
+                                            <span>Driving</span>
+                                            <span class="stat-driving-val font-gta text-[10px] text-gray-800">100/100</span>
+                                        </div>
+                                        <div class="w-full h-2.5 bg-gray-200 border-2 border-black p-[1px]"><div class="stat-driving h-full bg-[var(--gta-yellow)] transition-all duration-500" style="width: 100%"></div></div>
+                                    </div>
+                                </div>
+                                <div class="w-full max-w-[200px] sm:max-w-[220px] mt-4 flex justify-between gap-3 relative z-10">
+                                    <button onclick="navCarousel(-1)" class="flex-1 bg-[var(--gta-blue)] border-2 border-black p-2 flex justify-center items-center hover:bg-[var(--gta-pink)] hover:text-white transition-colors shadow-[3px_3px_0_rgba(0,0,0,1)] outline-none hover:scale-105 text-black">
+                                        <i data-lucide="arrow-left" class="w-6 h-6"></i>
+                                    </button>
+                                    <button onclick="navCarousel(1)" class="flex-1 bg-[var(--gta-blue)] border-2 border-black p-2 flex justify-center items-center hover:bg-[var(--gta-pink)] hover:text-white transition-colors shadow-[3px_3px_0_rgba(0,0,0,1)] outline-none hover:scale-105 text-black">
+                                        <i data-lucide="arrow-right" class="w-6 h-6"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="w-full md:w-7/12 p-4 sm:p-6 md:p-8 flex flex-col relative z-10 bg-white">
+                                <div class="border-b-4 border-black pb-4 mb-5">
+                                    <div class="bg-black text-white px-3 py-1 mb-2 shadow-[3px_3px_0_var(--gta-blue)] border-2 border-black inline-block hover:scale-105 transition-transform cursor-default">
+                                        <span class="dos-role font-gta text-sm sm:text-lg">ROLE</span>
+                                    </div>
+                                    <h3 class="dos-name text-4xl sm:text-5xl md:text-6xl font-gta text-black leading-none drop-shadow-[2px_2px_0_rgba(0,0,0,0.2)] break-words">NAME</h3>
+                                    <div class="dos-alias text-xl sm:text-3xl font-handwriting text-[var(--gta-pink)] mt-1">"Alias"</div>
+                                </div>
+                                <div class="grid grid-cols-2 gap-1 sm:gap-3 font-gta text-sm sm:text-base md:text-lg mb-3">
+                                <div class="flex flex-col border-l-2 sm:border-l-4 border-[var(--gta-blue)] pl-1.5 sm:pl-2">
+                                    <span class="text-gray-500 font-roboto text-[8px] sm:text-[9px] font-bold tracking-widest leading-none mb-0.5">KNOWN HANGOUT</span>
+                                    <span class="dos-hangout text-black leading-tight"></span>
+                                </div>
+                                <div class="flex flex-col border-l-2 sm:border-l-4 border-[var(--gta-yellow)] pl-1.5 sm:pl-2 min-w-0">
+                                    <span class="text-gray-500 font-roboto text-[8px] sm:text-[9px] font-bold tracking-widest leading-none mb-0.5">KNOWN VEHICLE</span>
+                                    <span class="dos-vehicle text-black leading-tight truncate"></span>
+                                </div>
+                                <div class="flex flex-col border-l-2 sm:border-l-4 border-[var(--gta-green)] pl-1.5 sm:pl-2 col-span-2">
+                                    <span class="text-gray-500 font-roboto text-[8px] sm:text-[9px] font-bold tracking-widest leading-none mb-0.5">LAST KNOWN LOCATION</span>
+                                    <span class="dos-location text-black truncate leading-tight"></span>
+                                </div>
+                            </div>
+                            <div class="bg-[#111] text-white border-4 border-black p-3 sm:p-4 shadow-[6px_6px_0_var(--gta-pink)] text-left flex-1 relative">
+                                <p class="dos-desc text-sm font-roboto leading-relaxed text-gray-200"></p>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SNAPMATIC GALLERY -->
+            <div class="mt-10 pt-8 border-t-4 border-black relative mb-10">
+                <div class="flex items-center justify-start gap-3 mb-6 bg-black inline-flex px-5 py-2 border-2 border-white shadow-[4px_4px_0_rgba(0,0,0,0.5)] hover:scale-105 transition-transform duration-300">
+                    <i data-lucide="camera" class="text-white w-5 sm:w-6 h-5 sm:h-6"></i>
+                    <h2 class="font-gta text-2xl sm:text-3xl text-white tracking-widest mt-1">SNAPMATIC GALLERY</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+                    <div class="flex flex-col gap-6">
+                        <div class="gta-panel p-2">
+                            <div class="aspect-video bg-black relative border-2 border-black">
+                                <iframe class="w-full h-full relative z-10" src="https://www.youtube.com/embed/QdBZY2fkU-0?si=J9wnbQ0D1lpVN4F-" frameborder="0" allowfullscreen></iframe>
+                                <div class="absolute inset-0 bg-[url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABZJREFUeNpi2rVrv+Pv37//gQIgwAQA08gNQ025C/kAAAAASUVORK5CYII=')] opacity-20 pointer-events-none z-20"></div>
+                            </div>
+                        </div>
+                        <div class="gta-panel p-2">
+                            <div class="aspect-video bg-black relative border-2 border-black">
+                                <iframe class="w-full h-full relative z-10" src="https://www.youtube.com/embed/VQRLujxTm3c?si=v8KJjNMV7uvu6lJJ" frameborder="0" allowfullscreen></iframe>
+                                <div class="absolute inset-0 bg-[url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABZJREFUeNpi2rVrv+Pv37//gQIgwAQA08gNQ025C/kAAAAASUVORK5CYII=')] opacity-20 pointer-events-none z-20"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-white p-2 pb-8 border-2 border-black shadow-[4px_4px_0_rgba(0,0,0,0.6)] relative cursor-pointer hover:scale-105 transition-transform" onclick="openLightbox('https://i.imgur.com/HnVXQb4.jpeg')">
+                            <img src="https://i.imgur.com/HnVXQb4.jpeg" class="w-full aspect-square object-cover filter contrast-125 saturate-110 border border-gray-300">
+                            <div class="snapmatic-badge"><i data-lucide="camera" class="w-3 h-3"></i> <span class="text-sm">Snapmatic</span></div>
+                        </div>
+                        <div class="bg-white p-2 pb-8 border-2 border-black shadow-[4px_4px_0_rgba(0,0,0,0.6)] relative cursor-pointer hover:scale-105 transition-transform mt-4" onclick="openLightbox('https://i.imgur.com/bJbZLfg.jpeg')">
+                            <img src="https://i.imgur.com/bJbZLfg.jpeg" class="w-full aspect-square object-cover filter contrast-125 saturate-110 border border-gray-300">
+                            <div class="snapmatic-badge"><i data-lucide="camera" class="w-3 h-3"></i> <span class="text-sm">Snapmatic</span></div>
+                        </div>
+                        <div class="bg-white p-2 pb-8 border-2 border-black shadow-[4px_4px_0_rgba(0,0,0,0.6)] relative col-span-2 mx-auto w-3/4 cursor-pointer hover:scale-105 transition-transform -mt-2" onclick="openLightbox('https://i.imgur.com/0vmFF89.jpeg')">
+                            <img src="https://i.imgur.com/0vmFF89.jpeg" class="w-full aspect-video object-cover filter contrast-125 saturate-110 border border-gray-300">
+                            <div class="snapmatic-badge"><i data-lucide="camera" class="w-4 h-4"></i> <span class="text-lg">Snapmatic</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- ========================================== -->
+        <!--                PAGE: CREW                  -->
+        <!-- ========================================== -->
+        <div id="page-crew" class="page-section hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-20">
+            
+            <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between mb-8 border-b-4 border-[var(--gta-blue)] pb-4 gap-4">
+                <div class="flex items-center gap-3">
+                    <h1 class="font-gta text-3xl sm:text-5xl md:text-6xl text-white tracking-widest">VCPD SUSPECT DATABASE</h1>
+                    <i data-lucide="database" class="w-8 h-8 sm:w-10 sm:h-10 text-[var(--gta-blue)] hidden sm:block"></i>
+                </div>
+                
+                <!-- Crew Page Search Bar -->
+                <div class="w-full lg:w-1/3 min-w-[280px] bg-black border-2 border-[var(--gta-blue)] p-2 md:p-3 flex items-center relative shadow-[4px_4px_0_rgba(0,255,255,0.2)] focus-within:shadow-[4px_4px_0_var(--gta-blue)] transition-shadow">
+                    <i data-lucide="search" class="text-[var(--gta-blue)] w-5 h-5 ml-1 mr-3 flex-shrink-0"></i>
+                    <input type="text" id="crew-search" placeholder="SEARCH SUSPECTS (ENTER)..." class="w-full bg-transparent border-none outline-none text-white font-gta tracking-widest text-lg sm:text-xl placeholder-gray-600 uppercase" onkeyup="handleSearch(event, this.value)">
+                    <span id="crew-search-status" class="absolute right-3 text-[var(--gta-red)] font-gta text-sm sm:text-base hidden">NOT FOUND</span>
+                </div>
+            </div>
+
+            <!-- The Suspect Grid -->
+            <div id="suspect-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 md:gap-5 mb-12">
+                <!-- Generated via JS -->
+            </div>
+
+            <!-- The LSPD Classified File View -->
+            <div id="crew-detail-panel" class="dossier-view gta-panel p-0 border-4 border-[var(--gta-blue)] flex flex-col bg-[#111] text-white transition-all duration-300 opacity-0 translate-y-4 shadow-[12px_12px_0_rgba(0,255,255,0.2)] hover:shadow-[12px_12px_0_var(--gta-blue)] scroll-mt-24">
+                
+                <div class="w-full bg-[var(--gta-blue)] text-black p-3 flex justify-between items-center border-b-4 border-black">
+                    <span class="font-gta text-xl sm:text-2xl tracking-widest">WARRANT FILE: <span class="dos-alias text-[var(--gta-pink)]"></span></span>
+                    <i data-lucide="fingerprint" class="w-6 h-6 sm:w-8 sm:h-8"></i>
+                </div>
+                
+                <div class="flex flex-col md:flex-row w-full p-4 sm:p-6 md:p-8 gap-6 md:gap-8 relative overflow-hidden">
+                    <!-- Faded Background Watermark -->
+                    <div class="absolute inset-0 flex items-center justify-center opacity-[0.03] pointer-events-none font-gta text-[8rem] sm:text-[12rem] text-white transform -rotate-12 z-0 whitespace-nowrap">CLASSIFIED</div>
+
+                    <!-- Left: Mugshot & Threat Level -->
+                    <div class="w-full md:w-1/3 flex flex-col gap-4 z-10 items-center md:items-stretch">
+                        <div class="w-3/4 md:w-full border-4 border-white p-2 bg-black relative shadow-[6px_6px_0_rgba(0,0,0,1)] hover:scale-105 transition-transform duration-300">
+                            <img src="" class="dos-img w-full aspect-square object-cover filter contrast-125 saturate-110">
+                        </div>
+                        <div class="w-3/4 md:w-full bg-[var(--gta-red)] text-white font-gta text-2xl sm:text-3xl text-center py-2 border-2 border-white shadow-[4px_4px_0_rgba(0,0,0,1)] uppercase"><span class="dos-role"></span></div>
+                        <div class="w-3/4 md:w-full bg-black border-2 border-white p-3 shadow-[4px_4px_0_rgba(0,0,0,1)]">
+                            <div class="text-center text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1.5">THREAT LEVEL</div>
+                            <div class="dos-stars flex justify-center gap-1 text-[var(--gta-yellow)] text-xl sm:text-2xl drop-shadow-[0_0_5px_rgba(255,204,0,0.5)]"></div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Massive Database Stats -->
+                    <div class="w-full md:w-2/3 z-10 flex flex-col justify-center">
+                        <h3 class="dos-name text-4xl sm:text-6xl md:text-7xl font-gta text-[var(--gta-pink)] leading-none drop-shadow-[2px_2px_0_#fff] mb-1 uppercase text-center md:text-left"></h3>
+                        <div class="dos-alias text-2xl sm:text-4xl font-handwriting text-white mb-4 text-center md:text-left">"Alias"</div>
+                        
+                        <div class="flex flex-wrap justify-center md:justify-start gap-1.5 sm:gap-2 font-roboto font-bold text-gray-400 mb-3 text-[8px] sm:text-[10px] uppercase tracking-widest border-b-2 border-gray-800 pb-2 md:pb-3">
+                            <span class="bg-gray-800 px-1.5 py-0.5 text-white border border-gray-600 shadow-sm">LOC: <span class="dos-location text-[var(--gta-blue)]"></span></span>
+                            <span class="bg-gray-800 px-1.5 py-0.5 text-white border border-gray-600 shadow-sm">BASE: <span class="dos-hangout text-[var(--gta-blue)]"></span></span>
+                            <span class="bg-gray-800 px-1.5 py-0.5 text-white border border-gray-600 shadow-sm truncate max-w-[200px] inline-block align-bottom">VEH: <span class="dos-vehicle text-[var(--gta-blue)]"></span></span>
+                        </div>
+                        
+                        <p class="dos-desc text-sm md:text-base font-roboto leading-relaxed text-gray-200 bg-black/60 p-3 sm:p-4 border-l-4 border-[var(--gta-blue)] mb-6 shadow-inner"></p>
+
+                        <!-- Enhanced Stats Grid -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-5">
+                            <div>
+                                <div class="flex justify-between text-[10px] sm:text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">
+                                    <span>Stamina</span><span class="stat-stamina-val text-white"></span>
+                                </div>
+                                <div class="w-full h-3 border-2 border-gray-600 bg-gray-900 p-[1px]"><div class="stat-stamina h-full bg-[var(--gta-blue)] transition-all duration-500"></div></div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-[10px] sm:text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">
+                                    <span>Shooting</span><span class="stat-shooting-val text-white"></span>
+                                </div>
+                                <div class="w-full h-3 border-2 border-gray-600 bg-gray-900 p-[1px]"><div class="stat-shooting h-full bg-[var(--gta-red)] transition-all duration-500"></div></div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-[10px] sm:text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">
+                                    <span>Strength</span><span class="stat-strength-val text-white"></span>
+                                </div>
+                                <div class="w-full h-3 border-2 border-gray-600 bg-gray-900 p-[1px]"><div class="stat-strength h-full bg-[var(--gta-green)] transition-all duration-500"></div></div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-[10px] sm:text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">
+                                    <span>Driving</span><span class="stat-driving-val text-white"></span>
+                                </div>
+                                <div class="w-full h-3 border-2 border-gray-600 bg-gray-900 p-[1px]"><div class="stat-driving h-full bg-[var(--gta-yellow)] transition-all duration-500"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BACK TO TOP BUTTON -->
+            <div class="mt-12 flex justify-center w-full">
+                <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="bg-[var(--gta-blue)] text-black font-gta tracking-widest text-xl md:text-2xl px-6 py-3 border-4 border-black shadow-[6px_6px_0_rgba(0,0,0,1)] hover:scale-105 hover:bg-[var(--gta-pink)] hover:text-white hover:shadow-[8px_8px_0_var(--gta-blue)] transition-all flex items-center gap-2 group outline-none">
+                    <i data-lucide="chevrons-up" class="w-6 h-6 group-hover:-translate-y-1 transition-transform"></i>
+                    RETURN TO TOP
+                </button>
+            </div>
+
+        </div>
+
+
+        <!-- ========================================== -->
+        <!--                PAGE: NEWS                  -->
+        <!-- ========================================== -->
+        <div id="page-news" class="page-section hidden max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-20 space-y-10">
+            <h1 class="font-gta text-4xl sm:text-5xl md:text-7xl text-white tracking-widest border-b-4 border-[var(--gta-pink)] pb-4 text-center">LATEST DISPATCHES</h1>
+
+            <!-- Static News Container -->
+            <div id="news-container" class="space-y-10">
+                
+                <!-- Article 1 -->
+                <div class="gta-panel p-0 w-full hover:scale-[1.02] hover:shadow-[12px_12px_0_rgba(0,0,0,0.7)] transition-all duration-300">
+                    <div class="bg-[var(--weazel-red)] p-3 md:p-4 flex items-center justify-between border-b-4 border-black">
+                        <div class="flex items-center gap-2 sm:gap-3">
+                            <i data-lucide="globe" class="text-white w-5 sm:w-6 h-5 sm:h-6 animate-pulse"></i>
+                            <h2 class="font-gta text-xl sm:text-3xl text-white tracking-widest mt-1">WEAZEL NEWS EXCLUSIVE</h2>
+                        </div>
+                        <div class="font-roboto font-bold text-white text-[10px] sm:text-xs tracking-widest opacity-80 uppercase">APRIL 2026</div>
+                    </div>
+                    <div class="p-4 sm:p-6 md:p-8 bg-white text-black">
+                        <h3 class="font-gta text-2xl sm:text-3xl md:text-4xl mb-4 leading-none text-black uppercase">GLOBAL PRE-LOADS INITIATED</h3>
+                        <div class="w-16 h-2 bg-[var(--weazel-red)] mb-6"></div>
+                        <div class="space-y-4 text-sm sm:text-base md:text-lg font-bold text-gray-800 font-roboto">
+                            <p>Take-Two Interactive has officially authorized global pre-loads for the most anticipated entertainment release in human history. Digital storefronts briefly crashed this morning as millions of operatives secured their assets.</p>
+                            <p>Storage drives across the globe are filling up, with initial reports indicating file sizes pushing the limits of modern hardware. Vice City is loading.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Article 2 -->
+                <div class="gta-panel p-0 w-full hover:scale-[1.02] hover:shadow-[12px_12px_0_rgba(0,0,0,0.7)] transition-all duration-300">
+                    <div class="bg-gray-800 p-3 md:p-4 flex items-center justify-between border-b-4 border-black">
+                        <div class="flex items-center gap-2 sm:gap-3">
+                            <i data-lucide="shield-alert" class="text-[var(--gta-yellow)] w-5 sm:w-6 h-5 sm:h-6"></i>
+                            <h2 class="font-gta text-xl sm:text-3xl text-[var(--gta-yellow)] tracking-widest mt-1">LSPD BULLETIN</h2>
+                        </div>
+                        <div class="font-roboto font-bold text-[var(--gta-yellow)] text-[10px] sm:text-xs tracking-widest opacity-80 uppercase">MARCH 2026</div>
+                    </div>
+                    <div class="p-4 sm:p-6 md:p-8 bg-white text-black">
+                        <h3 class="font-gta text-2xl sm:text-3xl md:text-4xl mb-4 leading-none text-black uppercase">VICE CITY PREPARES FOR "THE INVASION"</h3>
+                        <div class="w-16 h-2 bg-[var(--gta-yellow)] mb-6"></div>
+                        <div class="space-y-4 text-sm sm:text-base md:text-lg font-bold text-gray-800 font-roboto">
+                            <p>Local Leonida authorities are requesting unprecedented federal funding as they brace for millions of new "tourists" projected to cross state lines in the coming months.</p>
+                            <p>Sheriff's departments across Leonida have mandated double shifts and deployed heavily armored cruisers to major thoroughfares. "If they think they can run this state like it's 2002, they're dead wrong," stated the Chief of Police.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Article 3 -->
+                <div class="gta-panel p-0 w-full hover:scale-[1.02] hover:shadow-[12px_12px_0_rgba(0,0,0,0.7)] transition-all duration-300">
+                    <div class="bg-[var(--gta-blue)] p-3 md:p-4 flex items-center justify-between border-b-4 border-black">
+                        <div class="flex items-center gap-2 sm:gap-3">
+                            <i data-lucide="trending-down" class="text-black w-5 sm:w-6 h-5 sm:h-6"></i>
+                            <h2 class="font-gta text-xl sm:text-3xl text-black tracking-widest mt-1">MARKET WATCH</h2>
+                        </div>
+                        <div class="font-roboto font-bold text-black text-[10px] sm:text-xs tracking-widest opacity-80 uppercase">FEBRUARY 2026</div>
+                    </div>
+                    <div class="p-4 sm:p-6 md:p-8 bg-white text-black">
+                        <h3 class="font-gta text-2xl sm:text-3xl md:text-4xl mb-4 leading-none text-black uppercase">FINAL TRAILER CRASHES INTERNET</h3>
+                        <div class="w-16 h-2 bg-[var(--gta-blue)] mb-6"></div>
+                        <div class="space-y-4 text-sm sm:text-base md:text-lg font-bold text-gray-800 font-roboto">
+                            <p>The final intelligence drop regarding the "Lucia & Jason" syndicate caused major internet service providers to throttle bandwidth, as the trailer racked up a record-breaking 250 million views in 24 hours.</p>
+                            <p>The footage confirmed sprawling new rural counties, highly dynamic weather systems, and advanced heist mechanics that have left the criminal underworld salivating.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+        </div>
+
+
+        <!-- ========================================== -->
+        <!--              PAGE: COUNTER                 -->
+        <!-- ========================================== -->
+        <div id="page-counter" class="page-section hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 md:pt-16 flex flex-col items-center justify-center min-h-[80vh]">
+            
+            <div class="flex flex-col items-center drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)] z-20 text-center w-full mb-6 md:mb-10">
+                <div class="flex flex-col items-end w-fit">
+                    <h1 class="font-gta text-[2.5rem] sm:text-[4rem] md:text-[6rem] lg:text-[8rem] leading-none text-white tracking-tight text-center" style="text-shadow: 6px 6px 0 #000;">
+                        GRAND THEFT<br>AUTO <span class="inline-block" style="text-shadow: none; filter: drop-shadow(6px 6px 0px #000);"><span class="bg-gradient-to-b from-[#f8d070] via-[#ff6eb4] to-[#9b4edd] text-transparent bg-clip-text inline-block">VI</span></span>
+                    </h1>
+                    <h2 class="font-handwriting text-[1.6rem] sm:text-[2.4rem] md:text-[4rem] lg:text-[5rem] text-[var(--gta-blue)] mt-0 md:-mt-2 lg:-mt-6 -rotate-[6deg] pr-4 sm:pr-8 md:pr-12" style="text-shadow: 4px 4px 0 #000;">
+                        COUNTDOWN
+                    </h2>
+                </div>
+            </div>
+
+            <div class="bg-[var(--gta-yellow)] border-4 border-black p-2 sm:p-6 md:p-10 rounded-xl flex flex-col items-center shadow-[10px_10px_0_rgba(0,0,0,0.6)] transform scale-100 lg:scale-125 z-10 mt-2 md:mt-6 w-[95%] sm:w-auto max-w-full overflow-hidden">
+                <div class="flex justify-center gap-1 sm:gap-4 text-white font-gta text-2xl min-[375px]:text-3xl sm:text-6xl md:text-8xl hud-timer tracking-wide tabular-nums">
+                    <div class="flex flex-col items-center">
+                        <span class="timer-days text-white inline-block text-center min-w-[3.5ch]">000</span>
+                        <span class="text-[10px] sm:text-sm md:text-lg text-black font-roboto mt-1 sm:mt-2" style="text-shadow: none;">DAYS</span>
+                    </div>
+                    <span class="text-black animate-pulse" style="text-shadow: none;">:</span>
+                    <div class="flex flex-col items-center">
+                        <span class="timer-hours inline-block text-center min-w-[2.5ch]">00</span>
+                        <span class="text-[10px] sm:text-sm md:text-lg text-black font-roboto mt-1 sm:mt-2" style="text-shadow: none;">HRS</span>
+                    </div>
+                    <span class="text-black animate-pulse" style="text-shadow: none;">:</span>
+                    <div class="flex flex-col items-center">
+                        <span class="timer-minutes inline-block text-center min-w-[2.5ch]">00</span>
+                        <span class="text-[10px] sm:text-sm md:text-lg text-black font-roboto mt-1 sm:mt-2" style="text-shadow: none;">MIN</span>
+                    </div>
+                    <span class="text-black animate-pulse" style="text-shadow: none;">:</span>
+                    <div class="flex flex-col items-center">
+                        <span class="timer-seconds text-[var(--gta-blue)] inline-block text-center min-w-[2.5ch]">00</span>
+                        <span class="text-[10px] sm:text-sm md:text-lg text-black font-roboto mt-1 sm:mt-2" style="text-shadow: none;">SEC</span>
+                    </div>
+                </div>
+                <div class="holiday-message hidden mt-4 text-center font-gta text-[#00ffff] text-xl sm:text-3xl drop-shadow-[3px_3px_0_#000]"></div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="fixed inset-0 z-[200] bg-black/90 hidden flex flex-col items-center justify-center p-4 cursor-pointer" onclick="closeLightbox()">
+        <div class="bg-white p-2 pb-10 border-4 border-black shadow-[10px_10px_0_rgba(255,110,180,0.5)] relative">
+            <img id="lb-img" src="" class="max-w-full max-h-[80vh] object-cover border border-gray-300">
+            <div class="snapmatic-badge text-black text-shadow-none bottom-2 right-2"><i data-lucide="camera" class="w-6 h-6"></i> Snapmatic</div>
+        </div>
+        <div class="mt-6 bg-black text-white font-gta text-2xl px-4 py-2 border-2 border-white">CLICK ANYWHERE TO CLOSE</div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        // --- NAVIGATION LOGIC (SPA) ---
+        function navigate(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page-section').forEach(page => {
+                page.classList.add('hidden');
+            });
+            // Show selected page
+            document.getElementById('page-' + pageId).classList.remove('hidden');
+
+            // Update Nav Styles
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('text-[var(--gta-pink)]');
+                link.classList.add('text-white');
+            });
+            const activeNav = document.getElementById('nav-' + pageId);
+            activeNav.classList.remove('text-white');
+            activeNav.classList.add('text-[var(--gta-pink)]');
+
+            // Ensure window is at the top when navigating
+            window.scrollTo(0, 0);
+        }
+
+        // --- TIMER LOGIC ---
+        const releaseDate = new Date("November 19, 2026 00:00:00").getTime();
+        function updateTimer() {
+            const now = new Date().getTime();
+            const distance = releaseDate - now;
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Update all instances of timer blocks (Home & Counter pages)
+            document.querySelectorAll('.timer-days').forEach(el => el.innerText = String(days).padStart(3, '0'));
+            document.querySelectorAll('.timer-hours').forEach(el => el.innerText = String(hours).padStart(2, '0'));
+            document.querySelectorAll('.timer-minutes').forEach(el => el.innerText = String(minutes).padStart(2, '0'));
+            document.querySelectorAll('.timer-seconds').forEach(el => el.innerText = String(seconds).padStart(2, '0'));
+
+            // Holiday Text Logic
+            const holidays = { "1-1": "HAPPY NEW YEAR", "10-31": "HALLOWEEN SURPRISE", "12-25": "FESTIVE SURPRISE" };
+            const todayKey = `${new Date().getMonth()+1}-${new Date().getDate()}`;
+            document.querySelectorAll('.holiday-message').forEach(msgDiv => {
+                if(holidays[todayKey]) {
+                    msgDiv.innerText = holidays[todayKey];
+                    msgDiv.classList.remove("hidden");
+                }
+            });
+        }
+        setInterval(updateTimer, 1000);
+        updateTimer();
+
+
+        // --- VIP GUEST LIST LOGIC ---
+        const crewData = [
+            { name: "Ace", alias: "Big Ace", img: "https://i.imgur.com/BQbHUy3.jpeg", role: "The Supplier", desc: "A veteran distributor of high-proof spirits and specialty libations. Ace operates a sprawling alcohol business that keeps the city's nightlife—and the crew—well supplied. Rumor has it he uses his offshore supply lines to smuggle more than just top-shelf liquor across the Leonida border.", stats: { hangout: "Bars & Clubs", vehicle: "1977 Caprice Classic", location: "Los Santos", attributes: { stamina: 70, shooting: 65, strength: 90, driving: 99 } }, stars: 5, hidden: true },
+            { name: "Alex", alias: "The FOB", img: "https://i.imgur.com/8Ewtas7.jpeg", role: "Getaway Driver", desc: "Renowned wheelman for the crew. Known for his ability to extract the team from any situation, often favoring heavily modified transit vehicles like a stolen school bus. He knows every back alley, dirt road, and blind spot in the VCPD's camera network.", stats: { hangout: "Underground Garages", vehicle: "Suzuki Esteem", location: "Los Santos", attributes: { stamina: 75, shooting: 75, strength: 83, driving: 95 } }, stars: 5 },
+            { name: "Andrés", alias: "Dutch", img: "https://i.imgur.com/U196bPG.jpeg", role: "Mastermind", desc: "The tactical architect. He maps out every detail of the operation, ensuring contingencies for every variable. Always has a plan, and usually has three backup plans. His ability to stay ice-cold under pressure has saved the crew from multiple federal sting operations.", stats: { hangout: "Safehouses", vehicle: "1999 Mitsubishi Galant", location: "Los Santos", attributes: { stamina: 65, shooting: 40, strength: 87, driving: 96 } }, stars: 5 },
+            { name: "Aram", alias: "The Ram", img: "https://i.imgur.com/JPBYN8l.jpeg", role: "Engineer", desc: "Electrical Engineering expert. The technical backbone. From bypassing security grids to fixing critical gear, Aram ensures the crew stays off the grid. He recently developed a proprietary signal jammer that renders LSPD drones completely useless within a two-mile radius.", stats: { hangout: "Tech Hubs", vehicle: "Dodge Ram", location: "Los Santos", attributes: { stamina: 75, shooting: 83, strength: 84, driving: 60 } }, stars: 5 },
+            { name: "Daniel", alias: "Deeds", img: "https://i.imgur.com/hez90P9.jpeg", role: "Innovator", desc: "The creative force behind operations. Specializes in lateral thinking and devising novel solutions to seemingly impossible heists. When brute force fails, Daniel's unorthodox methods usually involve social engineering, elaborate disguises, or exploiting corporate loopholes.", stats: { hangout: "High-Roller Suites", vehicle: "Dodge Viper", location: "Los Santos", attributes: { stamina: 68, shooting: 65, strength: 70, driving: 80 } }, stars: 5 },
+            { name: "Harout", alias: "Young Veyron", img: "https://i.imgur.com/2x5HnuN.jpeg", role: "Money Man", desc: "Financial controller. Manages resources with an iron grip, tracking every dollar spent and earned to launder effectively. He utilizes a complex web of shell companies, crypto tumblers, and offshore accounts to ensure the crew's illicit gains appear completely legitimate.", stats: { hangout: "Financial District", vehicle: "Nissan Skyline R34", location: "Los Santos", attributes: { stamina: 66, shooting: 95, strength: 77, driving: 87 } }, stars: 5 },
+            { name: "Kevin", alias: "The Drone", img: "https://i.imgur.com/CP8lcsL.jpeg", role: "Enforcer", desc: "A towering physical presence at 6'4\" and 240lbs. Serves as the primary intimidation factor for collections. Despite his terrifying stature, Kevin is surprisingly disciplined, preferring to settle disputes with a single quiet conversation rather than drawing unnecessary police attention.", stats: { hangout: "Industrial Docks", vehicle: "Mutt Cutts Van", location: "Los Santos", attributes: { stamina: 65, shooting: 68, strength: 88, driving: 67 } }, stars: 5 },
+            { name: "Raymond", alias: "Big Rus", img: "https://i.imgur.com/XEy6U2L.jpeg", role: "Launderer", desc: "Leverages deep ties to the fast food industry to wash crew funds through cash-heavy franchises. Also acts as the crew's beloved comedian, keeping morale high even when the heat is on. Don't let the jokes fool you; he is fiercely loyal and ruthless when protecting the family.", stats: { hangout: "Fast Food Joints", vehicle: "Ferrari 360", location: "Los Santos", attributes: { stamina: 67, shooting: 58, strength: 80, driving: 44 } }, stars: 3 },
+            { name: "Richard", alias: "Big Buff", img: "https://i.imgur.com/XLb1Qxn.jpeg", role: "Hybrid", desc: "A versatile powerhouse bridging brains and brawn. Physically imposing with diverse operational skills, Richard is equally comfortable breaching a bank vault as he is negotiating with rival syndicates. He's currently recovering from an injury but remains a vital shot-caller.", stats: { hangout: "Muscle Sands Gym", vehicle: "Mercedes 300 SLR", location: "Los Santos", attributes: { stamina: 90, shooting: 90, strength: 100, driving: 75 } }, stars: 5 },
+            { name: "Youra", alias: "YG", img: "https://i.imgur.com/aR73Lgr.jpeg", role: "Business Front", desc: "A legitimate businessman with a clean record. Youra runs a popular local coffee shop and serves as a community leader. However, authorities strongly suspect he is tied to the rest of the suspects in some way, acting as a clean front for meetings, although nothing has ever been proven.", stats: { hangout: "Coffee Shop", vehicle: "Rolls Royce Phantom", location: "Los Santos", attributes: { stamina: 66, shooting: 55, strength: 57, driving: 70 } }, stars: 0 },
+            { name: "Iven", alias: "Big Van", img: "https://i.imgur.com/6h9lzGe.jpeg", role: "Medical Support", desc: "Working in the medical field, he has access to all sorts of restricted records and medicine. He serves as the crew's primary medical connect, patching up operatives off the books and securing critical pharmaceutical supplies before the VCPD can trace the injuries.", stats: { hangout: "Local Clinics", vehicle: "BMW M8", location: "Los Santos", attributes: { stamina: 95, shooting: 87, strength: 90, driving: 64 } }, stars: 5 },
+            { name: "Vic", alias: "The Mechanic", img: "https://imgur.com/pUDCdrF.jpeg", role: "Master Mechanic", desc: "Legendary wrench-turner. There isn't a vehicle in the state he can't fix, modify, or hotwire. Operating out of heavily guarded chop shops, Vic strips down hot sports cars and reinforces getaway trucks with military-grade armor before the VCPD even knows they're missing.", stats: { hangout: "Chop Shops", vehicle: "Various / All", location: "Los Santos", attributes: { stamina: 85, shooting: 45, strength: 77, driving: 100 } }, stars: 5, hidden: true }
+            // NOTE: To add a hidden associate, just add:  hidden: true  to their object!
+        ];
+
+        let currentIdx = 1; // Starts at 1 (Alex) so it skips Ace on the initial load
+        let isSidebarOpen = false;
+
+        // Enhanced Navigation Carousel to skip hidden profiles!
+        function navCarousel(dir) {
+            let nextIdx = currentIdx;
+            do {
+                nextIdx = (nextIdx + dir + crewData.length) % crewData.length;
+            } while (crewData[nextIdx].hidden); // Automatically skip "hidden" Easter Egg associates
+            
+            openDossier(nextIdx);
+        }
+
+        function toggleSidebar() {
+            isSidebarOpen = !isSidebarOpen;
+            
+            // Toggle all instances of sidebar (Home & Crew pages)
+            const sidebars = document.querySelectorAll('.associates-sidebar');
+            const menus = document.querySelectorAll('.crew-menu-container');
+            const arrows = document.querySelectorAll('.sidebar-arrow');
+            const verticalArrows = document.querySelectorAll('.vertical-arrow');
+
+            if (isSidebarOpen) {
+                sidebars.forEach(s => { s.classList.remove('md:w-16'); s.classList.add('md:w-[224px]'); });
+                menus.forEach(m => { m.classList.remove('hidden'); m.classList.add('flex'); });
+                arrows.forEach(a => a.style.transform = 'rotate(180deg)');
+                verticalArrows.forEach(a => a.style.transform = 'rotate(180deg)');
+            } else {
+                sidebars.forEach(s => { s.classList.add('md:w-16'); s.classList.remove('md:w-[224px]'); });
+                menus.forEach(m => { m.classList.add('hidden'); m.classList.remove('flex'); });
+                arrows.forEach(a => a.style.transform = 'rotate(0deg)');
+                verticalArrows.forEach(a => a.style.transform = 'rotate(0deg)');
+            }
+        }
+
+        function renderCrewMenu() {
+            const html = crewData.map((c, i) => {
+                if (c.hidden) return ''; // Hide secret associates from the visual list!
+                return `
+                <button onclick="openDossier(${i}); if(window.innerWidth < 768) toggleSidebar();" class="font-gta text-base md:text-lg px-3 py-1.5 transition-all duration-200 outline-none text-left w-full truncate ${i === currentIdx ? 'bg-white border-l-4 border-[var(--gta-pink)] text-black shadow-[2px_2px_0_var(--gta-pink)] translate-x-1' : 'bg-transparent border-l-4 border-transparent text-gray-400 hover:text-white hover:bg-gray-800 hover:border-gray-500'}">
+                    ${c.name}
+                </button>
+                `;
+            }).join('');
+
+            // Render to all menu containers
+            document.querySelectorAll('.crew-menu-container').forEach(container => {
+                container.innerHTML = html;
+            });
+        }
+
+        // Populate Profile
+        function openDossier(index) {
+            const c = crewData[index];
+            currentIdx = index;
+            
+            // Re-render menus to show active state
+            if(isSidebarOpen) renderCrewMenu();
+            
+            // Fade out all dossiers
+            const dossiers = document.querySelectorAll('.dossier-view');
+            dossiers.forEach(dos => {
+                dos.classList.remove('opacity-100', 'translate-y-0');
+                dos.classList.add('opacity-0', 'translate-y-4');
+            });
+
+            setTimeout(() => {
+                // Update all duplicate UI elements globally
+                document.querySelectorAll('.dos-img').forEach(el => el.src = c.img);
+                document.querySelectorAll('.dos-name').forEach(el => el.innerText = c.name);
+                document.querySelectorAll('.dos-alias').forEach(el => el.innerText = `"${c.alias}"`);
+                document.querySelectorAll('.dos-role').forEach(el => el.innerText = c.role);
+                document.querySelectorAll('.dos-hangout').forEach(el => el.innerText = c.stats.hangout);
+                document.querySelectorAll('.dos-vehicle').forEach(el => el.innerText = c.stats.vehicle);
+                document.querySelectorAll('.dos-location').forEach(el => el.innerText = c.stats.location);
+                
+                // Update Stats Bars globally
+                document.querySelectorAll('.stat-stamina').forEach(el => el.style.width = c.stats.attributes.stamina + '%');
+                document.querySelectorAll('.stat-stamina-val').forEach(el => el.innerText = c.stats.attributes.stamina + '/100');
+                
+                document.querySelectorAll('.stat-shooting').forEach(el => el.style.width = c.stats.attributes.shooting + '%');
+                document.querySelectorAll('.stat-shooting-val').forEach(el => el.innerText = c.stats.attributes.shooting + '/100');
+                
+                document.querySelectorAll('.stat-strength').forEach(el => el.style.width = c.stats.attributes.strength + '%');
+                document.querySelectorAll('.stat-strength-val').forEach(el => el.innerText = c.stats.attributes.strength + '/100');
+                
+                document.querySelectorAll('.stat-driving').forEach(el => el.style.width = c.stats.attributes.driving + '%');
+                document.querySelectorAll('.stat-driving-val').forEach(el => el.innerText = c.stats.attributes.driving + '/100');
+
+                // Highlight name in description
+                const descHtml = c.desc.replace(c.name, `<span class="bg-[var(--gta-pink)] text-white px-1 mx-0.5 font-gta tracking-widest text-lg inline-block">${c.name}</span>`);
+                document.querySelectorAll('.dos-desc').forEach(el => el.innerHTML = descHtml);
+                
+                let stars = '';
+                for(let i=0; i<5; i++) {
+                    stars += `<svg width="24" height="24" viewBox="0 0 24 24" fill="${i < c.stars ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2" class="${i < c.stars ? 'text-[var(--gta-yellow)]' : 'text-gray-600'} drop-shadow-[2px_2px_0_rgba(0,0,0,0.5)]"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`;
+                }
+                document.querySelectorAll('.dos-stars').forEach(el => el.innerHTML = stars);
+
+                // Fade in smoothly
+                dossiers.forEach(dos => {
+                    dos.classList.remove('opacity-0', 'translate-y-4');
+                    dos.classList.add('opacity-100', 'translate-y-0');
+                });
+
+            }, 200); 
+        }
+
+        // --- NEW: CREW PAGE GRID RENDER LOGIC ---
+        function renderSuspectGrid() {
+            const grid = document.getElementById('suspect-grid');
+            if (!grid) return;
+            grid.innerHTML = crewData.map((c, i) => {
+                if (c.hidden) return ''; // Hide secret associates from the suspect board!
+                return `
+                <button onclick="selectSuspectFromGrid(${i})" class="group bg-white border-4 border-black p-2 sm:p-3 shadow-[4px_4px_0_rgba(0,0,0,0.5)] hover:shadow-[8px_8px_0_var(--gta-pink)] hover:border-[var(--gta-pink)] hover:-translate-y-2 transition-all duration-300 flex flex-col outline-none w-full relative">
+                    <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 w-8 sm:w-12 h-3 sm:h-4 bg-white/80 border border-gray-300 shadow-sm z-10 hidden sm:block"></div>
+                    <div class="w-full aspect-square border-2 border-black overflow-hidden mb-2 relative">
+                        <img src="${c.img}" class="w-full h-full object-cover filter grayscale group-hover:grayscale-0 contrast-125 saturate-110 transition-all duration-300">
+                        <div class="absolute inset-0 bg-[var(--gta-blue)] mix-blend-overlay opacity-20 group-hover:opacity-0 transition-all duration-300"></div>
+                    </div>
+                    <div class="font-gta text-lg sm:text-xl md:text-2xl text-black leading-none group-hover:text-[var(--gta-pink)] transition-colors text-left uppercase truncate w-full mt-1">${c.name}</div>
+                    <div class="text-[9px] sm:text-[11px] font-roboto font-bold text-gray-500 uppercase tracking-widest text-left truncate w-full">"${c.alias}"</div>
+                </button>
+                `;
+            }).join('');
+        }
+
+        function selectSuspectFromGrid(index) {
+            openDossier(index);
+            const panel = document.getElementById('crew-detail-panel');
+            
+            // Add a quick glitch flash effect
+            panel.classList.add('scale-[0.98]', 'brightness-150');
+            setTimeout(() => {
+                panel.classList.remove('scale-[0.98]', 'brightness-150');
+                // Smooth scroll to the top of the detail panel
+                panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 150);
+        }
+
+        // --- NEW: SEARCH BAR LOGIC ---
+        function handleSearch(event, query) {
+            if (event.key === 'Enter') {
+                const q = query.toLowerCase().trim();
+                if (!q) return;
+
+                // Find index matching name OR alias
+                const index = crewData.findIndex(c => 
+                    c.name.toLowerCase() === q || 
+                    c.alias.toLowerCase() === q ||
+                    `"${c.alias.toLowerCase()}"` === q 
+                );
+
+                if (index !== -1) {
+                    // Hide any error states
+                    document.getElementById('home-search-status').classList.add('hidden');
+                    document.getElementById('crew-search-status').classList.add('hidden');
+                    
+                    // Trigger dossier to open (even if it's a hidden profile!)
+                    openDossier(index);
+                    
+                    // Clear search bars
+                    document.getElementById('home-search').value = '';
+                    document.getElementById('crew-search').value = '';
+
+                    // If we're currently on the Crew page, scroll down to the loaded dossier
+                    if (!document.getElementById('page-crew').classList.contains('hidden')) {
+                        const panel = document.getElementById('crew-detail-panel');
+                        panel.classList.add('scale-[0.98]', 'brightness-150');
+                        setTimeout(() => {
+                            panel.classList.remove('scale-[0.98]', 'brightness-150');
+                            panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }, 150);
+                    }
+                } else {
+                    // Show NOT FOUND error
+                    const hStatus = document.getElementById('home-search-status');
+                    const cStatus = document.getElementById('crew-search-status');
+                    hStatus.classList.remove('hidden');
+                    cStatus.classList.remove('hidden');
+                    
+                    setTimeout(() => {
+                        hStatus.classList.add('hidden');
+                        cStatus.classList.add('hidden');
+                    }, 2500);
+                }
+            }
+        }
+
+        // Initialize Menus, Profiles & Grids
+        renderCrewMenu();
+        renderSuspectGrid();
+        openDossier(currentIdx);
+
+        // --- LIGHTBOX ---
+        function openLightbox(src) {
+            document.getElementById('lb-img').src = src;
+            document.getElementById('lightbox').classList.remove('hidden');
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.add('hidden');
+        }
+
+    </script>
+</body>
+</html>
