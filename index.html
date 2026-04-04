@@ -173,26 +173,28 @@
             <!-- HEADER & HUD (COUNTDOWN) -->
             <header class="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-6 mb-8 text-center lg:text-left">
                 <div class="w-full lg:w-1/2 flex flex-col justify-center items-center lg:items-start relative drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)]">
-                    <div class="flex flex-col items-center lg:items-end w-fit mb-4 lg:mb-0">
-                        <h1 class="font-gta text-[2.8rem] min-[375px]:text-[3.2rem] sm:text-[3.5rem] md:text-[5rem] lg:text-[6.5rem] leading-none text-white tracking-tight text-center" style="text-shadow: 4px 4px 0 #000;">
+                    <div class="relative w-fit flex flex-col items-center lg:items-start mb-4 lg:mb-0">
+                        <h1 class="font-gta text-[2.8rem] min-[375px]:text-[3.2rem] sm:text-[3.5rem] md:text-[5rem] lg:text-[6.5rem] leading-none text-white tracking-tight text-center lg:text-left" style="text-shadow: 4px 4px 0 #000;">
                             GRAND THEFT<br>AUTO <span class="inline-block" style="text-shadow: none; filter: drop-shadow(4px 4px 0px #000);"><span class="bg-gradient-to-b from-[#f8d070] via-[#ff6eb4] to-[#9b4edd] text-transparent bg-clip-text inline-block">VI</span></span>
                         </h1>
-                        <h2 class="font-handwriting text-[2rem] min-[375px]:text-[2.3rem] sm:text-[2rem] md:text-[3.2rem] lg:text-[4.5rem] text-[var(--gta-blue)] mt-0 md:-mt-2 lg:-mt-4 -rotate-[6deg] pr-2 sm:pr-6 md:pr-10 lg:pr-8" style="text-shadow: 3px 3px 0 #000;">
-                            COUNTDOWN
-                        </h2>
                     </div>
                 </div>
-                <div class="w-full lg:w-auto flex justify-center lg:justify-end mt-2 md:mt-6 lg:mt-10 lg:mr-8">
-                    <div class="bg-[var(--gta-yellow)] border-4 border-black p-3 sm:p-4 md:p-6 rounded-xl flex flex-col items-center shadow-[6px_6px_0_rgba(0,0,0,0.5)] w-full sm:w-auto max-w-full overflow-hidden">
-                        <div class="flex justify-center items-start gap-1.5 sm:gap-3 text-white font-gta text-[2.2rem] min-[375px]:text-4xl sm:text-5xl md:text-7xl hud-timer tracking-wide tabular-nums leading-none">
-                            <div class="flex flex-col items-center w-[3.2ch]">
-                                <span class="timer-days text-white inline-block text-center">000</span>
-                                <span class="text-[9px] md:text-sm text-black font-roboto mt-1 sm:mt-2 tracking-normal" style="text-shadow: none;">DAYS</span>
-                            </div>
-                            <span class="text-black animate-pulse pt-0.5 sm:pt-1 md:pt-2" style="text-shadow: none;">:</span>
-                            <div class="flex flex-col items-center w-[2.2ch]">
-                                <span class="timer-hours inline-block text-center">00</span>
-                                <span class="text-[9px] md:text-sm text-black font-roboto mt-1 sm:mt-2 tracking-normal" style="text-shadow: none;">HRS</span>
+
+                <div class="w-full lg:w-auto flex justify-center lg:justify-end mt-2 md:mt-4 lg:mt-8 lg:mr-8">
+                    <div class="flex flex-col items-center w-full sm:w-auto">
+                        <!-- COUNTDOWN OVERLAY (Centered on top of Counter) -->
+                        <div class="bg-[var(--gta-pink)] text-white font-handwriting text-[1.2rem] sm:text-[1.5rem] md:text-[2rem] lg:text-[2.5rem] px-3 sm:px-4 py-0.5 border-2 border-black shadow-[4px_4px_0_#000] -rotate-[4deg] relative z-20 whitespace-nowrap leading-none -mb-3 sm:-mb-4 md:-mb-5 translate-y-1" style="text-shadow: 2px 2px 0 #000;">
+                            COUNTDOWN
+                        </div>
+                        <div class="bg-[var(--gta-yellow)] border-4 border-black p-3 sm:p-4 md:p-6 pt-5 sm:pt-6 md:pt-8 rounded-xl flex flex-col items-center shadow-[6px_6px_0_rgba(0,0,0,0.5)] w-full max-w-full overflow-hidden relative z-10">
+                            <div class="flex justify-center items-start gap-1.5 sm:gap-3 text-white font-gta text-[2.2rem] min-[375px]:text-4xl sm:text-5xl md:text-7xl hud-timer tracking-wide tabular-nums leading-none">
+                                <div class="flex flex-col items-center w-[3.2ch]">
+                                    <span class="timer-days inline-block text-center">00</span>
+                                    <span class="text-[9px] md:text-sm text-black font-roboto mt-1 sm:mt-2 tracking-normal" style="text-shadow: none;">DAYS</span>
+                                </div>
+                                <span class="text-black animate-pulse pt-0.5 sm:pt-1 md:pt-2" style="text-shadow: none;">:</span>
+                                <div class="flex flex-col items-center w-[2.2ch]">
+                                    <span class="timer-hours inline-block text-center">00</span>
                             </div>
                             <span class="text-black animate-pulse pt-0.5 sm:pt-1 md:pt-2" style="text-shadow: none;">:</span>
                             <div class="flex flex-col items-center w-[2.2ch]">
@@ -205,16 +207,21 @@
                                 <span class="text-[9px] md:text-sm text-black font-roboto mt-1 sm:mt-2 tracking-normal" style="text-shadow: none;">SEC</span>
                             </div>
                         </div>
-                        <div class="holiday-message hidden mt-3 text-right font-gta text-[#00ffff] text-lg sm:text-2xl drop-shadow-[2px_2px_0_#000]"></div>
+                        <div class="mt-2 sm:mt-3 text-center font-gta text-[10px] sm:text-xs text-white tracking-[0.2em] drop-shadow-[2px_2px_0_#000]">RELEASES NOVEMBER 19, 2026</div>
+                        <div class="holiday-message hidden mt-2 text-center font-gta text-[#00ffff] text-lg sm:text-2xl drop-shadow-[2px_2px_0_#000]"></div>
                     </div>
                 </div>
             </header>
 
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                <!-- Left Col: Note & Weazel News -->
-                <div class="lg:col-span-4 space-y-6 flex flex-col items-center lg:items-start">
-                    
-                    <!-- Crew Memo Note -->
+            <!-- PROMO BANNER -->
+            <div class="w-full mb-8 border-4 border-black shadow-[6px_6px_0_rgba(0,0,0,0.5)] sm:shadow-[10px_10px_0_rgba(0,0,0,0.5)] hover:shadow-[10px_10px_0_var(--gta-pink)] transition-shadow duration-300 overflow-hidden relative group bg-black cursor-pointer" onclick="openLightbox('https://i.imgur.com/LjIgL3o.jpeg')">
+                <img src="https://i.imgur.com/LjIgL3o.jpeg" alt="Promo Banner" class="w-full h-auto object-cover group-hover:scale-[1.02] transition-transform duration-500">
+            </div>
+
+            <div class="flex flex-col lg:grid lg:grid-cols-12 gap-6">
+                
+                <!-- CREW MEMO (Mobile: Top, Desktop: Top Left) -->
+                <div class="lg:col-span-4 flex flex-col items-center lg:items-start w-full">
                     <div class="w-full max-w-sm bg-[#fdf8e4] text-black border-2 border-black py-2 px-3 sm:p-6 shadow-[4px_4px_0_rgba(0,0,0,0.5)] sm:shadow-[8px_8px_0_rgba(0,0,0,0.5)] hover:scale-105 sm:hover:shadow-[12px_12px_0_rgba(0,0,0,0.7)] transition-all duration-300 relative">
                         <div class="absolute -top-1.5 sm:-top-3 left-1/2 transform -translate-x-1/2 w-10 h-3 sm:w-16 sm:h-6 bg-white/60 border border-gray-300 shadow-sm backdrop-blur-sm z-10"></div>
                         <div class="flex justify-between items-center border-b border-dashed border-gray-400 pb-1 sm:pb-2 mb-1 sm:mb-4">
@@ -227,25 +234,10 @@
                             <span class="hidden sm:inline">We're all rooting for a speedy recovery—you got this! Need you back out here soon at full strength. The Crew needs you for the big score.</span>
                         </div>
                     </div>
-
-                    <div class="gta-panel p-0 w-full hover:scale-[1.02] hover:shadow-[12px_12px_0_rgba(0,0,0,0.7)] transition-all duration-300">
-                        <div class="bg-[var(--weazel-red)] p-2 md:p-3 flex items-center gap-2 border-b-2 border-black">
-                            <i data-lucide="globe" class="text-white w-5 h-5 animate-pulse"></i>
-                            <h2 class="font-gta text-2xl text-white tracking-widest">WEAZEL NEWS</h2>
-                        </div>
-                        <div class="p-4 bg-white text-black">
-                            <h3 class="font-gta text-2xl sm:text-3xl mb-2 leading-none text-black">THE LONG WAIT IS ALMOST OVER</h3>
-                            <div class="w-12 h-1 bg-black mb-3"></div>
-                            <div class="space-y-2 text-xs md:text-sm font-bold text-gray-800">
-                                <p>It's been over a decade. Inside sources confirm that <strong class="text-[var(--weazel-red)]">Alex, Daniel</strong>, and their notorious syndicate have been laying low across the state.</p>
-                                <p>With the release date locked in for <strong class="text-[var(--weazel-red)]">November 19th</strong>, chatter on LifeInvader suggests schedules are clearing. The LSPD is bracing for impact.</p>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
-                <!-- Right Col: Expandable Roster & Profile -->
-                <div class="lg:col-span-8 flex flex-col h-auto">
+                <!-- VCPD DATABASE (Mobile: Middle, Desktop: Right spanning 2 rows) -->
+                <div class="lg:col-span-8 lg:row-span-2 flex flex-col h-auto w-full">
                     <!-- Home Page Associates Header & Search -->
                     <div class="flex flex-col border-4 border-b-0 border-black bg-[var(--gta-blue)] rounded-t-xl shadow-[8px_8px_0_rgba(0,0,0,0.5)] relative z-10 overflow-hidden">
                         <div class="flex items-center justify-between p-3 border-b-4 border-black">
@@ -263,10 +255,10 @@
                         </div>
                     </div>
 
-                    <div class="gta-panel p-0 flex flex-col md:flex-row w-full items-stretch border-4 border-black rounded-b-xl shadow-[8px_8px_0_rgba(0,0,0,0.5)] flex-1 overflow-hidden md:overflow-clip">
+                    <div class="gta-panel p-0 flex flex-col md:flex-row w-full items-stretch border-4 border-black rounded-b-xl shadow-[8px_8px_0_rgba(0,0,0,0.5)] flex-1 overflow-hidden md:overflow-clip relative">
                         
-                        <!-- Sidebar -->
-                        <div class="associates-sidebar bg-[#111] border-b-4 md:border-b-0 md:border-r-4 border-black flex flex-col md:flex-row transition-all duration-300 w-full md:w-16 flex-shrink-0 z-20">
+                        <!-- Sidebar (Now positioned absolute on desktop to overlay left section) -->
+                        <div class="associates-sidebar bg-[#111] border-b-4 md:border-b-0 md:border-r-4 border-black flex flex-col md:flex-row transition-all duration-300 w-full md:w-16 flex-shrink-0 z-30 md:absolute md:left-0 md:top-0 md:bottom-0 md:shadow-[6px_0_15px_rgba(0,0,0,0.7)]">
                             <button onclick="toggleSidebar()" class="sidebar-btn w-full md:w-16 md:h-full flex flex-row md:flex-col items-center justify-between md:justify-center bg-[var(--gta-yellow)] hover:bg-[var(--gta-orange)] text-black transition-colors p-2 md:py-4 cursor-pointer border-none shadow-[inset_0_-4px_0_rgba(0,0,0,0.2)] md:shadow-[inset_-4px_0_0_rgba(0,0,0,0.2)] group outline-none flex-shrink-0 z-10 relative">
                                 <div class="flex flex-row md:flex-col items-center gap-2">
                                     <i data-lucide="contact" class="w-5 h-5 md:w-7 md:h-7 flex-shrink-0"></i>
@@ -279,13 +271,13 @@
                                 </div>
                                 <i data-lucide="chevron-down" class="sidebar-arrow w-5 h-5 transition-transform md:hidden duration-300"></i>
                             </button>
-                            <div class="crew-menu-container hidden flex-col w-full md:w-[160px] flex-shrink-0 overflow-y-auto custom-scrollbar p-2 space-y-1 bg-[#111]">
+                            <div class="crew-menu-container hidden flex-col flex-1 overflow-y-auto custom-scrollbar p-2 sm:p-4 space-y-2 bg-[#111]">
                                 <!-- Menu injected here -->
                             </div>
                         </div>
 
                         <!-- Dossier View -->
-                        <div class="dossier-view flex-1 flex flex-col md:flex-row transition-all duration-300 opacity-0 translate-y-4 min-w-0 bg-[#e0e0e0] text-black relative z-10">
+                        <div class="dossier-view flex-1 flex flex-col md:flex-row transition-all duration-300 opacity-0 translate-y-4 min-w-0 bg-[#e0e0e0] text-black relative z-10 md:ml-16">
 
             <div class="w-full md:w-5/12 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] bg-gray-300 border-b-4 md:border-b-0 md:border-r-4 border-black relative p-2 sm:p-6 pt-6 sm:pt-12 md:pt-14 flex flex-col items-center justify-start">
                 
@@ -387,6 +379,25 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- WEAZEL NEWS (Mobile: Bottom, Desktop: Bottom Left) -->
+                <div class="lg:col-span-4 flex flex-col items-center lg:items-start w-full">
+                    <div class="gta-panel p-0 w-full hover:scale-[1.02] hover:shadow-[12px_12px_0_rgba(0,0,0,0.7)] transition-all duration-300">
+                        <div class="bg-[var(--weazel-red)] p-2 md:p-3 flex items-center gap-2 border-b-2 border-black">
+                            <i data-lucide="globe" class="text-white w-5 h-5 animate-pulse"></i>
+                            <h2 class="font-gta text-2xl text-white tracking-widest">WEAZEL NEWS</h2>
+                        </div>
+                        <div class="p-4 bg-white text-black">
+                            <h3 class="font-gta text-2xl sm:text-3xl mb-2 leading-none text-black">THE LONG WAIT IS ALMOST OVER</h3>
+                            <div class="w-12 h-1 bg-black mb-3"></div>
+                            <div class="space-y-2 text-xs md:text-sm font-bold text-gray-800">
+                                <p>It's been over a decade. Inside sources confirm that <strong class="text-[var(--weazel-red)]">Alex, Daniel</strong>, and their notorious syndicate have been laying low across the state.</p>
+                                <p>With the release date locked in for <strong class="text-[var(--weazel-red)]">November 19th</strong>, chatter on LifeInvader suggests schedules are clearing. The LSPD is bracing for impact.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
             <!-- SNAPMATIC GALLERY -->
@@ -636,40 +647,52 @@
         <!-- ========================================== -->
         <div id="page-counter" class="page-section hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 md:pt-16 flex flex-col items-center justify-center min-h-[80vh]">
             
-            <div class="flex flex-col items-center drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)] z-20 text-center w-full mb-6 md:mb-10">
-                <div class="flex flex-col items-end w-fit">
+            <!-- Logo Section -->
+            <div class="flex flex-col items-center drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)] z-20 text-center w-full mb-12 md:mb-16">
+                <div class="relative flex flex-col items-center w-fit">
                     <h1 class="font-gta text-[3.2rem] min-[375px]:text-[3.8rem] sm:text-[4rem] md:text-[6rem] lg:text-[8rem] leading-none text-white tracking-tight text-center" style="text-shadow: 6px 6px 0 #000;">
                         GRAND THEFT<br>AUTO <span class="inline-block" style="text-shadow: none; filter: drop-shadow(6px 6px 0px #000);"><span class="bg-gradient-to-b from-[#f8d070] via-[#ff6eb4] to-[#9b4edd] text-transparent bg-clip-text inline-block">VI</span></span>
                     </h1>
-                    <h2 class="font-handwriting text-[2.2rem] min-[375px]:text-[2.8rem] sm:text-[2.4rem] md:text-[4rem] lg:text-[5rem] text-[var(--gta-blue)] mt-0 md:-mt-2 lg:-mt-6 -rotate-[6deg] pr-4 sm:pr-8 md:pr-12" style="text-shadow: 4px 4px 0 #000;">
-                        COUNTDOWN
-                    </h2>
                 </div>
             </div>
 
-            <div class="bg-[var(--gta-yellow)] border-4 border-black p-2 sm:p-6 md:p-10 rounded-xl flex flex-col items-center shadow-[10px_10px_0_rgba(0,0,0,0.6)] transform scale-100 lg:scale-125 z-10 mt-2 md:mt-6 w-[95%] sm:w-auto max-w-full overflow-hidden">
-                <div class="flex justify-center items-start gap-1 sm:gap-4 text-white font-gta text-[2.5rem] min-[375px]:text-5xl sm:text-6xl md:text-8xl hud-timer tracking-wide tabular-nums leading-none">
-                    <div class="flex flex-col items-center w-[3.2ch]">
-                        <span class="timer-days text-white inline-block text-center">000</span>
-                        <span class="text-[10px] sm:text-sm md:text-lg text-black font-roboto mt-2 sm:mt-3 tracking-normal" style="text-shadow: none;">DAYS</span>
-                    </div>
-                    <span class="text-black animate-pulse pt-1 sm:pt-2 md:pt-3" style="text-shadow: none;">:</span>
-                    <div class="flex flex-col items-center w-[2.2ch]">
-                        <span class="timer-hours inline-block text-center">00</span>
-                        <span class="text-[10px] sm:text-sm md:text-lg text-black font-roboto mt-2 sm:mt-3 tracking-normal" style="text-shadow: none;">HRS</span>
-                    </div>
-                    <span class="text-black animate-pulse pt-1 sm:pt-2 md:pt-3" style="text-shadow: none;">:</span>
-                    <div class="flex flex-col items-center w-[2.2ch]">
-                        <span class="timer-minutes inline-block text-center">00</span>
-                        <span class="text-[10px] sm:text-sm md:text-lg text-black font-roboto mt-2 sm:mt-3 tracking-normal" style="text-shadow: none;">MIN</span>
-                    </div>
-                    <span class="text-black animate-pulse pt-1 sm:pt-2 md:pt-3" style="text-shadow: none;">:</span>
-                    <div class="flex flex-col items-center w-[2.2ch]">
-                        <span class="timer-seconds text-[var(--gta-blue)] inline-block text-center">00</span>
-                        <span class="text-[10px] sm:text-sm md:text-lg text-black font-roboto mt-2 sm:mt-3 tracking-normal" style="text-shadow: none;">SEC</span>
-                    </div>
+            <!-- BRUTALIST BLOCK COUNTER -->
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8 w-full max-w-6xl z-10">
+
+                <!-- DAYS -->
+                <div class="bg-[var(--gta-pink)] border-4 sm:border-[6px] border-black shadow-[8px_8px_0_#000] md:shadow-[12px_12px_0_#000] flex flex-col items-center justify-center p-4 sm:p-6 md:p-8 -rotate-2 hover:rotate-0 transition-transform duration-300">
+                    <span class="timer-days font-gta text-[4.5rem] sm:text-[6rem] md:text-[8rem] lg:text-[10rem] leading-none text-black tabular-nums tracking-tighter">000</span>
+                    <div class="bg-black text-white font-gta text-base sm:text-xl md:text-2xl px-3 sm:px-4 py-1 mt-2 tracking-[0.2em]">DAYS</div>
                 </div>
-                <div class="holiday-message hidden mt-4 text-center font-gta text-[#00ffff] text-xl sm:text-3xl drop-shadow-[3px_3px_0_#000]"></div>
+
+                <!-- HOURS -->
+                <div class="bg-[var(--gta-blue)] border-4 sm:border-[6px] border-black shadow-[8px_8px_0_#000] md:shadow-[12px_12px_0_#000] flex flex-col items-center justify-center p-4 sm:p-6 md:p-8 rotate-1 hover:rotate-0 transition-transform duration-300 mt-0 lg:mt-6">
+                    <span class="timer-hours font-gta text-[4.5rem] sm:text-[6rem] md:text-[8rem] lg:text-[10rem] leading-none text-black tabular-nums tracking-tighter">00</span>
+                    <div class="bg-black text-white font-gta text-base sm:text-xl md:text-2xl px-3 sm:px-4 py-1 mt-2 tracking-[0.2em]">HOURS</div>
+                </div>
+
+                <!-- MINUTES -->
+                <div class="bg-[var(--gta-yellow)] border-4 sm:border-[6px] border-black shadow-[8px_8px_0_#000] md:shadow-[12px_12px_0_#000] flex flex-col items-center justify-center p-4 sm:p-6 md:p-8 -rotate-1 hover:rotate-0 transition-transform duration-300 mt-0 lg:-mt-2">
+                    <span class="timer-minutes font-gta text-[4.5rem] sm:text-[6rem] md:text-[8rem] lg:text-[10rem] leading-none text-black tabular-nums tracking-tighter">00</span>
+                    <div class="bg-black text-white font-gta text-base sm:text-xl md:text-2xl px-3 sm:px-4 py-1 mt-2 tracking-[0.2em]">MINUTES</div>
+                </div>
+
+                <!-- SECONDS -->
+                <div class="bg-white border-4 sm:border-[6px] border-black shadow-[8px_8px_0_#000] md:shadow-[12px_12px_0_#000] flex flex-col items-center justify-center p-4 sm:p-6 md:p-8 rotate-2 hover:rotate-0 transition-transform duration-300 mt-0 lg:mt-8">
+                    <span class="timer-seconds font-gta text-[4.5rem] sm:text-[6rem] md:text-[8rem] lg:text-[10rem] leading-none text-black tabular-nums tracking-tighter">00</span>
+                    <div class="bg-black text-white font-gta text-base sm:text-xl md:text-2xl px-3 sm:px-4 py-1 mt-2 tracking-[0.2em]">SECONDS</div>
+                </div>
+
+            </div>
+
+            <!-- Brutalist Release Date Banner -->
+            <div class="mt-12 sm:mt-16 md:mt-20 w-full max-w-4xl z-10 flex flex-col items-center">
+                <div class="bg-white border-4 sm:border-[6px] border-black shadow-[8px_8px_0_#000] md:shadow-[12px_12px_0_#000] w-full py-4 sm:py-6 flex justify-center -rotate-1 hover:rotate-1 transition-transform duration-300">
+                    <span class="font-gta text-black text-xl sm:text-3xl md:text-5xl tracking-[0.1em] sm:tracking-[0.2em] md:tracking-[0.3em] whitespace-nowrap">NOVEMBER 19, 2026</span>
+                </div>
+
+                <!-- Holiday Message Anchor -->
+                <div class="holiday-message hidden mt-8 text-center font-gta text-[var(--gta-pink)] bg-black border-4 border-black px-6 py-2 text-xl sm:text-2xl md:text-3xl tracking-widest shadow-[6px_6px_0_var(--gta-pink)]"></div>
             </div>
 
         </div>
@@ -743,27 +766,27 @@
 
         // --- VIP GUEST LIST LOGIC ---
         const crewData = [
-            { name: "Ace", alias: "Big Ace", img: "https://i.imgur.com/BQbHUy3.jpeg", role: "The Supplier", desc: "A veteran distributor of high-proof spirits and specialty libations. Ace operates a sprawling alcohol business that keeps the city's nightlife—and the crew—well supplied. Rumor has it he uses his offshore supply lines to smuggle more than just top-shelf liquor across the Leonida border.", stats: { hangout: "Bars & Clubs", vehicle: "1977 Caprice Classic", location: "Los Santos", attributes: { stamina: 70, shooting: 65, strength: 90, driving: 99 } }, stars: 5, hidden: true },
+            { name: "Ace", alias: "Big Ace", img: "https://i.imgur.com/BQbHUy3.jpeg", role: "The Supplier", desc: "A veteran distributor of high-proof spirits and specialty libations. Ace operates a sprawling alcohol business that keeps the city's nightlife—and the crew—well supplied. Rumor has it he uses his offshore supply lines to smuggle more than just top-shelf liquor across the Leonida border.", stats: { hangout: "Bars", vehicle: "1977 Caprice Classic", location: "Los Santos", attributes: { stamina: 70, shooting: 65, strength: 90, driving: 99 } }, stars: 5, hidden: true },
             { name: "Alex", alias: "The FOB", img: "https://i.imgur.com/8Ewtas7.jpeg", role: "Getaway Driver", desc: "Renowned wheelman for the crew. Known for his ability to extract the team from any situation, often favoring heavily modified transit vehicles like a stolen school bus. He knows every back alley, dirt road, and blind spot in the VCPD's camera network.", stats: { hangout: "Underground Garages", vehicle: "Suzuki Esteem", location: "Los Santos", attributes: { stamina: 75, shooting: 75, strength: 83, driving: 95 } }, stars: 5 },
             { name: "Andrés", alias: "Dutch", img: "https://i.imgur.com/U196bPG.jpeg", role: "Mastermind", desc: "The tactical architect. He maps out every detail of the operation, ensuring contingencies for every variable. Always has a plan, and usually has three backup plans. His ability to stay ice-cold under pressure has saved the crew from multiple federal sting operations.", stats: { hangout: "Safehouses", vehicle: "1999 Mitsubishi Galant", location: "Los Santos", attributes: { stamina: 65, shooting: 40, strength: 87, driving: 96 } }, stars: 5 },
             { name: "Aram", alias: "The Ram", img: "https://i.imgur.com/JPBYN8l.jpeg", role: "Engineer", desc: "Electrical Engineering expert. The technical backbone. From bypassing security grids to fixing critical gear, Aram ensures the crew stays off the grid. He recently developed a proprietary signal jammer that renders LSPD drones completely useless within a two-mile radius.", stats: { hangout: "Tech Hubs", vehicle: "Dodge Ram", location: "Los Santos", attributes: { stamina: 75, shooting: 83, strength: 84, driving: 60 } }, stars: 5 },
-            { name: "Daniel", alias: "Deeds", img: "https://i.imgur.com/hez90P9.jpeg", role: "Innovator", desc: "The creative force behind operations. Specializes in lateral thinking and devising novel solutions to seemingly impossible heists. When brute force fails, Daniel's unorthodox methods usually involve social engineering, elaborate disguises, or exploiting corporate loopholes.", stats: { hangout: "High-Roller Suites", vehicle: "Dodge Viper", location: "Los Santos", attributes: { stamina: 68, shooting: 65, strength: 70, driving: 80 } }, stars: 5 },
+            { name: "Daniel", alias: "Deeds", img: "https://i.imgur.com/hez90P9.jpeg", role: "Innovator", desc: "The creative force behind operations. Specializes in lateral thinking and devising novel solutions to seemingly impossible heists. When brute force fails, Daniel's unorthodox methods usually involve social engineering, elaborate disguises, or exploiting corporate loopholes.", stats: { hangout: "Basketball Courts", vehicle: "Dodge Viper", location: "Los Santos", attributes: { stamina: 68, shooting: 65, strength: 70, driving: 80 } }, stars: 5 },
             { name: "Harout", alias: "Young Veyron", img: "https://i.imgur.com/2x5HnuN.jpeg", role: "Money Man", desc: "Financial controller. Manages resources with an iron grip, tracking every dollar spent and earned to launder effectively. He utilizes a complex web of shell companies, crypto tumblers, and offshore accounts to ensure the crew's illicit gains appear completely legitimate.", stats: { hangout: "Financial District", vehicle: "Nissan Skyline R34", location: "Los Santos", attributes: { stamina: 66, shooting: 95, strength: 77, driving: 87 } }, stars: 5 },
             { name: "Kevin", alias: "The Drone", img: "https://i.imgur.com/CP8lcsL.jpeg", role: "Enforcer", desc: "A towering physical presence at 6'4\" and 240lbs. Serves as the primary intimidation factor for collections. Despite his terrifying stature, Kevin is surprisingly disciplined, preferring to settle disputes with a single quiet conversation rather than drawing unnecessary police attention.", stats: { hangout: "Industrial Docks", vehicle: "Mutt Cutts Van", location: "Los Santos", attributes: { stamina: 65, shooting: 68, strength: 88, driving: 67 } }, stars: 5 },
             { name: "Raymond", alias: "Big Rus", img: "https://i.imgur.com/XEy6U2L.jpeg", role: "Launderer", desc: "Leverages deep ties to the fast food industry to wash crew funds through cash-heavy franchises. Also acts as the crew's beloved comedian, keeping morale high even when the heat is on. Don't let the jokes fool you; he is fiercely loyal and ruthless when protecting the family.", stats: { hangout: "Fast Food Joints", vehicle: "Ferrari 360", location: "Los Santos", attributes: { stamina: 67, shooting: 58, strength: 80, driving: 44 } }, stars: 3 },
-            { name: "Richard", alias: "Big Buff", img: "https://i.imgur.com/XLb1Qxn.jpeg", role: "Hybrid", desc: "A versatile powerhouse bridging brains and brawn. Physically imposing with diverse operational skills, Richard is equally comfortable breaching a bank vault as he is negotiating with rival syndicates. He's currently recovering from an injury but remains a vital shot-caller.", stats: { hangout: "Muscle Sands Gym", vehicle: "Mercedes 300 SLR", location: "Los Santos", attributes: { stamina: 90, shooting: 90, strength: 100, driving: 75 } }, stars: 5 },
+            { name: "Richard", alias: "Big Buff", img: "https://i.imgur.com/XLb1Qxn.jpeg", role: "Hybrid", desc: "A versatile powerhouse bridging brains and brawn. Physically imposing with diverse operational skills, Richard is equally comfortable breaching a bank vault as he is negotiating with rival syndicates. The rest of the his crew is wishing him a speedy recovery, they know he will be back soon but he still remains a vital shot-caller.", stats: { hangout: "Gym", vehicle: "Mercedes 300 SLR", location: "Los Santos", attributes: { stamina: 90, shooting: 90, strength: 100, driving: 75 } }, stars: 5 },
             { name: "Youra", alias: "YG", img: "https://i.imgur.com/aR73Lgr.jpeg", role: "Business Front", desc: "A legitimate businessman with a clean record. Youra runs a popular local coffee shop and serves as a community leader. However, authorities strongly suspect he is tied to the rest of the suspects in some way, acting as a clean front for meetings, although nothing has ever been proven.", stats: { hangout: "Coffee Shop", vehicle: "Rolls Royce Phantom", location: "Los Santos", attributes: { stamina: 66, shooting: 55, strength: 57, driving: 70 } }, stars: 0 },
             { name: "Iven", alias: "Big Van", img: "https://i.imgur.com/6h9lzGe.jpeg", role: "Medical Support", desc: "Working in the medical field, he has access to all sorts of restricted records and medicine. He serves as the crew's primary medical connect, patching up operatives off the books and securing critical pharmaceutical supplies before the VCPD can trace the injuries.", stats: { hangout: "Local Clinics", vehicle: "BMW M8", location: "Los Santos", attributes: { stamina: 95, shooting: 87, strength: 90, driving: 64 } }, stars: 5 },
             { name: "Vic", alias: "The Mechanic", img: "https://imgur.com/pUDCdrF.jpeg", role: "Master Mechanic", desc: "Legendary wrench-turner. There isn't a vehicle in the state he can't fix, modify, or hotwire. Operating out of heavily guarded chop shops, Vic strips down hot sports cars and reinforces getaway trucks with military-grade armor before the VCPD even knows they're missing.", stats: { hangout: "Chop Shops", vehicle: "Various / All", location: "Los Santos", attributes: { stamina: 85, shooting: 45, strength: 77, driving: 100 } }, stars: 5, hidden: true },
-            { name: "Mike", alias: "Big Mike", img: "https://i.imgur.com/RXhVbKi.jpeg", role: "Lowrider O.G.", desc: "Very respected member of the Los Santos lowrider community. A father of 2 men now in their 30s. Hard worker who occasionally gets involved in criminal activities.", stats: { hangout: "Streets", vehicle: "Lowrider", location: "Los Santos", attributes: { stamina: 60, shooting: 75, strength: 87, driving: 81 } }, stars: 5, hidden: true },
-            { name: "Shavarsh", alias: "The Varsh", img: "https://i.imgur.com/RXhVbKi.jpeg", role: "Scientist", desc: "A Scientist often lending a hand to anyone of the other suspects that needs help in that field.", stats: { hangout: "The Lab", vehicle: "Mercedes", location: "Los Santos", attributes: { stamina: 60, shooting: 75, strength: 80, driving: 70 } }, stars: 5, hidden: true },
-            { name: "Tom", alias: "Hursh", img: "https://i.imgur.com/RXhVbKi.jpeg", role: "Gym Leader", desc: "Team Leader for rock climbing gym, good man who got caught up with the wrong folks.", stats: { hangout: "Rock Climbing Gyms", vehicle: "Honda Accord", location: "Los Santos", attributes: { stamina: 85, shooting: 77, strength: 83, driving: 77 } }, stars: 5, hidden: true },
-            { name: "Aldo", alias: "Sandstoms", img: "https://i.imgur.com/RXhVbKi.jpeg", role: "Hacker", desc: "A Master Hacker.", stats: { hangout: "Control Rooms", vehicle: "Ford Focus", location: "Los Santos", attributes: { stamina: 94, shooting: 93, strength: 81, driving: 76 } }, stars: 5, hidden: true },
-            { name: "Brandon", alias: "Gaydon", img: "https://i.imgur.com/RXhVbKi.jpeg", role: "Insider", desc: "Food industry worker with underground ties.", stats: { hangout: "Bars", vehicle: "Lexus", location: "Los Santos", attributes: { stamina: 67, shooting: 75, strength: 77, driving: 77 } }, stars: 5, hidden: true },
-            { name: "Arabo", alias: "Big Bo", img: "https://i.imgur.com/RXhVbKi.jpeg", role: "Transporter", desc: "Transporter.", stats: { hangout: "Everywhere", vehicle: "Trucks", location: "Los Santos", attributes: { stamina: 90, shooting: 94, strength: 84, driving: 96 } }, stars: 5, hidden: true },
-            { name: "Argin", alias: "The Machine", img: "https://i.imgur.com/RXhVbKi.jpeg", role: "Street Racer", desc: "Underground street racing legend, known for winning over 90% of street races with his Japanese vehicles.", stats: { hangout: "Street Races", vehicle: "JDM Vehicles", location: "Los Santos", attributes: { stamina: 67, shooting: 80, strength: 80, driving: 98 } }, stars: 5, hidden: true },
-            { name: "Unknown", alias: "Slim", img: "https://i.imgur.com/RXhVbKi.jpeg", role: "Mentor", desc: "Street smart and book smart street mentor who turned his life around and is helping others.", stats: { hangout: "Los Santos", vehicle: "Unknown", location: "Los Santos", attributes: { stamina: 67, shooting: 82, strength: 77, driving: 55 } }, stars: 5, hidden: true },
-            { name: "Jake", alias: "MJ Verde", img: "https://i.imgur.com/RXhVbKi.jpeg", role: "Producer", desc: "Rapper and music producer.", stats: { hangout: "Los Santos", vehicle: "Unknown", location: "Los Santos", attributes: { stamina: 62, shooting: 80, strength: 80, driving: 60 } }, stars: 5, hidden: true }
+            { name: "Mike", alias: "Big Mike", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Lowrider O.G.", desc: "Very respected OG in the Los Santos lowrider community. A father of two grown men, Mike runs a legitimate custom auto body shop by day. However, his deep-rooted connections mean he's often pulled back into the life, providing untraceable custom hydraulics, reinforced chassis, and discrete vehicle storage for high-stakes crews.", stats: { hangout: "Streets", vehicle: "Lowrider", location: "Los Santos", attributes: { stamina: 60, shooting: 75, strength: 87, driving: 81 } }, stars: 5, hidden: true },
+            { name: "Shavarsh", alias: "The Varsh", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Scientist", desc: "A brilliant, albeit erratic, underground scientist who operates out of a highly classified, makeshift laboratory. Shavarsh specializes in synthesizing cutting-edge chemical compounds and highly volatile thermite charges. He frequently lends his unorthodox expertise to anyone in the syndicate who needs a lock melted or a specialized medical concoction.", stats: { hangout: "The Lab", vehicle: "Mercedes", location: "Los Santos", attributes: { stamina: 60, shooting: 75, strength: 80, driving: 70 } }, stars: 5, hidden: true },
+            { name: "Tom", alias: "Hursh", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Gym Leader", desc: "By all appearances, Tom is an athletic, clean-cut team leader at an upscale Los Santos rock climbing gym. A good man who got caught up with the wrong folks to pay off mounting debts, his unparalleled scaling abilities and stamina make him the perfect asset for high-altitude infiltrations and bypassing top-tier security systems from the outside.", stats: { hangout: "Rock Climbing Gyms", vehicle: "Honda Accord", location: "Los Santos", attributes: { stamina: 85, shooting: 77, strength: 83, driving: 77 } }, stars: 5, hidden: true },
+            { name: "Aldo", alias: "Sandstorm", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Hacker", desc: "A recluse master hacker known in the dark web community only as 'Sandstorm'. Operating out of heavily fortified, server-packed control rooms, Aldo can bypass nearly any digital firewall, manipulate traffic grids, and scrub security footage in real-time. His digital footprint is practically non-existent, making him an invaluable ghost in the machine.", stats: { hangout: "Control Rooms", vehicle: "Ford Focus", location: "Los Santos", attributes: { stamina: 94, shooting: 93, strength: 81, driving: 76 } }, stars: 5, hidden: true },
+            { name: "Brandon", alias: "Gaydon", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Insider", desc: "A prominent figure in the local food industry who uses his chain of establishments as a sophisticated front for illicit operations. Brandon leverages his extensive underground ties to facilitate discrete meetings in the backrooms of his bars. His supply trucks are frequently utilized to move heavily concealed contraband across state lines under the guise of frozen goods.", stats: { hangout: "Bars", vehicle: "Lexus", location: "Los Santos", attributes: { stamina: 67, shooting: 75, strength: 77, driving: 77 } }, stars: 5, hidden: true },
+            { name: "Arabo", alias: "Big Bo", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Transporter", desc: "A legendary transporter with an ironclad reputation for never checking the cargo and never missing a deadline. Arabo operates a fleet of heavy-duty, heavily armored trucks capable of busting through LSPD barricades like wet paper. Whether it's moving millions in marked bills or transporting highly restricted hardware, he guarantees delivery, no matter the heat.", stats: { hangout: "Everywhere", vehicle: "Trucks", location: "Los Santos", attributes: { stamina: 90, shooting: 94, strength: 84, driving: 96 } }, stars: 5, hidden: true },
+            { name: "Argin", alias: "The Machine", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Street Racer", desc: "An underground street racing phenom who has completely dominated the Los Santos midnight racing circuits. Piloting highly modified, imported JDM vehicles, Argin boasts a staggering 90% win rate. His unparalleled reaction times and intimate knowledge of the city's alleyways make him the ultimate high-speed pursuit specialist when a standard getaway driver won't cut it.", stats: { hangout: "Street Races", vehicle: "JDM Vehicles", location: "Los Santos", attributes: { stamina: 67, shooting: 80, strength: 80, driving: 98 } }, stars: 5, hidden: true },
+            { name: "Unknown", alias: "Slim", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Mentor", desc: "A rare success story in the criminal underworld. Slim is a fiercely intelligent, street-smart mentor who managed to turn his life around after a lengthy stint in Bolingbroke Penitentiary. He now dedicates his time to helping at-risk youth stay off the streets, though his encyclopedic knowledge of rival gangs and police patrol routes makes him a highly sought-after tactical consultant.", stats: { hangout: "Los Santos", vehicle: "Unknown", location: "Los Santos", attributes: { stamina: 67, shooting: 82, strength: 77, driving: 55 } }, stars: 5, hidden: true },
+            { name: "Jake", alias: "MJ Verde", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Producer", desc: "A rising star in the Los Santos underground hip-hop scene, working as both a rapper and a platinum-tier music producer. Behind the platinum plaques and sold-out club appearances, Jake uses his sprawling recording studios to launder syndicate money and facilitate discrete communication networks embedded within audio tracks. His VIP parties are notorious for closing high-stakes deals.", stats: { hangout: "Los Santos", vehicle: "Unknown", location: "Los Santos", attributes: { stamina: 62, shooting: 80, strength: 80, driving: 60 } }, stars: 5, hidden: true }
             // NOTE: To add a hidden associate, just add:  hidden: true  to their object!
         ];
 
@@ -789,13 +812,16 @@
             const arrows = document.querySelectorAll('.sidebar-arrow');
             const verticalArrows = document.querySelectorAll('.vertical-arrow');
 
+            // The width calc precisely targets the 5/12 left column + the 4rem button width so it hits the black line!
+            const expandedWidthClass = 'md:w-[calc(4rem+(100%-4rem)*5/12)]';
+
             if (isSidebarOpen) {
-                sidebars.forEach(s => { s.classList.remove('md:w-16'); s.classList.add('md:w-[224px]'); });
+                sidebars.forEach(s => { s.classList.remove('md:w-16'); s.classList.add(expandedWidthClass); });
                 menus.forEach(m => { m.classList.remove('hidden'); m.classList.add('flex'); });
                 arrows.forEach(a => a.style.transform = 'rotate(180deg)');
                 verticalArrows.forEach(a => a.style.transform = 'rotate(180deg)');
             } else {
-                sidebars.forEach(s => { s.classList.add('md:w-16'); s.classList.remove('md:w-[224px]'); });
+                sidebars.forEach(s => { s.classList.add('md:w-16'); s.classList.remove(expandedWidthClass); });
                 menus.forEach(m => { m.classList.add('hidden'); m.classList.remove('flex'); });
                 arrows.forEach(a => a.style.transform = 'rotate(0deg)');
                 verticalArrows.forEach(a => a.style.transform = 'rotate(0deg)');
@@ -806,8 +832,8 @@
             const html = crewData.map((c, i) => {
                 if (c.hidden) return ''; // Hide secret associates from the visual list!
                 return `
-                <button onclick="openDossier(${i}); if(window.innerWidth < 768) toggleSidebar();" class="font-gta text-base md:text-lg px-3 py-1.5 transition-all duration-200 outline-none text-left w-full truncate ${i === currentIdx ? 'bg-white border-l-4 border-[var(--gta-pink)] text-black shadow-[2px_2px_0_var(--gta-pink)] translate-x-1' : 'bg-transparent border-l-4 border-transparent text-gray-400 hover:text-white hover:bg-gray-800 hover:border-gray-500'}">
-                    ${c.name}
+                <button onclick="openDossier(${i}); toggleSidebar();" class="font-gta text-base md:text-xl px-3 py-2 transition-all duration-200 outline-none text-left w-full truncate ${i === currentIdx ? 'bg-white border-l-4 border-[var(--gta-pink)] text-black shadow-[2px_2px_0_var(--gta-pink)] translate-x-1' : 'bg-transparent border-l-4 border-transparent text-gray-400 hover:text-white hover:bg-gray-800 hover:border-gray-500'}">
+                    ${c.name} <span class="text-xs font-roboto text-gray-500 block uppercase tracking-widest mt-0.5">"${c.alias}"</span>
                 </button>
                 `;
             }).join('');
