@@ -265,18 +265,19 @@
 
                     <div class="gta-panel p-0 flex flex-col md:flex-row w-full items-stretch border-4 border-black rounded-b-xl shadow-[8px_8px_0_rgba(0,0,0,0.5)] flex-1 overflow-hidden md:overflow-clip relative z-10">
                         
-                        <!-- MOBILE ONLY: Static Grey Bar at bottom left -->
-                        <div class="mobile-grey-bar absolute left-0 bottom-0 w-10 sm:w-12 bg-gray-600 border-r-4 border-black z-20 md:hidden"></div>
+                        <div class="associates-sidebar bg-[#111] border-r-4 border-black flex flex-row transition-all duration-300 w-10 sm:w-12 md:w-16 flex-shrink-0 z-30 absolute left-0 top-0 md:bottom-0 shadow-[6px_0_15px_rgba(0,0,0,0.7)] overflow-hidden">
+                            
+                            <div class="flex flex-col w-10 sm:w-12 md:w-16 h-full flex-shrink-0 z-20 bg-[#111]">
+                                <button id="mobile-sidebar-btn" onclick="toggleSidebar()" class="sidebar-btn w-full md:h-full flex flex-col items-center justify-center bg-[var(--gta-yellow)] hover:bg-[var(--gta-orange)] text-black transition-colors py-3 md:py-4 cursor-pointer border-none shadow-[inset_-4px_0_0_rgba(0,0,0,0.2)] group outline-none relative flex-shrink-0">
+                                    <div class="flex flex-col items-center gap-1 text-black/60 group-hover:text-black">
+                                        <i data-lucide="chevron-right" class="w-3 h-3 md:w-4 md:h-4 vertical-arrow transition-transform duration-300"></i>
+                                        <span class="font-gta text-xs sm:text-sm md:text-lg tracking-widest vertical-text text-black">SUSPECTS</span>
+                                        <i data-lucide="chevron-right" class="w-3 h-3 md:w-4 md:h-4 vertical-arrow transition-transform duration-300"></i>
+                                    </div>
+                                </button>
+                                <div class="flex-1 bg-gray-600 border-t-4 border-black shadow-[inset_-4px_0_0_rgba(0,0,0,0.2)] md:hidden"></div>
+                            </div>
 
-                        <!-- THE INTERACTIVE SIDEBAR -->
-                        <div class="associates-sidebar bg-[#111] border-b-4 md:border-b-0 border-r-4 border-black flex flex-row transition-all duration-300 w-10 sm:w-12 md:w-16 flex-shrink-0 z-30 absolute left-0 top-0 md:bottom-0 shadow-[6px_0_15px_rgba(0,0,0,0.7)] overflow-hidden">
-                            <button onclick="toggleSidebar()" class="sidebar-btn w-10 sm:w-12 md:w-16 h-full flex flex-col items-center justify-center bg-[var(--gta-yellow)] hover:bg-[var(--gta-orange)] text-black transition-colors py-3 md:py-4 cursor-pointer border-none shadow-[inset_-4px_0_0_rgba(0,0,0,0.2)] group outline-none flex-shrink-0 z-20 relative">
-                                <div class="flex flex-col items-center gap-1 text-black/60 group-hover:text-black">
-                                    <i data-lucide="chevron-right" class="w-3 h-3 md:w-4 md:h-4 vertical-arrow transition-transform duration-300"></i>
-                                    <span class="font-gta text-xs sm:text-sm md:text-lg tracking-widest vertical-text text-black">SUSPECTS</span>
-                                    <i data-lucide="chevron-right" class="w-3 h-3 md:w-4 md:h-4 vertical-arrow transition-transform duration-300"></i>
-                                </div>
-                            </button>
                             <div class="crew-menu-container hidden flex-col flex-1 overflow-y-auto custom-scrollbar p-2 sm:p-4 space-y-2 bg-[#111] w-[200px] md:w-auto h-full">
                                 <!-- Menu injected here -->
                             </div>
@@ -287,21 +288,17 @@
                             <div id="dos-left-col" class="w-full md:w-5/12 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] bg-gray-300 border-b-4 md:border-b-0 md:border-r-4 border-black relative p-2 sm:p-6 pt-6 sm:pt-12 md:pt-14 flex flex-col items-center justify-start">
                                 
                                 <div class="w-full max-w-[260px] md:max-w-[240px] aspect-square border-4 border-black shadow-[6px_6px_0_rgba(0,0,0,0.3)] bg-white p-1 relative z-10 hover:scale-105 hover:shadow-[10px_10px_0_rgba(0,0,0,0.5)] transition-all duration-300">
-                                    <!-- MOBILE-ONLY HEADER (Name over image) -->
                                     <h3 class="dos-name absolute top-2 left-2 text-3xl font-gta text-white leading-none block md:hidden z-20 text-left uppercase" style="text-shadow: 2px 2px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;">NAME</h3>
                                     <img src="" class="dos-img w-full h-full object-cover">
                                 </div>
                                 
-                                <!-- Desktop Only: Stars container -->
                                 <div class="dos-stars-wrapper w-full max-w-[260px] md:max-w-[240px] bg-black border-4 border-black p-2 mt-4 text-center shadow-[4px_4px_0_rgba(0,0,0,0.4)] hover:scale-105 transition-transform duration-300 hidden md:block">
                                     <div class="dos-stars flex justify-center gap-1 text-[var(--gta-yellow)] text-xl drop-shadow-[0_0_5px_rgba(255,204,0,0.5)]"></div>
                                 </div>
 
-                                <!-- Auto height on mobile, fixed min-height on desktop -->
-                                <div class="w-full max-w-[280px] md:max-w-[260px] mt-4 bg-[#111] border-4 border-black shadow-[4px_4px_0_rgba(0,0,0,0.3)] p-3 sm:p-4 text-white font-roboto hover:scale-105 hover:shadow-[8px_8px_0_rgba(0,0,0,0.4)] transition-all duration-300 relative h-auto min-h-[280px] sm:h-[250px] flex flex-col justify-center">
+                                <!-- MOBILE ONLY BIO -->
+                                <div class="w-full max-w-[280px] mt-4 bg-[#111] border-4 border-black shadow-[4px_4px_0_rgba(0,0,0,0.3)] p-3 sm:p-4 text-white font-roboto hover:scale-105 hover:shadow-[8px_8px_0_rgba(0,0,0,0.4)] transition-all duration-300 relative h-auto min-h-[280px] sm:h-[250px] flex md:hidden flex-col justify-center">
                                     <div class="overflow-visible sm:overflow-hidden h-full flex flex-col justify-start md:justify-center">
-                                        
-                                        <!-- MOBILE ONLY: Alias, Role, and Stars inside Bio Box -->
                                         <div class="flex flex-col w-full md:hidden border-b border-gray-700 pb-2 mb-2 flex-shrink-0">
                                             <div class="flex items-center justify-between w-full mb-1.5">
                                                 <div class="dos-alias text-2xl font-handwriting text-[var(--gta-pink)] leading-none">"Alias"</div>
@@ -313,12 +310,42 @@
                                                 <span class="dos-role font-gta text-xs leading-none uppercase">ROLE</span>
                                             </div>
                                         </div>
-
-                                        <!-- Bio text expands naturally on mobile -->
                                         <span class="text-[10px] md:text-xs text-gray-500 uppercase tracking-widest font-bold mb-1 block opacity-70">BIO</span>
-                                        <div class="dos-desc flex-grow text-[15px] md:text-base lg:text-[17px] font-roboto leading-relaxed text-gray-300 overflow-visible sm:overflow-y-auto custom-scrollbar pr-1"></div>
+                                        <div class="dos-desc flex-grow text-[15px] font-roboto leading-relaxed text-gray-300 overflow-visible sm:overflow-y-auto custom-scrollbar pr-1"></div>
                                     </div>
                                 </div>
+
+                                <!-- DESKTOP ONLY STATS -->
+                                <div class="w-full max-w-[260px] mt-4 bg-white text-black border-4 border-black p-4 shadow-[4px_4px_0_var(--gta-pink)] hover:scale-105 hover:shadow-[8px_8px_0_rgba(0,0,0,0.4)] transition-all duration-300 hidden md:flex flex-col justify-center relative z-10">
+                                    <div class="text-[12px] font-bold text-gray-500 uppercase tracking-widest mb-3 border-b-2 border-black pb-1 text-center">OPERATIONAL STATISTICS</div>
+                                    <div class="grid grid-cols-1 gap-y-3">
+                                        <div>
+                                            <div class="flex justify-between text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">
+                                                <span>Stamina</span><span class="stat-stamina-val text-black"></span>
+                                            </div>
+                                            <div class="w-full h-3 bg-gray-200 border-2 border-black p-[1px]"><div class="stat-stamina h-full bg-[var(--gta-blue)] transition-all duration-500"></div></div>
+                                        </div>
+                                        <div>
+                                            <div class="flex justify-between text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">
+                                                <span>Shooting</span><span class="stat-shooting-val text-black"></span>
+                                            </div>
+                                            <div class="w-full h-3 bg-gray-200 border-2 border-black p-[1px]"><div class="stat-shooting h-full bg-[var(--gta-red)] transition-all duration-500"></div></div>
+                                        </div>
+                                        <div>
+                                            <div class="flex justify-between text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">
+                                                <span>Strength</span><span class="stat-strength-val text-black"></span>
+                                            </div>
+                                            <div class="w-full h-3 bg-gray-200 border-2 border-black p-[1px]"><div class="stat-strength h-full bg-[var(--gta-green)] transition-all duration-500"></div></div>
+                                        </div>
+                                        <div>
+                                            <div class="flex justify-between text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">
+                                                <span>Driving</span><span class="stat-driving-val text-black"></span>
+                                            </div>
+                                            <div class="w-full h-3 bg-gray-200 border-2 border-black p-[1px]"><div class="stat-driving h-full bg-[var(--gta-yellow)] transition-all duration-500"></div></div>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="w-full max-w-[260px] md:max-w-[240px] mt-4 flex justify-between gap-3 relative z-10">
                                     <button onclick="navCarousel(-1)" class="flex-1 bg-[var(--gta-blue)] border-2 border-black p-2 flex justify-center items-center hover:bg-[var(--gta-pink)] hover:text-white transition-colors shadow-[3px_3px_0_rgba(0,0,0,1)] outline-none hover:scale-105 text-black">
                                         <i data-lucide="arrow-left" class="w-6 h-6"></i>
@@ -330,7 +357,6 @@
                             </div>
 
                             <div class="w-full md:w-7/12 p-2 sm:p-6 md:p-8 flex flex-col relative z-10 bg-white">
-                                <!-- DESKTOP HEADER (Hidden on mobile) -->
                                 <div class="border-b-4 border-black pb-4 mb-5 hidden md:block">
                                     <h3 class="dos-name text-4xl sm:text-5xl md:text-6xl font-gta text-black leading-none drop-shadow-[2px_2px_0_rgba(0,0,0,0.2)] break-words">NAME</h3>
                                     <div class="dos-alias text-xl sm:text-3xl font-handwriting text-[var(--gta-pink)] mt-1 mb-3">"Alias"</div>
@@ -339,58 +365,66 @@
                                     </div>
                                 </div>
                                 <div class="grid grid-cols-2 gap-1 sm:gap-3 font-gta text-sm sm:text-base md:text-lg mb-3">
-                                <div class="flex flex-col border-l-2 sm:border-l-4 border-[var(--gta-blue)] pl-1.5 sm:pl-2">
-                                    <span class="text-gray-500 font-roboto text-[8px] sm:text-[9px] font-normal tracking-widest leading-none mb-0.5">KNOWN HANGOUT</span>
-                                    <span class="dos-hangout text-black leading-tight"></span>
-                                </div>
-                                <div class="flex flex-col border-l-2 sm:border-l-4 border-[var(--gta-yellow)] pl-1.5 sm:pl-2 min-w-0">
-                                    <span class="text-gray-500 font-roboto text-[8px] sm:text-[9px] font-normal tracking-widest leading-none mb-0.5">KNOWN VEHICLE</span>
-                                    <span class="dos-vehicle text-black leading-tight truncate"></span>
-                                </div>
-                                <div class="flex flex-col border-l-2 sm:border-l-4 border-[var(--gta-green)] pl-1.5 sm:pl-2 col-span-2">
-                                    <span class="text-gray-500 font-roboto text-[8px] sm:text-[9px] font-normal tracking-widest leading-none mb-0.5">LAST KNOWN LOCATION</span>
-                                    <span class="dos-location text-black truncate leading-tight"></span>
-                                </div>
-                            </div>
-                            <div class="bg-white text-black border-4 border-black p-3 sm:p-5 shadow-[6px_6px_0_var(--gta-pink)] flex-1 flex flex-col justify-center">
-                                <div class="text-[12px] sm:text-sm font-bold text-gray-500 uppercase tracking-widest mb-3 sm:mb-4 border-b-2 border-black pb-1">OPERATIONAL STATISTICS</div>
-                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
-                                    <div>
-                                        <div class="flex justify-between text-[10px] sm:text-xs font-normal text-gray-500 uppercase tracking-widest mb-1">
-                                            <span>Stamina</span>
-                                            <span class="stat-stamina-val font-roboto font-normal text-[12px] sm:text-sm text-black">80/100</span>
-                                        </div>
-                                        <div class="w-full h-3 sm:h-4 bg-gray-200 border-2 border-black p-[1px]"><div class="stat-stamina h-full bg-[var(--gta-blue)] transition-all duration-500"></div></div>
+                                    <div class="flex flex-col border-l-2 sm:border-l-4 border-[var(--gta-blue)] pl-1.5 sm:pl-2">
+                                        <span class="text-gray-500 font-roboto text-[8px] sm:text-[9px] font-normal tracking-widest leading-none mb-0.5">KNOWN HANGOUT</span>
+                                        <span class="dos-hangout text-black leading-tight"></span>
                                     </div>
-                                    <div>
-                                        <div class="flex justify-between text-[10px] sm:text-xs font-normal text-gray-500 uppercase tracking-widest mb-1">
-                                            <span>Shooting</span>
-                                            <span class="stat-shooting-val font-roboto font-normal text-[12px] sm:text-sm text-black">95/100</span>
-                                        </div>
-                                        <div class="w-full h-3 sm:h-4 bg-gray-200 border-2 border-black p-[1px]"><div class="stat-shooting h-full bg-[var(--gta-red)] transition-all duration-500"></div></div>
+                                    <div class="flex flex-col border-l-2 sm:border-l-4 border-[var(--gta-yellow)] pl-1.5 sm:pl-2 min-w-0">
+                                        <span class="text-gray-500 font-roboto text-[8px] sm:text-[9px] font-normal tracking-widest leading-none mb-0.5">KNOWN VEHICLE</span>
+                                        <span class="dos-vehicle text-black leading-tight truncate"></span>
                                     </div>
-                                    <div>
-                                        <div class="flex justify-between text-[10px] sm:text-xs font-normal text-gray-500 uppercase tracking-widest mb-1">
-                                            <span>Strength</span>
-                                            <span class="stat-strength-val font-roboto font-normal text-[12px] sm:text-sm text-black">60/100</span>
-                                        </div>
-                                        <div class="w-full h-3 sm:h-4 bg-gray-200 border-2 border-black p-[1px]"><div class="stat-strength h-full bg-[var(--gta-green)] transition-all duration-500"></div></div>
-                                    </div>
-                                    <div>
-                                        <div class="flex justify-between text-[10px] sm:text-xs font-normal text-gray-500 uppercase tracking-widest mb-1">
-                                            <span>Driving</span>
-                                            <span class="stat-driving-val font-roboto font-normal text-[12px] sm:text-sm text-black">100/100</span>
-                                        </div>
-                                        <div class="w-full h-3 sm:h-4 bg-gray-200 border-2 border-black p-[1px]"><div class="stat-driving h-full bg-[var(--gta-yellow)] transition-all duration-500"></div></div>
+                                    <div class="flex flex-col border-l-2 sm:border-l-4 border-[var(--gta-green)] pl-1.5 sm:pl-2 col-span-2">
+                                        <span class="text-gray-500 font-roboto text-[8px] sm:text-[9px] font-normal tracking-widest leading-none mb-0.5">LAST KNOWN LOCATION</span>
+                                        <span class="dos-location text-black truncate leading-tight"></span>
                                     </div>
                                 </div>
-                            </div>
+                                
+                                <!-- MOBILE ONLY STATS -->
+                                <div class="bg-white text-black border-4 border-black p-3 sm:p-5 shadow-[6px_6px_0_var(--gta-pink)] flex md:hidden flex-col justify-center mt-2">
+                                    <div class="text-[12px] sm:text-sm font-bold text-gray-500 uppercase tracking-widest mb-3 sm:mb-4 border-b-2 border-black pb-1">OPERATIONAL STATISTICS</div>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
+                                        <div>
+                                            <div class="flex justify-between text-[10px] sm:text-xs font-normal text-gray-500 uppercase tracking-widest mb-1">
+                                                <span>Stamina</span>
+                                                <span class="stat-stamina-val font-roboto font-normal text-[12px] sm:text-sm text-black">80/100</span>
+                                            </div>
+                                            <div class="w-full h-3 sm:h-4 bg-gray-200 border-2 border-black p-[1px]"><div class="stat-stamina h-full bg-[var(--gta-blue)] transition-all duration-500"></div></div>
+                                        </div>
+                                        <div>
+                                            <div class="flex justify-between text-[10px] sm:text-xs font-normal text-gray-500 uppercase tracking-widest mb-1">
+                                                <span>Shooting</span>
+                                                <span class="stat-shooting-val font-roboto font-normal text-[12px] sm:text-sm text-black">95/100</span>
+                                            </div>
+                                            <div class="w-full h-3 sm:h-4 bg-gray-200 border-2 border-black p-[1px]"><div class="stat-shooting h-full bg-[var(--gta-red)] transition-all duration-500"></div></div>
+                                        </div>
+                                        <div>
+                                            <div class="flex justify-between text-[10px] sm:text-xs font-normal text-gray-500 uppercase tracking-widest mb-1">
+                                                <span>Strength</span>
+                                                <span class="stat-strength-val font-roboto font-normal text-[12px] sm:text-sm text-black">60/100</span>
+                                            </div>
+                                            <div class="w-full h-3 sm:h-4 bg-gray-200 border-2 border-black p-[1px]"><div class="stat-strength h-full bg-[var(--gta-green)] transition-all duration-500"></div></div>
+                                        </div>
+                                        <div>
+                                            <div class="flex justify-between text-[10px] sm:text-xs font-normal text-gray-500 uppercase tracking-widest mb-1">
+                                                <span>Driving</span>
+                                                <span class="stat-driving-val font-roboto font-normal text-[12px] sm:text-sm text-black">100/100</span>
+                                            </div>
+                                            <div class="w-full h-3 sm:h-4 bg-gray-200 border-2 border-black p-[1px]"><div class="stat-driving h-full bg-[var(--gta-yellow)] transition-all duration-500"></div></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- DESKTOP ONLY BIO -->
+                                <div class="bg-[#111] border-4 border-black shadow-[6px_6px_0_rgba(0,0,0,0.3)] p-4 lg:p-6 text-white font-roboto flex-1 hidden md:flex flex-col justify-start relative h-auto min-h-[200px] mt-2 border-l-4 border-l-[var(--gta-blue)]">
+                                    <span class="text-xs text-gray-500 uppercase tracking-widest font-bold mb-2 block opacity-70 border-b border-gray-800 pb-1">BIOGRAPHY</span>
+                                    <div class="dos-desc flex-grow overflow-y-auto custom-scrollbar text-base lg:text-[17px] font-roboto leading-relaxed text-gray-200 pr-2"></div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- WEAZEL NEWS (Mobile: Bottom, Desktop: Bottom Left) -->
                 <div class="lg:col-span-4 flex flex-col items-center lg:items-start w-full">
                     <div class="gta-panel p-0 w-full hover:scale-[1.02] hover:shadow-[12px_12px_0_rgba(0,0,0,0.7)] transition-all duration-300">
                         <div class="bg-[var(--weazel-red)] p-2 md:p-3 flex items-center gap-2 border-b-2 border-black">
@@ -408,7 +442,6 @@
                     </div>
                 </div>
 
-                <!-- MESSAGE OF THE DAY (Mobile: Bottom, Desktop: Bottom Left under Weazel) -->
                 <div class="lg:col-span-4 flex flex-col items-center lg:items-start w-full">
                     <div class="w-full max-w-sm bg-[#e8f4ea] text-black border-2 border-black py-2 px-3 sm:p-4 shadow-[4px_4px_0_rgba(0,0,0,0.5)] sm:shadow-[8px_8px_0_rgba(0,0,0,0.5)] hover:scale-105 sm:hover:shadow-[12px_12px_0_rgba(0,0,0,0.7)] transition-all duration-300 relative">
                         <div class="absolute -top-1.5 sm:-top-3 left-1/2 transform -translate-x-1/2 w-8 h-3 sm:w-12 sm:h-5 bg-white/60 border border-gray-300 shadow-sm backdrop-blur-sm z-10 rotate-2"></div>
@@ -424,7 +457,6 @@
 
             </div>
 
-            <!-- SNAPMATIC GALLERY -->
             <div class="order-4 mt-8 pt-8 border-t-4 border-black relative mb-10">
                 <div class="flex items-center justify-start gap-3 mb-6 bg-black inline-flex px-5 py-2 border-2 border-white shadow-[4px_4px_0_rgba(0,0,0,0.5)] hover:scale-105 transition-transform duration-300">
                     <i data-lucide="camera" class="text-white w-5 sm:w-6 h-5 sm:h-6"></i>
@@ -465,9 +497,6 @@
         </div>
 
 
-        <!-- ========================================== -->
-        <!--                PAGE: CREW                  -->
-        <!-- ========================================== -->
         <div id="page-crew" class="page-section hidden max-w-7xl mx-auto px-1 sm:px-6 lg:px-8 pt-10 pb-20">
             
             <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between mb-8 border-b-4 border-[var(--gta-blue)] pb-4 gap-4 px-2 sm:px-0">
@@ -476,7 +505,6 @@
                     <i data-lucide="database" class="w-8 h-8 sm:w-10 sm:h-10 text-[var(--gta-blue)] hidden sm:block"></i>
                 </div>
                 
-                <!-- Crew Page Search Bar -->
                 <div class="w-full lg:w-1/3 min-w-[280px] bg-black border-2 border-[var(--gta-blue)] p-2 md:p-3 flex items-center relative shadow-[4px_4px_0_rgba(0,255,255,0.2)] focus-within:shadow-[4px_4px_0_var(--gta-blue)] transition-shadow z-20">
                     <i data-lucide="search" class="text-[var(--gta-blue)] w-5 h-5 ml-1 mr-3 flex-shrink-0"></i>
                     <input type="text" id="crew-search" placeholder="SEARCH..." class="w-full bg-transparent border-none outline-none text-white font-gta tracking-widest text-lg sm:text-xl placeholder-gray-600 uppercase" autocomplete="off" onkeyup="handleSearch(event, this)">
@@ -484,12 +512,9 @@
                 </div>
             </div>
 
-            <!-- The Suspect Grid -->
             <div id="suspect-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 md:gap-5 mb-12">
-                <!-- Generated via JS -->
-            </div>
+                </div>
 
-            <!-- The LSPD Classified File View -->
             <div id="crew-detail-panel" class="dossier-view gta-panel p-0 border-4 border-[var(--gta-blue)] flex flex-col bg-[#111] text-white transition-all duration-300 opacity-0 translate-y-4 shadow-[12px_12px_0_rgba(0,255,255,0.2)] hover:shadow-[12px_12px_0_var(--gta-blue)] scroll-mt-24">
                 
                 <div class="w-full bg-[var(--gta-blue)] text-black p-3 flex justify-between items-center border-b-4 border-black">
@@ -498,44 +523,70 @@
                 </div>
                 
                 <div class="flex flex-col md:flex-row w-full p-3 sm:p-6 md:p-8 gap-5 md:gap-8 relative overflow-hidden">
-                    <!-- Faded Background Watermark -->
                     <div class="absolute inset-0 flex items-center justify-center opacity-[0.03] pointer-events-none font-gta text-[8rem] sm:text-[12rem] text-white transform -rotate-12 z-0 whitespace-nowrap">CLASSIFIED</div>
 
-                    <!-- Left: Mugshot & Threat Level -->
                     <div class="w-full md:w-1/3 flex flex-col gap-4 z-10 items-center md:items-stretch pt-2 md:pt-0">
                         
                         <div class="w-[85%] md:w-full border-4 border-white p-2 bg-black relative shadow-[6px_6px_0_rgba(0,0,0,1)] hover:scale-105 transition-transform duration-300">
-                            <!-- MOBILE-ONLY HEADER (Name over image) -->
                             <h3 class="dos-name absolute top-2 left-2 text-4xl font-gta text-white leading-none block md:hidden z-20 text-left uppercase" style="text-shadow: 2px 2px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;">NAME</h3>
                             <img src="" class="dos-img w-full aspect-square object-cover filter contrast-125 saturate-110">
                         </div>
                         
-                        <!-- Desktop Only: Role block -->
                         <div class="w-[85%] md:w-full bg-[var(--gta-red)] text-white font-gta text-2xl sm:text-3xl text-center py-2 border-2 border-white shadow-[4px_4px_0_rgba(0,0,0,1)] uppercase hidden md:block"><span class="dos-role"></span></div>
                         
-                        <!-- Desktop Only: Stars block -->
                         <div class="dos-stars-wrapper w-[85%] md:w-full bg-black border-2 border-white p-3 shadow-[4px_4px_0_rgba(0,0,0,1)] hidden md:block">
                             <div class="dos-stars flex justify-center gap-1 text-[var(--gta-yellow)] text-xl sm:text-2xl drop-shadow-[0_0_5px_rgba(255,204,0,0.5)]"></div>
                         </div>
+
+                        <!-- DESKTOP ONLY STATS -->
+                        <div class="w-full hidden md:flex flex-col bg-black/40 p-4 border-l-4 border-[var(--gta-pink)] shadow-inner">
+                            <div class="text-[12px] font-bold text-gray-500 uppercase tracking-widest mb-3 border-b border-gray-800 pb-1 text-center">OPERATIONAL STATS</div>
+                            <div class="grid grid-cols-1 gap-y-3">
+                                <div>
+                                    <div class="flex justify-between text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">
+                                        <span>Stamina</span><span class="stat-stamina-val text-white"></span>
+                                    </div>
+                                    <div class="w-full h-3 border-2 border-gray-600 bg-gray-900 p-[1px]"><div class="stat-stamina h-full bg-[var(--gta-blue)] transition-all duration-500"></div></div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">
+                                        <span>Shooting</span><span class="stat-shooting-val text-white"></span>
+                                    </div>
+                                    <div class="w-full h-3 border-2 border-gray-600 bg-gray-900 p-[1px]"><div class="stat-shooting h-full bg-[var(--gta-red)] transition-all duration-500"></div></div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">
+                                        <span>Strength</span><span class="stat-strength-val text-white"></span>
+                                    </div>
+                                    <div class="w-full h-3 border-2 border-gray-600 bg-gray-900 p-[1px]"><div class="stat-strength h-full bg-[var(--gta-green)] transition-all duration-500"></div></div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">
+                                        <span>Driving</span><span class="stat-driving-val text-white"></span>
+                                    </div>
+                                    <div class="w-full h-3 border-2 border-gray-600 bg-gray-900 p-[1px]"><div class="stat-driving h-full bg-[var(--gta-yellow)] transition-all duration-500"></div></div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
 
-                    <!-- Right: Massive Database Stats -->
                     <div class="w-full md:w-2/3 z-10 flex flex-col justify-center">
                         
-                        <!-- DESKTOP HEADER (Hidden on mobile) -->
-                        <div class="hidden md:block">
+                        <div class="hidden md:block order-1">
                             <h3 class="dos-name text-4xl sm:text-6xl md:text-7xl font-gta text-[var(--gta-pink)] leading-none drop-shadow-[2px_2px_0_#fff] mb-1 uppercase text-center md:text-left"></h3>
                             <div class="dos-alias text-2xl sm:text-4xl font-handwriting text-white mb-4 text-center md:text-left">"Alias"</div>
                         </div>
 
-                        <div class="flex flex-wrap justify-center md:justify-start gap-1.5 sm:gap-2 font-roboto font-bold text-gray-400 mb-3 text-[8px] sm:text-[10px] uppercase tracking-widest border-b-2 border-gray-800 pb-2 md:pb-3 mt-1 md:mt-0">
+                        <div class="flex flex-wrap justify-center md:justify-start gap-1.5 sm:gap-2 font-roboto font-bold text-gray-400 mb-3 mt-1 md:mt-0 text-[8px] sm:text-[10px] uppercase tracking-widest border-b-2 border-gray-800 pb-2 md:pb-3 order-2">
                             <span class="bg-gray-800 px-1.5 py-0.5 text-white border border-gray-600 shadow-sm">LOC: <span class="dos-location text-[var(--gta-blue)]"></span></span>
                             <span class="bg-gray-800 px-1.5 py-0.5 text-white border border-gray-600 shadow-sm">BASE: <span class="dos-hangout text-[var(--gta-blue)]"></span></span>
                             <span class="bg-gray-800 px-1.5 py-0.5 text-white border border-gray-600 shadow-sm truncate max-w-[200px] inline-block align-bottom">VEH: <span class="dos-vehicle text-[var(--gta-blue)]"></span></span>
                         </div>
                         
-                        <!-- Enhanced Stats Grid -->
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 mb-5 bg-black/40 p-3 sm:p-4 border-l-4 border-[var(--gta-pink)] shadow-inner">
+                        <!-- MOBILE ONLY STATS -->
+                        <div class="grid md:hidden grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 mb-5 bg-black/40 p-3 sm:p-4 border-l-4 border-[var(--gta-pink)] shadow-inner order-3 mt-4">
+                            <div class="col-span-1 sm:col-span-2 text-[10px] sm:text-xs font-bold text-gray-500 uppercase tracking-widest mb-1 border-b border-gray-800 pb-1">OPERATIONAL STATS</div>
                             <div>
                                 <div class="flex justify-between text-[10px] sm:text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">
                                     <span>Stamina</span><span class="stat-stamina-val text-white"></span>
@@ -562,11 +613,10 @@
                             </div>
                         </div>
 
-                        <!-- Bio Container -> Auto height on mobile -->
-                        <div class="bg-black/60 p-3 sm:p-4 border-l-4 border-[var(--gta-blue)] shadow-inner h-auto min-h-[200px] sm:h-[180px] md:h-[150px] flex flex-col justify-center">
-                            <div class="overflow-visible sm:overflow-hidden h-full flex flex-col justify-start md:justify-center">
+                        <!-- BIO CONTAINER -->
+                        <div class="bg-black/60 p-3 sm:p-4 lg:p-6 border-l-4 border-[var(--gta-blue)] shadow-inner h-auto min-h-[200px] flex flex-col justify-start order-4 md:order-3 md:mt-2 flex-1">
+                            <div class="overflow-visible sm:overflow-hidden h-full flex flex-col justify-start">
                                 
-                                <!-- MOBILE ONLY: Alias, Role, and Stars inside Bio Box -->
                                 <div class="flex flex-col w-full md:hidden border-b border-gray-700 pb-3 mb-3 flex-shrink-0">
                                     <div class="flex items-center justify-between w-full mb-2">
                                         <div class="dos-alias text-3xl font-handwriting text-white leading-none">"Alias"</div>
@@ -579,8 +629,8 @@
                                     </div>
                                 </div>
 
-                                <span class="text-[10px] md:text-xs text-gray-500 uppercase tracking-widest font-bold mb-1 block opacity-70">BIO</span>
-                                <div class="dos-desc flex-grow overflow-visible sm:overflow-y-auto custom-scrollbar text-[16px] md:text-base lg:text-lg font-roboto leading-relaxed text-gray-200 pr-1"></div>
+                                <span class="text-[10px] md:text-xs text-gray-500 uppercase tracking-widest font-bold mb-2 block opacity-70 border-b border-gray-800 pb-1">BIOGRAPHY</span>
+                                <div class="dos-desc flex-grow overflow-visible sm:overflow-y-auto custom-scrollbar text-[16px] md:text-base lg:text-[17px] font-roboto leading-relaxed text-gray-200 pr-1"></div>
                             </div>
                         </div>
 
@@ -588,7 +638,6 @@
                 </div>
             </div>
 
-            <!-- BACK TO TOP BUTTON -->
             <div class="mt-12 flex justify-center w-full">
                 <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="bg-[var(--gta-blue)] text-black font-gta tracking-widest text-xl md:text-2xl px-6 py-3 border-4 border-black shadow-[6px_6px_0_rgba(0,0,0,1)] hover:scale-105 hover:bg-[var(--gta-pink)] hover:text-white hover:shadow-[8px_8px_0_var(--gta-blue)] transition-all flex items-center gap-2 group outline-none">
                     <i data-lucide="chevrons-up" class="w-6 h-6 group-hover:-translate-y-1 transition-transform"></i>
@@ -599,16 +648,11 @@
         </div>
 
 
-        <!-- ========================================== -->
-        <!--                PAGE: NEWS                  -->
-        <!-- ========================================== -->
         <div id="page-news" class="page-section hidden max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-20 space-y-10">
             <h1 class="font-gta text-4xl sm:text-5xl md:text-7xl text-white tracking-widest border-b-4 border-[var(--gta-pink)] pb-4 text-center">LATEST DISPATCHES</h1>
 
-            <!-- Static News Container -->
             <div id="news-container" class="space-y-10">
                 
-                <!-- Article 1 -->
                 <div class="gta-panel p-0 w-full hover:scale-[1.02] hover:shadow-[12px_12px_0_rgba(0,0,0,0.7)] transition-all duration-300">
                     <div class="bg-[var(--weazel-red)] p-3 md:p-4 flex items-center justify-between border-b-4 border-black">
                         <div class="flex items-center gap-2 sm:gap-3">
@@ -627,7 +671,6 @@
                     </div>
                 </div>
 
-                <!-- Article 2 -->
                 <div class="gta-panel p-0 w-full hover:scale-[1.02] hover:shadow-[12px_12px_0_rgba(0,0,0,0.7)] transition-all duration-300">
                     <div class="bg-gray-800 p-3 md:p-4 flex items-center justify-between border-b-4 border-black">
                         <div class="flex items-center gap-2 sm:gap-3">
@@ -646,7 +689,6 @@
                     </div>
                 </div>
 
-                <!-- Article 3 -->
                 <div class="gta-panel p-0 w-full hover:scale-[1.02] hover:shadow-[12px_12px_0_rgba(0,0,0,0.7)] transition-all duration-300">
                     <div class="bg-[var(--gta-blue)] p-3 md:p-4 flex items-center justify-between border-b-4 border-black">
                         <div class="flex items-center gap-2 sm:gap-3">
@@ -670,12 +712,8 @@
         </div>
 
 
-        <!-- ========================================== -->
-        <!--              PAGE: COUNTER                 -->
-        <!-- ========================================== -->
         <div id="page-counter" class="page-section hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 md:pt-16 flex flex-col items-center justify-center min-h-[80vh]">
             
-            <!-- Logo Section -->
             <div class="flex flex-col items-center drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)] z-20 text-center w-full mb-12 md:mb-16">
                 <div class="relative flex flex-col items-center w-fit">
                     <h1 class="font-gta text-[1.8rem] min-[375px]:text-[2.1rem] sm:text-[3.8rem] md:text-[6rem] lg:text-[8rem] leading-none text-white tracking-tight text-center whitespace-nowrap md:whitespace-normal" style="text-shadow: 6px 6px 0 #000;">
@@ -684,28 +722,23 @@
                 </div>
             </div>
 
-            <!-- BRUTALIST BLOCK COUNTER -->
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8 w-full max-w-6xl z-10">
 
-                <!-- DAYS -->
                 <div class="bg-[var(--gta-pink)] border-4 sm:border-[6px] border-black shadow-[8px_8px_0_#000] md:shadow-[12px_12px_0_#000] flex flex-col items-center justify-center p-4 sm:p-6 md:p-8 -rotate-2 hover:rotate-0 transition-transform duration-300">
                     <span class="timer-days font-gta text-[4.5rem] sm:text-[6rem] md:text-[8rem] lg:text-[10rem] leading-none text-black tabular-nums tracking-tighter">000</span>
                     <div class="bg-black text-white font-gta text-base sm:text-xl md:text-2xl px-3 sm:px-4 py-1 mt-2 tracking-[0.2em]">DAYS</div>
                 </div>
 
-                <!-- HOURS -->
                 <div class="bg-[var(--gta-blue)] border-4 sm:border-[6px] border-black shadow-[8px_8px_0_#000] md:shadow-[12px_12px_0_#000] flex flex-col items-center justify-center p-4 sm:p-6 md:p-8 rotate-1 hover:rotate-0 transition-transform duration-300 mt-0 lg:mt-6">
                     <span class="timer-hours font-gta text-[4.5rem] sm:text-[6rem] md:text-[8rem] lg:text-[10rem] leading-none text-black tabular-nums tracking-tighter">00</span>
                     <div class="bg-black text-white font-gta text-base sm:text-xl md:text-2xl px-3 sm:px-4 py-1 mt-2 tracking-[0.2em]">HOURS</div>
                 </div>
 
-                <!-- MINUTES -->
                 <div class="bg-[var(--gta-yellow)] border-4 sm:border-[6px] border-black shadow-[8px_8px_0_#000] md:shadow-[12px_12px_0_#000] flex flex-col items-center justify-center p-4 sm:p-6 md:p-8 -rotate-1 hover:rotate-0 transition-transform duration-300 mt-0 lg:-mt-2">
                     <span class="timer-minutes font-gta text-[4.5rem] sm:text-[6rem] md:text-[8rem] lg:text-[10rem] leading-none text-black tabular-nums tracking-tighter">00</span>
                     <div class="bg-black text-white font-gta text-base sm:text-xl md:text-2xl px-3 sm:px-4 py-1 mt-2 tracking-[0.2em]">MINUTES</div>
                 </div>
 
-                <!-- SECONDS (White Background) -->
                 <div class="bg-white border-4 sm:border-[6px] border-black shadow-[8px_8px_0_#000] md:shadow-[12px_12px_0_#000] flex flex-col items-center justify-center p-4 sm:p-6 md:p-8 rotate-2 hover:rotate-0 transition-transform duration-300 mt-0 lg:mt-8">
                     <span class="timer-seconds font-gta text-[4.5rem] sm:text-[6rem] md:text-[8rem] lg:text-[10rem] leading-none text-black tabular-nums tracking-tighter">00</span>
                     <div class="bg-black text-white font-gta text-base sm:text-xl md:text-2xl px-3 sm:px-4 py-1 mt-2 tracking-[0.2em]">SECONDS</div>
@@ -717,7 +750,6 @@
 
     </main>
 
-    <!-- Lightbox -->
     <div id="lightbox" class="fixed inset-0 z-[200] bg-black/90 hidden flex flex-col items-center justify-center p-4 cursor-pointer" onclick="closeLightbox()">
         <div class="bg-white p-2 pb-10 border-4 border-black shadow-[10px_10px_0_rgba(255,110,180,0.5)] relative">
             <img id="lb-img" src="" class="max-w-full max-h-[80vh] object-cover border border-gray-300">
@@ -785,7 +817,7 @@
             { name: "Richard", alias: "Big Buff", img: "https://i.imgur.com/XLb1Qxn.jpeg", role: "Hybrid", desc: "A versatile powerhouse bridging brains and brawn. Physically imposing with diverse operational skills, Richard is equally comfortable breaching a bank vault as he is negotiating with rival syndicates. The rest of his crew is wishing him a speedy recovery, they know he will be back soon. He still remains a vital shot-caller.", stats: { hangout: "Gym", vehicle: "Mercedes 300 SLR", location: "Los Santos", attributes: { stamina: 90, shooting: 90, strength: 100, driving: 75 } }, stars: 5 },
             { name: "Youra", alias: "YG", img: "https://i.imgur.com/aR73Lgr.jpeg", role: "Business Front", desc: "A legitimate businessman with a clean record. Youra runs a popular local coffee shop and serves as a community leader. However, authorities strongly suspect he is tied to the rest of the suspects in some way, acting as a clean front for meetings, although nothing has ever been proven.", stats: { hangout: "Coffee Shop", vehicle: "Rolls Royce Phantom", location: "Los Santos", attributes: { stamina: 66, shooting: 55, strength: 57, driving: 70 } }, stars: 0 },
             { name: "Iven", alias: "Big Van", img: "https://i.imgur.com/6h9lzGe.jpeg", role: "Medical Support", desc: "Working in the medical field, he has access to all sorts of restricted records and medicine. He serves as the crew's primary medical connect, patching up operatives off the books and securing critical pharmaceutical supplies before the VCPD can trace the injuries.", stats: { hangout: "Local Clinics", vehicle: "BMW M8", location: "Los Santos", attributes: { stamina: 95, shooting: 87, strength: 90, driving: 64 } }, stars: 5 },
-            { name: "Vic", alias: "The Mechanic", img: "https://imgur.com/pUDCdrF.jpeg", role: "Master Mechanic", desc: "Legendary wrench-turner. There isn't a vehicle in the state he can't fix, modify, or hotwire. Operating out of heavily guarded chop shops, Vic strips down hot sports cars and reinforces getaway trucks with military-grade armor before the VCPD even knows they're missing.", stats: { hangout: "Chop Shops", vehicle: "Various / All", location: "Los Santos", attributes: { stamina: 85, shooting: 45, strength: 77, driving: 100 } }, stars: 5, hidden: true },
+            { name: "Vic", alias: "The Mechanic", img: "https://imgur.com/pUDCdrF.jpeg", role: "Master Mechanic", desc: "Legendary wrench-turner. There isnt a vehicle in the state he can't fix, modify, or hotwire. Operating out of heavily guarded chop shops, Vic strips down hot sports cars and reinforces getaway trucks with military-grade armor before the VCPD even knows they're missing.", stats: { hangout: "Chop Shops", vehicle: "Various / All", location: "Los Santos", attributes: { stamina: 85, shooting: 45, strength: 77, driving: 100 } }, stars: 5, hidden: true },
             { name: "Mike", alias: "Big Mike", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Lowrider O.G.", desc: "Very respected OG in the Los Santos lowrider community. A father of two grown men, Mike runs a legitimate custom auto body shop by day. However, his deep-rooted connections mean he's often pulled back into the life, providing untraceable custom hydraulics, reinforced chassis, and discrete vehicle storage for high-stakes crews.", stats: { hangout: "Streets", vehicle: "Lowrider", location: "Los Santos", attributes: { stamina: 60, shooting: 75, strength: 87, driving: 81 } }, stars: 5, hidden: true },
             { name: "Shavarsh", alias: "The Varsh", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Scientist", desc: "A brilliant, albeit erratic, underground scientist who operates out of a highly classified, makeshift laboratory. Shavarsh specializes in synthesizing cutting-edge chemical compounds and highly volatile thermite charges. He frequently lends his unorthodox expertise to anyone in the syndicate who needs a lock melted or a specialized medical concoction.", stats: { hangout: "The Lab", vehicle: "Mercedes", location: "Los Santos", attributes: { stamina: 60, shooting: 75, strength: 80, driving: 70 } }, stars: 5, hidden: true },
             { name: "Tom", alias: "Hursh", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Gym Leader", desc: "By all appearances, Tom is an athletic, clean-cut team leader at an upscale Los Santos rock climbing gym. A good man who got caught up with the wrong folks to pay off mounting debts, his unparalleled scaling abilities and stamina make him the perfect asset for high-altitude infiltrations and bypassing top-tier security systems from the outside.", stats: { hangout: "Rock Climbing Gyms", vehicle: "Honda Accord", location: "Los Santos", attributes: { stamina: 85, shooting: 77, strength: 83, driving: 77 } }, stars: 5, hidden: true },
@@ -1092,6 +1124,12 @@
         renderSuspectGrid();
         openDossier(currentIdx);
         setDailyMessage();
+        
+        // Connect the Resize Observer to ensure sidebar matches layout exactly
+        const resizeObserver = new ResizeObserver(() => matchSidebarHeight());
+        document.querySelectorAll('#dos-left-col').forEach(col => {
+            resizeObserver.observe(col);
+        });
 
         // --- LIGHTBOX ---
         function openLightbox(src) {
