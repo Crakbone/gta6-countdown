@@ -139,13 +139,11 @@
 </head>
 <body class="min-h-screen relative pb-10 selection:bg-[var(--gta-pink)] selection:text-white">
 
-    <!-- Background Layers -->
     <div class="bg-sunset"></div>
     <div class="bg-halftone"></div>
     <div class="bg-vignette"></div>
     <div class="bg-overlay"></div>
 
-    <!-- === TOP NAVIGATION BAR === -->
     <nav class="bg-black border-b-4 border-[var(--gta-pink)] sticky top-0 z-[100] shadow-[0_4px_15px_rgba(0,0,0,0.8)]">
         <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-14 md:h-16">
@@ -162,16 +160,11 @@
         </div>
     </nav>
 
-    <!-- === MAIN PAGES WRAPPER === -->
     <main class="relative z-10 w-full">
 
-        <!-- ========================================== -->
-        <!--                PAGE: HOME                  -->
-        <!-- ========================================== -->
         <div id="page-home" class="page-section max-w-7xl mx-auto px-1 sm:px-6 lg:px-8 pt-6 flex flex-col">
             
-            <!-- HEADER & HUD (COUNTDOWN) -->
-            <header class="order-2 md:order-1 flex flex-col lg:flex-row items-center lg:items-start justify-between gap-4 md:gap-6 mb-4 md:mb-8 text-center mt-2 md:mt-0">
+            <header class="order-2 md:order-1 flex flex-col lg:flex-row items-center lg:items-start justify-between gap-4 md:gap-6 mb-4 md:mb-8 mt-2 md:mt-0 text-center">
                 <div class="w-full lg:w-1/2 flex flex-col justify-center items-center lg:items-start relative drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)]">
                     <div class="relative w-fit flex flex-col items-center mb-4 lg:mb-0">
                         <h1 class="font-gta text-[1.8rem] min-[375px]:text-[2.1rem] sm:text-[3rem] md:text-[5rem] lg:text-[6.5rem] leading-none text-white tracking-tight text-center whitespace-nowrap md:whitespace-normal" style="text-shadow: 4px 4px 0 #000;">
@@ -182,12 +175,10 @@
 
                 <div class="w-full lg:w-auto flex justify-center lg:justify-end mt-2 md:mt-4 lg:mt-8 lg:mr-8">
                     <div class="flex flex-col items-center w-full sm:w-auto">
-                        <!-- COUNTDOWN OVERLAY (Centered on top of Counter) -->
                         <div class="bg-[var(--gta-pink)] text-white font-handwriting text-[1.2rem] sm:text-[1.5rem] md:text-[2rem] lg:text-[2.5rem] px-3 sm:px-4 py-0.5 border-2 border-black shadow-[4px_4px_0_#000] -rotate-[4deg] relative z-20 whitespace-nowrap leading-none -mb-3 sm:-mb-4 md:-mb-5 translate-y-1" style="text-shadow: 2px 2px 0 #000;">
                             COUNTDOWN
                         </div>
                         
-                        <!-- DESKTOP TIMER (Hidden on mobile) -->
                         <div class="hidden md:flex bg-[var(--gta-yellow)] border-4 border-black p-3 sm:p-4 md:p-6 pt-5 sm:pt-6 md:pt-8 rounded-xl flex-col items-center shadow-[6px_6px_0_rgba(0,0,0,0.5)] w-full max-w-full overflow-hidden relative z-10">
                             <div class="flex justify-center items-start gap-1.5 sm:gap-3 text-white font-gta text-[2.2rem] min-[375px]:text-4xl sm:text-5xl md:text-7xl hud-timer tracking-wide tabular-nums leading-none">
                                 <div class="flex flex-col items-center w-[3.2ch]">
@@ -212,21 +203,20 @@
                             </div>
                         </div>
 
-                        <!-- MOBILE TIMER (Brutalist, Hidden on Desktop) -->
                         <div class="grid md:hidden grid-cols-2 gap-2 sm:gap-3 w-full max-w-[320px] relative z-10 pt-2 pb-2">
-                            <div class="bg-[var(--gta-pink)] border-4 border-black shadow-[4px_4px_0_#000] flex flex-col items-center justify-center py-3 px-1 -rotate-2 hover:rotate-0 transition-transform">
+                            <div class="bg-[var(--gta-pink)] border-4 border-black shadow-[4px_4px_0_#000] flex flex-col items-center justify-center py-3 px-1 transition-transform">
                                 <span class="timer-days font-gta text-[3.2rem] sm:text-[4rem] leading-none text-black tabular-nums tracking-tighter">000</span>
                                 <div class="bg-black text-white font-gta text-[10px] sm:text-xs px-2 py-0.5 mt-1 tracking-[0.2em]">DAYS</div>
                             </div>
-                            <div class="bg-[var(--gta-blue)] border-4 border-black shadow-[4px_4px_0_#000] flex flex-col items-center justify-center py-3 px-1 rotate-1 hover:rotate-0 transition-transform mt-2">
+                            <div class="bg-[var(--gta-blue)] border-4 border-black shadow-[4px_4px_0_#000] flex flex-col items-center justify-center py-3 px-1 transition-transform">
                                 <span class="timer-hours font-gta text-[3.2rem] sm:text-[4rem] leading-none text-black tabular-nums tracking-tighter">00</span>
                                 <div class="bg-black text-white font-gta text-[10px] sm:text-xs px-2 py-0.5 mt-1 tracking-[0.2em]">HOURS</div>
                             </div>
-                            <div class="bg-[var(--gta-yellow)] border-4 border-black shadow-[4px_4px_0_#000] flex flex-col items-center justify-center py-3 px-1 -rotate-1 hover:rotate-0 transition-transform -mt-1">
+                            <div class="bg-[var(--gta-yellow)] border-4 border-black shadow-[4px_4px_0_#000] flex flex-col items-center justify-center py-3 px-1 transition-transform">
                                 <span class="timer-minutes font-gta text-[3.2rem] sm:text-[4rem] leading-none text-black tabular-nums tracking-tighter">00</span>
                                 <div class="bg-black text-white font-gta text-[10px] sm:text-xs px-2 py-0.5 mt-1 tracking-[0.2em]">MINUTES</div>
                             </div>
-                            <div class="bg-white border-4 border-black shadow-[4px_4px_0_#000] flex flex-col items-center justify-center py-3 px-1 rotate-2 hover:rotate-0 transition-transform mt-3">
+                            <div class="bg-white border-4 border-black shadow-[4px_4px_0_#000] flex flex-col items-center justify-center py-3 px-1 transition-transform">
                                 <span class="timer-seconds font-gta text-[3.2rem] sm:text-[4rem] leading-none text-black tabular-nums tracking-tighter">00</span>
                                 <div class="bg-black text-white font-gta text-[10px] sm:text-xs px-2 py-0.5 mt-1 tracking-[0.2em]">SECONDS</div>
                             </div>
@@ -235,14 +225,12 @@
                 </div>
             </header>
 
-            <!-- PROMO BANNER -->
             <div class="order-1 md:order-2 w-full mb-4 md:mb-8 border-4 border-black shadow-[6px_6px_0_rgba(0,0,0,0.5)] sm:shadow-[10px_10px_0_rgba(0,0,0,0.5)] hover:shadow-[10px_10px_0_var(--gta-pink)] transition-shadow duration-300 overflow-hidden relative group bg-black cursor-pointer" onclick="openLightbox('https://i.imgur.com/LjIgL3o.jpeg')">
                 <img src="https://i.imgur.com/LjIgL3o.jpeg" alt="Promo Banner" class="w-full h-auto object-cover group-hover:scale-[1.02] transition-transform duration-500">
             </div>
 
             <div class="order-3 flex flex-col lg:grid lg:grid-cols-12 gap-6">
                 
-                <!-- CREW MEMO (Mobile: Top, Desktop: Top Left) -->
                 <div class="lg:col-span-4 flex flex-col items-center lg:items-start w-full">
                     <div class="w-full max-w-sm bg-[#fdf8e4] text-black border-2 border-black py-2 px-3 sm:p-6 shadow-[4px_4px_0_rgba(0,0,0,0.5)] sm:shadow-[8px_8px_0_rgba(0,0,0,0.5)] hover:scale-105 sm:hover:shadow-[12px_12px_0_rgba(0,0,0,0.7)] transition-all duration-300 relative">
                         <div class="absolute -top-1.5 sm:-top-3 left-1/2 transform -translate-x-1/2 w-10 h-3 sm:w-16 sm:h-6 bg-white/60 border border-gray-300 shadow-sm backdrop-blur-sm z-10"></div>
@@ -258,9 +246,7 @@
                     </div>
                 </div>
 
-                <!-- VCPD DATABASE (Mobile: Middle, Desktop: Right spanning 3 rows) -->
                 <div class="lg:col-span-8 lg:row-span-3 flex flex-col h-auto w-full">
-                    <!-- Home Page Associates Header & Search -->
                     <div class="flex flex-col border-4 border-b-0 border-black bg-[var(--gta-blue)] rounded-t-xl shadow-[8px_8px_0_rgba(0,0,0,0.5)] relative z-20 overflow-hidden">
                         <div class="flex items-center justify-between p-3 border-b-4 border-black">
                             <div class="flex items-center gap-3">
@@ -269,72 +255,62 @@
                             </div>
                             <div class="bg-black text-[var(--gta-blue)] font-gta text-xl px-3 py-1 hidden md:block shadow-[2px_2px_0_#fff]">DATABASE</div>
                         </div>
-                        <!-- Search Bar Row -->
-                        <div class="bg-[#111] p-2 md:p-3 flex items-center relative z-20">
-                            <i data-lucide="search" class="text-gray-400 w-5 h-5 ml-2 mr-3 flex-shrink-0"></i>
-                            <input type="text" id="home-search" placeholder="SEARCH..." class="w-full bg-transparent border-none outline-none text-white font-gta tracking-widest text-lg sm:text-xl placeholder-gray-600 uppercase" autocomplete="off" onkeyup="handleSearch(event, this)">
-                            <span id="home-search-status" class="absolute right-4 text-[var(--gta-pink)] font-gta text-sm sm:text-base hidden">NOT FOUND</span>
+                        <div class="bg-[#111] p-1.5 md:p-3 flex items-center relative z-20">
+                            <i data-lucide="search" class="text-gray-400 w-4 h-4 md:w-5 md:h-5 ml-2 mr-2 md:mr-3 flex-shrink-0"></i>
+                            <input type="text" id="home-search" placeholder="SEARCH..." class="w-full bg-transparent border-none outline-none text-white font-gta tracking-widest text-sm md:text-xl placeholder-gray-600 uppercase" autocomplete="off" onkeyup="handleSearch(event, this)">
+                            <span id="home-search-status" class="absolute right-4 text-[var(--gta-pink)] font-gta text-[10px] sm:text-base hidden">NOT FOUND</span>
                         </div>
                     </div>
 
                     <div class="gta-panel p-0 flex flex-col md:flex-row w-full items-stretch border-4 border-black rounded-b-xl shadow-[8px_8px_0_rgba(0,0,0,0.5)] flex-1 overflow-hidden md:overflow-clip relative z-10">
                         
-                        <!-- Sidebar (Now positioned absolute on desktop to overlay left section) -->
-                        <div class="associates-sidebar bg-[#111] border-b-4 md:border-b-0 md:border-r-4 border-black flex flex-col md:flex-row transition-all duration-300 w-full md:w-16 flex-shrink-0 z-30 md:absolute md:left-0 md:top-0 md:bottom-0 md:shadow-[6px_0_15px_rgba(0,0,0,0.7)]">
-                            <button onclick="toggleSidebar()" class="sidebar-btn w-full md:w-16 md:h-full flex flex-row md:flex-col items-center justify-between md:justify-center bg-[var(--gta-yellow)] hover:bg-[var(--gta-orange)] text-black transition-colors p-2 md:py-4 cursor-pointer border-none shadow-[inset_0_-4px_0_rgba(0,0,0,0.2)] md:shadow-[inset_-4px_0_0_rgba(0,0,0,0.2)] group outline-none flex-shrink-0 z-10 relative">
-                                <div class="flex flex-row md:flex-col items-center gap-2">
-                                    <i data-lucide="contact" class="w-5 h-5 md:w-7 md:h-7 flex-shrink-0"></i>
-                                    <span class="sidebar-text font-gta text-sm sm:text-base tracking-widest mt-1 block md:hidden whitespace-nowrap">NOTORIOUS SUSPECTS</span>
-                                    <div class="sidebar-text-vertical hidden md:flex flex-col items-center gap-2 mt-4 text-black/60 group-hover:text-black">
-                                        <i data-lucide="chevron-right" class="w-4 h-4 vertical-arrow transition-transform duration-300"></i>
-                                        <span class="font-gta text-base sm:text-lg tracking-widest vertical-text text-black">NOTORIOUS SUSPECTS</span>
-                                        <i data-lucide="chevron-right" class="w-4 h-4 vertical-arrow transition-transform duration-300"></i>
+                        <div class="associates-sidebar bg-[#111] border-r-4 border-black flex flex-row transition-all duration-300 w-10 sm:w-12 md:w-16 flex-shrink-0 z-30 absolute left-0 top-0 bottom-0 shadow-[6px_0_15px_rgba(0,0,0,0.7)] overflow-hidden">
+                            <button onclick="toggleSidebar()" class="sidebar-btn w-10 sm:w-12 md:w-16 h-full flex flex-col items-center justify-start md:justify-center bg-[var(--gta-yellow)] hover:bg-[var(--gta-orange)] text-black transition-colors py-3 md:py-4 cursor-pointer border-none shadow-[inset_-4px_0_0_rgba(0,0,0,0.2)] group outline-none flex-shrink-0 z-20 relative">
+                                <i data-lucide="contact" class="w-5 h-5 md:w-7 md:h-7 flex-shrink-0"></i>
+                                <div class="flex flex-col items-center gap-1 mt-4 text-black/60 group-hover:text-black">
+                                    <i data-lucide="chevron-right" class="w-3 h-3 md:w-4 md:h-4 vertical-arrow transition-transform duration-300"></i>
+                                    <span class="font-gta text-xs sm:text-sm md:text-lg tracking-widest vertical-text text-black">SUSPECTS</span>
+                                    <i data-lucide="chevron-right" class="w-3 h-3 md:w-4 md:h-4 vertical-arrow transition-transform duration-300"></i>
+                                </div>
+                            </button>
+                            <div class="crew-menu-container hidden flex-col flex-1 overflow-y-auto custom-scrollbar p-2 sm:p-4 space-y-2 bg-[#111] w-[200px] md:w-auto h-full">
+                                </div>
+                        </div>
+
+                        <div class="dossier-view flex-1 flex flex-col md:flex-row transition-all duration-300 opacity-0 translate-y-4 min-w-0 bg-[#e0e0e0] text-black relative z-10 ml-10 sm:ml-12 md:ml-16">
+
+                            <div class="w-full md:w-5/12 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] bg-gray-300 border-b-4 md:border-b-0 md:border-r-4 border-black relative p-2 sm:p-6 pt-6 sm:pt-12 md:pt-14 flex flex-col items-center justify-start">
+                                
+                                <div class="w-full max-w-[260px] md:max-w-[240px] aspect-square border-4 border-black shadow-[6px_6px_0_rgba(0,0,0,0.3)] bg-white p-1 relative z-10 hover:scale-105 hover:shadow-[10px_10px_0_rgba(0,0,0,0.5)] transition-all duration-300">
+                                    <h3 class="dos-name absolute top-2 left-2 text-3xl font-gta text-white leading-none block md:hidden z-20 text-left uppercase" style="text-shadow: 2px 2px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;">NAME</h3>
+                                    <img src="" class="dos-img w-full h-full object-cover">
+                                </div>
+                                
+                                <div class="dos-stars-wrapper w-full max-w-[260px] md:max-w-[240px] bg-black border-4 border-black p-2 mt-4 text-center shadow-[4px_4px_0_rgba(0,0,0,0.4)] hover:scale-105 transition-transform duration-300 hidden md:block">
+                                    <div class="dos-stars flex justify-center gap-1 text-[var(--gta-yellow)] text-xl drop-shadow-[0_0_5px_rgba(255,204,0,0.5)]"></div>
+                                </div>
+
+                                <div class="w-full max-w-[280px] md:max-w-[260px] mt-4 bg-[#111] border-4 border-black shadow-[4px_4px_0_rgba(0,0,0,0.3)] p-3 sm:p-4 text-white font-roboto hover:scale-105 hover:shadow-[8px_8px_0_rgba(0,0,0,0.4)] transition-all duration-300 relative h-auto min-h-[280px] sm:h-[250px] flex flex-col justify-center">
+                                    <div class="overflow-visible sm:overflow-hidden h-full flex flex-col justify-start md:justify-center">
+                                        
+                                        <div class="flex flex-col w-full md:hidden border-b border-gray-700 pb-2 mb-2 flex-shrink-0">
+                                            <div class="flex items-center justify-between w-full mb-1.5">
+                                                <div class="dos-alias text-2xl font-handwriting text-[var(--gta-pink)] leading-none">"Alias"</div>
+                                                <div class="dos-stars-wrapper flex justify-end">
+                                                    <div class="dos-stars flex justify-end gap-0.5 text-[var(--gta-yellow)] [&>svg]:w-4 [&>svg]:h-4"></div>
+                                                </div>
+                                            </div>
+                                            <div class="bg-white text-black px-2 py-1 shadow-[2px_2px_0_var(--gta-blue)] border border-black inline-block self-start">
+                                                <span class="dos-role font-gta text-xs leading-none uppercase">ROLE</span>
+                                            </div>
+                                        </div>
+
+                                        <span class="text-[10px] md:text-xs text-gray-500 uppercase tracking-widest font-bold mb-1 block opacity-70">BIO</span>
+                                        <div class="dos-desc flex-grow text-[15px] md:text-[15px] lg:text-base font-roboto leading-relaxed text-gray-300 overflow-visible sm:overflow-y-auto custom-scrollbar pr-1"></div>
                                     </div>
                                 </div>
-                                <i data-lucide="chevron-down" class="sidebar-arrow w-5 h-5 transition-transform md:hidden duration-300"></i>
-                            </button>
-                            <div class="crew-menu-container hidden flex-col flex-1 overflow-y-auto custom-scrollbar p-2 sm:p-4 space-y-2 bg-[#111]">
-                                <!-- Menu injected here -->
-                            </div>
-                        </div>
-
-                        <!-- Dossier View -->
-                        <div class="dossier-view flex-1 flex flex-col md:flex-row transition-all duration-300 opacity-0 translate-y-4 min-w-0 bg-[#e0e0e0] text-black relative z-10 md:ml-16">
-
-            <div class="w-full md:w-5/12 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] bg-gray-300 border-b-4 md:border-b-0 md:border-r-4 border-black relative p-2 sm:p-6 pt-6 sm:pt-12 md:pt-14 flex flex-col items-center justify-start">
-                
-                <div class="w-full max-w-[260px] md:max-w-[240px] aspect-square border-4 border-black shadow-[6px_6px_0_rgba(0,0,0,0.3)] bg-white p-1 relative z-10 hover:scale-105 hover:shadow-[10px_10px_0_rgba(0,0,0,0.5)] transition-all duration-300">
-                    <!-- MOBILE-ONLY HEADER (Name over image) -->
-                    <h3 class="dos-name absolute top-2 left-2 text-3xl font-gta text-white leading-none block md:hidden z-20 text-left uppercase" style="text-shadow: 2px 2px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;">NAME</h3>
-                    <img src="" class="dos-img w-full h-full object-cover">
-                </div>
-                
-                <!-- Desktop Only: Stars container -->
-                <div class="w-full max-w-[260px] md:max-w-[240px] bg-black border-4 border-black p-2 mt-4 text-center shadow-[4px_4px_0_rgba(0,0,0,0.4)] hover:scale-105 transition-transform duration-300 hidden md:block">
-                    <div class="dos-stars flex justify-center gap-1 text-[var(--gta-yellow)] text-xl drop-shadow-[0_0_5px_rgba(255,204,0,0.5)]"></div>
-                </div>
-
-                <!-- Auto height on mobile, fixed min-height on desktop -->
-                <div class="w-full max-w-[280px] md:max-w-[260px] mt-4 bg-[#111] border-4 border-black shadow-[4px_4px_0_rgba(0,0,0,0.3)] p-3 sm:p-4 text-white font-roboto hover:scale-105 hover:shadow-[8px_8px_0_rgba(0,0,0,0.4)] transition-all duration-300 relative h-auto min-h-[280px] sm:h-[250px] flex flex-col justify-center">
-                    <div class="overflow-visible sm:overflow-hidden h-full flex flex-col justify-start md:justify-center">
-                        
-                        <!-- MOBILE ONLY: Alias, Role, and Stars inside Bio Box -->
-                        <div class="flex flex-col w-full md:hidden border-b border-gray-700 pb-2 mb-2 flex-shrink-0">
-                            <div class="flex items-center justify-between w-full mb-1.5">
-                                <div class="dos-alias text-2xl font-handwriting text-[var(--gta-pink)] leading-none">"Alias"</div>
-                                <div class="dos-stars flex justify-end gap-0.5 text-[var(--gta-yellow)] [&>svg]:w-4 [&>svg]:h-4"></div>
-                            </div>
-                            <div class="bg-white text-black px-2 py-1 shadow-[2px_2px_0_var(--gta-blue)] border border-black inline-block self-start">
-                                <span class="dos-role font-gta text-xs leading-none uppercase">ROLE</span>
-                            </div>
-                        </div>
-
-                        <!-- Bio text expands naturally on mobile -->
-                        <div class="dos-desc flex-grow text-[15px] md:text-xs font-roboto leading-relaxed text-gray-300 overflow-visible sm:overflow-y-auto custom-scrollbar pr-1"></div>
-                    </div>
-                </div>
-                <div class="w-full max-w-[260px] md:max-w-[240px] mt-4 flex justify-between gap-3 relative z-10">
-                    <button onclick="navCarousel(-1)" class="flex-1 bg-[var(--gta-blue)] border-2 border-black p-2 flex justify-center items-center hover:bg-[var(--gta-pink)] hover:text-white transition-colors shadow-[3px_3px_0_rgba(0,0,0,1)] outline-none hover:scale-105 text-black">
+                                <div class="w-full max-w-[260px] md:max-w-[240px] mt-4 flex justify-between gap-3 relative z-10">
+                                    <button onclick="navCarousel(-1)" class="flex-1 bg-[var(--gta-blue)] border-2 border-black p-2 flex justify-center items-center hover:bg-[var(--gta-pink)] hover:text-white transition-colors shadow-[3px_3px_0_rgba(0,0,0,1)] outline-none hover:scale-105 text-black">
                                         <i data-lucide="arrow-left" class="w-6 h-6"></i>
                                     </button>
                                     <button onclick="navCarousel(1)" class="flex-1 bg-[var(--gta-blue)] border-2 border-black p-2 flex justify-center items-center hover:bg-[var(--gta-pink)] hover:text-white transition-colors shadow-[3px_3px_0_rgba(0,0,0,1)] outline-none hover:scale-105 text-black">
@@ -344,7 +320,6 @@
                             </div>
 
                             <div class="w-full md:w-7/12 p-2 sm:p-6 md:p-8 flex flex-col relative z-10 bg-white">
-                                <!-- DESKTOP HEADER (Hidden on mobile) -->
                                 <div class="border-b-4 border-black pb-4 mb-5 hidden md:block">
                                     <h3 class="dos-name text-4xl sm:text-5xl md:text-6xl font-gta text-black leading-none drop-shadow-[2px_2px_0_rgba(0,0,0,0.2)] break-words">NAME</h3>
                                     <div class="dos-alias text-xl sm:text-3xl font-handwriting text-[var(--gta-pink)] mt-1 mb-3">"Alias"</div>
@@ -404,7 +379,6 @@
                     </div>
                 </div>
 
-                <!-- WEAZEL NEWS (Mobile: Bottom, Desktop: Bottom Left) -->
                 <div class="lg:col-span-4 flex flex-col items-center lg:items-start w-full">
                     <div class="gta-panel p-0 w-full hover:scale-[1.02] hover:shadow-[12px_12px_0_rgba(0,0,0,0.7)] transition-all duration-300">
                         <div class="bg-[var(--weazel-red)] p-2 md:p-3 flex items-center gap-2 border-b-2 border-black">
@@ -422,7 +396,6 @@
                     </div>
                 </div>
 
-                <!-- MESSAGE OF THE DAY (Mobile: Bottom, Desktop: Bottom Left under Weazel) -->
                 <div class="lg:col-span-4 flex flex-col items-center lg:items-start w-full">
                     <div class="w-full max-w-sm bg-[#e8f4ea] text-black border-2 border-black py-2 px-3 sm:p-4 shadow-[4px_4px_0_rgba(0,0,0,0.5)] sm:shadow-[8px_8px_0_rgba(0,0,0,0.5)] hover:scale-105 sm:hover:shadow-[12px_12px_0_rgba(0,0,0,0.7)] transition-all duration-300 relative">
                         <div class="absolute -top-1.5 sm:-top-3 left-1/2 transform -translate-x-1/2 w-8 h-3 sm:w-12 sm:h-5 bg-white/60 border border-gray-300 shadow-sm backdrop-blur-sm z-10 rotate-2"></div>
@@ -430,7 +403,7 @@
                             <span class="font-gta text-[11px] sm:text-sm text-gray-800 leading-none pt-0.5">MESSAGE OF THE DAY</span>
                             <i data-lucide="quote" class="w-3 h-3 sm:w-4 sm:h-4 text-[var(--gta-green)]"></i>
                         </div>
-                        <div class="font-handwriting text-[16px] sm:text-2xl leading-tight text-gray-900 text-center px-1" id="motd-text">
+                        <div class="font-handwriting text-[16px] sm:text-2xl leading-tight text-center px-1" id="motd-text">
                             "Loading message..."
                         </div>
                     </div>
@@ -438,7 +411,6 @@
 
             </div>
 
-            <!-- SNAPMATIC GALLERY -->
             <div class="order-4 mt-8 pt-8 border-t-4 border-black relative mb-10">
                 <div class="flex items-center justify-start gap-3 mb-6 bg-black inline-flex px-5 py-2 border-2 border-white shadow-[4px_4px_0_rgba(0,0,0,0.5)] hover:scale-105 transition-transform duration-300">
                     <i data-lucide="camera" class="text-white w-5 sm:w-6 h-5 sm:h-6"></i>
@@ -479,9 +451,6 @@
         </div>
 
 
-        <!-- ========================================== -->
-        <!--                PAGE: CREW                  -->
-        <!-- ========================================== -->
         <div id="page-crew" class="page-section hidden max-w-7xl mx-auto px-1 sm:px-6 lg:px-8 pt-10 pb-20">
             
             <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between mb-8 border-b-4 border-[var(--gta-blue)] pb-4 gap-4 px-2 sm:px-0">
@@ -490,7 +459,6 @@
                     <i data-lucide="database" class="w-8 h-8 sm:w-10 sm:h-10 text-[var(--gta-blue)] hidden sm:block"></i>
                 </div>
                 
-                <!-- Crew Page Search Bar -->
                 <div class="w-full lg:w-1/3 min-w-[280px] bg-black border-2 border-[var(--gta-blue)] p-2 md:p-3 flex items-center relative shadow-[4px_4px_0_rgba(0,255,255,0.2)] focus-within:shadow-[4px_4px_0_var(--gta-blue)] transition-shadow z-20">
                     <i data-lucide="search" class="text-[var(--gta-blue)] w-5 h-5 ml-1 mr-3 flex-shrink-0"></i>
                     <input type="text" id="crew-search" placeholder="SEARCH..." class="w-full bg-transparent border-none outline-none text-white font-gta tracking-widest text-lg sm:text-xl placeholder-gray-600 uppercase" autocomplete="off" onkeyup="handleSearch(event, this)">
@@ -498,12 +466,9 @@
                 </div>
             </div>
 
-            <!-- The Suspect Grid -->
             <div id="suspect-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 md:gap-5 mb-12">
-                <!-- Generated via JS -->
-            </div>
+                </div>
 
-            <!-- The LSPD Classified File View -->
             <div id="crew-detail-panel" class="dossier-view gta-panel p-0 border-4 border-[var(--gta-blue)] flex flex-col bg-[#111] text-white transition-all duration-300 opacity-0 translate-y-4 shadow-[12px_12px_0_rgba(0,255,255,0.2)] hover:shadow-[12px_12px_0_var(--gta-blue)] scroll-mt-24">
                 
                 <div class="w-full bg-[var(--gta-blue)] text-black p-3 flex justify-between items-center border-b-4 border-black">
@@ -512,31 +477,24 @@
                 </div>
                 
                 <div class="flex flex-col md:flex-row w-full p-3 sm:p-6 md:p-8 gap-5 md:gap-8 relative overflow-hidden">
-                    <!-- Faded Background Watermark -->
                     <div class="absolute inset-0 flex items-center justify-center opacity-[0.03] pointer-events-none font-gta text-[8rem] sm:text-[12rem] text-white transform -rotate-12 z-0 whitespace-nowrap">CLASSIFIED</div>
 
-                    <!-- Left: Mugshot & Threat Level -->
                     <div class="w-full md:w-1/3 flex flex-col gap-4 z-10 items-center md:items-stretch pt-2 md:pt-0">
                         
                         <div class="w-[85%] md:w-full border-4 border-white p-2 bg-black relative shadow-[6px_6px_0_rgba(0,0,0,1)] hover:scale-105 transition-transform duration-300">
-                            <!-- MOBILE-ONLY HEADER (Name over image) -->
                             <h3 class="dos-name absolute top-2 left-2 text-4xl font-gta text-white leading-none block md:hidden z-20 text-left uppercase" style="text-shadow: 2px 2px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;">NAME</h3>
                             <img src="" class="dos-img w-full aspect-square object-cover filter contrast-125 saturate-110">
                         </div>
                         
-                        <!-- Desktop Only: Role block -->
                         <div class="w-[85%] md:w-full bg-[var(--gta-red)] text-white font-gta text-2xl sm:text-3xl text-center py-2 border-2 border-white shadow-[4px_4px_0_rgba(0,0,0,1)] uppercase hidden md:block"><span class="dos-role"></span></div>
                         
-                        <!-- Desktop Only: Stars block -->
-                        <div class="w-[85%] md:w-full bg-black border-2 border-white p-3 shadow-[4px_4px_0_rgba(0,0,0,1)] hidden md:block">
+                        <div class="dos-stars-wrapper w-[85%] md:w-full bg-black border-2 border-white p-3 shadow-[4px_4px_0_rgba(0,0,0,1)] hidden md:block">
                             <div class="dos-stars flex justify-center gap-1 text-[var(--gta-yellow)] text-xl sm:text-2xl drop-shadow-[0_0_5px_rgba(255,204,0,0.5)]"></div>
                         </div>
                     </div>
 
-                    <!-- Right: Massive Database Stats -->
                     <div class="w-full md:w-2/3 z-10 flex flex-col justify-center">
                         
-                        <!-- DESKTOP HEADER (Hidden on mobile) -->
                         <div class="hidden md:block">
                             <h3 class="dos-name text-4xl sm:text-6xl md:text-7xl font-gta text-[var(--gta-pink)] leading-none drop-shadow-[2px_2px_0_#fff] mb-1 uppercase text-center md:text-left"></h3>
                             <div class="dos-alias text-2xl sm:text-4xl font-handwriting text-white mb-4 text-center md:text-left">"Alias"</div>
@@ -548,7 +506,6 @@
                             <span class="bg-gray-800 px-1.5 py-0.5 text-white border border-gray-600 shadow-sm truncate max-w-[200px] inline-block align-bottom">VEH: <span class="dos-vehicle text-[var(--gta-blue)]"></span></span>
                         </div>
                         
-                        <!-- Enhanced Stats Grid -->
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 mb-5 bg-black/40 p-3 sm:p-4 border-l-4 border-[var(--gta-pink)] shadow-inner">
                             <div>
                                 <div class="flex justify-between text-[10px] sm:text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">
@@ -576,22 +533,23 @@
                             </div>
                         </div>
 
-                        <!-- Bio Container -> Auto height on mobile -->
                         <div class="bg-black/60 p-3 sm:p-4 border-l-4 border-[var(--gta-blue)] shadow-inner h-auto min-h-[200px] sm:h-[180px] md:h-[150px] flex flex-col justify-center">
                             <div class="overflow-visible sm:overflow-hidden h-full flex flex-col justify-start md:justify-center">
                                 
-                                <!-- MOBILE ONLY: Alias, Role, and Stars inside Bio Box -->
                                 <div class="flex flex-col w-full md:hidden border-b border-gray-700 pb-3 mb-3 flex-shrink-0">
                                     <div class="flex items-center justify-between w-full mb-2">
                                         <div class="dos-alias text-3xl font-handwriting text-white leading-none">"Alias"</div>
-                                        <div class="dos-stars flex justify-end gap-1 text-[var(--gta-yellow)] [&>svg]:w-5 [&>svg]:h-5"></div>
+                                        <div class="dos-stars-wrapper flex justify-end">
+                                            <div class="dos-stars flex justify-end gap-1 text-[var(--gta-yellow)] [&>svg]:w-5 [&>svg]:h-5"></div>
+                                        </div>
                                     </div>
                                     <div class="bg-[var(--gta-red)] text-white px-3 py-1 border border-white inline-block self-start shadow-[2px_2px_0_rgba(0,0,0,1)]">
                                         <span class="dos-role font-gta text-sm leading-none uppercase">ROLE</span>
                                     </div>
                                 </div>
 
-                                <div class="dos-desc flex-grow overflow-visible sm:overflow-y-auto custom-scrollbar text-[16px] md:text-base font-roboto leading-relaxed text-gray-200 pr-1"></div>
+                                <span class="text-[10px] md:text-xs text-gray-500 uppercase tracking-widest font-bold mb-1 block opacity-70">BIO</span>
+                                <div class="dos-desc flex-grow overflow-visible sm:overflow-y-auto custom-scrollbar text-[15px] md:text-[15px] lg:text-base font-roboto leading-relaxed text-gray-200 pr-1"></div>
                             </div>
                         </div>
 
@@ -599,7 +557,6 @@
                 </div>
             </div>
 
-            <!-- BACK TO TOP BUTTON -->
             <div class="mt-12 flex justify-center w-full">
                 <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="bg-[var(--gta-blue)] text-black font-gta tracking-widest text-xl md:text-2xl px-6 py-3 border-4 border-black shadow-[6px_6px_0_rgba(0,0,0,1)] hover:scale-105 hover:bg-[var(--gta-pink)] hover:text-white hover:shadow-[8px_8px_0_var(--gta-blue)] transition-all flex items-center gap-2 group outline-none">
                     <i data-lucide="chevrons-up" class="w-6 h-6 group-hover:-translate-y-1 transition-transform"></i>
@@ -610,16 +567,11 @@
         </div>
 
 
-        <!-- ========================================== -->
-        <!--                PAGE: NEWS                  -->
-        <!-- ========================================== -->
         <div id="page-news" class="page-section hidden max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-20 space-y-10">
             <h1 class="font-gta text-4xl sm:text-5xl md:text-7xl text-white tracking-widest border-b-4 border-[var(--gta-pink)] pb-4 text-center">LATEST DISPATCHES</h1>
 
-            <!-- Static News Container -->
             <div id="news-container" class="space-y-10">
                 
-                <!-- Article 1 -->
                 <div class="gta-panel p-0 w-full hover:scale-[1.02] hover:shadow-[12px_12px_0_rgba(0,0,0,0.7)] transition-all duration-300">
                     <div class="bg-[var(--weazel-red)] p-3 md:p-4 flex items-center justify-between border-b-4 border-black">
                         <div class="flex items-center gap-2 sm:gap-3">
@@ -638,7 +590,6 @@
                     </div>
                 </div>
 
-                <!-- Article 2 -->
                 <div class="gta-panel p-0 w-full hover:scale-[1.02] hover:shadow-[12px_12px_0_rgba(0,0,0,0.7)] transition-all duration-300">
                     <div class="bg-gray-800 p-3 md:p-4 flex items-center justify-between border-b-4 border-black">
                         <div class="flex items-center gap-2 sm:gap-3">
@@ -657,7 +608,6 @@
                     </div>
                 </div>
 
-                <!-- Article 3 -->
                 <div class="gta-panel p-0 w-full hover:scale-[1.02] hover:shadow-[12px_12px_0_rgba(0,0,0,0.7)] transition-all duration-300">
                     <div class="bg-[var(--gta-blue)] p-3 md:p-4 flex items-center justify-between border-b-4 border-black">
                         <div class="flex items-center gap-2 sm:gap-3">
@@ -681,12 +631,8 @@
         </div>
 
 
-        <!-- ========================================== -->
-        <!--              PAGE: COUNTER                 -->
-        <!-- ========================================== -->
         <div id="page-counter" class="page-section hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 md:pt-16 flex flex-col items-center justify-center min-h-[80vh]">
             
-            <!-- Logo Section -->
             <div class="flex flex-col items-center drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)] z-20 text-center w-full mb-12 md:mb-16">
                 <div class="relative flex flex-col items-center w-fit">
                     <h1 class="font-gta text-[1.8rem] min-[375px]:text-[2.1rem] sm:text-[3.8rem] md:text-[6rem] lg:text-[8rem] leading-none text-white tracking-tight text-center whitespace-nowrap md:whitespace-normal" style="text-shadow: 6px 6px 0 #000;">
@@ -695,28 +641,23 @@
                 </div>
             </div>
 
-            <!-- BRUTALIST BLOCK COUNTER -->
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8 w-full max-w-6xl z-10">
 
-                <!-- DAYS -->
                 <div class="bg-[var(--gta-pink)] border-4 sm:border-[6px] border-black shadow-[8px_8px_0_#000] md:shadow-[12px_12px_0_#000] flex flex-col items-center justify-center p-4 sm:p-6 md:p-8 -rotate-2 hover:rotate-0 transition-transform duration-300">
                     <span class="timer-days font-gta text-[4.5rem] sm:text-[6rem] md:text-[8rem] lg:text-[10rem] leading-none text-black tabular-nums tracking-tighter">000</span>
                     <div class="bg-black text-white font-gta text-base sm:text-xl md:text-2xl px-3 sm:px-4 py-1 mt-2 tracking-[0.2em]">DAYS</div>
                 </div>
 
-                <!-- HOURS -->
                 <div class="bg-[var(--gta-blue)] border-4 sm:border-[6px] border-black shadow-[8px_8px_0_#000] md:shadow-[12px_12px_0_#000] flex flex-col items-center justify-center p-4 sm:p-6 md:p-8 rotate-1 hover:rotate-0 transition-transform duration-300 mt-0 lg:mt-6">
                     <span class="timer-hours font-gta text-[4.5rem] sm:text-[6rem] md:text-[8rem] lg:text-[10rem] leading-none text-black tabular-nums tracking-tighter">00</span>
                     <div class="bg-black text-white font-gta text-base sm:text-xl md:text-2xl px-3 sm:px-4 py-1 mt-2 tracking-[0.2em]">HOURS</div>
                 </div>
 
-                <!-- MINUTES -->
                 <div class="bg-[var(--gta-yellow)] border-4 sm:border-[6px] border-black shadow-[8px_8px_0_#000] md:shadow-[12px_12px_0_#000] flex flex-col items-center justify-center p-4 sm:p-6 md:p-8 -rotate-1 hover:rotate-0 transition-transform duration-300 mt-0 lg:-mt-2">
                     <span class="timer-minutes font-gta text-[4.5rem] sm:text-[6rem] md:text-[8rem] lg:text-[10rem] leading-none text-black tabular-nums tracking-tighter">00</span>
                     <div class="bg-black text-white font-gta text-base sm:text-xl md:text-2xl px-3 sm:px-4 py-1 mt-2 tracking-[0.2em]">MINUTES</div>
                 </div>
 
-                <!-- SECONDS (White Background) -->
                 <div class="bg-white border-4 sm:border-[6px] border-black shadow-[8px_8px_0_#000] md:shadow-[12px_12px_0_#000] flex flex-col items-center justify-center p-4 sm:p-6 md:p-8 rotate-2 hover:rotate-0 transition-transform duration-300 mt-0 lg:mt-8">
                     <span class="timer-seconds font-gta text-[4.5rem] sm:text-[6rem] md:text-[8rem] lg:text-[10rem] leading-none text-black tabular-nums tracking-tighter">00</span>
                     <div class="bg-black text-white font-gta text-base sm:text-xl md:text-2xl px-3 sm:px-4 py-1 mt-2 tracking-[0.2em]">SECONDS</div>
@@ -728,7 +669,6 @@
 
     </main>
 
-    <!-- Lightbox -->
     <div id="lightbox" class="fixed inset-0 z-[200] bg-black/90 hidden flex flex-col items-center justify-center p-4 cursor-pointer" onclick="closeLightbox()">
         <div class="bg-white p-2 pb-10 border-4 border-black shadow-[10px_10px_0_rgba(255,110,180,0.5)] relative">
             <img id="lb-img" src="" class="max-w-full max-h-[80vh] object-cover border border-gray-300">
@@ -832,21 +772,18 @@
             // Toggle all instances of sidebar (Home & Crew pages)
             const sidebars = document.querySelectorAll('.associates-sidebar');
             const menus = document.querySelectorAll('.crew-menu-container');
-            const arrows = document.querySelectorAll('.sidebar-arrow');
             const verticalArrows = document.querySelectorAll('.vertical-arrow');
 
             // The width calc precisely targets the 5/12 left column + the 4rem button width so it hits the black line!
-            const expandedWidthClass = 'md:w-[calc(4rem+(100%-4rem)*5/12)]';
+            const expandedWidthClassDesktop = 'md:w-[calc(4rem+(100%-4rem)*5/12)]';
 
             if (isSidebarOpen) {
-                sidebars.forEach(s => { s.classList.remove('md:w-16'); s.classList.add(expandedWidthClass); });
+                sidebars.forEach(s => { s.classList.remove('w-10', 'sm:w-12', 'md:w-16'); s.classList.add('w-[250px]', expandedWidthClassDesktop); });
                 menus.forEach(m => { m.classList.remove('hidden'); m.classList.add('flex'); });
-                arrows.forEach(a => a.style.transform = 'rotate(180deg)');
                 verticalArrows.forEach(a => a.style.transform = 'rotate(180deg)');
             } else {
-                sidebars.forEach(s => { s.classList.add('md:w-16'); s.classList.remove(expandedWidthClass); });
+                sidebars.forEach(s => { s.classList.add('w-10', 'sm:w-12', 'md:w-16'); s.classList.remove('w-[250px]', expandedWidthClassDesktop); });
                 menus.forEach(m => { m.classList.add('hidden'); m.classList.remove('flex'); });
-                arrows.forEach(a => a.style.transform = 'rotate(0deg)');
                 verticalArrows.forEach(a => a.style.transform = 'rotate(0deg)');
             }
         }
@@ -914,6 +851,12 @@
                     stars += `<svg width="24" height="24" viewBox="0 0 24 24" fill="${i < c.stars ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2" class="${i < c.stars ? 'text-[var(--gta-yellow)]' : 'text-gray-600'} drop-shadow-[2px_2px_0_rgba(0,0,0,0.5)]"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`;
                 }
                 document.querySelectorAll('.dos-stars').forEach(el => el.innerHTML = stars);
+
+                // Handle 0 Stars (Hide Wrapper)
+                document.querySelectorAll('.dos-stars-wrapper').forEach(el => {
+                    if (c.stars === 0) el.classList.add('hidden');
+                    else el.classList.remove('hidden');
+                });
 
                 // Fade in smoothly
                 dossiers.forEach(dos => {
