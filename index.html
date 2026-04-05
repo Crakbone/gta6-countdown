@@ -171,7 +171,7 @@
         <div id="page-home" class="page-section max-w-7xl mx-auto px-1 sm:px-6 lg:px-8 pt-6 flex flex-col">
             
             <!-- HEADER & HUD (COUNTDOWN) -->
-            <header class="order-2 md:order-1 flex flex-col lg:flex-row items-center lg:items-start justify-between gap-4 md:gap-6 mb-6 md:mb-8 mt-2 md:mt-0 text-center">
+            <header class="order-2 md:order-1 flex flex-col lg:flex-row items-center lg:items-start justify-between gap-4 md:gap-6 mb-4 md:mb-8 text-center mt-2 md:mt-0">
                 <div class="w-full lg:w-1/2 flex flex-col justify-center items-center lg:items-start relative drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)]">
                     <div class="relative w-fit flex flex-col items-center mb-4 lg:mb-0">
                         <h1 class="font-gta text-[1.8rem] min-[375px]:text-[2.1rem] sm:text-[3rem] md:text-[5rem] lg:text-[6.5rem] leading-none text-white tracking-tight text-center whitespace-nowrap md:whitespace-normal" style="text-shadow: 4px 4px 0 #000;">
@@ -231,9 +231,6 @@
                                 <div class="bg-black text-white font-gta text-[10px] sm:text-xs px-2 py-0.5 mt-1 tracking-[0.2em]">SECONDS</div>
                             </div>
                         </div>
-
-                        <!-- Brutalist Holiday Message -->
-                        <div class="holiday-message hidden mt-3 sm:mt-4 text-center font-gta text-white bg-[var(--gta-pink)] border-4 border-black px-5 py-2 text-xl sm:text-2xl md:text-3xl tracking-widest shadow-[6px_6px_0_#000] transition-transform duration-300 uppercase hover:scale-105"></div>
                     </div>
                 </div>
             </header>
@@ -727,11 +724,6 @@
 
             </div>
 
-            <!-- Brutalist Holiday Message Anchor -->
-            <div class="mt-4 sm:mt-6 md:mt-8 w-full max-w-4xl z-10 flex flex-col items-center">
-                <div class="holiday-message hidden text-center font-gta text-white bg-[var(--gta-pink)] border-4 sm:border-[6px] border-black px-6 sm:px-10 py-3 sm:py-4 text-2xl sm:text-4xl md:text-5xl tracking-[0.1em] sm:tracking-widest shadow-[8px_8px_0_#000] md:shadow-[14px_14px_0_#000] transition-transform duration-300 uppercase hover:scale-105"></div>
-            </div>
-
         </div>
 
     </main>
@@ -786,16 +778,6 @@
             document.querySelectorAll('.timer-hours').forEach(el => el.innerText = String(hours).padStart(2, '0'));
             document.querySelectorAll('.timer-minutes').forEach(el => el.innerText = String(minutes).padStart(2, '0'));
             document.querySelectorAll('.timer-seconds').forEach(el => el.innerText = String(seconds).padStart(2, '0'));
-
-            // Holiday Text Logic
-            const holidays = { "1-1": "HAPPY NEW YEAR", "4-5": "HAPPY EASTER", "10-31": "HALLOWEEN SURPRISE", "12-25": "FESTIVE SURPRISE" };
-            const todayKey = `${new Date().getMonth()+1}-${new Date().getDate()}`;
-            document.querySelectorAll('.holiday-message').forEach(msgDiv => {
-                if(holidays[todayKey]) {
-                    msgDiv.innerText = holidays[todayKey];
-                    msgDiv.classList.remove("hidden");
-                }
-            });
         }
         setInterval(updateTimer, 1000);
         updateTimer();
@@ -1036,6 +1018,28 @@
 
         // --- MESSAGE OF THE DAY LOGIC ---
         function setDailyMessage() {
+            const motdEl = document.getElementById('motd-text');
+            if (!motdEl) return;
+
+            // 1. Check for Holidays / Special Announcements First
+            const holidays = { 
+                "1-1": "Happy New Year from the Crew!", 
+                "4-5": "Happy Easter! Time to hunt some eggs.", 
+                "10-31": "Halloween Surprise... watch your back.", 
+                "12-25": "Festive Surprise! Stay frosty out there." 
+            };
+            
+            // Get today's month and day
+            const todayKey = `${new Date().getMonth()+1}-${new Date().getDate()}`;
+            
+            if (holidays[todayKey]) {
+                motdEl.innerText = `"${holidays[todayKey]}"`;
+                motdEl.classList.remove('text-gray-900');
+                motdEl.classList.add('text-[var(--gta-red)]');
+                return;
+            }
+
+            // 2. Default to Random Daily Quotes if there is no holiday
             const messages = [
                 "Stay focused. The biggest score is yet to come.",
                 "Trust the plan, but always watch your six.",
@@ -1054,10 +1058,9 @@
             for(let i = 0; i < todayStr.length; i++) hash += todayStr.charCodeAt(i);
             
             const motdIndex = hash % messages.length;
-            const motdEl = document.getElementById('motd-text');
-            if (motdEl) {
-                motdEl.innerText = `"${messages[motdIndex]}"`;
-            }
+            motdEl.innerText = `"${messages[motdIndex]}"`;
+            motdEl.classList.add('text-gray-900');
+            motdEl.classList.remove('text-[var(--gta-red)]');
         }
 
         // Initialize Menus, Profiles, Grids & MOTD
