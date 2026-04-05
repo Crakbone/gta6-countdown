@@ -150,7 +150,7 @@
         <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-14 md:h-16">
                 <div class="flex items-center gap-1 md:gap-2 flex-shrink-0 mr-2">
-                    <span class="font-gta text-lg min-[375px]:text-xl sm:text-2xl md:text-3xl text-white tracking-widest pt-1">COUNT<span class="text-[var(--gta-pink)]">DOWN</span></span>
+                    <span class="font-gta text-lg min-[375px]:text-xl sm:text-2xl md:text-3xl text-white tracking-widest pt-1">THE MONKEY <span class="text-[var(--gta-pink)]">HUB</span></span>
                 </div>
                 <div class="flex items-center gap-2 min-[375px]:gap-3 sm:gap-6 md:gap-8 font-gta text-[10px] min-[375px]:text-xs sm:text-lg md:text-2xl tracking-widest pt-1 flex-wrap justify-end">
                     <button id="nav-home" onclick="navigate('home')" class="nav-link text-[var(--gta-pink)] hover:text-[var(--gta-pink)] transition-colors outline-none">HOME</button>
@@ -195,16 +195,18 @@
                                 <span class="text-black animate-pulse pt-0.5 sm:pt-1 md:pt-2" style="text-shadow: none;">:</span>
                                 <div class="flex flex-col items-center w-[2.2ch]">
                                     <span class="timer-hours inline-block text-center">00</span>
-                            </div>
-                            <span class="text-black animate-pulse pt-0.5 sm:pt-1 md:pt-2" style="text-shadow: none;">:</span>
-                            <div class="flex flex-col items-center w-[2.2ch]">
-                                <span class="timer-minutes inline-block text-center">00</span>
-                                <span class="text-[9px] md:text-sm text-black font-roboto mt-1 sm:mt-2 tracking-normal" style="text-shadow: none;">MIN</span>
-                            </div>
-                            <span class="text-black animate-pulse pt-0.5 sm:pt-1 md:pt-2" style="text-shadow: none;">:</span>
-                            <div class="flex flex-col items-center w-[2.2ch]">
-                                <span class="timer-seconds text-[var(--gta-blue)] inline-block text-center">00</span>
-                                <span class="text-[9px] md:text-sm text-black font-roboto mt-1 sm:mt-2 tracking-normal" style="text-shadow: none;">SEC</span>
+                                    <span class="text-[9px] md:text-sm text-black font-roboto mt-1 sm:mt-2 tracking-normal" style="text-shadow: none;">HRS</span>
+                                </div>
+                                <span class="text-black animate-pulse pt-0.5 sm:pt-1 md:pt-2" style="text-shadow: none;">:</span>
+                                <div class="flex flex-col items-center w-[2.2ch]">
+                                    <span class="timer-minutes inline-block text-center">00</span>
+                                    <span class="text-[9px] md:text-sm text-black font-roboto mt-1 sm:mt-2 tracking-normal" style="text-shadow: none;">MIN</span>
+                                </div>
+                                <span class="text-black animate-pulse pt-0.5 sm:pt-1 md:pt-2" style="text-shadow: none;">:</span>
+                                <div class="flex flex-col items-center w-[2.2ch]">
+                                    <span class="timer-seconds text-[var(--gta-blue)] inline-block text-center">00</span>
+                                    <span class="text-[9px] md:text-sm text-black font-roboto mt-1 sm:mt-2 tracking-normal" style="text-shadow: none;">SEC</span>
+                                </div>
                             </div>
                         </div>
                         <div class="holiday-message hidden mt-4 text-center font-gta text-[#00ffff] text-lg sm:text-2xl drop-shadow-[2px_2px_0_#000]"></div>
@@ -238,7 +240,7 @@
                 <!-- VCPD DATABASE (Mobile: Middle, Desktop: Right spanning 3 rows) -->
                 <div class="lg:col-span-8 lg:row-span-3 flex flex-col h-auto w-full">
                     <!-- Home Page Associates Header & Search -->
-                    <div class="flex flex-col border-4 border-b-0 border-black bg-[var(--gta-blue)] rounded-t-xl shadow-[8px_8px_0_rgba(0,0,0,0.5)] relative z-10 overflow-hidden">
+                    <div class="flex flex-col border-4 border-b-0 border-black bg-[var(--gta-blue)] rounded-t-xl shadow-[8px_8px_0_rgba(0,0,0,0.5)] relative z-20 overflow-hidden">
                         <div class="flex items-center justify-between p-3 border-b-4 border-black">
                             <div class="flex items-center gap-3">
                                 <i data-lucide="users" class="text-black w-6 h-6 md:w-8 md:h-8"></i>
@@ -247,14 +249,14 @@
                             <div class="bg-black text-[var(--gta-blue)] font-gta text-xl px-3 py-1 hidden md:block shadow-[2px_2px_0_#fff]">DATABASE</div>
                         </div>
                         <!-- Search Bar Row -->
-                        <div class="bg-[#111] p-2 md:p-3 flex items-center relative">
+                        <div class="bg-[#111] p-2 md:p-3 flex items-center relative z-20">
                             <i data-lucide="search" class="text-gray-400 w-5 h-5 ml-2 mr-3 flex-shrink-0"></i>
-                            <input type="text" id="home-search" placeholder="SEARCH..." class="w-full bg-transparent border-none outline-none text-white font-gta tracking-widest text-lg sm:text-xl placeholder-gray-600 uppercase" onkeyup="handleSearch(event, this.value)">
+                            <input type="text" id="home-search" placeholder="SEARCH..." class="w-full bg-transparent border-none outline-none text-white font-gta tracking-widest text-lg sm:text-xl placeholder-gray-600 uppercase" autocomplete="off" onkeyup="handleSearch(event, this)">
                             <span id="home-search-status" class="absolute right-4 text-[var(--gta-pink)] font-gta text-sm sm:text-base hidden">NOT FOUND</span>
                         </div>
                     </div>
 
-                    <div class="gta-panel p-0 flex flex-col md:flex-row w-full items-stretch border-4 border-black rounded-b-xl shadow-[8px_8px_0_rgba(0,0,0,0.5)] flex-1 overflow-hidden md:overflow-clip relative">
+                    <div class="gta-panel p-0 flex flex-col md:flex-row w-full items-stretch border-4 border-black rounded-b-xl shadow-[8px_8px_0_rgba(0,0,0,0.5)] flex-1 overflow-hidden md:overflow-clip relative z-10">
                         
                         <!-- Sidebar (Now positioned absolute on desktop to overlay left section) -->
                         <div class="associates-sidebar bg-[#111] border-b-4 md:border-b-0 md:border-r-4 border-black flex flex-col md:flex-row transition-all duration-300 w-full md:w-16 flex-shrink-0 z-30 md:absolute md:left-0 md:top-0 md:bottom-0 md:shadow-[6px_0_15px_rgba(0,0,0,0.7)]">
@@ -291,8 +293,8 @@
                     <div class="dos-stars flex justify-center gap-1 text-[var(--gta-yellow)] text-xl drop-shadow-[0_0_5px_rgba(255,204,0,0.5)]"></div>
                 </div>
 
-                <div class="w-full max-w-[280px] md:max-w-[260px] mt-4 bg-[#111] border-4 border-black shadow-[4px_4px_0_rgba(0,0,0,0.3)] p-3 sm:p-4 text-white font-roboto hover:scale-105 hover:shadow-[8px_8px_0_rgba(0,0,0,0.4)] transition-all duration-300 relative h-[320px] sm:h-[250px] flex flex-col justify-center">
-                    <div class="overflow-hidden h-full flex flex-col justify-start md:justify-center">
+                <div class="w-full max-w-[280px] md:max-w-[260px] mt-4 bg-[#111] border-4 border-black shadow-[4px_4px_0_rgba(0,0,0,0.3)] p-3 sm:p-4 text-white font-roboto hover:scale-105 hover:shadow-[8px_8px_0_rgba(0,0,0,0.4)] transition-all duration-300 relative h-auto min-h-[280px] sm:h-[250px] flex flex-col justify-center">
+                    <div class="overflow-visible sm:overflow-hidden h-full flex flex-col justify-start md:justify-center">
                         
                         <!-- MOBILE ONLY: Alias, Role, and Stars inside Bio Box -->
                         <div class="flex flex-col w-full md:hidden border-b border-gray-700 pb-2 mb-2 flex-shrink-0">
@@ -466,9 +468,9 @@
                 </div>
                 
                 <!-- Crew Page Search Bar -->
-                <div class="w-full lg:w-1/3 min-w-[280px] bg-black border-2 border-[var(--gta-blue)] p-2 md:p-3 flex items-center relative shadow-[4px_4px_0_rgba(0,255,255,0.2)] focus-within:shadow-[4px_4px_0_var(--gta-blue)] transition-shadow">
+                <div class="w-full lg:w-1/3 min-w-[280px] bg-black border-2 border-[var(--gta-blue)] p-2 md:p-3 flex items-center relative shadow-[4px_4px_0_rgba(0,255,255,0.2)] focus-within:shadow-[4px_4px_0_var(--gta-blue)] transition-shadow z-20">
                     <i data-lucide="search" class="text-[var(--gta-blue)] w-5 h-5 ml-1 mr-3 flex-shrink-0"></i>
-                    <input type="text" id="crew-search" placeholder="SEARCH..." class="w-full bg-transparent border-none outline-none text-white font-gta tracking-widest text-lg sm:text-xl placeholder-gray-600 uppercase" onkeyup="handleSearch(event, this.value)">
+                    <input type="text" id="crew-search" placeholder="SEARCH..." class="w-full bg-transparent border-none outline-none text-white font-gta tracking-widest text-lg sm:text-xl placeholder-gray-600 uppercase" autocomplete="off" onkeyup="handleSearch(event, this)">
                     <span id="crew-search-status" class="absolute right-3 text-[var(--gta-red)] font-gta text-sm sm:text-base hidden">NOT FOUND</span>
                 </div>
             </div>
@@ -551,8 +553,8 @@
                             </div>
                         </div>
 
-                        <div class="bg-black/60 p-3 sm:p-4 border-l-4 border-[var(--gta-blue)] shadow-inner h-[320px] sm:h-[180px] md:h-[150px] flex flex-col justify-center">
-                            <div class="overflow-hidden h-full flex flex-col justify-start md:justify-center">
+                        <div class="bg-black/60 p-3 sm:p-4 border-l-4 border-[var(--gta-blue)] shadow-inner h-auto min-h-[200px] sm:h-[180px] md:h-[150px] flex flex-col justify-center">
+                            <div class="overflow-visible sm:overflow-hidden h-full flex flex-col justify-start md:justify-center">
                                 
                                 <!-- MOBILE ONLY: Alias, Role, and Stars inside Bio Box -->
                                 <div class="flex flex-col w-full md:hidden border-b border-gray-700 pb-3 mb-3 flex-shrink-0">
@@ -780,7 +782,7 @@
             { name: "Aram", alias: "The Ram", img: "https://i.imgur.com/JPBYN8l.jpeg", role: "Engineer", desc: "Electrical Engineering expert. The technical backbone. From bypassing security grids to fixing critical gear, Aram ensures the crew stays off the grid. He recently developed a proprietary signal jammer that renders LSPD drones completely useless within a two-mile radius.", stats: { hangout: "Tech Hubs", vehicle: "Dodge Ram", location: "Los Santos", attributes: { stamina: 75, shooting: 83, strength: 84, driving: 60 } }, stars: 5 },
             { name: "Daniel", alias: "Deeds", img: "https://i.imgur.com/hez90P9.jpeg", role: "Innovator", desc: "The creative force behind operations. Specializes in lateral thinking and devising novel solutions to seemingly impossible heists. When brute force fails, Daniel's unorthodox methods usually involve social engineering, elaborate disguises, or exploiting corporate loopholes.", stats: { hangout: "Basketball Courts", vehicle: "Dodge Viper", location: "Los Santos", attributes: { stamina: 68, shooting: 65, strength: 70, driving: 80 } }, stars: 5 },
             { name: "Harout", alias: "Young Veyron", img: "https://i.imgur.com/2x5HnuN.jpeg", role: "Money Man", desc: "Financial controller. Manages resources with an iron grip, tracking every dollar spent and earned to launder effectively. He utilizes a complex web of shell companies, crypto tumblers, and offshore accounts to ensure the crew's illicit gains appear completely legitimate.", stats: { hangout: "Financial District", vehicle: "Nissan Skyline R34", location: "Los Santos", attributes: { stamina: 66, shooting: 95, strength: 77, driving: 87 } }, stars: 5 },
-            { name: "Kevin", alias: "The Drone", img: "https://i.imgur.com/CP8lcsL.jpeg", role: "Enforcer", desc: "A towering physical presence at 6'4\" and 240lbs. Serves as the primary intimidation factor for collections. Despite his terrifying stature, Kevin is surprisingly disciplined, preferring to settle disputes with a single quiet conversation rather than drawing unnecessary police attention.", stats: { hangout: "Industrial Docks", vehicle: "Mutt Cutts Van", location: "Los Santos", attributes: { stamina: 65, shooting: 68, strength: 88, driving: 67 } }, stars: 5 },
+            { name: "Kevin C", alias: "The Drone", img: "https://i.imgur.com/CP8lcsL.jpeg", role: "Enforcer", desc: "A towering physical presence at 6'4\" and 240lbs. Serves as the primary intimidation factor for collections. Despite his terrifying stature, Kevin is surprisingly disciplined, preferring to settle disputes with a single quiet conversation rather than drawing unnecessary police attention.", stats: { hangout: "Industrial Docks", vehicle: "Mutt Cutts Van", location: "Los Santos", attributes: { stamina: 65, shooting: 68, strength: 88, driving: 67 } }, stars: 5 },
             { name: "Raymond", alias: "Big Rus", img: "https://i.imgur.com/XEy6U2L.jpeg", role: "Launderer", desc: "Leverages deep ties to the fast food industry to wash crew funds through cash-heavy franchises. Also acts as the crew's beloved comedian, keeping morale high even when the heat is on. Don't let the jokes fool you; he is fiercely loyal and ruthless when protecting the family.", stats: { hangout: "Fast Food Joints", vehicle: "Ferrari 360", location: "Los Santos", attributes: { stamina: 67, shooting: 58, strength: 80, driving: 44 } }, stars: 3 },
             { name: "Richard", alias: "Big Buff", img: "https://i.imgur.com/XLb1Qxn.jpeg", role: "Hybrid", desc: "A versatile powerhouse bridging brains and brawn. Physically imposing with diverse operational skills, Richard is equally comfortable breaching a bank vault as he is negotiating with rival syndicates. The rest of his crew is wishing him a speedy recovery, they know he will be back soon. He still remains a vital shot-caller.", stats: { hangout: "Gym", vehicle: "Mercedes 300 SLR", location: "Los Santos", attributes: { stamina: 90, shooting: 90, strength: 100, driving: 75 } }, stars: 5 },
             { name: "Youra", alias: "YG", img: "https://i.imgur.com/aR73Lgr.jpeg", role: "Business Front", desc: "A legitimate businessman with a clean record. Youra runs a popular local coffee shop and serves as a community leader. However, authorities strongly suspect he is tied to the rest of the suspects in some way, acting as a clean front for meetings, although nothing has ever been proven.", stats: { hangout: "Coffee Shop", vehicle: "Rolls Royce Phantom", location: "Los Santos", attributes: { stamina: 66, shooting: 55, strength: 57, driving: 70 } }, stars: 0 },
@@ -796,7 +798,9 @@
             { name: "Unknown", alias: "Slim", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Mentor", desc: "A rare success story in the criminal underworld. Slim is a fiercely intelligent, street-smart mentor who managed to turn his life around after a lengthy stint in Bolingbroke Penitentiary. He now dedicates his time to helping at-risk youth stay off the streets, though his encyclopedic knowledge of rival gangs and police patrol routes makes him a highly sought-after tactical consultant.", stats: { hangout: "Los Santos", vehicle: "Unknown", location: "Los Santos", attributes: { stamina: 67, shooting: 82, strength: 77, driving: 55 } }, stars: 5, hidden: true },
             { name: "Jake", alias: "MJ Verde", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Producer", desc: "A rising star in the Los Santos underground hip-hop scene, working as both a rapper and a platinum-tier music producer. Behind the platinum plaques and sold-out club appearances, Jake uses his sprawling recording studios to launder syndicate money and facilitate discrete communication networks embedded within audio tracks. His VIP parties are notorious for closing high-stakes deals.", stats: { hangout: "Los Santos", vehicle: "Unknown", location: "Los Santos", attributes: { stamina: 62, shooting: 80, strength: 80, driving: 60 } }, stars: 5, hidden: true },
             { name: "Alicia", alias: "Unknown", img: "https://i.imgur.com/TBG9sQ3.jpeg", role: "Biker Leader", desc: "Leader of a Los Santos heavy metal and black metal based motorcycle gang. She is tough as nails, and although in a notorious biker gang, she fiercely defends her city and its people from outside threats.", stats: { hangout: "Los Santos", vehicle: "Harley Davidson Motorcycles", location: "Los Santos", attributes: { stamina: 75, shooting: 75, strength: 80, driving: 25 } }, stars: 5, hidden: true },
-            { name: "Vlad", alias: "Big Gucci", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Arms Dealer", desc: "When it comes to guns, you go to Vlad. He has a huge supply of weapons and deep-rooted connections worldwide, making him the ultimate supplier for high-grade, untraceable firepower.", stats: { hangout: "Shooting Range", vehicle: "Toyota Prius", location: "Los Santos", attributes: { stamina: 75, shooting: 94, strength: 90, driving: 80 } }, stars: 5, hidden: true }
+            { name: "Vlad", alias: "Big Gucci", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Arms Dealer", desc: "When it comes to guns, you go to Vlad. He has a huge supply of weapons and deep-rooted connections worldwide, making him the ultimate supplier for high-grade, untraceable firepower. Operating out of heavily fortified shooting ranges, he ensures every piece of hardware is wiped clean of serial numbers before it ever reaches the crew's hands.", stats: { hangout: "Shooting Range", vehicle: "Toyota Prius", location: "Los Santos", attributes: { stamina: 75, shooting: 94, strength: 90, driving: 80 } }, stars: 5, hidden: true },
+            { name: "Karp", alias: "The Missing Piece", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Boxer", desc: "Notorious boxer with an undefeated underground record of 60-0, fiercely respected in the streets of Los Santos. While he prefers to handle his business in the ring, his immense physical prowess and unshakeable discipline make him the perfect muscle for high-stakes, close-quarters operations where firing a weapon would draw too much heat.", stats: { hangout: "Boxing Gyms", vehicle: "G-Wagon", location: "Los Santos", attributes: { stamina: 99, shooting: 50, strength: 95, driving: 65 } }, stars: 5, hidden: true },
+            { name: "Kevin K", alias: "The OX", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Engineer", desc: "A bitter rival of Aram, Kevin K is a brilliant structural engineer who balances a legitimate career with highly lucrative, shady business. He specializes in exploiting municipal blueprints and architectural weaknesses, finding blind spots in vault security and structural flaws that allow the crew to breach heavily fortified targets completely undetected.", stats: { hangout: "Card Shops", vehicle: "Escallade", location: "Los Santos", attributes: { stamina: 45, shooting: 87, strength: 75, driving: 50 } }, stars: 5, hidden: true }
             // NOTE: To add a hidden associate, just add:  hidden: true  to their object!
         ];
 
@@ -944,52 +948,62 @@
             }, 150);
         }
 
-        // --- NEW: SEARCH BAR LOGIC ---
-        function handleSearch(event, query) {
-            if (event.key === 'Enter') {
-                const q = query.toLowerCase().trim();
-                if (!q) return;
+        // --- SEARCH BAR LOGIC ---
+        function handleSearch(event, inputEl) {
+            // Only trigger search when Enter is pressed
+            if (event.key !== 'Enter') return;
 
-                // Find index matching name OR alias
-                const index = crewData.findIndex(c => 
-                    c.name.toLowerCase() === q || 
-                    c.alias.toLowerCase() === q ||
-                    `"${c.alias.toLowerCase()}"` === q 
+            const query = inputEl.value;
+            const q = query.toLowerCase().trim();
+            const isHome = inputEl.id === 'home-search';
+            const statusId = isHome ? 'home-search-status' : 'crew-search-status';
+            const statusEl = document.getElementById(statusId);
+
+            if (q.length < 1) return;
+
+            let foundIndex = -1;
+
+            // 1. Try to find an EXACT match first (this allows finding hidden suspects)
+            const exactMatchIndex = crewData.findIndex(c => 
+                c.name.toLowerCase() === q || 
+                c.alias.toLowerCase() === q || 
+                `"${c.alias.toLowerCase()}"` === q
+            );
+
+            if (exactMatchIndex !== -1) {
+                foundIndex = exactMatchIndex;
+            } else {
+                // 2. Try to find a PARTIAL match, but EXCLUDE hidden suspects
+                const partialMatchIndex = crewData.findIndex(c => 
+                    !c.hidden && (
+                        c.name.toLowerCase().includes(q) || 
+                        c.alias.toLowerCase().includes(q) || 
+                        `"${c.alias.toLowerCase()}"`.includes(q)
+                    )
                 );
-
-                if (index !== -1) {
-                    // Hide any error states
-                    document.getElementById('home-search-status').classList.add('hidden');
-                    document.getElementById('crew-search-status').classList.add('hidden');
-                    
-                    // Trigger dossier to open (even if it's a hidden profile!)
-                    openDossier(index);
-                    
-                    // Clear search bars
-                    document.getElementById('home-search').value = '';
-                    document.getElementById('crew-search').value = '';
-
-                    // If we're currently on the Crew page, scroll down to the loaded dossier
-                    if (!document.getElementById('page-crew').classList.contains('hidden')) {
-                        const panel = document.getElementById('crew-detail-panel');
-                        panel.classList.add('scale-[0.98]', 'brightness-150');
-                        setTimeout(() => {
-                            panel.classList.remove('scale-[0.98]', 'brightness-150');
-                            panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                        }, 150);
-                    }
-                } else {
-                    // Show NOT FOUND error
-                    const hStatus = document.getElementById('home-search-status');
-                    const cStatus = document.getElementById('crew-search-status');
-                    hStatus.classList.remove('hidden');
-                    cStatus.classList.remove('hidden');
-                    
-                    setTimeout(() => {
-                        hStatus.classList.add('hidden');
-                        cStatus.classList.add('hidden');
-                    }, 2500);
+                if (partialMatchIndex !== -1) {
+                    foundIndex = partialMatchIndex;
                 }
+            }
+
+            if (foundIndex !== -1) {
+                // Match Found! Load the dossier and clear the input
+                inputEl.value = '';
+                openDossier(foundIndex);
+                
+                // If we're on the Crew page, scroll to the detail panel
+                if (!document.getElementById('page-crew').classList.contains('hidden')) {
+                    const panel = document.getElementById('crew-detail-panel');
+                    panel.classList.add('scale-[0.98]', 'brightness-150');
+                    setTimeout(() => {
+                        panel.classList.remove('scale-[0.98]', 'brightness-150');
+                        panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 150);
+                }
+            } else {
+                // Show NOT FOUND error
+                statusEl.classList.remove('hidden');
+                setTimeout(() => statusEl.classList.add('hidden'), 2500);
             }
         }
 
