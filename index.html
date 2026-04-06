@@ -297,7 +297,7 @@
                                 </div>
 
                                 <!-- MOBILE ONLY BIO -->
-                                <div class="w-full max-w-[280px] mt-4 bg-[#fdf8e4] text-black border-4 border-black shadow-[4px_4px_0_rgba(0,0,0,0.3)] p-3 sm:p-4 font-roboto hover:scale-105 hover:shadow-[8px_8px_0_rgba(0,0,0,0.4)] transition-all duration-300 relative h-auto min-h-[280px] sm:h-[250px] flex md:hidden flex-col justify-center">
+                                <div class="w-full max-w-[280px] mt-3 bg-[#fdf8e4] text-black border-4 border-black shadow-[4px_4px_0_rgba(0,0,0,0.3)] p-3 sm:p-4 font-roboto hover:scale-105 hover:shadow-[8px_8px_0_rgba(0,0,0,0.4)] transition-all duration-300 relative h-auto min-h-[280px] sm:h-[250px] flex md:hidden flex-col justify-center">
                                     <div class="overflow-visible sm:overflow-hidden h-full flex flex-col justify-start md:justify-center">
                                         <div class="flex flex-col w-full md:hidden border-b border-gray-400 pb-2 mb-2 flex-shrink-0">
                                             <div class="flex items-center justify-between w-full mb-1.5">
@@ -585,7 +585,7 @@
                         </div>
                         
                         <!-- MOBILE ONLY STATS -->
-                        <div class="grid md:hidden grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 mb-5 bg-black/40 p-3 sm:p-4 border-l-4 border-[var(--gta-pink)] shadow-inner order-3 mt-4">
+                        <div class="grid md:hidden grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 mb-3 bg-black/40 p-3 sm:p-4 border-l-4 border-[var(--gta-pink)] shadow-inner order-3 mt-4">
                             <div class="col-span-1 sm:col-span-2 text-[10px] sm:text-xs font-bold text-gray-500 uppercase tracking-widest mb-1 border-b border-gray-800 pb-1">OPERATIONAL STATS</div>
                             <div>
                                 <div class="flex justify-between text-[10px] sm:text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">
@@ -948,8 +948,11 @@
 
                 // Handle 0 Stars (Hide Wrapper)
                 document.querySelectorAll('.dos-stars-wrapper').forEach(el => {
-                    if (c.stars === 0) el.classList.add('hidden');
-                    else el.classList.remove('hidden');
+                    if (c.stars === 0) {
+                        el.style.display = 'none';
+                    } else {
+                        el.style.display = ''; // Reverts cleanly to CSS hidden md:block!
+                    }
                 });
 
                 // Fade in smoothly
