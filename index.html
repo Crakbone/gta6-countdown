@@ -139,15 +139,15 @@
         /* --- SCROLL REVEAL ANIMATIONS --- */
         .reveal-fx {
             opacity: 0;
-            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1), transform 1s cubic-bezier(0.22, 1, 0.36, 1);
         }
-        .reveal-pop { transform: scale(0.9) translateY(20px); }
-        .reveal-slide-left { transform: translateX(-40px); }
-        .reveal-slide-right { transform: translateX(40px); }
+        .reveal-pop { transform: translateY(15px); }
+        .reveal-slide-left { transform: translateX(-15px); }
+        .reveal-slide-right { transform: translateX(15px); }
         
         .reveal-fx.is-revealed {
             opacity: 1;
-            transform: scale(1) translate(0, 0);
+            transform: translate(0, 0);
         }
     </style>
 </head>
