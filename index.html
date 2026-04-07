@@ -135,6 +135,20 @@
         ::-webkit-scrollbar-track { background: rgba(0,0,0,0.8); }
         ::-webkit-scrollbar-thumb { background: #fff; border: 2px solid #000; }
         ::-webkit-scrollbar-thumb:hover { background: var(--gta-pink); }
+
+        /* --- SCROLL REVEAL ANIMATIONS --- */
+        .reveal-fx {
+            opacity: 0;
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-pop { transform: scale(0.9) translateY(20px); }
+        .reveal-slide-left { transform: translateX(-40px); }
+        .reveal-slide-right { transform: translateX(40px); }
+        
+        .reveal-fx.is-revealed {
+            opacity: 1;
+            transform: scale(1) translate(0, 0);
+        }
     </style>
 </head>
 <body class="min-h-screen relative pb-10 selection:bg-[var(--gta-pink)] selection:text-white">
@@ -164,7 +178,7 @@
 
         <div id="page-home" class="page-section max-w-7xl mx-auto px-1 sm:px-6 lg:px-8 pt-6 flex flex-col">
             
-            <header class="order-2 md:order-1 flex flex-col lg:flex-row items-center lg:items-start justify-between gap-4 md:gap-6 mb-4 md:mb-8 mt-2 md:mt-0 text-center">
+            <header class="order-2 md:order-1 flex flex-col lg:flex-row items-center lg:items-start justify-between gap-4 md:gap-6 mb-4 md:mb-8 mt-2 md:mt-0 text-center reveal-fx reveal-pop">
                 <div class="w-full lg:w-1/2 flex flex-col justify-center items-center lg:items-start relative drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)]">
                     <div class="relative w-fit flex flex-col items-center mb-4 lg:mb-0">
                         <h1 class="font-gta text-[1.8rem] min-[375px]:text-[2.1rem] sm:text-[3rem] md:text-[5rem] lg:text-[6.5rem] leading-none text-white tracking-tight text-center whitespace-nowrap md:whitespace-normal" style="text-shadow: 4px 4px 0 #000;">
@@ -226,13 +240,15 @@
                 </div>
             </header>
 
-            <div class="order-1 md:order-2 w-full mb-4 md:mb-8 border-4 border-black shadow-[6px_6px_0_rgba(0,0,0,0.5)] sm:shadow-[10px_10px_0_rgba(0,0,0,0.5)] hover:shadow-[10px_10px_0_var(--gta-pink)] transition-shadow duration-300 overflow-hidden relative group bg-black cursor-pointer" onclick="openLightbox('https://i.imgur.com/LjIgL3o.jpeg')">
-                <img src="https://i.imgur.com/LjIgL3o.jpeg" alt="Promo Banner" class="w-full h-auto object-cover group-hover:scale-[1.02] transition-transform duration-500">
+            <div class="order-1 md:order-2 w-full mb-4 md:mb-8 reveal-fx reveal-pop" style="transition-delay: 100ms;">
+                <div class="w-full border-4 border-black shadow-[6px_6px_0_rgba(0,0,0,0.5)] sm:shadow-[10px_10px_0_rgba(0,0,0,0.5)] hover:shadow-[10px_10px_0_var(--gta-pink)] transition-shadow duration-300 overflow-hidden relative group bg-black cursor-pointer" onclick="openLightbox('https://i.imgur.com/LjIgL3o.jpeg')">
+                    <img src="https://i.imgur.com/LjIgL3o.jpeg" alt="Promo Banner" class="w-full h-auto object-cover group-hover:scale-[1.02] transition-transform duration-500">
+                </div>
             </div>
 
             <div class="order-3 flex flex-col lg:grid lg:grid-cols-12 gap-6">
                 
-                <div class="lg:col-span-4 flex flex-col items-center lg:items-start w-full">
+                <div class="lg:col-span-4 flex flex-col items-center lg:items-start w-full reveal-fx reveal-slide-right">
                     <div class="w-full max-w-sm bg-[#fdf8e4] text-black border-2 border-black py-2 px-3 sm:p-6 shadow-[4px_4px_0_rgba(0,0,0,0.5)] sm:shadow-[8px_8px_0_rgba(0,0,0,0.5)] hover:scale-105 sm:hover:shadow-[12px_12px_0_rgba(0,0,0,0.7)] transition-all duration-300 relative">
                         <div class="absolute -top-1.5 sm:-top-3 left-1/2 transform -translate-x-1/2 w-10 h-3 sm:w-16 sm:h-6 bg-white/60 border border-gray-300 shadow-sm backdrop-blur-sm z-10"></div>
                         <div class="flex justify-between items-center border-b border-dashed border-gray-400 pb-1 sm:pb-2 mb-1 sm:mb-4">
@@ -247,7 +263,7 @@
                     </div>
                 </div>
 
-                <div class="lg:col-span-8 lg:row-span-3 flex flex-col h-auto w-full">
+                <div class="lg:col-span-8 lg:row-span-3 flex flex-col h-auto w-full reveal-fx reveal-pop" style="transition-delay: 150ms;">
                     <div class="flex flex-col border-4 border-b-0 border-black bg-[var(--gta-blue)] rounded-t-xl shadow-[8px_8px_0_rgba(0,0,0,0.5)] relative z-20 overflow-hidden">
                         <div class="flex items-center justify-between p-3 border-b-4 border-black">
                             <div class="flex items-center gap-3">
@@ -425,7 +441,7 @@
                     </div>
                 </div>
 
-                <div class="lg:col-span-4 flex flex-col items-center lg:items-start w-full">
+                <div class="lg:col-span-4 flex flex-col items-center lg:items-start w-full reveal-fx reveal-slide-left" style="transition-delay: 250ms;">
                     <div class="gta-panel p-0 w-full hover:scale-[1.02] hover:shadow-[12px_12px_0_rgba(0,0,0,0.7)] transition-all duration-300">
                         <div class="bg-[var(--weazel-red)] p-2 md:p-3 flex items-center gap-2 border-b-2 border-black">
                             <i data-lucide="globe" class="text-white w-5 h-5 animate-pulse"></i>
@@ -442,7 +458,7 @@
                     </div>
                 </div>
 
-                <div class="lg:col-span-4 flex flex-col items-center lg:items-start w-full">
+                <div class="lg:col-span-4 flex flex-col items-center lg:items-start w-full reveal-fx reveal-slide-left" style="transition-delay: 350ms;">
                     <div class="w-full max-w-sm bg-[#e8f4ea] text-black border-2 border-black py-2 px-3 sm:p-4 shadow-[4px_4px_0_rgba(0,0,0,0.5)] sm:shadow-[8px_8px_0_rgba(0,0,0,0.5)] hover:scale-105 sm:hover:shadow-[12px_12px_0_rgba(0,0,0,0.7)] transition-all duration-300 relative">
                         <div class="absolute -top-1.5 sm:-top-3 left-1/2 transform -translate-x-1/2 w-8 h-3 sm:w-12 sm:h-5 bg-white/60 border border-gray-300 shadow-sm backdrop-blur-sm z-10 rotate-2"></div>
                         <div class="flex justify-between items-center border-b border-dashed border-gray-400 pb-1 sm:pb-2 mb-2">
@@ -458,38 +474,48 @@
             </div>
 
             <div class="order-4 mt-8 pt-8 border-t-4 border-black relative mb-10">
-                <div class="flex items-center justify-start gap-3 mb-6 bg-black inline-flex px-5 py-2 border-2 border-white shadow-[4px_4px_0_rgba(0,0,0,0.5)] hover:scale-105 transition-transform duration-300">
+                <div class="flex items-center justify-start gap-3 mb-6 bg-black inline-flex px-5 py-2 border-2 border-white shadow-[4px_4px_0_rgba(0,0,0,0.5)] hover:scale-105 transition-transform duration-300 reveal-fx reveal-slide-right">
                     <i data-lucide="camera" class="text-white w-5 sm:w-6 h-5 sm:h-6"></i>
                     <h2 class="font-gta text-2xl sm:text-3xl text-white tracking-widest mt-1">SNAPMATIC GALLERY</h2>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
                     <div class="flex flex-col gap-6">
-                        <div class="gta-panel p-2">
-                            <div class="aspect-video bg-black relative border-2 border-black">
-                                <iframe class="w-full h-full relative z-10" src="https://www.youtube.com/embed/QdBZY2fkU-0?si=J9wnbQ0D1lpVN4F-" frameborder="0" allowfullscreen></iframe>
-                                <div class="absolute inset-0 bg-[url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABZJREFUeNpi2rVrv+Pv37//gQIgwAQA08gNQ025C/kAAAAASUVORK5CYII=')] opacity-20 pointer-events-none z-20"></div>
+                        <div class="reveal-fx reveal-pop" style="transition-delay: 100ms;">
+                            <div class="gta-panel p-2">
+                                <div class="aspect-video bg-black relative border-2 border-black">
+                                    <iframe class="w-full h-full relative z-10" src="https://www.youtube.com/embed/QdBZY2fkU-0?si=J9wnbQ0D1lpVN4F-" frameborder="0" allowfullscreen></iframe>
+                                    <div class="absolute inset-0 bg-[url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABZJREFUeNpi2rVrv+Pv37//gQIgwAQA08gNQ025C/kAAAAASUVORK5CYII=')] opacity-20 pointer-events-none z-20"></div>
+                                </div>
                             </div>
                         </div>
-                        <div class="gta-panel p-2">
-                            <div class="aspect-video bg-black relative border-2 border-black">
-                                <iframe class="w-full h-full relative z-10" src="https://www.youtube.com/embed/VQRLujxTm3c?si=v8KJjNMV7uvu6lJJ" frameborder="0" allowfullscreen></iframe>
-                                <div class="absolute inset-0 bg-[url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABZJREFUeNpi2rVrv+Pv37//gQIgwAQA08gNQ025C/kAAAAASUVORK5CYII=')] opacity-20 pointer-events-none z-20"></div>
+                        <div class="reveal-fx reveal-pop" style="transition-delay: 200ms;">
+                            <div class="gta-panel p-2">
+                                <div class="aspect-video bg-black relative border-2 border-black">
+                                    <iframe class="w-full h-full relative z-10" src="https://www.youtube.com/embed/VQRLujxTm3c?si=v8KJjNMV7uvu6lJJ" frameborder="0" allowfullscreen></iframe>
+                                    <div class="absolute inset-0 bg-[url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABZJREFUeNpi2rVrv+Pv37//gQIgwAQA08gNQ025C/kAAAAASUVORK5CYII=')] opacity-20 pointer-events-none z-20"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="grid grid-cols-2 gap-4">
-                        <div class="bg-white p-2 pb-8 border-2 border-black shadow-[4px_4px_0_rgba(0,0,0,0.6)] relative cursor-pointer hover:scale-105 transition-transform" onclick="openLightbox('https://i.imgur.com/HnVXQb4.jpeg')">
-                            <img src="https://i.imgur.com/HnVXQb4.jpeg" class="w-full aspect-square object-cover filter contrast-125 saturate-110 border border-gray-300">
-                            <div class="snapmatic-badge"><i data-lucide="camera" class="w-3 h-3"></i> <span class="text-sm">Snapmatic</span></div>
+                        <div class="reveal-fx reveal-pop" style="transition-delay: 300ms;">
+                            <div class="bg-white p-2 pb-8 border-2 border-black shadow-[4px_4px_0_rgba(0,0,0,0.6)] relative cursor-pointer hover:scale-105 transition-transform" onclick="openLightbox('https://i.imgur.com/HnVXQb4.jpeg')">
+                                <img src="https://i.imgur.com/HnVXQb4.jpeg" class="w-full aspect-square object-cover filter contrast-125 saturate-110 border border-gray-300">
+                                <div class="snapmatic-badge"><i data-lucide="camera" class="w-3 h-3"></i> <span class="text-sm">Snapmatic</span></div>
+                            </div>
                         </div>
-                        <div class="bg-white p-2 pb-8 border-2 border-black shadow-[4px_4px_0_rgba(0,0,0,0.6)] relative cursor-pointer hover:scale-105 transition-transform mt-4" onclick="openLightbox('https://i.imgur.com/bJbZLfg.jpeg')">
-                            <img src="https://i.imgur.com/bJbZLfg.jpeg" class="w-full aspect-square object-cover filter contrast-125 saturate-110 border border-gray-300">
-                            <div class="snapmatic-badge"><i data-lucide="camera" class="w-3 h-3"></i> <span class="text-sm">Snapmatic</span></div>
+                        <div class="reveal-fx reveal-pop" style="transition-delay: 400ms;">
+                            <div class="bg-white p-2 pb-8 border-2 border-black shadow-[4px_4px_0_rgba(0,0,0,0.6)] relative cursor-pointer hover:scale-105 transition-transform mt-4" onclick="openLightbox('https://i.imgur.com/bJbZLfg.jpeg')">
+                                <img src="https://i.imgur.com/bJbZLfg.jpeg" class="w-full aspect-square object-cover filter contrast-125 saturate-110 border border-gray-300">
+                                <div class="snapmatic-badge"><i data-lucide="camera" class="w-3 h-3"></i> <span class="text-sm">Snapmatic</span></div>
+                            </div>
                         </div>
-                        <div class="bg-white p-2 pb-8 border-2 border-black shadow-[4px_4px_0_rgba(0,0,0,0.6)] relative col-span-2 mx-auto w-3/4 cursor-pointer hover:scale-105 transition-transform -mt-2" onclick="openLightbox('https://i.imgur.com/0vmFF89.jpeg')">
-                            <img src="https://i.imgur.com/0vmFF89.jpeg" class="w-full aspect-video object-cover filter contrast-125 saturate-110 border border-gray-300">
-                            <div class="snapmatic-badge"><i data-lucide="camera" class="w-4 h-4"></i> <span class="text-lg">Snapmatic</span></div>
+                        <div class="col-span-2 mx-auto w-3/4 reveal-fx reveal-pop" style="transition-delay: 500ms;">
+                            <div class="bg-white p-2 pb-8 border-2 border-black shadow-[4px_4px_0_rgba(0,0,0,0.6)] relative cursor-pointer hover:scale-105 transition-transform -mt-2" onclick="openLightbox('https://i.imgur.com/0vmFF89.jpeg')">
+                                <img src="https://i.imgur.com/0vmFF89.jpeg" class="w-full aspect-video object-cover filter contrast-125 saturate-110 border border-gray-300">
+                                <div class="snapmatic-badge"><i data-lucide="camera" class="w-4 h-4"></i> <span class="text-lg">Snapmatic</span></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -499,7 +525,7 @@
 
         <div id="page-crew" class="page-section hidden max-w-7xl mx-auto px-1 sm:px-6 lg:px-8 pt-10 pb-20">
             
-            <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between mb-8 border-b-4 border-[var(--gta-blue)] pb-4 gap-4 px-2 sm:px-0">
+            <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between mb-8 border-b-4 border-[var(--gta-blue)] pb-4 gap-4 px-2 sm:px-0 reveal-fx reveal-slide-left">
                 <div class="flex items-center gap-3">
                     <h1 class="font-gta text-3xl sm:text-5xl md:text-6xl text-white tracking-widest">VCPD SUSPECT DATABASE</h1>
                     <i data-lucide="database" class="w-8 h-8 sm:w-10 sm:h-10 text-[var(--gta-blue)] hidden sm:block"></i>
@@ -515,7 +541,7 @@
             <div id="suspect-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 md:gap-5 mb-12">
                 </div>
 
-            <div id="crew-detail-panel" class="dossier-view gta-panel p-0 border-4 border-[var(--gta-blue)] flex flex-col bg-[#111] text-white transition-all duration-300 opacity-0 translate-y-4 shadow-[12px_12px_0_rgba(0,255,255,0.2)] hover:shadow-[12px_12px_0_var(--gta-blue)] scroll-mt-24">
+            <div id="crew-detail-panel" class="dossier-view gta-panel p-0 border-4 border-[var(--gta-blue)] flex flex-col bg-[#111] text-white transition-all duration-300 opacity-0 translate-y-4 shadow-[12px_12px_0_rgba(0,255,255,0.2)] hover:shadow-[12px_12px_0_var(--gta-blue)] scroll-mt-24 reveal-fx reveal-pop" style="transition-delay: 200ms;">
                 
                 <div class="w-full bg-[var(--gta-blue)] text-black p-3 flex justify-between items-center border-b-4 border-black">
                     <span class="font-gta text-xl sm:text-2xl tracking-widest">WARRANT FILE: <span class="dos-alias text-[var(--gta-pink)]"></span></span>
@@ -655,60 +681,66 @@
 
 
         <div id="page-news" class="page-section hidden max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-20 space-y-10">
-            <h1 class="font-gta text-4xl sm:text-5xl md:text-7xl text-white tracking-widest border-b-4 border-[var(--gta-pink)] pb-4 text-center">LATEST DISPATCHES</h1>
+            <h1 class="font-gta text-4xl sm:text-5xl md:text-7xl text-white tracking-widest border-b-4 border-[var(--gta-pink)] pb-4 text-center reveal-fx reveal-pop">LATEST DISPATCHES</h1>
 
             <div id="news-container" class="space-y-10">
                 
-                <div class="gta-panel p-0 w-full hover:scale-[1.02] hover:shadow-[12px_12px_0_rgba(0,0,0,0.7)] transition-all duration-300">
-                    <div class="bg-[var(--weazel-red)] p-3 md:p-4 flex items-center justify-between border-b-4 border-black">
-                        <div class="flex items-center gap-2 sm:gap-3">
-                            <i data-lucide="globe" class="text-white w-5 sm:w-6 h-5 sm:h-6 animate-pulse"></i>
-                            <h2 class="font-gta text-xl sm:text-3xl text-white tracking-widest mt-1">WEAZEL NEWS EXCLUSIVE</h2>
+                <div class="reveal-fx reveal-slide-left" style="transition-delay: 100ms;">
+                    <div class="gta-panel p-0 w-full hover:scale-[1.02] hover:shadow-[12px_12px_0_rgba(0,0,0,0.7)] transition-all duration-300">
+                        <div class="bg-[var(--weazel-red)] p-3 md:p-4 flex items-center justify-between border-b-4 border-black">
+                            <div class="flex items-center gap-2 sm:gap-3">
+                                <i data-lucide="globe" class="text-white w-5 sm:w-6 h-5 sm:h-6 animate-pulse"></i>
+                                <h2 class="font-gta text-xl sm:text-3xl text-white tracking-widest mt-1">WEAZEL NEWS EXCLUSIVE</h2>
+                            </div>
+                            <div class="font-roboto font-bold text-white text-[10px] sm:text-xs tracking-widest opacity-80 uppercase">APRIL 2026</div>
                         </div>
-                        <div class="font-roboto font-bold text-white text-[10px] sm:text-xs tracking-widest opacity-80 uppercase">APRIL 2026</div>
-                    </div>
-                    <div class="p-4 sm:p-6 md:p-8 bg-white text-black">
-                        <h3 class="font-gta text-2xl sm:text-3xl md:text-4xl mb-4 leading-none text-black uppercase">GLOBAL PRE-LOADS INITIATED</h3>
-                        <div class="w-16 h-2 bg-[var(--weazel-red)] mb-6"></div>
-                        <div class="space-y-4 text-sm sm:text-base md:text-lg font-bold text-gray-800 font-roboto">
-                            <p>Take-Two Interactive has officially authorized global pre-loads for the most anticipated entertainment release in human history. Digital storefronts briefly crashed this morning as millions of operatives secured their assets.</p>
-                            <p>Storage drives across the globe are filling up, with initial reports indicating file sizes pushing the limits of modern hardware. Vice City is loading.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="gta-panel p-0 w-full hover:scale-[1.02] hover:shadow-[12px_12px_0_rgba(0,0,0,0.7)] transition-all duration-300">
-                    <div class="bg-gray-800 p-3 md:p-4 flex items-center justify-between border-b-4 border-black">
-                        <div class="flex items-center gap-2 sm:gap-3">
-                            <i data-lucide="shield-alert" class="text-[var(--gta-yellow)] w-5 sm:w-6 h-5 sm:h-6"></i>
-                            <h2 class="font-gta text-xl sm:text-3xl text-[var(--gta-yellow)] tracking-widest mt-1">LSPD BULLETIN</h2>
-                        </div>
-                        <div class="font-roboto font-bold text-[var(--gta-yellow)] text-[10px] sm:text-xs tracking-widest opacity-80 uppercase">MARCH 2026</div>
-                    </div>
-                    <div class="p-4 sm:p-6 md:p-8 bg-white text-black">
-                        <h3 class="font-gta text-2xl sm:text-3xl md:text-4xl mb-4 leading-none text-black uppercase">VICE CITY PREPARES FOR "THE INVASION"</h3>
-                        <div class="w-16 h-2 bg-[var(--gta-yellow)] mb-6"></div>
-                        <div class="space-y-4 text-sm sm:text-base md:text-lg font-bold text-gray-800 font-roboto">
-                            <p>Local Leonida authorities are requesting unprecedented federal funding as they brace for millions of new "tourists" projected to cross state lines in the coming months.</p>
-                            <p>Sheriff's departments across Leonida have mandated double shifts and deployed heavily armored cruisers to major thoroughfares. "If they think they can run this state like it's 2002, they're dead wrong," stated the Chief of Police.</p>
+                        <div class="p-4 sm:p-6 md:p-8 bg-white text-black">
+                            <h3 class="font-gta text-2xl sm:text-3xl md:text-4xl mb-4 leading-none text-black uppercase">GLOBAL PRE-LOADS INITIATED</h3>
+                            <div class="w-16 h-2 bg-[var(--weazel-red)] mb-6"></div>
+                            <div class="space-y-4 text-sm sm:text-base md:text-lg font-bold text-gray-800 font-roboto">
+                                <p>Take-Two Interactive has officially authorized global pre-loads for the most anticipated entertainment release in human history. Digital storefronts briefly crashed this morning as millions of operatives secured their assets.</p>
+                                <p>Storage drives across the globe are filling up, with initial reports indicating file sizes pushing the limits of modern hardware. Vice City is loading.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="gta-panel p-0 w-full hover:scale-[1.02] hover:shadow-[12px_12px_0_rgba(0,0,0,0.7)] transition-all duration-300">
-                    <div class="bg-[var(--gta-blue)] p-3 md:p-4 flex items-center justify-between border-b-4 border-black">
-                        <div class="flex items-center gap-2 sm:gap-3">
-                            <i data-lucide="trending-down" class="text-black w-5 sm:w-6 h-5 sm:h-6"></i>
-                            <h2 class="font-gta text-xl sm:text-3xl text-black tracking-widest mt-1">MARKET WATCH</h2>
+                <div class="reveal-fx reveal-slide-right" style="transition-delay: 200ms;">
+                    <div class="gta-panel p-0 w-full hover:scale-[1.02] hover:shadow-[12px_12px_0_rgba(0,0,0,0.7)] transition-all duration-300">
+                        <div class="bg-gray-800 p-3 md:p-4 flex items-center justify-between border-b-4 border-black">
+                            <div class="flex items-center gap-2 sm:gap-3">
+                                <i data-lucide="shield-alert" class="text-[var(--gta-yellow)] w-5 sm:w-6 h-5 sm:h-6"></i>
+                                <h2 class="font-gta text-xl sm:text-3xl text-[var(--gta-yellow)] tracking-widest mt-1">LSPD BULLETIN</h2>
+                            </div>
+                            <div class="font-roboto font-bold text-[var(--gta-yellow)] text-[10px] sm:text-xs tracking-widest opacity-80 uppercase">MARCH 2026</div>
                         </div>
-                        <div class="font-roboto font-bold text-black text-[10px] sm:text-xs tracking-widest opacity-80 uppercase">FEBRUARY 2026</div>
+                        <div class="p-4 sm:p-6 md:p-8 bg-white text-black">
+                            <h3 class="font-gta text-2xl sm:text-3xl md:text-4xl mb-4 leading-none text-black uppercase">VICE CITY PREPARES FOR "THE INVASION"</h3>
+                            <div class="w-16 h-2 bg-[var(--gta-yellow)] mb-6"></div>
+                            <div class="space-y-4 text-sm sm:text-base md:text-lg font-bold text-gray-800 font-roboto">
+                                <p>Local Leonida authorities are requesting unprecedented federal funding as they brace for millions of new "tourists" projected to cross state lines in the coming months.</p>
+                                <p>Sheriff's departments across Leonida have mandated double shifts and deployed heavily armored cruisers to major thoroughfares. "If they think they can run this state like it's 2002, they're dead wrong," stated the Chief of Police.</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="p-4 sm:p-6 md:p-8 bg-white text-black">
-                        <h3 class="font-gta text-2xl sm:text-3xl md:text-4xl mb-4 leading-none text-black uppercase">FINAL TRAILER CRASHES INTERNET</h3>
-                        <div class="w-16 h-2 bg-[var(--gta-blue)] mb-6"></div>
-                        <div class="space-y-4 text-sm sm:text-base md:text-lg font-bold text-gray-800 font-roboto">
-                            <p>The final intelligence drop regarding the "Lucia & Jason" syndicate caused major internet service providers to throttle bandwidth, as the trailer racked up a record-breaking 250 million views in 24 hours.</p>
-                            <p>The footage confirmed sprawling new rural counties, highly dynamic weather systems, and advanced heist mechanics that have left the criminal underworld salivating.</p>
+                </div>
+
+                <div class="reveal-fx reveal-slide-left" style="transition-delay: 300ms;">
+                    <div class="gta-panel p-0 w-full hover:scale-[1.02] hover:shadow-[12px_12px_0_rgba(0,0,0,0.7)] transition-all duration-300">
+                        <div class="bg-[var(--gta-blue)] p-3 md:p-4 flex items-center justify-between border-b-4 border-black">
+                            <div class="flex items-center gap-2 sm:gap-3">
+                                <i data-lucide="trending-down" class="text-black w-5 sm:w-6 h-5 sm:h-6"></i>
+                                <h2 class="font-gta text-xl sm:text-3xl text-black tracking-widest mt-1">MARKET WATCH</h2>
+                            </div>
+                            <div class="font-roboto font-bold text-black text-[10px] sm:text-xs tracking-widest opacity-80 uppercase">FEBRUARY 2026</div>
+                        </div>
+                        <div class="p-4 sm:p-6 md:p-8 bg-white text-black">
+                            <h3 class="font-gta text-2xl sm:text-3xl md:text-4xl mb-4 leading-none text-black uppercase">FINAL TRAILER CRASHES INTERNET</h3>
+                            <div class="w-16 h-2 bg-[var(--gta-blue)] mb-6"></div>
+                            <div class="space-y-4 text-sm sm:text-base md:text-lg font-bold text-gray-800 font-roboto">
+                                <p>The final intelligence drop regarding the "Lucia & Jason" syndicate caused major internet service providers to throttle bandwidth, as the trailer racked up a record-breaking 250 million views in 24 hours.</p>
+                                <p>The footage confirmed sprawling new rural counties, highly dynamic weather systems, and advanced heist mechanics that have left the criminal underworld salivating.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -720,7 +752,7 @@
 
         <div id="page-counter" class="page-section hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 md:pt-16 flex flex-col items-center justify-center min-h-[80vh]">
             
-            <div class="flex flex-col items-center drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)] z-20 text-center w-full mb-12 md:mb-16">
+            <div class="flex flex-col items-center drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)] z-20 text-center w-full mb-12 md:mb-16 reveal-fx reveal-pop">
                 <div class="relative flex flex-col items-center w-fit">
                     <h1 class="font-gta text-[1.8rem] min-[375px]:text-[2.1rem] sm:text-[3.8rem] md:text-[6rem] lg:text-[8rem] leading-none text-white tracking-tight text-center whitespace-nowrap md:whitespace-normal" style="text-shadow: 6px 6px 0 #000;">
                         GRAND THEFT<span class="md:hidden"> </span><br class="hidden md:inline">AUTO <span class="inline-block" style="text-shadow: none; filter: drop-shadow(6px 6px 0px #000);"><span class="bg-gradient-to-b from-[#f8d070] via-[#ff6eb4] to-[#9b4edd] text-transparent bg-clip-text inline-block">VI</span></span>
@@ -730,24 +762,32 @@
 
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8 w-full max-w-6xl z-10">
 
-                <div class="bg-[var(--gta-pink)] border-4 sm:border-[6px] border-black shadow-[8px_8px_0_#000] md:shadow-[12px_12px_0_#000] flex flex-col items-center justify-center p-4 sm:p-6 md:p-8 -rotate-2 hover:rotate-0 transition-transform duration-300">
-                    <span class="timer-days font-gta text-[4.5rem] sm:text-[6rem] md:text-[8rem] lg:text-[10rem] leading-none text-black tabular-nums tracking-tighter">000</span>
-                    <div class="bg-black text-white font-gta text-base sm:text-xl md:text-2xl px-3 sm:px-4 py-1 mt-2 tracking-[0.2em]">DAYS</div>
+                <div class="reveal-fx reveal-pop" style="transition-delay: 100ms;">
+                    <div class="bg-[var(--gta-pink)] border-4 sm:border-[6px] border-black shadow-[8px_8px_0_#000] md:shadow-[12px_12px_0_#000] flex flex-col items-center justify-center p-4 sm:p-6 md:p-8 -rotate-2 hover:rotate-0 transition-transform duration-300">
+                        <span class="timer-days font-gta text-[4.5rem] sm:text-[6rem] md:text-[8rem] lg:text-[10rem] leading-none text-black tabular-nums tracking-tighter">000</span>
+                        <div class="bg-black text-white font-gta text-base sm:text-xl md:text-2xl px-3 sm:px-4 py-1 mt-2 tracking-[0.2em]">DAYS</div>
+                    </div>
                 </div>
 
-                <div class="bg-[var(--gta-blue)] border-4 sm:border-[6px] border-black shadow-[8px_8px_0_#000] md:shadow-[12px_12px_0_#000] flex flex-col items-center justify-center p-4 sm:p-6 md:p-8 rotate-1 hover:rotate-0 transition-transform duration-300 mt-0 lg:mt-6">
-                    <span class="timer-hours font-gta text-[4.5rem] sm:text-[6rem] md:text-[8rem] lg:text-[10rem] leading-none text-black tabular-nums tracking-tighter">00</span>
-                    <div class="bg-black text-white font-gta text-base sm:text-xl md:text-2xl px-3 sm:px-4 py-1 mt-2 tracking-[0.2em]">HOURS</div>
+                <div class="reveal-fx reveal-pop" style="transition-delay: 200ms;">
+                    <div class="bg-[var(--gta-blue)] border-4 sm:border-[6px] border-black shadow-[8px_8px_0_#000] md:shadow-[12px_12px_0_#000] flex flex-col items-center justify-center p-4 sm:p-6 md:p-8 rotate-1 hover:rotate-0 transition-transform duration-300 mt-0 lg:mt-6">
+                        <span class="timer-hours font-gta text-[4.5rem] sm:text-[6rem] md:text-[8rem] lg:text-[10rem] leading-none text-black tabular-nums tracking-tighter">00</span>
+                        <div class="bg-black text-white font-gta text-base sm:text-xl md:text-2xl px-3 sm:px-4 py-1 mt-2 tracking-[0.2em]">HOURS</div>
+                    </div>
                 </div>
 
-                <div class="bg-[var(--gta-yellow)] border-4 sm:border-[6px] border-black shadow-[8px_8px_0_#000] md:shadow-[12px_12px_0_#000] flex flex-col items-center justify-center p-4 sm:p-6 md:p-8 -rotate-1 hover:rotate-0 transition-transform duration-300 mt-0 lg:-mt-2">
-                    <span class="timer-minutes font-gta text-[4.5rem] sm:text-[6rem] md:text-[8rem] lg:text-[10rem] leading-none text-black tabular-nums tracking-tighter">00</span>
-                    <div class="bg-black text-white font-gta text-base sm:text-xl md:text-2xl px-3 sm:px-4 py-1 mt-2 tracking-[0.2em]">MINUTES</div>
+                <div class="reveal-fx reveal-pop" style="transition-delay: 300ms;">
+                    <div class="bg-[var(--gta-yellow)] border-4 sm:border-[6px] border-black shadow-[8px_8px_0_#000] md:shadow-[12px_12px_0_#000] flex flex-col items-center justify-center p-4 sm:p-6 md:p-8 -rotate-1 hover:rotate-0 transition-transform duration-300 mt-0 lg:-mt-2">
+                        <span class="timer-minutes font-gta text-[4.5rem] sm:text-[6rem] md:text-[8rem] lg:text-[10rem] leading-none text-black tabular-nums tracking-tighter">00</span>
+                        <div class="bg-black text-white font-gta text-base sm:text-xl md:text-2xl px-3 sm:px-4 py-1 mt-2 tracking-[0.2em]">MINUTES</div>
+                    </div>
                 </div>
 
-                <div class="bg-white border-4 sm:border-[6px] border-black shadow-[8px_8px_0_#000] md:shadow-[12px_12px_0_#000] flex flex-col items-center justify-center p-4 sm:p-6 md:p-8 rotate-2 hover:rotate-0 transition-transform duration-300 mt-0 lg:mt-8">
-                    <span class="timer-seconds font-gta text-[4.5rem] sm:text-[6rem] md:text-[8rem] lg:text-[10rem] leading-none text-black tabular-nums tracking-tighter">00</span>
-                    <div class="bg-black text-white font-gta text-base sm:text-xl md:text-2xl px-3 sm:px-4 py-1 mt-2 tracking-[0.2em]">SECONDS</div>
+                <div class="reveal-fx reveal-pop" style="transition-delay: 400ms;">
+                    <div class="bg-white border-4 sm:border-[6px] border-black shadow-[8px_8px_0_#000] md:shadow-[12px_12px_0_#000] flex flex-col items-center justify-center p-4 sm:p-6 md:p-8 rotate-2 hover:rotate-0 transition-transform duration-300 mt-0 lg:mt-8">
+                        <span class="timer-seconds font-gta text-[4.5rem] sm:text-[6rem] md:text-[8rem] lg:text-[10rem] leading-none text-black tabular-nums tracking-tighter">00</span>
+                        <div class="bg-black text-white font-gta text-base sm:text-xl md:text-2xl px-3 sm:px-4 py-1 mt-2 tracking-[0.2em]">SECONDS</div>
+                    </div>
                 </div>
 
             </div>
@@ -767,6 +807,19 @@
     <script>
         lucide.createIcons();
 
+        // --- SCROLL REVEAL OBSERVER ---
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-revealed');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+
+        document.querySelectorAll('.reveal-fx').forEach(el => {
+            revealObserver.observe(el);
+        });
+
         // --- NAVIGATION LOGIC (SPA) ---
         function navigate(pageId) {
             // Hide all pages
@@ -775,6 +828,12 @@
             });
             // Show selected page
             document.getElementById('page-' + pageId).classList.remove('hidden');
+
+            // Reset animations so they pop in again on navigating
+            document.querySelectorAll('.is-revealed').forEach(el => el.classList.remove('is-revealed'));
+            setTimeout(() => {
+                document.querySelectorAll('.reveal-fx').forEach(el => revealObserver.observe(el));
+            }, 50);
 
             // Update Nav Styles
             document.querySelectorAll('.nav-link').forEach(link => {
@@ -828,7 +887,7 @@
             { name: "Shavarsh", alias: "The Varsh", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Scientist", desc: "A brilliant, albeit erratic, underground scientist who operates out of a highly classified, makeshift laboratory. Shavarsh specializes in synthesizing cutting-edge chemical compounds and highly volatile thermite charges. He frequently lends his unorthodox expertise to anyone in the syndicate who needs a lock melted or a specialized medical concoction.", stats: { hangout: "The Lab", vehicle: "Mercedes", location: "Los Santos", attributes: { stamina: 60, shooting: 75, strength: 80, driving: 70 } }, stars: 5, hidden: true },
             { name: "Tom", alias: "Hursh", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Gym Leader", desc: "By all appearances, Tom is an athletic, clean-cut team leader at an upscale Los Santos rock climbing gym. A good man who got caught up with the wrong folks to pay off mounting debts, his unparalleled scaling abilities and stamina make him the perfect asset for high-altitude infiltrations and bypassing top-tier security systems from the outside.", stats: { hangout: "Rock Climbing Gyms", vehicle: "Honda Accord", location: "Los Santos", attributes: { stamina: 85, shooting: 77, strength: 83, driving: 77 } }, stars: 5, hidden: true },
             { name: "Aldo", alias: "Sandstorm", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Hacker", desc: "A recluse master hacker known in the dark web community only as 'Sandstorm'. Operating out of heavily fortified, server-packed control rooms, Aldo can bypass nearly any digital firewall, manipulate traffic grids, and scrub security footage in real-time. His digital footprint is practically non-existent, making him an invaluable ghost in the machine.", stats: { hangout: "Control Rooms", vehicle: "Ford Focus", location: "Los Santos", attributes: { stamina: 94, shooting: 93, strength: 81, driving: 76 } }, stars: 5, hidden: true },
-            { name: "Brandon", alias: "Gaydon", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Insider", desc: "A prominent figure in the local food industry who uses his chain of establishments as a sophisticated front for illicit operations. Brandon leverages his extensive underground ties to facilitate discrete meetings in the backrooms of his bars. His supply trucks are frequently utilized to move heavily concealed contraband across state lines under the guise of frozen goods.", stats: { hangout: "Bars", vehicle: "Lexus", location: "Los Santos", attributes: { stamina: 67, shooting: 75, strength: 77, driving: 77 } }, stars: 5, hidden: true },
+            { name: "Brandon", alias: "Gaydon", img: "https://i.imgur.com/BSW37G6.jpeg", role: "Insider", desc: "A prominent figure in the local food industry who uses his chain of establishments as a sophisticated front for illicit operations. Brandon leverages his extensive underground ties to facilitate discrete meetings in the backrooms of his bars. His supply trucks are frequently utilized to move heavily concealed contraband across state lines under the guise of frozen goods.", stats: { hangout: "Bars", vehicle: "Lexus", location: "Los Santos", attributes: { stamina: 67, shooting: 75, strength: 77, driving: 77 } }, stars: 5, hidden: true },
             { name: "Arabo", alias: "Big Bo", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Transporter", desc: "A legendary transporter with an ironclad reputation for never checking the cargo and never missing a deadline. Arabo operates a fleet of heavy-duty, heavily armored trucks capable of busting through LSPD barricades like wet paper. Whether it's moving millions in marked bills or transporting highly restricted hardware, he guarantees delivery, no matter the heat.", stats: { hangout: "Everywhere", vehicle: "Trucks", location: "Los Santos", attributes: { stamina: 90, shooting: 94, strength: 84, driving: 96 } }, stars: 5, hidden: true },
             { name: "Argin", alias: "The Machine", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Street Racer", desc: "An underground street racing phenom who has completely dominated the Los Santos midnight racing circuits. Piloting highly modified, imported JDM vehicles, Argin boasts a staggering 90% win rate. His unparalleled reaction times and intimate knowledge of the city's alleyways make him the ultimate high-speed pursuit specialist when a standard getaway driver won't cut it.", stats: { hangout: "Street Races", vehicle: "JDM Vehicles", location: "Los Santos", attributes: { stamina: 67, shooting: 80, strength: 80, driving: 98 } }, stars: 5, hidden: true },
             { name: "Unknown", alias: "Slim", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Mentor", desc: "A rare success story in the criminal underworld. Slim is a fiercely intelligent, street-smart mentor who managed to turn his life around after a lengthy stint in Bolingbroke Penitentiary. He now dedicates his time to helping at-risk youth stay off the streets, though his encyclopedic knowledge of rival gangs and police patrol routes makes him a highly sought-after tactical consultant.", stats: { hangout: "Los Santos", vehicle: "Unknown", location: "Los Santos", attributes: { stamina: 67, shooting: 82, strength: 77, driving: 55 } }, stars: 5, hidden: true },
@@ -998,17 +1057,24 @@
             grid.innerHTML = crewData.map((c, i) => {
                 if (c.hidden) return ''; // Hide secret associates from the suspect board!
                 return `
-                <button onclick="selectSuspectFromGrid(${i})" class="group bg-white border-4 border-black p-2 sm:p-3 shadow-[4px_4px_0_rgba(0,0,0,0.5)] hover:shadow-[8px_8px_0_var(--gta-pink)] hover:border-[var(--gta-pink)] hover:-translate-y-2 transition-all duration-300 flex flex-col outline-none w-full relative">
-                    <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 w-8 sm:w-12 h-3 sm:h-4 bg-white/80 border border-gray-300 shadow-sm z-10 hidden sm:block"></div>
-                    <div class="w-full aspect-square border-2 border-black overflow-hidden mb-2 relative">
-                        <img src="${c.img}" class="w-full h-full object-cover filter grayscale group-hover:grayscale-0 contrast-125 saturate-110 transition-all duration-300">
-                        <div class="absolute inset-0 bg-[var(--gta-blue)] mix-blend-overlay opacity-20 group-hover:opacity-0 transition-all duration-300"></div>
-                    </div>
-                    <div class="font-gta text-lg sm:text-xl md:text-2xl text-black leading-none group-hover:text-[var(--gta-pink)] transition-colors text-left uppercase truncate w-full mt-1">${c.name}</div>
-                    <div class="text-[9px] sm:text-[11px] font-roboto font-bold text-gray-500 uppercase tracking-widest text-left truncate w-full">"${c.alias}"</div>
-                </button>
+                <div class="reveal-fx reveal-pop w-full h-full" style="transition-delay: ${Math.min(i * 50, 400)}ms">
+                    <button onclick="selectSuspectFromGrid(${i})" class="group bg-white border-4 border-black p-2 sm:p-3 shadow-[4px_4px_0_rgba(0,0,0,0.5)] hover:shadow-[8px_8px_0_var(--gta-pink)] hover:border-[var(--gta-pink)] hover:-translate-y-2 transition-all duration-300 flex flex-col outline-none w-full h-full relative">
+                        <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 w-8 sm:w-12 h-3 sm:h-4 bg-white/80 border border-gray-300 shadow-sm z-10 hidden sm:block"></div>
+                        <div class="w-full aspect-square border-2 border-black overflow-hidden mb-2 relative">
+                            <img src="${c.img}" class="w-full h-full object-cover filter grayscale group-hover:grayscale-0 contrast-125 saturate-110 transition-all duration-300">
+                            <div class="absolute inset-0 bg-[var(--gta-blue)] mix-blend-overlay opacity-20 group-hover:opacity-0 transition-all duration-300"></div>
+                        </div>
+                        <div class="font-gta text-lg sm:text-xl md:text-2xl text-black leading-none group-hover:text-[var(--gta-pink)] transition-colors text-left uppercase truncate w-full mt-1">${c.name}</div>
+                        <div class="text-[9px] sm:text-[11px] font-roboto font-bold text-gray-500 uppercase tracking-widest text-left truncate w-full">"${c.alias}"</div>
+                    </button>
+                </div>
                 `;
             }).join('');
+
+            // Observe the newly created grid elements
+            setTimeout(() => {
+                document.querySelectorAll('#suspect-grid .reveal-fx').forEach(el => revealObserver.observe(el));
+            }, 50);
         }
 
         function selectSuspectFromGrid(index) {
