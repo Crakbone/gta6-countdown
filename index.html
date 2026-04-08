@@ -900,7 +900,11 @@
             { name: "Fredrick", alias: "The Who", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Gambler", desc: "A notorious fixture in the high-roller suites of Los Santos' most exclusive casinos, Fredrick is a man actively drowning in eight-figure debts. Despite having a bounty on his head from half the city's loan sharks, his unparalleled ability to read people and manipulate VIPs makes him a surprisingly useful asset. He frequently feeds the crew insider intel overheard from wealthy corporate targets at the poker tables, playing both sides of the coin in a desperate, never-ending bid to keep himself alive.", stats: { hangout: "Casinos", vehicle: "Honda Civic", location: "Los Santos", attributes: { stamina: 55, shooting: 87, strength: 83, driving: 63 } }, stars: 5, hidden: true, searchTerms: ['who'] }
         ];
 
-        let currentIdx = 1; // Starts at 1 (Alex) so it skips Ace on the initial load
+        // Sort the crew database alphabetically by name
+        crewData.sort((a, b) => a.name.localeCompare(b.name));
+
+        // Automatically start at the first non-hidden suspect (Alex)
+        let currentIdx = crewData.findIndex(c => !c.hidden);
         let isSidebarOpen = false;
 
         // Enhanced Navigation Carousel to skip hidden profiles!
