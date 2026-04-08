@@ -38,7 +38,6 @@
             inset: 0;
             background-image: radial-gradient(#000 45%, transparent 50%);
             background-size: 8px 8px;
-            /* Mask creates the effect where dots only appear heavily towards the edges */
             -webkit-mask-image: radial-gradient(ellipse at center, transparent 20%, black 80%);
             mask-image: radial-gradient(ellipse at center, transparent 20%, black 80%);
             z-index: -3;
@@ -47,7 +46,6 @@
         .bg-vignette {
             position: fixed;
             inset: 0;
-            /* Combines a radial dark fade with hard black edges for Google Sites blending */
             background: 
                 linear-gradient(90deg, #000 0%, transparent 15%, transparent 85%, #000 100%),
                 radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.8) 80%, #000 100%);
@@ -55,7 +53,6 @@
             pointer-events: none;
         }
 
-        /* Abstract Texture Overlay */
         .bg-overlay {
             position: fixed;
             inset: 0;
@@ -81,35 +78,10 @@
             position: relative;
         }
 
-        /* --- HUD TIMER --- */
         .hud-timer {
             text-shadow: 2px 2px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
         }
 
-        /* --- iFRUIT PHONE --- */
-        .ifruit-phone {
-            background: #111;
-            border-radius: 30px;
-            border: 8px solid #222;
-            box-shadow: inset 0 0 10px rgba(0,0,0,0.8), 5px 10px 15px rgba(0,0,0,0.5);
-            position: relative;
-            overflow: hidden;
-        }
-        .ifruit-screen {
-            background: #e5e5e5;
-            color: #111;
-            height: 100%;
-        }
-        .ifruit-notch {
-            position: absolute;
-            top: 0; left: 50%; transform: translateX(-50%);
-            width: 40%; height: 20px;
-            background: #222;
-            border-bottom-left-radius: 10px;
-            border-bottom-right-radius: 10px;
-        }
-
-        /* --- SNAPMATIC --- */
         .snapmatic-badge {
             position: absolute;
             bottom: 10px; right: 10px;
@@ -123,14 +95,12 @@
             gap: 5px;
         }
 
-        /* Vertical text for closed sidebar */
         .vertical-text {
             writing-mode: vertical-rl;
             text-orientation: mixed;
             transform: rotate(180deg);
         }
 
-        /* CUSTOM SCROLLBAR */
         ::-webkit-scrollbar { width: 8px; height: 8px; }
         ::-webkit-scrollbar-track { background: rgba(0,0,0,0.8); }
         ::-webkit-scrollbar-thumb { background: #fff; border: 2px solid #000; }
@@ -313,8 +283,8 @@
                                 </div>
 
                                 <!-- MOBILE ONLY BIO -->
-                                <div class="w-full max-w-[280px] mt-3 bg-[#fdf8e4] text-black border-4 border-black shadow-[4px_4px_0_rgba(0,0,0,0.3)] p-3 sm:p-4 font-roboto hover:scale-105 hover:shadow-[8px_8px_0_rgba(0,0,0,0.4)] transition-all duration-300 relative h-auto min-h-[280px] sm:h-[250px] flex md:hidden flex-col justify-center">
-                                    <div class="overflow-visible sm:overflow-hidden h-full flex flex-col justify-start md:justify-center">
+                                <div class="w-full max-w-[280px] mt-3 bg-[#fdf8e4] text-black border-4 border-black shadow-[4px_4px_0_rgba(0,0,0,0.3)] p-3 sm:p-4 font-roboto hover:scale-105 hover:shadow-[8px_8px_0_rgba(0,0,0,0.4)] transition-all duration-300 relative h-[550px] md:h-[450px] flex md:hidden flex-col justify-start">
+                                    <div class="overflow-hidden h-full flex flex-col justify-start">
                                         <div class="flex flex-col w-full md:hidden border-b border-gray-400 pb-2 mb-2 flex-shrink-0">
                                             <div class="flex items-center justify-between w-full mb-1.5">
                                                 <div class="dos-alias text-2xl font-handwriting text-[var(--gta-pink)] leading-none">"Alias"</div>
@@ -326,8 +296,8 @@
                                                 <span class="dos-role font-gta text-xs leading-none uppercase">ROLE</span>
                                             </div>
                                         </div>
-                                        <span class="text-[10px] md:text-xs text-gray-600 uppercase tracking-widest font-bold mb-1 block opacity-70">BIOGRAPHY</span>
-                                        <div class="dos-desc flex-grow text-[15px] font-roboto leading-relaxed text-black overflow-visible sm:overflow-y-auto custom-scrollbar pr-1"></div>
+                                        <span class="text-[10px] md:text-xs text-gray-600 uppercase tracking-widest font-bold mb-1 block opacity-70 shrink-0">BIOGRAPHY</span>
+                                        <div class="dos-desc flex-grow text-[15px] font-roboto leading-relaxed text-black pr-1"></div>
                                     </div>
                                 </div>
 
@@ -431,9 +401,9 @@
                                 </div>
 
                                 <!-- DESKTOP ONLY BIO -->
-                                <div class="bg-[#fdf8e4] border-4 border-black shadow-[6px_6px_0_rgba(0,0,0,0.3)] p-4 lg:p-6 text-black font-roboto flex-1 hidden md:flex flex-col justify-start relative h-auto min-h-[200px] mt-2 border-l-4 border-l-[var(--gta-blue)]">
-                                    <div class="text-[12px] font-bold text-gray-600 uppercase tracking-widest mb-2 border-b-2 border-black pb-1 text-left">BIOGRAPHY</div>
-                                    <div class="dos-desc flex-grow overflow-y-auto custom-scrollbar text-base lg:text-[17px] font-roboto leading-relaxed text-black pr-2"></div>
+                                <div class="bg-[#fdf8e4] border-4 border-black shadow-[6px_6px_0_rgba(0,0,0,0.3)] p-4 lg:p-6 text-black font-roboto hidden md:flex flex-col justify-start relative h-[550px] md:h-[450px] mt-2 border-l-4 border-l-[var(--gta-blue)] overflow-hidden">
+                                    <div class="text-[12px] font-bold text-gray-600 uppercase tracking-widest mb-2 border-b-2 border-black pb-1 text-left shrink-0">BIOGRAPHY</div>
+                                    <div class="dos-desc flex-grow text-base lg:text-[17px] font-roboto leading-relaxed text-black pr-2"></div>
                                 </div>
 
                             </div>
@@ -484,7 +454,7 @@
                         <div class="reveal-fx reveal-pop" style="transition-delay: 100ms;">
                             <div class="gta-panel p-2">
                                 <div class="aspect-video bg-black relative border-2 border-black">
-                                    <iframe class="w-full h-full relative z-10" src="https://www.youtube.com/embed/QdBZY2fkU-0?si=J9wnbQ0D1lpVN4F-" frameborder="0" allowfullscreen></iframe>
+                                    <iframe class="w-full h-full relative z-10" src="https://www.youtube.com/embed/QdBZY2fkU-0" frameborder="0" allowfullscreen></iframe>
                                     <div class="absolute inset-0 bg-[url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABZJREFUeNpi2rVrv+Pv37//gQIgwAQA08gNQ025C/kAAAAASUVORK5CYII=')] opacity-20 pointer-events-none z-20"></div>
                                 </div>
                             </div>
@@ -492,7 +462,7 @@
                         <div class="reveal-fx reveal-pop" style="transition-delay: 200ms;">
                             <div class="gta-panel p-2">
                                 <div class="aspect-video bg-black relative border-2 border-black">
-                                    <iframe class="w-full h-full relative z-10" src="https://www.youtube.com/embed/VQRLujxTm3c?si=v8KJjNMV7uvu6lJJ" frameborder="0" allowfullscreen></iframe>
+                                    <iframe class="w-full h-full relative z-10" src="https://www.youtube.com/embed/VQRLujxTm3c" frameborder="0" allowfullscreen></iframe>
                                     <div class="absolute inset-0 bg-[url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABZJREFUeNpi2rVrv+Pv37//gQIgwAQA08gNQ025C/kAAAAASUVORK5CYII=')] opacity-20 pointer-events-none z-20"></div>
                                 </div>
                             </div>
@@ -558,112 +528,118 @@
                             <img src="" class="dos-img w-full aspect-square object-cover filter contrast-125 saturate-110">
                         </div>
                         
-                        <div class="w-[85%] md:w-full bg-[var(--gta-red)] text-white font-gta text-2xl sm:text-3xl text-center py-2 border-2 border-white shadow-[4px_4px_0_rgba(0,0,0,1)] uppercase hidden md:block"><span class="dos-role"></span></div>
+                        <div class="w-[85%] md:w-full bg-[var(--gta-red)] text-white font-gta text-xl sm:text-3xl text-center py-2 border-2 border-white shadow-[4px_4px_0_rgba(0,0,0,1)] uppercase mt-2 md:mt-0"><span class="dos-role"></span></div>
                         
-                        <div class="dos-stars-wrapper w-[85%] md:w-full bg-black border-2 border-white p-3 shadow-[4px_4px_0_rgba(0,0,0,1)] hidden md:block">
-                            <div class="dos-stars flex justify-center gap-1 text-[var(--gta-yellow)] text-xl sm:text-2xl drop-shadow-[0_0_5px_rgba(255,204,0,0.5)]"></div>
+                        <div class="dos-stars-wrapper w-[85%] md:w-full bg-black border-2 border-white p-2 sm:p-3 shadow-[4px_4px_0_rgba(0,0,0,1)]">
+                            <div class="dos-stars flex justify-center gap-1 text-[var(--gta-yellow)] text-lg sm:text-2xl drop-shadow-[0_0_5px_rgba(255,204,0,0.5)]"></div>
                         </div>
-
-                        <!-- DESKTOP ONLY STATS -->
-                        <div class="w-full hidden md:flex flex-col bg-black/40 p-4 border-l-4 border-[var(--gta-pink)] shadow-inner h-full min-h-[200px] justify-center">
-                            <div class="text-[12px] font-bold text-gray-500 uppercase tracking-widest mb-4 border-b border-gray-800 pb-1 text-center">OPERATIONAL STATS</div>
-                            <div class="grid grid-cols-1 gap-y-4">
-                                <div>
-                                    <div class="flex justify-between text-[11px] font-bold text-gray-400 uppercase tracking-widest mb-1">
-                                        <span>Stamina</span><span class="stat-stamina-val text-white"></span>
-                                    </div>
-                                    <div class="w-full h-3 border-2 border-gray-600 bg-gray-900 p-[1px]"><div class="stat-stamina h-full bg-[var(--gta-blue)] transition-all duration-500"></div></div>
-                                </div>
-                                <div>
-                                    <div class="flex justify-between text-[11px] font-bold text-gray-400 uppercase tracking-widest mb-1">
-                                        <span>Shooting</span><span class="stat-shooting-val text-white"></span>
-                                    </div>
-                                    <div class="w-full h-3 border-2 border-gray-600 bg-gray-900 p-[1px]"><div class="stat-shooting h-full bg-[var(--gta-red)] transition-all duration-500"></div></div>
-                                </div>
-                                <div>
-                                    <div class="flex justify-between text-[11px] font-bold text-gray-400 uppercase tracking-widest mb-1">
-                                        <span>Strength</span><span class="stat-strength-val text-white"></span>
-                                    </div>
-                                    <div class="w-full h-3 border-2 border-gray-600 bg-gray-900 p-[1px]"><div class="stat-strength h-full bg-[var(--gta-green)] transition-all duration-500"></div></div>
-                                </div>
-                                <div>
-                                    <div class="flex justify-between text-[11px] font-bold text-gray-400 uppercase tracking-widest mb-1">
-                                        <span>Driving</span><span class="stat-driving-val text-white"></span>
-                                    </div>
-                                    <div class="w-full h-3 border-2 border-gray-600 bg-gray-900 p-[1px]"><div class="stat-driving h-full bg-[var(--gta-yellow)] transition-all duration-500"></div></div>
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
 
-                    <div class="w-full md:w-2/3 z-10 flex flex-col justify-center">
+                    <div class="w-full md:w-2/3 z-10 flex flex-col justify-start">
                         
-                        <div class="hidden md:block order-1">
-                            <h3 class="dos-name text-4xl sm:text-6xl md:text-7xl font-gta text-[var(--gta-pink)] leading-none drop-shadow-[2px_2px_0_#fff] mb-1 uppercase text-center md:text-left"></h3>
-                            <div class="dos-alias text-2xl sm:text-4xl font-handwriting text-white mb-4 text-center md:text-left">"Alias"</div>
+                        <div class="order-1 text-center md:text-left mb-2 md:mb-0">
+                            <h3 class="dos-name text-4xl sm:text-6xl md:text-7xl font-gta text-[var(--gta-pink)] leading-none drop-shadow-[2px_2px_0_#fff] mb-1 uppercase hidden md:block"></h3>
+                            <div class="dos-alias text-3xl sm:text-4xl font-handwriting text-white mb-2 md:mb-4">"Alias"</div>
                         </div>
 
-                        <div class="flex flex-wrap justify-center md:justify-start gap-1.5 sm:gap-2 font-roboto font-bold text-gray-400 mb-3 mt-1 md:mt-0 text-[8px] sm:text-[10px] uppercase tracking-widest border-b-2 border-gray-800 pb-2 md:pb-3 order-2">
-                            <span class="bg-gray-800 px-1.5 py-0.5 text-white border border-gray-600 shadow-sm">LOC: <span class="dos-location text-[var(--gta-blue)]"></span></span>
-                            <span class="bg-gray-800 px-1.5 py-0.5 text-white border border-gray-600 shadow-sm">BASE: <span class="dos-hangout text-[var(--gta-blue)]"></span></span>
-                            <span class="bg-gray-800 px-1.5 py-0.5 text-white border border-gray-600 shadow-sm truncate max-w-[200px] inline-block align-bottom">VEH: <span class="dos-vehicle text-[var(--gta-blue)]"></span></span>
-                        </div>
-                        
-                        <!-- MOBILE ONLY STATS -->
-                        <div class="grid md:hidden grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 mb-3 bg-black/40 p-3 sm:p-4 border-l-4 border-[var(--gta-pink)] shadow-inner order-3 mt-4">
-                            <div class="col-span-1 sm:col-span-2 text-[10px] sm:text-xs font-bold text-gray-500 uppercase tracking-widest mb-1 border-b border-gray-800 pb-1">OPERATIONAL STATS</div>
-                            <div>
-                                <div class="flex justify-between text-[10px] sm:text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">
-                                    <span>Stamina</span><span class="stat-stamina-val text-white"></span>
-                                </div>
-                                <div class="w-full h-3 border-2 border-gray-600 bg-gray-900 p-[1px]"><div class="stat-stamina h-full bg-[var(--gta-blue)] transition-all duration-500"></div></div>
+                        <!-- MANILA FOLDER TABS -->
+                        <div class="flex flex-col mt-2 md:mt-4 w-full order-2 flex-1 relative max-w-full">
+                            <!-- Tabs -->
+                            <div class="flex overflow-x-auto custom-scrollbar gap-1 sm:gap-2 px-2 sm:px-4 relative z-20 translate-y-1">
+                                <button onclick="switchCrewTab('file')" id="crew-tab-btn-file" class="crew-tab-btn relative z-30 bg-[#fdf8e4] border-4 border-black border-b-[#fdf8e4] px-3 sm:px-5 pt-2 pb-3 font-gta text-xs sm:text-sm text-black rounded-t-lg transition-colors whitespace-nowrap outline-none">FILE</button>
+                                <button onclick="switchCrewTab('stats')" id="crew-tab-btn-stats" class="crew-tab-btn relative z-10 bg-[#d0d0d0] border-4 border-black border-b-black px-3 sm:px-5 pt-2 pb-2 font-gta text-xs sm:text-sm text-black rounded-t-lg hover:bg-[#e0e0e0] transition-colors whitespace-nowrap outline-none">STATS</button>
+                                <button onclick="switchCrewTab('info')" id="crew-tab-btn-info" class="crew-tab-btn relative z-10 bg-[#d0d0d0] border-4 border-black border-b-black px-3 sm:px-5 pt-2 pb-2 font-gta text-xs sm:text-sm text-black rounded-t-lg hover:bg-[#e0e0e0] transition-colors whitespace-nowrap outline-none">INFO</button>
+                                <button onclick="switchCrewTab('vehicle')" id="crew-tab-btn-vehicle" class="crew-tab-btn relative z-10 bg-[#d0d0d0] border-4 border-black border-b-black px-3 sm:px-5 pt-2 pb-2 font-gta text-xs sm:text-sm text-black rounded-t-lg hover:bg-[#e0e0e0] transition-colors whitespace-nowrap outline-none">VEHICLE INFO</button>
+                                <button onclick="switchCrewTab('images')" id="crew-tab-btn-images" class="crew-tab-btn relative z-10 bg-[#d0d0d0] border-4 border-black border-b-black px-3 sm:px-5 pt-2 pb-2 font-gta text-xs sm:text-sm text-black rounded-t-lg hover:bg-[#e0e0e0] transition-colors whitespace-nowrap outline-none">IMAGES</button>
                             </div>
-                            <div>
-                                <div class="flex justify-between text-[10px] sm:text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">
-                                    <span>Shooting</span><span class="stat-shooting-val text-white"></span>
-                                </div>
-                                <div class="w-full h-3 border-2 border-gray-600 bg-gray-900 p-[1px]"><div class="stat-shooting h-full bg-[var(--gta-red)] transition-all duration-500"></div></div>
-                            </div>
-                            <div>
-                                <div class="flex justify-between text-[10px] sm:text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">
-                                    <span>Strength</span><span class="stat-strength-val text-white"></span>
-                                </div>
-                                <div class="w-full h-3 border-2 border-gray-600 bg-gray-900 p-[1px]"><div class="stat-strength h-full bg-[var(--gta-green)] transition-all duration-500"></div></div>
-                            </div>
-                            <div>
-                                <div class="flex justify-between text-[10px] sm:text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">
-                                    <span>Driving</span><span class="stat-driving-val text-white"></span>
-                                </div>
-                                <div class="w-full h-3 border-2 border-gray-600 bg-gray-900 p-[1px]"><div class="stat-driving h-full bg-[var(--gta-yellow)] transition-all duration-500"></div></div>
-                            </div>
-                        </div>
-
-                        <!-- MOBILE ONLY BIO -->
-                        <div class="bg-[#fdf8e4] text-black p-3 sm:p-4 lg:p-6 border-l-4 border-[var(--gta-blue)] shadow-inner h-auto flex md:hidden flex-col justify-start order-4 md:order-3 md:mt-2 flex-1">
-                            <div class="overflow-visible sm:overflow-hidden h-full flex flex-col justify-start">
+                            
+                            <!-- Content Box -->
+                            <div class="bg-[#fdf8e4] border-4 border-black shadow-[6px_6px_0_rgba(0,0,0,0.5)] p-4 sm:p-6 text-black font-roboto relative z-10 h-[550px] md:h-[450px] flex flex-col overflow-hidden">
                                 
-                                <div class="flex flex-col w-full md:hidden border-b border-gray-400 pb-3 mb-3 flex-shrink-0">
-                                    <div class="flex items-center justify-between w-full mb-2">
-                                        <div class="dos-alias text-3xl font-handwriting text-[var(--gta-pink)] leading-none">"Alias"</div>
-                                        <div class="dos-stars-wrapper flex justify-end">
-                                            <div class="dos-stars flex justify-end gap-1 text-[var(--gta-yellow)] [&>svg]:w-5 [&>svg]:h-5"></div>
+                                <!-- FILE TAB -->
+                                <div id="crew-tab-file" class="crew-tab-content flex-1 flex flex-col overflow-hidden">
+                                    <div class="text-[14px] lg:text-base font-bold text-gray-600 uppercase tracking-widest mb-4 border-b-2 border-black pb-2 text-left shrink-0">SUBJECT BIOGRAPHY</div>
+                                    <div class="dos-desc flex-grow text-[15px] sm:text-[17px] font-roboto leading-relaxed text-black pr-2"></div>
+                                </div>
+
+                                <!-- STATS TAB -->
+                                <div id="crew-tab-stats" class="crew-tab-content flex-1 flex flex-col hidden pr-2">
+                                    <div class="text-[14px] lg:text-base font-bold text-gray-600 uppercase tracking-widest mb-6 border-b-2 border-black pb-2 text-left shrink-0">OPERATIONAL STATISTICS</div>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6">
+                                        <div>
+                                            <div class="flex justify-between text-[11px] sm:text-xs font-bold text-gray-700 uppercase tracking-widest mb-1.5">
+                                                <span>Stamina</span><span class="stat-stamina-val text-black"></span>
+                                            </div>
+                                            <div class="w-full h-4 sm:h-5 bg-gray-300 border-2 border-black p-[1px]"><div class="stat-stamina h-full bg-[var(--gta-blue)] transition-all duration-500"></div></div>
+                                        </div>
+                                        <div>
+                                            <div class="flex justify-between text-[11px] sm:text-xs font-bold text-gray-700 uppercase tracking-widest mb-1.5">
+                                                <span>Shooting</span><span class="stat-shooting-val text-black"></span>
+                                            </div>
+                                            <div class="w-full h-4 sm:h-5 bg-gray-300 border-2 border-black p-[1px]"><div class="stat-shooting h-full bg-[var(--gta-red)] transition-all duration-500"></div></div>
+                                        </div>
+                                        <div>
+                                            <div class="flex justify-between text-[11px] sm:text-xs font-bold text-gray-700 uppercase tracking-widest mb-1.5">
+                                                <span>Strength</span><span class="stat-strength-val text-black"></span>
+                                            </div>
+                                            <div class="w-full h-4 sm:h-5 bg-gray-300 border-2 border-black p-[1px]"><div class="stat-strength h-full bg-[var(--gta-green)] transition-all duration-500"></div></div>
+                                        </div>
+                                        <div>
+                                            <div class="flex justify-between text-[11px] sm:text-xs font-bold text-gray-700 uppercase tracking-widest mb-1.5">
+                                                <span>Driving</span><span class="stat-driving-val text-black"></span>
+                                            </div>
+                                            <div class="w-full h-4 sm:h-5 bg-gray-300 border-2 border-black p-[1px]"><div class="stat-driving h-full bg-[var(--gta-yellow)] transition-all duration-500"></div></div>
                                         </div>
                                     </div>
-                                    <div class="bg-[var(--gta-red)] text-white px-3 py-1 border border-black inline-block self-start shadow-[2px_2px_0_rgba(0,0,0,1)]">
-                                        <span class="dos-role font-gta text-sm leading-none uppercase">ROLE</span>
+                                </div>
+
+                                <!-- INFO TAB -->
+                                <div id="crew-tab-info" class="crew-tab-content flex-1 flex flex-col hidden pr-2">
+                                    <div class="text-[14px] lg:text-base font-bold text-gray-600 uppercase tracking-widest mb-4 border-b-2 border-black pb-2 text-left shrink-0">KNOWN INTELLIGENCE</div>
+                                    <div class="space-y-5 mt-2">
+                                        <div class="flex flex-col border-l-4 border-[var(--gta-blue)] pl-4 bg-white/50 p-2 border-r border-y border-gray-300">
+                                            <span class="text-gray-500 font-roboto text-[10px] sm:text-xs font-bold tracking-widest leading-none mb-1.5">LAST KNOWN LOCATION</span>
+                                            <span class="dos-location text-black text-lg sm:text-xl font-gta"></span>
+                                        </div>
+                                        <div class="flex flex-col border-l-4 border-[var(--gta-yellow)] pl-4 bg-white/50 p-2 border-r border-y border-gray-300">
+                                            <span class="text-gray-500 font-roboto text-[10px] sm:text-xs font-bold tracking-widest leading-none mb-1.5">PRIMARY BASE / HANGOUT</span>
+                                            <span class="dos-hangout text-black text-lg sm:text-xl font-gta"></span>
+                                        </div>
+                                        <div class="flex flex-col border-l-4 border-[var(--gta-green)] pl-4 bg-white/50 p-2 border-r border-y border-gray-300">
+                                            <span class="text-gray-500 font-roboto text-[10px] sm:text-xs font-bold tracking-widest leading-none mb-1.5">ASSOCIATED VEHICLE</span>
+                                            <span class="dos-vehicle text-black text-lg sm:text-xl font-gta"></span>
+                                        </div>
                                     </div>
                                 </div>
 
-                                <span class="text-[10px] md:text-xs text-gray-600 uppercase tracking-widest font-bold mb-2 block opacity-70 border-b border-black pb-1">BIOGRAPHY</span>
-                                <div class="dos-desc flex-grow overflow-visible sm:overflow-y-auto custom-scrollbar text-[16px] md:text-base lg:text-[17px] font-roboto leading-relaxed text-black pr-1"></div>
-                            </div>
-                        </div>
+                                <!-- VEHICLE INFO TAB -->
+                                <div id="crew-tab-vehicle" class="crew-tab-content flex-1 flex flex-col hidden pr-2">
+                                    <div class="text-[14px] lg:text-base font-bold text-gray-600 uppercase tracking-widest mb-4 border-b-2 border-black pb-2 text-left shrink-0">VEHICLE SPECIFICS</div>
+                                    <div class="bg-gray-200 border-2 border-black p-4 sm:p-5 shadow-inner mt-2 shrink-0">
+                                        <div class="flex items-center gap-3 mb-4 border-b-2 border-gray-400 pb-3">
+                                            <i data-lucide="car" class="w-6 h-6 sm:w-8 sm:h-8 text-black"></i>
+                                            <span class="dos-vehicle text-xl sm:text-2xl font-gta uppercase text-black"></span>
+                                        </div>
+                                        <ul class="space-y-3 text-sm sm:text-base font-roboto">
+                                            <li class="flex flex-col sm:flex-row sm:gap-2 border-b border-gray-300 pb-2"><strong class="min-w-[120px]">Registration:</strong> <span class="text-gray-700 font-mono text-sm bg-gray-300 px-1 rounded-sm">FORGED / CLASSIFIED</span></li>
+                                            <li class="flex flex-col sm:flex-row sm:gap-2 border-b border-gray-300 pb-2"><strong class="min-w-[120px]">Modifications:</strong> <span class="text-gray-700">Suspected Level 3 Armor, Custom ECU</span></li>
+                                            <li class="flex flex-col sm:flex-row sm:gap-2 border-b border-gray-300 pb-2"><strong class="min-w-[120px]">Plate Alert:</strong> <span class="text-[var(--gta-red)] font-bold tracking-widest">WANTED</span></li>
+                                            <li class="flex flex-col sm:flex-row sm:gap-2"><strong class="min-w-[120px]">Notes:</strong> <span class="text-gray-700">Vehicle frequently changes paint codes. Suspect utilizes hidden compartments.</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
 
-                        <!-- DESKTOP ONLY BIO -->
-                        <div class="hidden md:flex flex-col bg-[#fdf8e4] text-black p-4 lg:p-8 border-l-4 border-[var(--gta-blue)] shadow-inner h-auto min-h-[250px] order-5 md:order-3 md:mt-2 flex-1 justify-start">
-                            <div class="text-[14px] lg:text-base font-bold text-gray-600 uppercase tracking-widest mb-4 border-b border-black pb-2 text-left">BIOGRAPHY</div>
-                            <div class="dos-desc flex-grow overflow-y-auto custom-scrollbar text-[16px] lg:text-[18px] font-roboto leading-relaxed text-black pr-2"></div>
+                                <!-- IMAGES TAB -->
+                                <div id="crew-tab-images" class="crew-tab-content flex-1 flex flex-col hidden items-center justify-center overflow-hidden">
+                                    <div class="text-[14px] lg:text-base font-bold text-gray-600 uppercase tracking-widest mb-4 border-b-2 border-black pb-2 text-left w-full shrink-0">SURVEILLANCE IMAGES</div>
+                                    <div class="flex-1 flex flex-col items-center justify-center text-gray-500 opacity-60">
+                                        <i data-lucide="image-off" class="w-16 h-16 sm:w-20 sm:h-20 mb-3"></i>
+                                        <span class="font-gta text-2xl sm:text-3xl tracking-widest">EMPTY</span>
+                                        <span class="text-sm font-roboto text-center mt-2 uppercase tracking-wide">NO ADDITIONAL MEDIA ON FILE</span>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
 
                     </div>
@@ -822,20 +798,16 @@
 
         // --- NAVIGATION LOGIC (SPA) ---
         function navigate(pageId) {
-            // Hide all pages
             document.querySelectorAll('.page-section').forEach(page => {
                 page.classList.add('hidden');
             });
-            // Show selected page
             document.getElementById('page-' + pageId).classList.remove('hidden');
 
-            // Reset animations so they pop in again on navigating
             document.querySelectorAll('.is-revealed').forEach(el => el.classList.remove('is-revealed'));
             setTimeout(() => {
                 document.querySelectorAll('.reveal-fx').forEach(el => revealObserver.observe(el));
             }, 50);
 
-            // Update Nav Styles
             document.querySelectorAll('.nav-link').forEach(link => {
                 link.classList.remove('text-[var(--gta-pink)]');
                 link.classList.add('text-white');
@@ -844,7 +816,6 @@
             activeNav.classList.remove('text-white');
             activeNav.classList.add('text-[var(--gta-pink)]');
 
-            // Ensure window is at the top when navigating
             window.scrollTo(0, 0);
         }
 
@@ -859,7 +830,6 @@
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            // Update all instances of timer blocks (Home & Counter pages)
             document.querySelectorAll('.timer-days').forEach(el => el.innerText = String(days).padStart(3, '0'));
             document.querySelectorAll('.timer-hours').forEach(el => el.innerText = String(hours).padStart(2, '0'));
             document.querySelectorAll('.timer-minutes').forEach(el => el.innerText = String(minutes).padStart(2, '0'));
@@ -871,61 +841,162 @@
 
         // --- VIP GUEST LIST LOGIC ---
         const crewData = [
-            { name: "Ace", alias: "Big Ace", img: "https://i.imgur.com/BQbHUy3.jpeg", role: "The Supplier", desc: "A veteran distributor of high-proof spirits and specialty libations. Ace operates a sprawling alcohol business that keeps the city's nightlife—and the crew—well supplied. Rumor has it he uses his offshore supply lines to smuggle more than just top-shelf liquor across the Leonida border.", stats: { hangout: "Bars & Clubs", vehicle: "1977 Caprice Classic", location: "Los Santos", attributes: { stamina: 70, shooting: 65, strength: 90, driving: 99 } }, stars: 5, hidden: true },
-            { name: "Alex", alias: "The FOB", img: "https://i.imgur.com/8Ewtas7.jpeg", role: "Getaway Driver", desc: "Renowned wheelman for the crew. Known for his ability to extract the team from any situation, often favoring heavily modified transit vehicles like a stolen school bus. He knows every back alley, dirt road, and blind spot in the VCPD's camera network.", stats: { hangout: "Underground Garages", vehicle: "Suzuki Esteem", location: "Los Santos", attributes: { stamina: 75, shooting: 75, strength: 83, driving: 95 } }, stars: 5, searchTerms: ['fob'] },
-            { name: "Andrés", alias: "Dutch", img: "https://i.imgur.com/U196bPG.jpeg", role: "Mastermind", desc: "The tactical architect. He maps out every detail of the operation, ensuring contingencies for every variable. Always has a plan, and usually has three backup plans. His ability to stay ice-cold under pressure has saved the crew from multiple federal sting operations.", stats: { hangout: "Safehouses", vehicle: "1999 Mitsubishi Galant", location: "Los Santos", attributes: { stamina: 65, shooting: 40, strength: 87, driving: 96 } }, stars: 5, searchTerms: ['violence', 'duner'] },
-            { name: "Aram", alias: "The Ram", img: "https://i.imgur.com/JPBYN8l.jpeg", role: "Engineer", desc: "Electrical Engineering expert. The technical backbone. From bypassing security grids to fixing critical gear, Aram ensures the crew stays off the grid. He recently developed a proprietary signal jammer that renders LSPD drones completely useless within a two-mile radius.", stats: { hangout: "Tech Hubs", vehicle: "Dodge Ram", location: "Los Santos", attributes: { stamina: 75, shooting: 83, strength: 84, driving: 60 } }, stars: 5, searchTerms: ['ram'] },
-            { name: "Daniel", alias: "Deeds", img: "https://i.imgur.com/hez90P9.jpeg", role: "Innovator", desc: "The creative force behind operations. Specializes in lateral thinking and devising novel solutions to seemingly impossible heists. When brute force fails, Daniel's unorthodox methods usually involve social engineering, elaborate disguises, or exploiting corporate loopholes.", stats: { hangout: "Basketball Courts", vehicle: "Dodge Viper", location: "Los Santos", attributes: { stamina: 68, shooting: 65, strength: 70, driving: 80 } }, stars: 5 },
-            { name: "Harout", alias: "Young Veyron", img: "https://i.imgur.com/2x5HnuN.jpeg", role: "Money Man", desc: "Financial controller. Manages resources with an iron grip, tracking every dollar spent and earned to launder effectively. He utilizes a complex web of shell companies, crypto tumblers, and offshore accounts to ensure the crew's illicit gains appear completely legitimate.", stats: { hangout: "Financial District", vehicle: "Nissan Skyline R34", location: "Los Santos", attributes: { stamina: 66, shooting: 95, strength: 77, driving: 87 } }, stars: 5, searchTerms: ['veyron'] },
-            { name: "Kevin C", alias: "The Drone", img: "https://i.imgur.com/CP8lcsL.jpeg", role: "Enforcer", desc: "A towering physical presence at 6'4\" and 240lbs. Serves as the primary intimidation factor for collections. Despite his terrifying stature, Kevin is surprisingly disciplined, preferring to settle disputes with a single quiet conversation rather than drawing unnecessary police attention.", stats: { hangout: "Industrial Docks", vehicle: "Mutt Cutts Van", location: "Los Santos", attributes: { stamina: 65, shooting: 68, strength: 88, driving: 67 } }, stars: 5, searchTerms: ['nk', 'nuke'] },
-            { name: "Raymond", alias: "Big Rus", img: "https://i.imgur.com/XEy6U2L.jpeg", role: "Launderer", desc: "Leverages deep ties to the fast food industry to wash crew funds through cash-heavy franchises. Also acts as the crew's beloved comedian, keeping morale high even when the heat is on. Don't let the jokes fool you; he is fiercely loyal and ruthless when protecting the family.", stats: { hangout: "Fast Food Joints", vehicle: "Ferrari 360", location: "Los Santos", attributes: { stamina: 67, shooting: 58, strength: 80, driving: 44 } }, stars: 3, searchTerms: ['ray', 'big rusiano', 'big rush', 'rush', 'gaymond'] },
-            { name: "Richard", alias: "Big Buff", img: "https://i.imgur.com/XLb1Qxn.jpeg", role: "Hybrid", desc: "A versatile powerhouse bridging brains and brawn. Physically imposing with diverse operational skills, Richard is equally comfortable breaching a bank vault as he is negotiating with rival syndicates. The rest of his crew is wishing him a speedy recovery, they know he will be back soon. He still remains a vital shot-caller.", stats: { hangout: "Gym", vehicle: "Mercedes 300 SLR", location: "Los Santos", attributes: { stamina: 100, shooting: 100, strength: 100, driving: 100 } }, stars: 5 },
-            { name: "Youra", alias: "YG", img: "https://i.imgur.com/aR73Lgr.jpeg", role: "Business Front", desc: "A legitimate businessman with a clean record. Youra runs a popular local coffee shop and serves as a community leader. However, authorities strongly suspect he is tied to the rest of the suspects in some way, acting as a clean front for meetings, although nothing has ever been proven.", stats: { hangout: "Coffee Shop", vehicle: "Rolls Royce Phantom", location: "Los Santos", attributes: { stamina: 66, shooting: 55, strength: 57, driving: 70 } }, stars: 0 },
-            { name: "Iven", alias: "Big Van", img: "https://i.imgur.com/6h9lzGe.jpeg", role: "Medical Support", desc: "Working in the medical field, he has access to all sorts of restricted records and medicine. He serves as the crew's primary medical connect, patching up operatives off the books and securing critical pharmaceutical supplies before the VCPD can trace the injuries.", stats: { hangout: "Local Clinics", vehicle: "BMW M8", location: "Los Santos", attributes: { stamina: 95, shooting: 87, strength: 90, driving: 64 } }, stars: 5 },
-            { name: "Vic", alias: "The Mechanic", img: "https://imgur.com/pUDCdrF.jpeg", role: "Master Mechanic", desc: "Legendary wrench-turner. There isnt a vehicle in the state he can't fix, modify, or hotwire. Operating out of heavily guarded chop shops, Vic strips down hot sports cars and reinforces getaway trucks with military-grade armor before the VCPD even knows they're missing.", stats: { hangout: "Chop Shops", vehicle: "Various / All", location: "Los Santos", attributes: { stamina: 85, shooting: 45, strength: 77, driving: 100 } }, stars: 5, hidden: true },
-            { name: "Mike", alias: "Big Mike", img: "https://i.imgur.com/W6E2HMJ.jpeg", role: "Lowrider O.G.", desc: "Very respected OG in the Los Santos lowrider community. A father of two grown men, Mike runs a legitimate custom auto body shop by day. However, his deep-rooted connections mean he's often pulled back into the life, providing untraceable custom hydraulics, reinforced chassis, and discrete vehicle storage for high-stakes crews.", stats: { hangout: "Streets", vehicle: "Lowrider", location: "Los Santos", attributes: { stamina: 60, shooting: 75, strength: 87, driving: 81 } }, stars: 5, hidden: true },
-            { name: "Shavarsh", alias: "The Varsh", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Scientist", desc: "A brilliant, albeit erratic, underground scientist who operates out of a highly classified, makeshift laboratory. Shavarsh specializes in synthesizing cutting-edge chemical compounds and highly volatile thermite charges. He frequently lends his unorthodox expertise to anyone in the syndicate who needs a lock melted or a specialized medical concoction.", stats: { hangout: "The Lab", vehicle: "Mercedes", location: "Los Santos", attributes: { stamina: 60, shooting: 75, strength: 80, driving: 70 } }, stars: 5, hidden: true, searchTerms: ['varsh'] },
-            { name: "Tom", alias: "Hursh", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Gym Leader", desc: "By all appearances, Tom is an athletic, clean-cut team leader at an upscale Los Santos rock climbing gym. A good man who got caught up with the wrong folks to pay off mounting debts, his unparalleled scaling abilities and stamina make him the perfect asset for high-altitude infiltrations and bypassing top-tier security systems from the outside.", stats: { hangout: "Rock Climbing Gyms", vehicle: "Honda Accord", location: "Los Santos", attributes: { stamina: 85, shooting: 77, strength: 83, driving: 77 } }, stars: 5, hidden: true, searchTerms: ['tomik'] },
-            { name: "Aldo", alias: "Sandstorm", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Hacker", desc: "A recluse master hacker known in the dark web community only as 'Sandstorm'. Operating out of heavily fortified, server-packed control rooms, Aldo can bypass nearly any digital firewall, manipulate traffic grids, and scrub security footage in real-time. His digital footprint is practically non-existent, making him an invaluable ghost in the machine.", stats: { hangout: "Control Rooms", vehicle: "Ford Focus", location: "Los Santos", attributes: { stamina: 94, shooting: 93, strength: 81, driving: 76 } }, stars: 5, hidden: true },
-            { name: "Brandon", alias: "Easy Money", img: "https://i.imgur.com/BSW37G6.jpeg", role: "Insider", desc: "A prominent figure in the local food industry who uses his chain of establishments as a sophisticated front for illicit operations. Brandon leverages his extensive underground ties to facilitate discrete meetings in the backrooms of his bars. His supply trucks are frequently utilized to move heavily concealed contraband across state lines under the guise of frozen goods.", stats: { hangout: "Bars", vehicle: "Lexus", location: "Los Santos", attributes: { stamina: 67, shooting: 75, strength: 77, driving: 77 } }, stars: 5, hideFromGrid: true, searchTerms: ['gaydon'] },
-            { name: "Arabo", alias: "Big Bo", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Transporter", desc: "A legendary transporter with an ironclad reputation for never checking the cargo and never missing a deadline. Arabo operates a fleet of heavy-duty, heavily armored trucks capable of busting through LSPD barricades like wet paper. Whether it's moving millions in marked bills or transporting highly restricted hardware, he guarantees delivery, no matter the heat.", stats: { hangout: "Everywhere", vehicle: "Trucks", location: "Los Santos", attributes: { stamina: 90, shooting: 94, strength: 84, driving: 96 } }, stars: 5, hidden: true },
-            { name: "Argin", alias: "The Machine", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Street Racer", desc: "An underground street racing phenom who has completely dominated the Los Santos midnight racing circuits. Piloting highly modified, imported JDM vehicles, Argin boasts a staggering 90% win rate. His unparalleled reaction times and intimate knowledge of the city's alleyways make him the ultimate high-speed pursuit specialist when a standard getaway driver won't cut it.", stats: { hangout: "Street Races", vehicle: "JDM Vehicles", location: "Los Santos", attributes: { stamina: 67, shooting: 80, strength: 80, driving: 98 } }, stars: 5, hidden: true },
-            { name: "Unknown", alias: "Slim", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Mentor", desc: "A rare success story in the criminal underworld. Slim is a fiercely intelligent, street-smart mentor who managed to turn his life around after a lengthy stint in Bolingbroke Penitentiary. He now dedicates his time to helping at-risk youth stay off the streets, though his encyclopedic knowledge of rival gangs and police patrol routes makes him a highly sought-after tactical consultant.", stats: { hangout: "Los Santos", vehicle: "Unknown", location: "Los Santos", attributes: { stamina: 67, shooting: 82, strength: 77, driving: 55 } }, stars: 5, hidden: true, searchTerms: ['tj'] },
-            { name: "Jake", alias: "MJ Verde", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Producer", desc: "A rising star in the Los Santos underground hip-hop scene, working as both a rapper and a platinum-tier music producer. Behind the platinum plaques and sold-out club appearances, Jake uses his sprawling recording studios to launder syndicate money and facilitate discrete communication networks embedded within audio tracks. His VIP parties are notorious for closing high-stakes deals.", stats: { hangout: "Los Santos", vehicle: "Unknown", location: "Los Santos", attributes: { stamina: 62, shooting: 80, strength: 80, driving: 60 } }, stars: 5, hidden: true, searchTerms: ['hassan'] },
-            { name: "Alicia", alias: "Unknown", img: "https://i.imgur.com/TBG9sQ3.jpeg", role: "Biker Leader", desc: "Leader of a Los Santos heavy metal and black metal based motorcycle gang. She is tough as nails, and although in a notorious biker gang, she fiercely defends her city and its people from outside threats.", stats: { hangout: "Los Santos", vehicle: "Harley Davidson Motorcycles", location: "Los Santos", attributes: { stamina: 75, shooting: 75, strength: 80, driving: 25 } }, stars: 5, hidden: true },
-            { name: "Vlad", alias: "Big Gucci", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Arms Dealer", desc: "When it comes to guns, you go to Vlad. He has a huge supply of weapons and deep-rooted connections worldwide, making him the ultimate supplier for high-grade, untraceable firepower. Operating out of heavily fortified shooting ranges, he ensures every piece of hardware is wiped clean of serial numbers before it ever reaches the crew's hands.", stats: { hangout: "Shooting Range", vehicle: "Toyota Prius", location: "Los Santos", attributes: { stamina: 75, shooting: 94, strength: 90, driving: 80 } }, stars: 5, hidden: true, searchTerms: ['vladimir'] },
-            { name: "Karp", alias: "The Missing Piece", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Boxer", desc: "Notorious boxer with an undefeated underground record of 60-0, fiercely respected in the streets of Los Santos. While he prefers to handle his business in the ring, his immense physical prowess and unshakeable discipline make him the perfect muscle for high-stakes, close-quarters operations where firing a weapon would draw too much heat.", stats: { hangout: "Boxing Gyms", vehicle: "G-Wagon", location: "Los Santos", attributes: { stamina: 99, shooting: 50, strength: 95, driving: 65 } }, stars: 5, hidden: true },
-            { name: "Kevin K", alias: "The OX", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Engineer", desc: "A bitter rival of Aram, Kevin K is a brilliant structural engineer who balances a legitimate career with highly lucrative, shady business. He specializes in exploiting municipal blueprints and architectural weaknesses, finding blind spots in vault security and structural flaws that allow the crew to breach heavily fortified targets completely undetected.", stats: { hangout: "Card Shops", vehicle: "Escallade", location: "Los Santos", attributes: { stamina: 45, shooting: 87, strength: 75, driving: 50 } }, stars: 5, hidden: true, searchTerms: ['ox', 'ok'] },
-            { name: "Ricardo Diaz", alias: "Diaz", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "International Connect", desc: "Sharing a name with Vice City's infamous 1980s cartel baron, this modern-day Ricardo Diaz operates entirely in the shadows. He serves as a high-level international broker, facilitating multi-million dollar supply chains between the underworlds of Los Santos and Leonida. Last tracked by Interpol to a heavily guarded villa in Spain, Diaz is the invisible thread connecting the crew's most lucrative and dangerous overseas operations. If you need military-grade hardware moved across the Atlantic, Diaz is the one pulling the strings.", stats: { hangout: "Streets", vehicle: "Ferrari F430", location: "Spain", attributes: { stamina: 85, shooting: 70, strength: 94, driving: 84 } }, stars: 5, hidden: true, searchTerms: ['ricardo'] },
-            { name: "Fredrick", alias: "The Who", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Gambler", desc: "A notorious fixture in the high-roller suites of Los Santos' most exclusive casinos, Fredrick is a man actively drowning in eight-figure debts. Despite having a bounty on his head from half the city's loan sharks, his unparalleled ability to read people and manipulate VIPs makes him a surprisingly useful asset. He frequently feeds the crew insider intel overheard from wealthy corporate targets at the poker tables, playing both sides of the coin in a desperate, never-ending bid to keep himself alive.", stats: { hangout: "Casinos", vehicle: "Honda Civic", location: "Los Santos", attributes: { stamina: 55, shooting: 87, strength: 83, driving: 63 } }, stars: 5, hidden: true, searchTerms: ['who'] }
+            { 
+                name: "Ace", alias: "Big Ace", img: "https://i.imgur.com/BQbHUy3.jpeg", role: "The Supplier", 
+                desc: "Subject 'Ace' serves as the primary logistical conduit for the syndicate's distribution network, utilizing a legitimate high-end spirits import business as a sophisticated front. Intelligence indicates his maritime supply chains, which ostensibly transport top-shelf liquor across the Leonida border, are frequently repurposed for smuggling high-value contraband. He maintains a tightly compartmentalized operation, insulating the core syndicate from street-level distribution risks while ensuring a steady flow of untraceable capital.", 
+                stats: { hangout: "Bars & Clubs", vehicle: "1977 Caprice Classic", location: "Los Santos", attributes: { stamina: 70, shooting: 65, strength: 90, driving: 99 } }, stars: 5, hidden: true 
+            },
+            { 
+                name: "Alex", alias: "The FOB", img: "https://i.imgur.com/8Ewtas7.jpeg", role: "Getaway Driver", 
+                desc: "Identified as the syndicate's premier extraction specialist, 'The FOB' possesses an encyclopedic knowledge of Vice City's municipal transit infrastructure and blind spots within the VCPD surveillance grid. He actively avoids traditional high-profile sports cars in favor of heavily modified, unassuming utility or transit vehicles—frequently utilizing stolen school buses or delivery vans outfitted with reinforced chassis. His tactical evasion strategies suggest advanced training in counter-surveillance and pursuit mitigation.", 
+                stats: { hangout: "Underground Garages", vehicle: "Suzuki Esteem", location: "Los Santos", attributes: { stamina: 75, shooting: 75, strength: 83, driving: 95 } }, stars: 5, searchTerms: ['fob'] 
+            },
+            { 
+                name: "Andrés", alias: "Dutch", img: "https://i.imgur.com/U196bPG.jpeg", role: "Mastermind", 
+                desc: "Operating as the chief tactical architect for the organization, Andrés exhibits a highly methodical approach to operational planning. Profilers note his exceptional psychological resilience under extreme duress, which has historically allowed the syndicate to execute complex maneuvers without fracturing. He mandates multiple redundant contingencies for every operation, effectively neutralizing federal sting operations on at least three documented occasions through preemptive counter-measures.", 
+                stats: { hangout: "Safehouses", vehicle: "1999 Mitsubishi Galant", location: "Los Santos", attributes: { stamina: 65, shooting: 40, strength: 87, driving: 96 } }, stars: 5, searchTerms: ['violence', 'duner'] 
+            },
+            { 
+                name: "Aram", alias: "The Ram", img: "https://i.imgur.com/JPBYN8l.jpeg", role: "Engineer", 
+                desc: "A highly proficient electrical engineer serving as the syndicate's technological backbone. Aram specializes in the subversion of commercial and municipal security grids, providing critical electronic overwatch during active operations. Recent LSPD intelligence confirms he has engineered a proprietary, localized signal-jamming apparatus capable of rendering law enforcement drones and radio communications entirely inoperable within a two-mile radius, severely complicating aerial tracking efforts.", 
+                stats: { hangout: "Tech Hubs", vehicle: "Dodge Ram", location: "Los Santos", attributes: { stamina: 75, shooting: 83, strength: 84, driving: 60 } }, stars: 5, searchTerms: ['ram'] 
+            },
+            { 
+                name: "Daniel", alias: "Deeds", img: "https://i.imgur.com/hez90P9.jpeg", role: "Innovator", 
+                desc: "Daniel acts as the primary innovator for the organization's high-stakes acquisitions, specializing in lateral problem-solving when brute force is deemed unviable. He frequently employs advanced social engineering tactics, elaborate physical disguises, and the exploitation of complex corporate legal loopholes to penetrate high-security environments. His methodology indicates a sophisticated understanding of corporate psychology and a preference for bloodless, psychologically manipulative infiltrations.", 
+                stats: { hangout: "Basketball Courts", vehicle: "Dodge Viper", location: "Los Santos", attributes: { stamina: 68, shooting: 65, strength: 70, driving: 80 } }, stars: 5 
+            },
+            { 
+                name: "Harout", alias: "Young Veyron", img: "https://i.imgur.com/2x5HnuN.jpeg", role: "Money Man", 
+                desc: "Functioning as the chief financial controller, Harout manages the syndicate's illicit revenue streams with an iron grip. He employs a deeply obfuscated network of international shell corporations, decentralized cryptocurrency tumblers, and offshore banking entities to systematically launder capital. Financial Crimes Unit investigators have struggled to trace his ledgers, noting his meticulous ability to seamlessly integrate illicit assets into legitimate local economies without triggering standard auditing tripwires.", 
+                stats: { hangout: "Financial District", vehicle: "Nissan Skyline R34", location: "Los Santos", attributes: { stamina: 66, shooting: 95, strength: 77, driving: 87 } }, stars: 5, searchTerms: ['veyron'] 
+            },
+            { 
+                name: "Kevin C", alias: "The Drone", img: "https://i.imgur.com/CP8lcsL.jpeg", role: "Enforcer", 
+                desc: "Physically imposing at 6'4\" and roughly 240 pounds, Kevin C operates primarily in debt collection and asset enforcement. Despite his formidable stature, psychological profiles characterize him as highly disciplined and averse to unnecessary collateral damage. He favors psychological intimidation and localized pressure tactics over overt violence, typically resolving high-level syndicate disputes through quiet, untraceable interactions that intentionally avoid drawing VCPD homicide or assault investigations.", 
+                stats: { hangout: "Industrial Docks", vehicle: "Mutt Cutts Van", location: "Los Santos", attributes: { stamina: 65, shooting: 68, strength: 88, driving: 67 } }, stars: 5, searchTerms: ['nk', 'nuke'] 
+            },
+            { 
+                name: "Raymond", alias: "Big Rus", img: "https://i.imgur.com/XEy6U2L.jpeg", role: "Launderer", 
+                desc: "Raymond leverages extensive, entrenched connections within the regional fast-food industry to facilitate cash-intensive laundering operations. While primarily recognized within the crew for his charismatic and morale-boosting demeanor, this affable exterior masks a fiercely loyal and ruthless operational capacity. He serves a dual purpose: efficiently washing street-level revenue through legitimate franchise registers while actively managing interpersonal crew dynamics during high-tension operational phases.", 
+                stats: { hangout: "Fast Food Joints", vehicle: "Ferrari 360", location: "Los Santos", attributes: { stamina: 67, shooting: 58, strength: 80, driving: 44 } }, stars: 3, searchTerms: ['ray', 'big rusiano', 'big rush', 'rush', 'gaymond'] 
+            },
+            { 
+                name: "Richard", alias: "Big Buff", img: "https://i.imgur.com/XLb1Qxn.jpeg", role: "Hybrid", 
+                desc: "A highly versatile hybrid operative bridging the gap between tactical planning and physical enforcement. Richard is equally proficient in orchestrating complex physical breaches of fortified vaults as he is negotiating delicate armistices with rival cartels. Currently monitored on a medical hiatus, his absence has been noted in recent syndicate chatter. Informants stress that he remains a vital shot-caller, retaining significant command influence even while recovering off the grid.", 
+                stats: { hangout: "Gym", vehicle: "Mercedes 300 SLR", location: "Los Santos", attributes: { stamina: 100, shooting: 100, strength: 100, driving: 100 } }, stars: 5 
+            },
+            { 
+                name: "Youra", alias: "YG", img: "https://i.imgur.com/aR73Lgr.jpeg", role: "Business Front", 
+                desc: "Presenting as a legitimate, upstanding civic leader, Youra maintains a pristine criminal record and operates a highly profitable local coffee franchise. However, VCPD organized crime units strongly suspect this establishment functions as a primary, sanitized front for upper-echelon syndicate meetings. While no physical evidence has successfully linked him to illicit activities, his frequent proximity to known operatives suggests he plays a crucial role in providing safe harbor for the organization.", 
+                stats: { hangout: "Coffee Shop", vehicle: "Rolls Royce Phantom", location: "Los Santos", attributes: { stamina: 66, shooting: 55, strength: 57, driving: 70 } }, stars: 0 
+            },
+            { 
+                name: "Iven", alias: "Big Van", img: "https://i.imgur.com/6h9lzGe.jpeg", role: "Medical Support", 
+                desc: "Embedded within the local medical infrastructure, Iven provides critical, off-the-grid trauma care for syndicate personnel. Utilizing his authorized access to restricted pharmaceutical dispensaries and hospital databases, he secures necessary surgical supplies and pain management narcotics well before law enforcement can trace the origins of gunshot or blast injuries. He ensures the crew remains entirely independent of municipal emergency services.", 
+                stats: { hangout: "Local Clinics", vehicle: "BMW M8", location: "Los Santos", attributes: { stamina: 95, shooting: 87, strength: 90, driving: 64 } }, stars: 5 
+            },
+            { 
+                name: "Vic", alias: "The Mechanic", img: "https://i.imgur.com/pUDCdrF.jpeg", role: "Master Mechanic", 
+                desc: "An unparalleled automotive technician operating a network of heavily guarded, subterranean chop shops across the greater Vice City area. Vic specializes in the rapid dismantling of high-value stolen vehicles and the extensive modification of syndicate transport. His customized alterations frequently include the installation of military-grade ballistic plating, reinforced chassis, and upgraded powertrains, ensuring crew vehicles can reliably withstand aggressive LSPD PIT maneuvers.", 
+                stats: { hangout: "Chop Shops", vehicle: "Various / All", location: "Los Santos", attributes: { stamina: 85, shooting: 45, strength: 77, driving: 100 } }, stars: 5, hidden: true 
+            },
+            { 
+                name: "Mike", alias: "Big Mike", img: "https://i.imgur.com/W6E2HMJ.jpeg", role: "Lowrider O.G.", 
+                desc: "A highly respected veteran within the Los Santos and Vice City custom lowrider communities, Mike ostensibly operates a legitimate automotive body shop. Despite a public shift toward legitimate family life, intelligence confirms his facilities are routinely utilized by the syndicate to procure untraceable custom hydraulics, execute rapid cosmetic vehicle alterations, and provide highly secure, discrete storage for vehicles implicated in major felonies.", 
+                stats: { hangout: "Streets", vehicle: "Lowrider", location: "Los Santos", attributes: { stamina: 60, shooting: 75, strength: 87, driving: 81 } }, stars: 5, hidden: true 
+            },
+            { 
+                name: "Shavarsh", alias: "The Varsh", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Scientist", 
+                desc: "An unorthodox and highly capable underground chemist operating out of a fluid, clandestine laboratory environment. Shavarsh specializes in the synthesis of volatile compounds, notably military-grade thermite charges used for breaching heavy vault doors. While behavioral profiles suggest severe erratic tendencies, his expertise in localized chemical engineering and the rapid fabrication of specialized, untraceable solvents makes him an indispensable asset for high-level infiltrations.", 
+                stats: { hangout: "The Lab", vehicle: "Mercedes", location: "Los Santos", attributes: { stamina: 60, shooting: 75, strength: 80, driving: 70 } }, stars: 5, hidden: true, searchTerms: ['varsh'] 
+            },
+            { 
+                name: "Tom", alias: "Hursh", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Gym Leader", 
+                desc: "Outwardly functioning as an athletic instructor at an upscale climbing facility, Tom was reportedly coerced into syndicate operations due to mounting, unmanageable financial debts. His exceptional cardiovascular stamina and unparalleled free-scaling capabilities are actively exploited by the organization for high-altitude structural infiltrations. He specializes in bypassing exterior perimeter security and establishing entry points on high-rise targets previously deemed inaccessible.", 
+                stats: { hangout: "Rock Climbing Gyms", vehicle: "Honda Accord", location: "Los Santos", attributes: { stamina: 85, shooting: 77, strength: 83, driving: 77 } }, stars: 5, hidden: true, searchTerms: ['tomik'] 
+            },
+            { 
+                name: "Aldo", alias: "Sandstorm", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Hacker", 
+                desc: "Operating exclusively under the digital alias 'Sandstorm,' Aldo is a reclusive cyber-warfare specialist. From heavily fortified, localized server hubs, he executes real-time manipulation of municipal traffic grids, penetrates secure corporate firewalls, and systematically purges VCPD surveillance archives. His sophisticated routing protocols ensure his digital footprint remains practically undetectable, allowing the syndicate to operate with an unprecedented level of electronic invisibility.", 
+                stats: { hangout: "Control Rooms", vehicle: "Ford Focus", location: "Los Santos", attributes: { stamina: 94, shooting: 93, strength: 81, driving: 76 } }, stars: 5, hidden: true 
+            },
+            { 
+                name: "Brandon", alias: "Easy Money", img: "https://i.imgur.com/BSW37G6.jpeg", role: "Insider", 
+                desc: "A prominent figure in the regional hospitality sector, Brandon utilizes his extensive network of bars and restaurants as a sophisticated logistical front. Intelligence indicates his commercial supply chain is thoroughly compromised; refrigerated freight trucks designated for his establishments are routinely intercepted moving heavily concealed contraband and narcotics across state lines. His venues also provide highly secure, swept environments for upper-management syndicate parleys.", 
+                stats: { hangout: "Bars", vehicle: "Lexus", location: "Los Santos", attributes: { stamina: 67, shooting: 75, strength: 77, driving: 77 } }, stars: 5, hideFromGrid: true, searchTerms: ['gaydon'] 
+            },
+            { 
+                name: "Arabo", alias: "Big Bo", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Transporter", 
+                desc: "A premier logistics and heavy-transport specialist renowned within the underworld for absolute discretion and an uncompromising adherence to delivery schedules. Arabo commands a fleet of heavily armored commercial rigs capable of breaching fortified law enforcement barricades with minimal velocity loss. Regardless of the cargo's illicit nature or the intensity of federal pursuit, he provides guaranteed, brute-force transit solutions for the syndicate's most sensitive hardware.", 
+                stats: { hangout: "Everywhere", vehicle: "Trucks", location: "Los Santos", attributes: { stamina: 90, shooting: 94, strength: 84, driving: 96 } }, stars: 5, hidden: true 
+            },
+            { 
+                name: "Argin", alias: "The Machine", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Street Racer", 
+                desc: "A dominant fixture in the illicit midnight racing circuits, Argin operates as the syndicate's secondary, high-velocity extraction asset. Piloting heavily modified, imported performance vehicles, his intimate, street-level knowledge of Vice City's narrowest alleyways and industrial corridors allows him to routinely break visual contact with LSPD aerial units. He is typically deployed when operational parameters require extreme speed over armored durability.", 
+                stats: { hangout: "Street Races", vehicle: "JDM Vehicles", location: "Los Santos", attributes: { stamina: 67, shooting: 80, strength: 80, driving: 98 } }, stars: 5, hidden: true 
+            },
+            { 
+                name: "Unknown", alias: "Slim", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Mentor", 
+                desc: "An older, highly experienced tactical consultant who previously served an extensive sentence at Bolingbroke Penitentiary. While he publicly dedicates his time to community outreach and diverting at-risk youth from organized crime, his encyclopedic knowledge of rival gang territories, patrol routing, and prison politics remains actively commodified by the syndicate. He provides invaluable, high-level strategic counsel, ensuring operations do not inadvertently trigger localized gang wars.", 
+                stats: { hangout: "Los Santos", vehicle: "Unknown", location: "Los Santos", attributes: { stamina: 67, shooting: 82, strength: 77, driving: 55 } }, stars: 5, hidden: true, searchTerms: ['tj'] 
+            },
+            { 
+                name: "Jake", alias: "MJ Verde", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Producer", 
+                desc: "A highly visible, platinum-selling music producer deeply embedded in the regional entertainment industry. Beneath this high-profile public persona, Jake systematically launders millions in syndicate capital through inflated studio time billing and fabricated merchandise logistics. Furthermore, intelligence suggests his sprawling VIP events function as secure networking hubs, while audio masters are occasionally utilized to transmit encrypted, steganographic communications between syndicate cells.", 
+                stats: { hangout: "Los Santos", vehicle: "Unknown", location: "Los Santos", attributes: { stamina: 62, shooting: 80, strength: 80, driving: 60 } }, stars: 5, hidden: true, searchTerms: ['hassan'] 
+            },
+            { 
+                name: "Alicia", alias: "Unknown", img: "https://i.imgur.com/TBG9sQ3.jpeg", role: "Biker Leader", 
+                desc: "The presiding officer of a notorious, heavy-metal affiliated motorcycle club operating on the city's industrial outskirts. Known for her uncompromising operational discipline and ruthlessness, Alicia commands a heavily armed auxiliary force that frequently acts as localized muscle. Despite her organization's illicit nature, intercepted communications indicate a fierce, almost territorial protection of her district, aggressively repelling incursions from rival out-of-state syndicates.", 
+                stats: { hangout: "Los Santos", vehicle: "Harley Davidson Motorcycles", location: "Los Santos", attributes: { stamina: 75, shooting: 75, strength: 80, driving: 25 } }, stars: 5, hidden: true 
+            },
+            { 
+                name: "Vlad", alias: "Big Gucci", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Arms Dealer", 
+                desc: "The syndicate's primary quartermaster and international munitions broker. Vlad maintains an expansive, highly compartmentalized supply chain capable of procuring restricted, military-grade hardware. Operating under the guise of private, fortified firing ranges, he oversees a meticulous sanitation process—ensuring every firearm, explosive, and ballistic vest is thoroughly stripped of serial numbers and metallurgical signatures before deployment to active operatives.", 
+                stats: { hangout: "Shooting Range", vehicle: "Toyota Prius", location: "Los Santos", attributes: { stamina: 75, shooting: 94, strength: 90, driving: 80 } }, stars: 5, hidden: true, searchTerms: ['vladimir'] 
+            },
+            { 
+                name: "Karp", alias: "The Missing Piece", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Boxer", 
+                desc: "An undefeated bare-knuckle combatant holding immense respect within the city's underground gambling circuits. Karp serves as the syndicate's premier close-quarters enforcement asset. His exceptional physical conditioning and lethal hand-to-hand proficiency are utilized exclusively in sensitive, high-value environments where the discharge of a firearm would immediately compromise the operation. He is known for neutralizing security personnel with absolute silence and brutal efficiency.", 
+                stats: { hangout: "Boxing Gyms", vehicle: "G-Wagon", location: "Los Santos", attributes: { stamina: 99, shooting: 50, strength: 95, driving: 65 } }, stars: 5, hidden: true 
+            },
+            { 
+                name: "Kevin K", alias: "The OX", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Engineer", 
+                desc: "A highly credentialed structural engineer who actively leverages his municipal clearance for illicit financial gain. Operating in direct, often hostile rivalry with the syndicate's electronic specialist, Kevin focuses entirely on physical architecture. He routinely acquires classified municipal blueprints to identify structural degradation, load-bearing vulnerabilities, and blind spots in vault construction, facilitating covert physical breaches that circumvent electronic alarms entirely.", 
+                stats: { hangout: "Card Shops", vehicle: "Escallade", location: "Los Santos", attributes: { stamina: 45, shooting: 87, strength: 75, driving: 50 } }, stars: 5, hidden: true, searchTerms: ['ox', 'ok'] 
+            },
+            { 
+                name: "Ricardo Diaz", alias: "Diaz", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "International Connect", 
+                desc: "An elusive, high-echelon international broker operating primarily out of a heavily fortified compound in southern Spain. Diaz serves as the critical connective tissue between the Vice City syndicate and global cartel operations. Interpol tracking indicates he is solely responsible for orchestrating the transatlantic shipment of restricted munitions and bulk narcotics. He is considered the highest-level logistical asset currently associated with the crew, completely insulated from local prosecution.", 
+                stats: { hangout: "Streets", vehicle: "Ferrari F430", location: "Spain", attributes: { stamina: 85, shooting: 70, strength: 94, driving: 84 } }, stars: 5, hidden: true, searchTerms: ['ricardo'] 
+            },
+            { 
+                name: "Fredrick", alias: "The Who", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Gambler", 
+                desc: "A compulsive high-stakes gambler drowning in eight-figure liabilities to multiple organized crime factions. Despite his severe compromised status, Fredrick's ability to seamlessly infiltrate exclusive VIP suites and manipulate high-net-worth individuals makes him a crucial intelligence gatherer. He systematically extracts actionable corporate intel and scheduling vulnerabilities from intoxicated executives at the poker table, bartering this information to the syndicate in a desperate bid to stave off his creditors.", 
+                stats: { hangout: "Casinos", vehicle: "Honda Civic", location: "Los Santos", attributes: { stamina: 55, shooting: 87, strength: 83, driving: 63 } }, stars: 5, hidden: true, searchTerms: ['who'] 
+            }
         ];
 
-        // Sort the crew database alphabetically by name
         crewData.sort((a, b) => a.name.localeCompare(b.name));
 
-        // Automatically start at the first non-hidden suspect (Alex)
         let currentIdx = crewData.findIndex(c => !c.hidden);
         let isSidebarOpen = false;
 
-        // Enhanced Navigation Carousel to skip hidden profiles!
         function navCarousel(dir) {
             let nextIdx = currentIdx;
             do {
                 nextIdx = (nextIdx + dir + crewData.length) % crewData.length;
-            } while (crewData[nextIdx].hidden); // Automatically skip "hidden" Easter Egg associates
+            } while (crewData[nextIdx].hidden);
             
             openDossier(nextIdx);
         }
 
         function toggleSidebar() {
             isSidebarOpen = !isSidebarOpen;
-            
-            // Toggle all instances of sidebar (Home & Crew pages)
             const sidebars = document.querySelectorAll('.associates-sidebar');
             const menus = document.querySelectorAll('.crew-menu-container');
             const verticalArrows = document.querySelectorAll('.vertical-arrow');
-
-            // The width calc precisely targets the 5/12 left column + the 4rem button width so it hits the black line!
             const expandedWidthClassDesktop = 'md:w-[calc(4rem+(100%-4rem)*5/12)]';
 
             if (isSidebarOpen) {
@@ -947,7 +1018,7 @@
 
         function renderCrewMenu() {
             const html = crewData.map((c, i) => {
-                if (c.hidden) return ''; // Hide secret associates from the visual list!
+                if (c.hidden) return '';
                 return `
                 <button onclick="openDossier(${i}); toggleSidebar();" class="font-gta text-base md:text-xl px-3 py-2 transition-all duration-200 outline-none text-left w-full truncate ${i === currentIdx ? 'bg-[var(--gta-yellow)] border-l-4 border-black text-black shadow-[2px_2px_0_var(--gta-pink)] translate-x-1' : 'bg-[#111] border-l-4 border-transparent text-gray-400 hover:text-white hover:bg-gray-800 hover:border-gray-500'}">
                     ${c.name} <span class="text-[10px] md:text-xs font-roboto text-gray-500 block uppercase tracking-widest mt-0.5 ${i === currentIdx ? 'text-black/70' : ''}">"${c.alias}"</span>
@@ -955,21 +1026,16 @@
                 `;
             }).join('');
 
-            // Render to all menu containers
             document.querySelectorAll('.crew-menu-container').forEach(container => {
                 container.innerHTML = html;
             });
         }
 
-        // Populate Profile
         function openDossier(index) {
             const c = crewData[index];
             currentIdx = index;
-            
-            // Re-render menus to show active state
             if(isSidebarOpen) renderCrewMenu();
             
-            // Fade out all dossiers
             const dossiers = document.querySelectorAll('.dossier-view');
             dossiers.forEach(dos => {
                 dos.classList.remove('opacity-100', 'translate-y-0');
@@ -977,7 +1043,6 @@
             });
 
             setTimeout(() => {
-                // Update all duplicate UI elements globally
                 document.querySelectorAll('.dos-img').forEach(el => el.src = c.img);
                 document.querySelectorAll('.dos-name').forEach(el => el.innerText = c.name);
                 document.querySelectorAll('.dos-alias').forEach(el => el.innerText = `"${c.alias}"`);
@@ -986,20 +1051,15 @@
                 document.querySelectorAll('.dos-vehicle').forEach(el => el.innerText = c.stats.vehicle);
                 document.querySelectorAll('.dos-location').forEach(el => el.innerText = c.stats.location);
                 
-                // Update Stats Bars globally
                 document.querySelectorAll('.stat-stamina').forEach(el => el.style.width = c.stats.attributes.stamina + '%');
                 document.querySelectorAll('.stat-stamina-val').forEach(el => el.innerText = c.stats.attributes.stamina + '/100');
-                
                 document.querySelectorAll('.stat-shooting').forEach(el => el.style.width = c.stats.attributes.shooting + '%');
                 document.querySelectorAll('.stat-shooting-val').forEach(el => el.innerText = c.stats.attributes.shooting + '/100');
-                
                 document.querySelectorAll('.stat-strength').forEach(el => el.style.width = c.stats.attributes.strength + '%');
                 document.querySelectorAll('.stat-strength-val').forEach(el => el.innerText = c.stats.attributes.strength + '/100');
-                
                 document.querySelectorAll('.stat-driving').forEach(el => el.style.width = c.stats.attributes.driving + '%');
                 document.querySelectorAll('.stat-driving-val').forEach(el => el.innerText = c.stats.attributes.driving + '/100');
 
-                // Highlight name in description
                 const descHtml = c.desc.replace(c.name, `<span class="bg-[var(--gta-pink)] text-white px-1 mx-0.5 font-bold rounded-sm">${c.name}</span>`);
                 document.querySelectorAll('.dos-desc').forEach(el => el.innerHTML = descHtml);
                 
@@ -1009,16 +1069,14 @@
                 }
                 document.querySelectorAll('.dos-stars').forEach(el => el.innerHTML = stars);
 
-                // Handle 0 Stars (Hide Wrapper)
                 document.querySelectorAll('.dos-stars-wrapper').forEach(el => {
                     if (c.stars === 0) {
                         el.style.display = 'none';
                     } else {
-                        el.style.display = ''; // Reverts cleanly to CSS hidden md:block!
+                        el.style.display = '';
                     }
                 });
 
-                // Fade in smoothly
                 dossiers.forEach(dos => {
                     dos.classList.remove('opacity-0', 'translate-y-4');
                     dos.classList.add('opacity-100', 'translate-y-0');
@@ -1027,39 +1085,30 @@
             }, 200); 
         }
 
-        // Helper function to match the sidebar height to the left column on mobile
         function matchSidebarHeight() {
             const leftCols = document.querySelectorAll('#dos-left-col');
             const sidebars = document.querySelectorAll('.associates-sidebar');
-            const greyBars = document.querySelectorAll('.mobile-grey-bar');
-            
-            // Loop through all instances (Home Page & Crew Page)
             leftCols.forEach((leftCol, index) => {
                 const sidebar = sidebars[index];
-                const greyBar = greyBars[index];
-                if (leftCol && sidebar && greyBar) {
+                if (leftCol && sidebar) {
                     if(window.innerWidth < 768) {
                         sidebar.style.height = leftCol.offsetHeight + 'px';
-                        greyBar.style.top = leftCol.offsetHeight + 'px';
                     } else {
                         sidebar.style.height = '100%';
-                        greyBar.style.top = 'auto'; // Will be hidden by CSS anyway
                     }
                 }
             });
         }
 
-        // Run on load and window resize
         window.addEventListener('load', matchSidebarHeight);
         window.addEventListener('resize', matchSidebarHeight);
-        setTimeout(matchSidebarHeight, 300); // Failsafe for image load shifting
+        setTimeout(matchSidebarHeight, 300);
 
-        // --- NEW: CREW PAGE GRID RENDER LOGIC ---
         function renderSuspectGrid() {
             const grid = document.getElementById('suspect-grid');
             if (!grid) return;
             grid.innerHTML = crewData.map((c, i) => {
-                if (c.hidden || c.hideFromGrid) return ''; // Hide secret associates from the suspect board!
+                if (c.hidden || c.hideFromGrid) return '';
                 return `
                 <div class="w-full h-full">
                     <button onclick="selectSuspectFromGrid(${i})" class="group bg-white border-4 border-black p-2 sm:p-3 shadow-[4px_4px_0_rgba(0,0,0,0.5)] hover:shadow-[8px_8px_0_var(--gta-pink)] hover:border-[var(--gta-pink)] hover:-translate-y-2 transition-all duration-300 flex flex-col outline-none w-full h-full relative">
@@ -1079,101 +1128,52 @@
         function selectSuspectFromGrid(index) {
             openDossier(index);
             const panel = document.getElementById('crew-detail-panel');
-            
-            // Add a quick glitch flash effect
             panel.classList.add('scale-[0.98]', 'brightness-150');
             setTimeout(() => {
                 panel.classList.remove('scale-[0.98]', 'brightness-150');
-                // Smooth scroll to the top of the detail panel
                 panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }, 150);
         }
 
-        // --- EXACT MATCH SEARCH BAR LOGIC ---
         function handleSearch(event, inputEl) {
-            // Only trigger search when Enter is pressed
             if (event.key !== 'Enter') return;
-
-            const query = inputEl.value;
-            const q = query.toLowerCase().trim();
+            const q = inputEl.value.toLowerCase().trim();
             const isHome = inputEl.id === 'home-search';
             const statusId = isHome ? 'home-search-status' : 'crew-search-status';
             const statusEl = document.getElementById(statusId);
-
             if (q.length < 1) return;
 
-            let foundIndex = -1;
-
-            // 1. Try to find an EXACT match first (this allows finding hidden suspects)
-            const exactMatchIndex = crewData.findIndex(c => 
+            let foundIndex = crewData.findIndex(c => 
                 c.name.toLowerCase() === q || 
                 c.alias.toLowerCase() === q || 
                 `"${c.alias.toLowerCase()}"` === q ||
                 (c.searchTerms && c.searchTerms.includes(q))
             );
 
-            if (exactMatchIndex !== -1) {
-                foundIndex = exactMatchIndex;
-            } else {
-                // 2. Try to find a PARTIAL match, but EXCLUDE hidden suspects
-                const partialMatchIndex = crewData.findIndex(c => 
+            if (foundIndex === -1) {
+                foundIndex = crewData.findIndex(c => 
                     !c.hidden && (
                         c.name.toLowerCase().includes(q) || 
-                        c.alias.toLowerCase().includes(q) || 
-                        `"${c.alias.toLowerCase()}"`.includes(q) ||
-                        (c.searchTerms && c.searchTerms.some(term => term.includes(q)))
+                        c.alias.toLowerCase().includes(q)
                     )
                 );
-                if (partialMatchIndex !== -1) {
-                    foundIndex = partialMatchIndex;
-                }
             }
 
             if (foundIndex !== -1) {
-                // Match Found! Load the dossier and clear the input
                 inputEl.value = '';
                 openDossier(foundIndex);
-                
-                // If we're on the Crew page, scroll to the detail panel
                 if (!document.getElementById('page-crew').classList.contains('hidden')) {
-                    const panel = document.getElementById('crew-detail-panel');
-                    panel.classList.add('scale-[0.98]', 'brightness-150');
-                    setTimeout(() => {
-                        panel.classList.remove('scale-[0.98]', 'brightness-150');
-                        panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }, 150);
+                    selectSuspectFromGrid(foundIndex);
                 }
             } else {
-                // Show NOT FOUND error
                 statusEl.classList.remove('hidden');
                 setTimeout(() => statusEl.classList.add('hidden'), 2500);
             }
         }
 
-        // --- MESSAGE OF THE DAY LOGIC ---
         function setDailyMessage() {
             const motdEl = document.getElementById('motd-text');
             if (!motdEl) return;
-
-            // 1. Check for Holidays / Special Announcements First
-            const holidays = { 
-                "1-1": "Happy New Year from the Crew!", 
-                "4-5": "Happy Easter! Time to hunt some eggs.", 
-                "10-31": "Halloween Surprise... watch your back.", 
-                "12-25": "Festive Surprise! Stay frosty out there." 
-            };
-            
-            // Get today's month and day
-            const todayKey = `${new Date().getMonth()+1}-${new Date().getDate()}`;
-            
-            if (holidays[todayKey]) {
-                motdEl.innerText = `"${holidays[todayKey]}"`;
-                motdEl.classList.remove('text-gray-900');
-                motdEl.classList.add('text-[var(--gta-red)]');
-                return;
-            }
-
-            // 2. Default to Random Daily Quotes if there is no holiday
             const messages = [
                 "Stay focused. The biggest score is yet to come.",
                 "Trust the plan, but always watch your six.",
@@ -1185,31 +1185,15 @@
                 "Keep a low profile and a high caliber.",
                 "Never leave a trace. Never leave a friend behind."
             ];
-            
-            // Create a daily index based on the date string
-            const todayStr = new Date().toDateString();
-            let hash = 0;
-            for(let i = 0; i < todayStr.length; i++) hash += todayStr.charCodeAt(i);
-            
-            const motdIndex = hash % messages.length;
-            motdEl.innerText = `"${messages[motdIndex]}"`;
-            motdEl.classList.add('text-gray-900');
-            motdEl.classList.remove('text-[var(--gta-red)]');
+            const hash = new Date().toDateString().split('').reduce((a,b)=>a+b.charCodeAt(0), 0);
+            motdEl.innerText = `"${messages[hash % messages.length]}"`;
         }
 
-        // Initialize Menus, Profiles, Grids & MOTD
         renderCrewMenu();
         renderSuspectGrid();
         openDossier(currentIdx);
         setDailyMessage();
         
-        // Connect the Resize Observer to ensure sidebar matches layout exactly
-        const resizeObserver = new ResizeObserver(() => matchSidebarHeight());
-        document.querySelectorAll('#dos-left-col').forEach(col => {
-            resizeObserver.observe(col);
-        });
-
-        // --- LIGHTBOX ---
         function openLightbox(src) {
             document.getElementById('lb-img').src = src;
             document.getElementById('lightbox').classList.remove('hidden');
@@ -1218,17 +1202,30 @@
             document.getElementById('lightbox').classList.add('hidden');
         }
 
-        // --- KEYBOARD NAVIGATION ---
+        // --- MANILA FOLDER TABS LOGIC ---
+        function switchCrewTab(tabName) {
+            // Hide all tab content
+            document.querySelectorAll('.crew-tab-content').forEach(el => el.classList.add('hidden'));
+            // Show the selected tab content
+            document.getElementById(`crew-tab-${tabName}`).classList.remove('hidden');
+
+            // Reset all tab buttons
+            document.querySelectorAll('.crew-tab-btn').forEach(btn => {
+                btn.classList.remove('z-30', 'bg-[#fdf8e4]', 'border-b-[#fdf8e4]', 'pb-3');
+                btn.classList.add('z-10', 'bg-[#d0d0d0]', 'border-b-black', 'pb-2');
+            });
+
+            // Highlight the active tab button
+            const activeBtn = document.getElementById(`crew-tab-btn-${tabName}`);
+            activeBtn.classList.remove('z-10', 'bg-[#d0d0d0]', 'border-b-black', 'pb-2');
+            activeBtn.classList.add('z-30', 'bg-[#fdf8e4]', 'border-b-[#fdf8e4]', 'pb-3');
+        }
+
         document.addEventListener('keydown', (e) => {
-            // Disable if user is typing in a search box or looking at a full-screen photo
             if (document.activeElement.tagName === 'INPUT') return;
             if (!document.getElementById('lightbox').classList.contains('hidden')) return;
-
-            if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') {
-                navCarousel(-1);
-            } else if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') {
-                navCarousel(1);
-            }
+            if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') navCarousel(-1);
+            else if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') navCarousel(1);
         });
 
     </script>
