@@ -282,7 +282,7 @@
                                     <div class="dos-stars flex justify-center gap-1 text-[var(--gta-yellow)] text-xl drop-shadow-[0_0_5px_rgba(255,204,0,0.5)]"></div>
                                 </div>
 
-                                <!-- MOBILE ONLY BIO -->
+                                <!-- MOBILE ONLY BIO (SHORT - HOME PAGE) -->
                                 <div class="w-full max-w-[280px] mt-3 bg-[#fdf8e4] text-black border-4 border-black shadow-[4px_4px_0_rgba(0,0,0,0.3)] p-3 sm:p-4 font-roboto hover:scale-105 hover:shadow-[8px_8px_0_rgba(0,0,0,0.4)] transition-all duration-300 relative h-[380px] flex md:hidden flex-col justify-start">
                                     <div class="overflow-hidden h-full flex flex-col justify-start">
                                         <div class="flex flex-col w-full md:hidden border-b border-gray-400 pb-2 mb-2 flex-shrink-0">
@@ -297,7 +297,7 @@
                                             </div>
                                         </div>
                                         <span class="text-[10px] md:text-xs text-gray-600 uppercase tracking-widest font-bold mb-1 block opacity-70 shrink-0">BIOGRAPHY</span>
-                                        <div class="dos-desc flex-grow text-[15px] font-roboto leading-relaxed text-black overflow-y-auto custom-scrollbar pr-1"></div>
+                                        <div class="dos-desc-short flex-grow text-[15px] font-roboto leading-relaxed text-black overflow-y-auto custom-scrollbar pr-1"></div>
                                     </div>
                                 </div>
 
@@ -400,10 +400,10 @@
                                     </div>
                                 </div>
 
-                                <!-- DESKTOP ONLY BIO -->
+                                <!-- DESKTOP ONLY BIO (SHORT - HOME PAGE) -->
                                 <div class="bg-[#fdf8e4] border-4 border-black shadow-[6px_6px_0_rgba(0,0,0,0.3)] p-4 lg:p-6 text-black font-roboto hidden md:flex flex-col justify-start relative h-[350px] mt-2 border-l-4 border-l-[var(--gta-blue)] overflow-hidden">
                                     <div class="text-[12px] font-bold text-gray-600 uppercase tracking-widest mb-2 border-b-2 border-black pb-1 text-left shrink-0">BIOGRAPHY</div>
-                                    <div class="dos-desc flex-grow overflow-y-auto custom-scrollbar text-base lg:text-[17px] font-roboto leading-relaxed text-black pr-2"></div>
+                                    <div class="dos-desc-short flex-grow overflow-y-auto custom-scrollbar text-base lg:text-[17px] font-roboto leading-relaxed text-black pr-2"></div>
                                 </div>
 
                             </div>
@@ -553,13 +553,13 @@
                                 <button onclick="switchCrewTab('images')" id="crew-tab-btn-images" class="crew-tab-btn relative z-10 bg-[#d0d0d0] border-4 border-black border-b-black px-3 sm:px-5 pt-2 pb-2 font-gta text-xs sm:text-sm text-black rounded-t-lg hover:bg-[#e0e0e0] transition-colors whitespace-nowrap outline-none">IMAGES</button>
                             </div>
                             
-                            <!-- Content Box -->
+                            <!-- Content Box (DATABASE PAGE - EXPANDED BIO) -->
                             <div class="bg-[#fdf8e4] border-4 border-black shadow-[6px_6px_0_rgba(0,0,0,0.5)] p-4 sm:p-6 text-black font-roboto relative z-10 h-[650px] md:h-[480px] flex flex-col overflow-hidden">
                                 
                                 <!-- FILE TAB -->
                                 <div id="crew-tab-file" class="crew-tab-content flex-1 flex flex-col overflow-hidden">
                                     <div class="text-[14px] lg:text-base font-bold text-gray-600 uppercase tracking-widest mb-4 border-b-2 border-black pb-2 text-left shrink-0">SUBJECT BIOGRAPHY</div>
-                                    <div class="dos-desc flex-grow text-[15px] sm:text-[17px] font-roboto leading-relaxed text-black pr-2 overflow-hidden"></div>
+                                    <div class="dos-desc-long flex-grow text-[15px] sm:text-[17px] font-roboto leading-relaxed text-black pr-2 overflow-hidden"></div>
                                 </div>
 
                                 <!-- STATS TAB -->
@@ -644,6 +644,12 @@
 
                     </div>
                 </div>
+            </div>
+
+            <!-- MOBILE ONLY BIO FOR DATABASE PAGE (STACKED LAYOUT) -->
+            <div class="w-full mt-6 bg-[#fdf8e4] text-black border-4 border-black shadow-[4px_4px_0_rgba(0,0,0,0.3)] p-4 font-roboto flex md:hidden flex-col justify-start relative h-[650px] overflow-hidden reveal-fx reveal-pop" style="transition-delay: 300ms;">
+                <div class="text-[12px] font-bold text-gray-600 uppercase tracking-widest mb-2 border-b-2 border-black pb-1 text-left shrink-0">CLASSIFIED DOSSIER</div>
+                <div class="dos-desc-long flex-grow text-[15px] font-roboto leading-relaxed text-black overflow-hidden pr-1"></div>
             </div>
 
             <div class="mt-12 flex justify-center w-full">
@@ -843,137 +849,170 @@
         const crewData = [
             { 
                 name: "Ace", alias: "Big Ace", img: "https://i.imgur.com/BQbHUy3.jpeg", role: "The Supplier", 
-                desc: "Subject 'Ace' serves as the primary logistical conduit for the syndicate's distribution network, utilizing a legitimate high-end spirits import business as a sophisticated front. Intelligence indicates his maritime supply chains, which ostensibly transport top-shelf liquor across the Leonida border, are frequently repurposed for smuggling high-value contraband. He maintains a tightly compartmentalized operation, insulating the core syndicate from street-level distribution risks while ensuring a steady flow of untraceable capital.", 
+                desc: "Ace uses his high-end liquor business as a front to supply the crew. He smuggles valuable goods through his shipping routes while keeping the main team safe from street-level heat.", 
+                longDesc: "Subject 'Ace' runs a successful luxury liquor import business in Los Santos. This company serves as the perfect cover for the syndicate's smuggling operations. By hiding illegal goods inside legal shipments of expensive alcohol, he moves millions of dollars in contraband across state lines. Ace stays entirely behind the scenes, managing the logistics and delivery schedules without ever touching the product directly. This careful separation keeps the rest of the crew completely insulated from local police stings and street-level gang violence.",
                 stats: { hangout: "Bars & Clubs", vehicle: "1977 Caprice Classic", location: "Los Santos", attributes: { stamina: 70, shooting: 65, strength: 90, driving: 99 } }, stars: 5, hidden: true 
             },
             { 
                 name: "Alex", alias: "The FOB", img: "https://i.imgur.com/8Ewtas7.jpeg", role: "Getaway Driver", 
-                desc: "Identified as the syndicate's premier extraction specialist, 'The FOB' possesses an encyclopedic knowledge of Vice City's municipal transit infrastructure and blind spots within the VCPD surveillance grid. He actively avoids traditional high-profile sports cars in favor of heavily modified, unassuming utility or transit vehicles—frequently utilizing stolen school buses or delivery vans outfitted with reinforced chassis. His tactical evasion strategies suggest advanced training in counter-surveillance and pursuit mitigation.", 
+                desc: "The crew's top getaway driver. Alex knows every blind spot in the VCPD camera network. He prefers using heavily armored vans and stolen buses over flashy sports cars to guarantee a safe escape.", 
+                longDesc: "Identified as the crew's primary getaway driver, Alex is responsible for safely extracting the team from high-risk situations. Unlike typical street racers, he avoids flashy sports cars that draw unwanted attention. Instead, he relies on heavily modified utility vehicles, stolen city buses, and armored delivery vans that can smash through police roadblocks. Alex has spent years studying the VCPD's patrol routes and traffic camera blind spots, allowing him to vanish into the city's underground tunnels and industrial zones without a trace.",
                 stats: { hangout: "Underground Garages", vehicle: "Suzuki Esteem", location: "Los Santos", attributes: { stamina: 75, shooting: 75, strength: 83, driving: 95 } }, stars: 5, searchTerms: ['fob'] 
             },
             { 
                 name: "Andrés", alias: "Dutch", img: "https://i.imgur.com/U196bPG.jpeg", role: "Mastermind", 
-                desc: "Operating as the chief tactical architect for the organization, Andrés exhibits a highly methodical approach to operational planning. Profilers note his exceptional psychological resilience under extreme duress, which has historically allowed the syndicate to execute complex maneuvers without fracturing. He mandates multiple redundant contingencies for every operation, effectively neutralizing federal sting operations on at least three documented occasions through preemptive counter-measures.", 
+                desc: "The mastermind behind the crew's operations. Andrés always stays calm under pressure and creates multiple backup plans. His careful planning has saved the team from federal stings multiple times.", 
+                longDesc: "Andrés is the lead tactical planner for the organization. He is responsible for designing the crew's major heists and overseeing the execution of each step. Known for his intense focus and calm demeanor, he never panics during a crisis. Andrés meticulously maps out escape routes, response times, and potential failures, ensuring the team always has at least three backup plans. His strict rules and brilliant strategies have successfully guided the crew out of multiple federal traps and undercover sting operations.",
                 stats: { hangout: "Safehouses", vehicle: "1999 Mitsubishi Galant", location: "Los Santos", attributes: { stamina: 65, shooting: 40, strength: 87, driving: 96 } }, stars: 5, searchTerms: ['violence', 'duner'] 
             },
             { 
                 name: "Aram", alias: "The Ram", img: "https://i.imgur.com/JPBYN8l.jpeg", role: "Engineer", 
-                desc: "A highly proficient electrical engineer serving as the syndicate's technological backbone. Aram specializes in the subversion of commercial and municipal security grids, providing critical electronic overwatch during active operations. Recent LSPD intelligence confirms he has engineered a proprietary, localized signal-jamming apparatus capable of rendering law enforcement drones and radio communications entirely inoperable within a two-mile radius, severely complicating aerial tracking efforts.", 
+                desc: "The crew's tech expert. Aram specializes in hacking security systems and fixing critical gear. He recently built a custom signal jammer that blocks police drones and radios within a two-mile radius.", 
+                longDesc: "Aram operates as the crew's lead electrical engineer and hardware specialist. His primary role is disabling bank alarms, overriding electronic locks, and maintaining the crew's communication networks during active robberies. He operates out of a hidden tech hub where he builds custom gadgets from scratch. Recently, Aram successfully designed and deployed a powerful signal jammer. This device is capable of completely shutting down police radios, tracking devices, and surveillance drones within a two-mile radius, giving the crew a massive tactical advantage.",
                 stats: { hangout: "Tech Hubs", vehicle: "Dodge Ram", location: "Los Santos", attributes: { stamina: 75, shooting: 83, strength: 84, driving: 60 } }, stars: 5, searchTerms: ['ram'] 
             },
             { 
+                name: "Avak", alias: "The King", img: "https://i.imgur.com/zfpPWJt.png", role: "The Patriarch", 
+                desc: "A Los Santos billionaire whose global businesses hide his illegal operations. Avak is Alex's father and strictly operates from the shadows. His massive wealth and connections quietly guide the crew's biggest moves.", 
+                longDesc: "Avak is a prominent Los Santos billionaire and the biological father of the operative known as 'Alex'. While he presents himself to the public as a legitimate global businessman, intelligence suggests he is the primary financial backer and silent leader of the entire syndicate. Avak rarely appears in person and never communicates through traceable channels. Instead, he uses his massive wealth, corporate influence, and political connections to quietly steer the crew toward highly profitable targets, ensuring they remain protected from federal prosecution.",
+                stats: { hangout: "Executive Suites", vehicle: "Armored Maybach", location: "Los Santos", attributes: { stamina: 65, shooting: 80, strength: 80, driving: 96 } }, stars: 5, hidden: true, searchTerms: ['king', 'king avak', 'vrej', 'king vrej'] 
+            },
+            { 
                 name: "Daniel", alias: "Deeds", img: "https://i.imgur.com/hez90P9.jpeg", role: "Innovator", 
-                desc: "Daniel acts as the primary innovator for the organization's high-stakes acquisitions, specializing in lateral problem-solving when brute force is deemed unviable. He frequently employs advanced social engineering tactics, elaborate physical disguises, and the exploitation of complex corporate legal loopholes to penetrate high-security environments. His methodology indicates a sophisticated understanding of corporate psychology and a preference for bloodless, psychologically manipulative infiltrations.", 
+                desc: "The creative problem solver of the group. When guns won't work, Daniel uses clever disguises, social engineering, and corporate loopholes to break into high-security areas without firing a shot.", 
+                longDesc: "Daniel is the crew's infiltration expert, specializing in situations where violence is too risky. Rather than using explosives or heavy weapons, Daniel relies on deception, forged documents, and stolen uniforms to walk right through the front door of high-security buildings. He is a master of 'social engineering,' easily tricking bank managers and security guards into giving up passwords or access keys. His smooth talking and creative strategies allow the crew to execute massive robberies without ever firing a single bullet.",
                 stats: { hangout: "Basketball Courts", vehicle: "Dodge Viper", location: "Los Santos", attributes: { stamina: 68, shooting: 65, strength: 70, driving: 80 } }, stars: 5 
             },
             { 
                 name: "Harout", alias: "Young Veyron", img: "https://i.imgur.com/2x5HnuN.jpeg", role: "Money Man", 
-                desc: "Functioning as the chief financial controller, Harout manages the syndicate's illicit revenue streams with an iron grip. He employs a deeply obfuscated network of international shell corporations, decentralized cryptocurrency tumblers, and offshore banking entities to systematically launder capital. Financial Crimes Unit investigators have struggled to trace his ledgers, noting his meticulous ability to seamlessly integrate illicit assets into legitimate local economies without triggering standard auditing tripwires.", 
+                desc: "The crew's money manager. Harout washes the team's illegal cash through shell companies, offshore accounts, and crypto. Investigators have never been able to trace his clean money back to the crimes.", 
+                longDesc: "Harout is the chief financial officer of the illegal organization. His job is to take the massive amounts of stolen cash generated by the crew and make it look completely legitimate. He does this by moving the money through a confusing maze of fake businesses, offshore bank accounts, and untraceable cryptocurrency networks. Despite multiple investigations by the Financial Crimes Unit, detectives have consistently failed to link his clean investments back to the crew's robberies, making him one of the most vital members of the team.",
                 stats: { hangout: "Financial District", vehicle: "Nissan Skyline R34", location: "Los Santos", attributes: { stamina: 66, shooting: 95, strength: 77, driving: 87 } }, stars: 5, searchTerms: ['veyron'] 
             },
             { 
                 name: "Kevin C", alias: "The Drone", img: "https://i.imgur.com/CP8lcsL.jpeg", role: "Enforcer", 
-                desc: "Physically imposing at 6'4\" and roughly 240 pounds, Kevin C operates primarily in debt collection and asset enforcement. Despite his formidable stature, psychological profiles characterize him as highly disciplined and averse to unnecessary collateral damage. He favors psychological intimidation and localized pressure tactics over overt violence, typically resolving high-level syndicate disputes through quiet, untraceable interactions that intentionally avoid drawing VCPD homicide or assault investigations.", 
+                desc: "A massive 6'4\", 240-pound enforcer who handles debt collection. Despite his size, Kevin prefers quiet intimidation over loud violence. He gets the job done without drawing unnecessary police attention.", 
+                longDesc: "Standing at 6'4\" and weighing nearly 240 pounds, Kevin C is the syndicate's primary enforcer. He is sent in to collect owed money and deal with rival gang members who step out of line. Despite his terrifying appearance, Kevin is extremely disciplined. He knows that loud shootouts attract the police, so he relies almost entirely on silent physical intimidation to get results. By handling conflicts quietly and professionally, he ensures that the crew's day-to-day business continues smoothly without triggering massive homicide investigations.",
                 stats: { hangout: "Industrial Docks", vehicle: "Mutt Cutts Van", location: "Los Santos", attributes: { stamina: 65, shooting: 68, strength: 88, driving: 67 } }, stars: 5, searchTerms: ['nk', 'nuke'] 
             },
             { 
                 name: "Raymond", alias: "Big Rus", img: "https://i.imgur.com/XEy6U2L.jpeg", role: "Launderer", 
-                desc: "Raymond leverages extensive, entrenched connections within the regional fast-food industry to facilitate cash-intensive laundering operations. While primarily recognized within the crew for his charismatic and morale-boosting demeanor, this affable exterior masks a fiercely loyal and ruthless operational capacity. He serves a dual purpose: efficiently washing street-level revenue through legitimate franchise registers while actively managing interpersonal crew dynamics during high-tension operational phases.", 
+                desc: "Raymond washes the crew's money using cash-heavy fast-food restaurants. He is known as the crew's joker, keeping morale high, but he is fiercely loyal and dangerous when protecting his team.", 
+                longDesc: "Raymond manages a string of popular, cash-only fast-food joints across the city, which he uses to quietly wash smaller amounts of the crew's illegal money. Within the group, Raymond is famous for his loud sense of humor and constant joking, which helps keep the team's stress levels down during difficult jobs. However, police reports warn against underestimating him. Behind the jokes, Raymond is a hardened criminal who is intensely loyal to his friends and completely ruthless against anyone who threatens the organization.",
                 stats: { hangout: "Fast Food Joints", vehicle: "Ferrari 360", location: "Los Santos", attributes: { stamina: 67, shooting: 58, strength: 80, driving: 44 } }, stars: 3, searchTerms: ['ray', 'big rusiano', 'big rush', 'rush', 'gaymond'] 
             },
             { 
                 name: "Richard", alias: "Big Buff", img: "https://i.imgur.com/XLb1Qxn.jpeg", role: "Hybrid", 
-                desc: "A highly versatile hybrid operative bridging the gap between tactical planning and physical enforcement. Richard is equally proficient in orchestrating complex physical breaches of fortified vaults as he is negotiating delicate armistices with rival cartels. Currently monitored on a medical hiatus, his absence has been noted in recent syndicate chatter. Informants stress that he remains a vital shot-caller, retaining significant command influence even while recovering off the grid.", 
+                desc: "Richard is recognized for his combination of physical strength and strong decision making. He is currently on a leave of absence due to personal challenges, and his team continues to show full support.", 
+                longDesc: "Richard is recognized for his combination of physical strength and strong decision making, making him a reliable presence within the crew in a wide range of situations. He contributes in multiple ways depending on what is required, whether through direct action or strategic thinking. He is currently on a leave of absence due to personal challenges, and his team continues to show full support during this time. They remain confident in his recovery and expect his return with renewed strength and focus.",
                 stats: { hangout: "Gym", vehicle: "Mercedes 300 SLR", location: "Los Santos", attributes: { stamina: 100, shooting: 100, strength: 100, driving: 100 } }, stars: 5 
             },
             { 
                 name: "Youra", alias: "YG", img: "https://i.imgur.com/aR73Lgr.jpeg", role: "Business Front", 
-                desc: "Presenting as a legitimate, upstanding civic leader, Youra maintains a pristine criminal record and operates a highly profitable local coffee franchise. However, VCPD organized crime units strongly suspect this establishment functions as a primary, sanitized front for upper-echelon syndicate meetings. While no physical evidence has successfully linked him to illicit activities, his frequent proximity to known operatives suggests he plays a crucial role in providing safe harbor for the organization.", 
+                desc: "A local coffee shop owner with a spotless criminal record. Police strongly suspect his business is a safe haven for high-level crew meetings, though nothing has ever been proven.", 
+                longDesc: "Youra operates a highly successful and popular coffee shop in the heart of the city. On paper, he is a model citizen with absolutely no criminal history. However, organized crime detectives believe his cafe acts as the main safehouse for the syndicate's upper management. Because Youra's business is heavily trafficked and entirely legitimate, it provides the perfect cover for the crew to hold secret meetings in plain sight. So far, the police have not been able to find a single piece of evidence to arrest him.",
                 stats: { hangout: "Coffee Shop", vehicle: "Rolls Royce Phantom", location: "Los Santos", attributes: { stamina: 66, shooting: 55, strength: 57, driving: 70 } }, stars: 0 
             },
             { 
                 name: "Iven", alias: "Big Van", img: "https://i.imgur.com/6h9lzGe.jpeg", role: "Medical Support", 
-                desc: "Embedded within the local medical infrastructure, Iven provides critical, off-the-grid trauma care for syndicate personnel. Utilizing his authorized access to restricted pharmaceutical dispensaries and hospital databases, he secures necessary surgical supplies and pain management narcotics well before law enforcement can trace the origins of gunshot or blast injuries. He ensures the crew remains entirely independent of municipal emergency services.", 
+                desc: "The crew's underground doctor. Iven uses his medical field connections to get restricted supplies and patch up the team off the books, keeping them far away from public hospitals.", 
+                longDesc: "Working quietly within the city's medical system, Iven serves as the personal trauma surgeon for the criminal organization. Whenever a crew member is shot or injured during a heist, going to a public hospital would immediately alert the police. Instead, Iven treats them in hidden, off-the-grid clinics. He uses his hospital access to steal surgical equipment, antibiotics, and heavy painkillers. His quick thinking and medical expertise have directly saved the lives of several key operatives who would have otherwise bled out or been arrested.",
                 stats: { hangout: "Local Clinics", vehicle: "BMW M8", location: "Los Santos", attributes: { stamina: 95, shooting: 87, strength: 90, driving: 64 } }, stars: 5 
             },
             { 
                 name: "Vic", alias: "The Mechanic", img: "https://i.imgur.com/pUDCdrF.jpeg", role: "Master Mechanic", 
-                desc: "An unparalleled automotive technician operating a network of heavily guarded, subterranean chop shops across the greater Vice City area. Vic specializes in the rapid dismantling of high-value stolen vehicles and the extensive modification of syndicate transport. His customized alterations frequently include the installation of military-grade ballistic plating, reinforced chassis, and upgraded powertrains, ensuring crew vehicles can reliably withstand aggressive LSPD PIT maneuvers.", 
+                desc: "A master mechanic running a network of hidden chop shops. Vic strips stolen cars and upgrades the crew's getaway vehicles with bulletproof armor and custom engines.", 
+                longDesc: "Vic is a master mechanic who runs several highly guarded, underground chop shops throughout the city. His primary duty is to build the ultimate getaway vehicles for the crew. He strips down normal delivery trucks and sports cars, secretly upgrading them with heavy bulletproof armor, military-grade run-flat tires, and incredibly powerful custom engines. By the time Vic is finished with a vehicle, it is practically a tank, capable of surviving aggressive police chases and crashing through roadblocks without taking any serious damage.",
                 stats: { hangout: "Chop Shops", vehicle: "Various / All", location: "Los Santos", attributes: { stamina: 85, shooting: 45, strength: 77, driving: 100 } }, stars: 5, hidden: true 
             },
             { 
                 name: "Mike", alias: "Big Mike", img: "https://i.imgur.com/W6E2HMJ.jpeg", role: "Lowrider O.G.", 
-                desc: "A highly respected veteran within the Los Santos and Vice City custom lowrider communities, Mike ostensibly operates a legitimate automotive body shop. Despite a public shift toward legitimate family life, intelligence confirms his facilities are routinely utilized by the syndicate to procure untraceable custom hydraulics, execute rapid cosmetic vehicle alterations, and provide highly secure, discrete storage for vehicles implicated in major felonies.", 
+                desc: "A highly respected OG in the lowrider scene. Mike runs a custom auto shop that the crew secretly uses to store hot cars, install untraceable hydraulics, and make quick cosmetic changes.", 
+                longDesc: "Mike is a deeply respected older figure in the city's custom lowrider and street car community. While he claims to only run a legal auto body shop, his garage is a crucial asset for the syndicate. The crew frequently drops off stolen or 'hot' vehicles at Mike's shop, where he immediately changes the paint color, swaps the license plates, and installs hidden compartments for smuggling weapons. His flawless cosmetic work ensures that the police are always searching for the wrong car after a major robbery.",
                 stats: { hangout: "Streets", vehicle: "Lowrider", location: "Los Santos", attributes: { stamina: 60, shooting: 75, strength: 87, driving: 81 } }, stars: 5, hidden: true 
             },
             { 
                 name: "Shavarsh", alias: "The Varsh", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Scientist", 
-                desc: "An unorthodox and highly capable underground chemist operating out of a fluid, clandestine laboratory environment. Shavarsh specializes in the synthesis of volatile compounds, notably military-grade thermite charges used for breaching heavy vault doors. While behavioral profiles suggest severe erratic tendencies, his expertise in localized chemical engineering and the rapid fabrication of specialized, untraceable solvents makes him an indispensable asset for high-level infiltrations.", 
+                desc: "An underground chemist operating out of a hidden lab. Shavarsh creates highly dangerous chemicals and custom thermite charges to melt through heavy bank vaults.", 
+                longDesc: "Shavarsh is a brilliant but dangerous chemist who works exclusively out of a hidden, underground laboratory. He handles the creation of all specialized explosives for the organization. Instead of using loud, messy dynamite, Shavarsh mixes highly advanced chemical compounds and custom thermite paste that can silently melt through three-foot-thick steel bank vaults in minutes. While he is known to be unpredictable and strange, his unique scientific skills allow the crew to access heavy safes that regular thieves could never open.",
                 stats: { hangout: "The Lab", vehicle: "Mercedes", location: "Los Santos", attributes: { stamina: 60, shooting: 75, strength: 80, driving: 70 } }, stars: 5, hidden: true, searchTerms: ['varsh'] 
             },
             { 
                 name: "Tom", alias: "Hursh", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Gym Leader", 
-                desc: "Outwardly functioning as an athletic instructor at an upscale climbing facility, Tom was reportedly coerced into syndicate operations due to mounting, unmanageable financial debts. His exceptional cardiovascular stamina and unparalleled free-scaling capabilities are actively exploited by the organization for high-altitude structural infiltrations. He specializes in bypassing exterior perimeter security and establishing entry points on high-rise targets previously deemed inaccessible.", 
+                desc: "A rock climbing instructor forced into crime to pay off massive debts. The crew uses his incredible climbing skills to scale tall buildings and sneak past ground-level security.", 
+                longDesc: "On the surface, Tom is a friendly, athletic instructor at a high-end rock climbing gym. However, after falling into massive debt with dangerous loan sharks, he was forced to offer his skills to the syndicate. Tom's incredible physical stamina and free-climbing abilities make him the perfect infiltrator. The crew uses him to scale the outside of towering skyscrapers and enter through rooftop vents, completely bypassing the heavy security guards, alarms, and metal detectors located on the ground floor.",
                 stats: { hangout: "Rock Climbing Gyms", vehicle: "Honda Accord", location: "Los Santos", attributes: { stamina: 85, shooting: 77, strength: 83, driving: 77 } }, stars: 5, hidden: true, searchTerms: ['tomik'] 
             },
             { 
                 name: "Aldo", alias: "Sandstorm", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Hacker", 
-                desc: "Operating exclusively under the digital alias 'Sandstorm,' Aldo is a reclusive cyber-warfare specialist. From heavily fortified, localized server hubs, he executes real-time manipulation of municipal traffic grids, penetrates secure corporate firewalls, and systematically purges VCPD surveillance archives. His sophisticated routing protocols ensure his digital footprint remains practically undetectable, allowing the syndicate to operate with an unprecedented level of electronic invisibility.", 
+                desc: "A master hacker known only as 'Sandstorm'. Hidden in his server room, Aldo can control traffic lights, break into corporate networks, and delete police security footage in real-time.", 
+                longDesc: "Operating completely in the shadows under the hacker alias 'Sandstorm', Aldo is the crew's invisible shield. From his highly secure server room, he acts as the digital 'eyes and ears' during every major job. He has the ability to hack into city traffic lights to cause massive jams that block police cruisers. Aldo can also slip past heavy corporate firewalls to steal digital funds and wipe out security camera footage in real-time, ensuring the crew leaves absolutely no digital evidence behind.",
                 stats: { hangout: "Control Rooms", vehicle: "Ford Focus", location: "Los Santos", attributes: { stamina: 94, shooting: 93, strength: 81, driving: 76 } }, stars: 5, hidden: true 
             },
             { 
                 name: "Brandon", alias: "Easy Money", img: "https://i.imgur.com/BSW37G6.jpeg", role: "Insider", 
-                desc: "A prominent figure in the regional hospitality sector, Brandon utilizes his extensive network of bars and restaurants as a sophisticated logistical front. Intelligence indicates his commercial supply chain is thoroughly compromised; refrigerated freight trucks designated for his establishments are routinely intercepted moving heavily concealed contraband and narcotics across state lines. His venues also provide highly secure, swept environments for upper-management syndicate parleys.", 
+                desc: "A restaurant owner who uses his business to help the crew. Brandon smuggles illegal goods inside frozen food delivery trucks and provides safe backrooms for secret meetings.", 
+                longDesc: "Brandon owns a chain of popular local bars and restaurants, but his real business is helping the syndicate move illegal products. He hides stolen weapons, cash, and drugs inside large commercial delivery trucks mixed in with frozen food and supplies. Because his trucks look like standard restaurant deliveries, the police almost never pull them over. Additionally, the private VIP backrooms of his bars serve as completely secure, swept locations for the crew to plan their next targets without fear of hidden microphones.",
                 stats: { hangout: "Bars", vehicle: "Lexus", location: "Los Santos", attributes: { stamina: 67, shooting: 75, strength: 77, driving: 77 } }, stars: 5, hideFromGrid: true, searchTerms: ['gaydon'] 
             },
             { 
                 name: "Arabo", alias: "Big Bo", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Transporter", 
-                desc: "A premier logistics and heavy-transport specialist renowned within the underworld for absolute discretion and an uncompromising adherence to delivery schedules. Arabo commands a fleet of heavily armored commercial rigs capable of breaching fortified law enforcement barricades with minimal velocity loss. Regardless of the cargo's illicit nature or the intensity of federal pursuit, he provides guaranteed, brute-force transit solutions for the syndicate's most sensitive hardware.", 
+                desc: "A legendary transporter who never asks questions and never misses a delivery. Arabo drives heavily armored trucks to move the crew's most valuable and dangerous cargo straight through police blockades.", 
+                longDesc: "Arabo is known throughout the criminal underworld as the most reliable heavy transporter money can buy. His absolute rule is that he never asks what is inside the cargo, and he never misses a deadline. Driving heavily armored, 18-wheel commercial trucks, Arabo is responsible for moving the crew's largest shipments of stolen cash and heavy weapons. If the police attempt to stop his rig, Arabo has the driving skills and the heavy machinery required to bash straight through their barricades and keep moving.",
                 stats: { hangout: "Everywhere", vehicle: "Trucks", location: "Los Santos", attributes: { stamina: 90, shooting: 94, strength: 84, driving: 96 } }, stars: 5, hidden: true 
             },
             { 
                 name: "Argin", alias: "The Machine", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Street Racer", 
-                desc: "A dominant fixture in the illicit midnight racing circuits, Argin operates as the syndicate's secondary, high-velocity extraction asset. Piloting heavily modified, imported performance vehicles, his intimate, street-level knowledge of Vice City's narrowest alleyways and industrial corridors allows him to routinely break visual contact with LSPD aerial units. He is typically deployed when operational parameters require extreme speed over armored durability.", 
+                desc: "An underground street racing champion. Argin is the crew's backup getaway driver, used when pure speed is more important than heavy armor. He knows every alleyway to lose police helicopters.", 
+                longDesc: "Argin is a legendary champion in the city's illegal midnight street racing scene. He acts as the crew's secondary getaway driver, specifically called in when top speed is required over heavy defense. Driving heavily tuned imported sports cars, Argin has the lightning-fast reflexes needed to weave through heavy highway traffic at 150 miles per hour. He knows every hidden alleyway, parking garage, and bridge in the city, making it incredibly easy for him to outrun ground units and hide from police helicopters.",
                 stats: { hangout: "Street Races", vehicle: "JDM Vehicles", location: "Los Santos", attributes: { stamina: 67, shooting: 80, strength: 80, driving: 98 } }, stars: 5, hidden: true 
             },
             { 
                 name: "Unknown", alias: "Slim", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Mentor", 
-                desc: "An older, highly experienced tactical consultant who previously served an extensive sentence at Bolingbroke Penitentiary. While he publicly dedicates his time to community outreach and diverting at-risk youth from organized crime, his encyclopedic knowledge of rival gang territories, patrol routing, and prison politics remains actively commodified by the syndicate. He provides invaluable, high-level strategic counsel, ensuring operations do not inadvertently trigger localized gang wars.", 
+                desc: "A highly respected ex-con who mentors the crew. Slim uses his deep knowledge of rival gang territories and police patrol routes to help plan operations and avoid unnecessary turf wars.", 
+                longDesc: "Known only by the street name 'Slim', this older operative is a veteran of the criminal underworld who spent years locked up in federal prison. Today, he acts as a wise mentor and strategic advisor to the crew. Slim has a massive network of contacts and a deep understanding of where rival gangs operate and where police patrols are the heaviest. He reviews the crew's robbery plans to ensure they don't accidentally step on another gang's territory, preventing unwanted street wars that draw police attention.",
                 stats: { hangout: "Los Santos", vehicle: "Unknown", location: "Los Santos", attributes: { stamina: 67, shooting: 82, strength: 77, driving: 55 } }, stars: 5, hidden: true, searchTerms: ['tj'] 
             },
             { 
                 name: "Jake", alias: "MJ Verde", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Producer", 
-                desc: "A highly visible, platinum-selling music producer deeply embedded in the regional entertainment industry. Beneath this high-profile public persona, Jake systematically launders millions in syndicate capital through inflated studio time billing and fabricated merchandise logistics. Furthermore, intelligence suggests his sprawling VIP events function as secure networking hubs, while audio masters are occasionally utilized to transmit encrypted, steganographic communications between syndicate cells.", 
+                desc: "A famous music producer who secretly cleans the crew's money through fake studio fees and merchandise sales. His exclusive VIP parties are perfect covers for high-level criminal deals.", 
+                longDesc: "Jake is a famous, platinum-selling hip-hop producer who is deeply respected in the entertainment industry. Behind the fame, he uses his massive recording studios and record label to quietly wash the crew's stolen cash. He does this by faking thousands of album sales, booking fake studio time, and selling non-existent concert merchandise. On top of the money laundering, his massive, loud VIP mansion parties are frequently used as the perfect distraction for the crew to quietly conduct multi-million dollar deals in the back rooms.",
                 stats: { hangout: "Los Santos", vehicle: "Unknown", location: "Los Santos", attributes: { stamina: 62, shooting: 80, strength: 80, driving: 60 } }, stars: 5, hidden: true, searchTerms: ['hassan'] 
             },
             { 
                 name: "Alicia", alias: "Unknown", img: "https://i.imgur.com/TBG9sQ3.jpeg", role: "Biker Leader", 
-                desc: "The presiding officer of a notorious, heavy-metal affiliated motorcycle club operating on the city's industrial outskirts. Known for her uncompromising operational discipline and ruthlessness, Alicia commands a heavily armed auxiliary force that frequently acts as localized muscle. Despite her organization's illicit nature, intercepted communications indicate a fierce, almost territorial protection of her district, aggressively repelling incursions from rival out-of-state syndicates.", 
+                desc: "The tough leader of a local heavy metal biker gang. Alicia commands heavily armed muscle and fiercely defends her territory from outside rival syndicates.", 
+                longDesc: "Alicia is the ruthless and highly respected president of a local, heavy-metal-themed motorcycle club. While her gang is deeply involved in their own illegal activities, she has a mutually beneficial alliance with the syndicate. Alicia provides heavily armed bikers to act as extra muscle when the crew needs to lock down an area or intimidate a rival. In exchange, the crew helps her violently defend her territory, ensuring that outside cartels and rival syndicates are quickly driven out of the city.",
                 stats: { hangout: "Los Santos", vehicle: "Harley Davidson Motorcycles", location: "Los Santos", attributes: { stamina: 75, shooting: 75, strength: 80, driving: 25 } }, stars: 5, hidden: true 
             },
             { 
                 name: "Vlad", alias: "Big Gucci", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Arms Dealer", 
-                desc: "The syndicate's primary quartermaster and international munitions broker. Vlad maintains an expansive, highly compartmentalized supply chain capable of procuring restricted, military-grade hardware. Operating under the guise of private, fortified firing ranges, he oversees a meticulous sanitation process—ensuring every firearm, explosive, and ballistic vest is thoroughly stripped of serial numbers and metallurgical signatures before deployment to active operatives.", 
+                desc: "The crew's main weapons supplier. Vlad runs private shooting ranges where he carefully removes serial numbers from military-grade guns and explosives before handing them over to the team.", 
+                longDesc: "Vlad is a professional illegal arms dealer and the crew's only trusted source for heavy weaponry. He legally owns a string of private, indoor shooting ranges, which allows him to easily order and stockpile massive amounts of firearms and ammunition. Before passing any weapons to the crew, Vlad uses heavy machinery to grind off all serial numbers and untraceable modifications, ensuring that any guns left behind at a crime scene can never be traced back to him or the syndicate.",
                 stats: { hangout: "Shooting Range", vehicle: "Toyota Prius", location: "Los Santos", attributes: { stamina: 75, shooting: 94, strength: 90, driving: 80 } }, stars: 5, hidden: true, searchTerms: ['vladimir'] 
             },
             { 
                 name: "Karp", alias: "The Missing Piece", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Boxer", 
-                desc: "An undefeated bare-knuckle combatant holding immense respect within the city's underground gambling circuits. Karp serves as the syndicate's premier close-quarters enforcement asset. His exceptional physical conditioning and lethal hand-to-hand proficiency are utilized exclusively in sensitive, high-value environments where the discharge of a firearm would immediately compromise the operation. He is known for neutralizing security personnel with absolute silence and brutal efficiency.", 
+                desc: "An undefeated underground boxer. Karp is used for close-quarters missions where firing a gun is too risky. He can silently and brutally take down security guards with his bare hands.", 
+                longDesc: "Karp is an intimidating, undefeated champion in the city's illegal, bare-knuckle boxing rings. The crew brings him in specifically for stealth operations where firing a loud weapon would trigger an alarm or alert the police. Because of his immense physical strength and brutal fighting experience, Karp can easily sneak up on armed security guards and knock them out cold with his bare hands. He is highly disciplined and follows orders perfectly, making him a reliable weapon for quiet, close-quarters combat.",
                 stats: { hangout: "Boxing Gyms", vehicle: "G-Wagon", location: "Los Santos", attributes: { stamina: 99, shooting: 50, strength: 95, driving: 65 } }, stars: 5, hidden: true 
             },
             { 
                 name: "Kevin K", alias: "The OX", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Engineer", 
-                desc: "A highly credentialed structural engineer who actively leverages his municipal clearance for illicit financial gain. Operating in direct, often hostile rivalry with the syndicate's electronic specialist, Kevin focuses entirely on physical architecture. He routinely acquires classified municipal blueprints to identify structural degradation, load-bearing vulnerabilities, and blind spots in vault construction, facilitating covert physical breaches that circumvent electronic alarms entirely.", 
+                desc: "A structural engineer who helps the crew break into buildings. Kevin studies stolen city blueprints to find weak walls and blind spots, allowing the team to bypass alarms entirely.", 
+                longDesc: "Kevin K is a highly educated structural engineer who works a normal corporate job during the day. At night, he illegally secures classified city blueprints and building schematics for the syndicate. Kevin studies the architecture of the crew's targets, identifying exactly where the walls are the weakest, where the security cameras cannot see, and where the vault alarms are wired. His brilliant analysis allows the crew to smash through walls and floors in the exact right spot to completely bypass main security systems.",
                 stats: { hangout: "Card Shops", vehicle: "Escallade", location: "Los Santos", attributes: { stamina: 45, shooting: 87, strength: 75, driving: 50 } }, stars: 5, hidden: true, searchTerms: ['ox', 'ok'] 
             },
             { 
                 name: "Ricardo Diaz", alias: "Diaz", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "International Connect", 
-                desc: "An elusive, high-echelon international broker operating primarily out of a heavily fortified compound in southern Spain. Diaz serves as the critical connective tissue between the Vice City syndicate and global cartel operations. Interpol tracking indicates he is solely responsible for orchestrating the transatlantic shipment of restricted munitions and bulk narcotics. He is considered the highest-level logistical asset currently associated with the crew, completely insulated from local prosecution.", 
+                desc: "A powerful international broker hiding out in Spain. Diaz is the crew's main connection to global cartels, handling the massive shipments of weapons and illegal goods across the ocean.", 
+                longDesc: "Hiding safely in a heavily guarded mansion in southern Spain, Ricardo Diaz is an extremely powerful international criminal broker. He serves as the vital link between the Vice City crew and massive global cartels. Diaz never steps foot in the United States, keeping himself entirely safe from the FBI and local police. Instead, he uses satellite phones and secure connections to arrange massive, transatlantic shipments of military weapons, illegal cash, and high-value stolen goods directly into the crew's hands.",
                 stats: { hangout: "Streets", vehicle: "Ferrari F430", location: "Spain", attributes: { stamina: 85, shooting: 70, strength: 94, driving: 84 } }, stars: 5, hidden: true, searchTerms: ['ricardo'] 
             },
             { 
                 name: "Fredrick", alias: "The Who", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Gambler", 
-                desc: "A compulsive high-stakes gambler drowning in eight-figure liabilities to multiple organized crime factions. Despite his severe compromised status, Fredrick's ability to seamlessly infiltrate exclusive VIP suites and manipulate high-net-worth individuals makes him a crucial intelligence gatherer. He systematically extracts actionable corporate intel and scheduling vulnerabilities from intoxicated executives at the poker table, bartering this information to the syndicate in a desperate bid to stave off his creditors.", 
+                desc: "A high-stakes gambler with massive debts to the mob. Fredrick uses his access to VIP casino rooms to spy on rich executives and feed valuable insider information back to the crew.", 
+                longDesc: "Fredrick is a severe gambling addict who owes tens of millions of dollars to very dangerous people. Because he dresses well and acts like a high-roller, he is allowed into the most exclusive, private VIP casino rooms in the city. The crew uses Fredrick as a spy. As he plays poker with wealthy bankers, corrupt politicians, and corporate executives, he carefully listens to their conversations. He then reports this valuable insider information back to the syndicate, hoping to slowly pay off his massive debts.",
                 stats: { hangout: "Casinos", vehicle: "Honda Civic", location: "Los Santos", attributes: { stamina: 55, shooting: 87, strength: 83, driving: 63 } }, stars: 5, hidden: true, searchTerms: ['who'] 
             }
         ];
@@ -1060,8 +1099,12 @@
                 document.querySelectorAll('.stat-driving').forEach(el => el.style.width = c.stats.attributes.driving + '%');
                 document.querySelectorAll('.stat-driving-val').forEach(el => el.innerText = c.stats.attributes.driving + '/100');
 
-                const descHtml = c.desc.replace(c.name, `<span class="bg-[var(--gta-pink)] text-white px-1 mx-0.5 font-bold rounded-sm">${c.name}</span>`);
-                document.querySelectorAll('.dos-desc').forEach(el => el.innerHTML = descHtml);
+                // Separate the short and long biographies based on page location
+                const descShortHtml = c.desc.replace(c.name, `<span class="bg-[var(--gta-pink)] text-white px-1 mx-0.5 font-bold rounded-sm">${c.name}</span>`);
+                const descLongHtml = c.longDesc.replace(c.name, `<span class="bg-[var(--gta-pink)] text-white px-1 mx-0.5 font-bold rounded-sm">${c.name}</span>`);
+
+                document.querySelectorAll('.dos-desc-short').forEach(el => el.innerHTML = descShortHtml);
+                document.querySelectorAll('.dos-desc-long').forEach(el => el.innerHTML = descLongHtml);
                 
                 let stars = '';
                 for(let i=0; i<5; i++) {
