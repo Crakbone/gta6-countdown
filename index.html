@@ -943,7 +943,7 @@
                 stats: { hangout: "Gym", vehicle: "Mercedes 300 SLR", location: "Los Santos", attributes: { stamina: 100, shooting: 100, strength: 100, driving: 100 } }, stars: 5 
             },
             { 
-                name: "Youra", alias: "YG", img: "https://i.imgur.com/aR73Lgr.jpeg", role: "Business Front", status: "Wanted",
+                name: "Youra", alias: "YG", img: "https://i.imgur.com/aR73Lgr.jpeg", role: "Business Front", status: "None",
                 desc: "A local coffee shop owner with a spotless criminal record. Police strongly suspect his business is a safe haven for high-level crew meetings, though nothing has ever been proven.", 
                 longDesc: "Youra operates a highly successful and popular coffee shop in the heart of the city. On paper, he is a model citizen with absolutely no criminal history. However, organized crime detectives believe his cafe acts as the main safehouse for the syndicate's upper management. Because Youra's business is heavily trafficked and entirely legitimate, it provides the perfect cover for the crew to hold secret meetings in plain sight. So far, the police have not been able to find a single piece of evidence to arrest him.",
                 stats: { hangout: "Coffee Shop", vehicle: "Rolls Royce Phantom", location: "Los Santos", attributes: { stamina: 66, shooting: 55, strength: 57, driving: 70 } }, stars: 0 
@@ -967,7 +967,7 @@
                 stats: { hangout: "Streets", vehicle: "Lowrider", location: "Los Santos", attributes: { stamina: 60, shooting: 75, strength: 87, driving: 81 } }, stars: 5, hidden: true 
             },
             { 
-                name: "Shavarsh", alias: "The Varsh", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Scientist", status: "Wanted",
+                name: "Shavarsh", alias: "The Varsh", img: "https://i.imgur.com/MOmlnbW.jpeg", role: "Scientist", status: "Wanted",
                 desc: "An underground chemist operating out of a hidden lab. Shavarsh creates highly dangerous chemicals and custom thermite charges to melt through heavy bank vaults.", 
                 longDesc: "Shavarsh is a brilliant but dangerous chemist who works exclusively out of a hidden, underground laboratory. He handles the creation of all specialized explosives for the organization. Instead of using loud, messy dynamite, Shavarsh mixes highly advanced chemical compounds and custom thermite paste that can silently melt through three-foot-thick steel bank vaults in minutes. While he is known to be unpredictable and strange, his unique scientific skills allow the crew to access heavy safes that regular thieves could never open.",
                 stats: { hangout: "The Lab", vehicle: "Mercedes", location: "Los Santos", attributes: { stamina: 60, shooting: 75, strength: 80, driving: 70 } }, stars: 5, hidden: true, searchTerms: ['varsh'] 
@@ -1131,18 +1131,27 @@
                     "In Custody": { bg: "#0f172a", border: "#1e3a8a", text: "#bfdbfe", dot: "#3b82f6" },
                     "Captive": { bg: "#431407", border: "#9a3412", text: "#fed7aa", dot: "#f97316" }
                 };
-                const st = statusConfig[currentStatus];
                 
-                document.querySelectorAll('.dos-status-text').forEach(el => el.innerText = currentStatus);
                 document.querySelectorAll('.dos-status-badge').forEach(el => {
-                    el.style.backgroundColor = st.bg;
-                    el.style.borderColor = st.border;
-                    el.style.color = st.text;
+                    if (currentStatus === "None") {
+                        el.style.display = 'none';
+                    } else {
+                        el.style.display = '';
+                        const st = statusConfig[currentStatus];
+                        el.style.backgroundColor = st.bg;
+                        el.style.borderColor = st.border;
+                        el.style.color = st.text;
+                    }
                 });
-                document.querySelectorAll('.dos-status-dot').forEach(el => {
-                    el.style.backgroundColor = st.dot;
-                    el.style.boxShadow = `0 0 6px ${st.dot}`;
-                });
+
+                if (currentStatus !== "None") {
+                    const st = statusConfig[currentStatus];
+                    document.querySelectorAll('.dos-status-text').forEach(el => el.innerText = currentStatus);
+                    document.querySelectorAll('.dos-status-dot').forEach(el => {
+                        el.style.backgroundColor = st.dot;
+                        el.style.boxShadow = `0 0 6px ${st.dot}`;
+                    });
+                }
 
                 document.querySelectorAll('.stat-stamina').forEach(el => el.style.width = c.stats.attributes.stamina + '%');
                 document.querySelectorAll('.stat-stamina-val').forEach(el => el.innerText = c.stats.attributes.stamina + '/100');
