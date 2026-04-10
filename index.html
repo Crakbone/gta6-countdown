@@ -265,8 +265,7 @@
                             </div>
 
                             <div class="crew-menu-container hidden flex-col flex-1 overflow-y-auto custom-scrollbar p-2 sm:p-4 space-y-2 bg-[#111] w-[200px] md:w-auto h-full">
-                                <!-- Menu injected here -->
-                            </div>
+                                </div>
                         </div>
 
                         <div class="dossier-view flex-1 flex flex-col md:flex-row transition-all duration-300 opacity-0 translate-y-4 min-w-0 bg-[#e0e0e0] text-black relative z-10 ml-10 sm:ml-12 md:ml-16">
@@ -282,7 +281,6 @@
                                     <div class="dos-stars flex justify-center gap-1 text-[var(--gta-yellow)] text-xl drop-shadow-[0_0_5px_rgba(255,204,0,0.5)]"></div>
                                 </div>
 
-                                <!-- MOBILE ONLY BIO (SHORT - HOME PAGE) -->
                                 <div class="w-full max-w-[280px] mt-3 bg-[#fdf8e4] text-black border-4 border-black shadow-[4px_4px_0_rgba(0,0,0,0.3)] p-3 sm:p-4 font-roboto hover:scale-105 hover:shadow-[8px_8px_0_rgba(0,0,0,0.4)] transition-all duration-300 relative h-[380px] flex md:hidden flex-col justify-start">
                                     <div class="overflow-hidden h-full flex flex-col justify-start">
                                         <div class="flex flex-col w-full md:hidden border-b border-gray-400 pb-2 mb-2 flex-shrink-0">
@@ -307,7 +305,6 @@
                                     </div>
                                 </div>
 
-                                <!-- DESKTOP ONLY STATS -->
                                 <div class="w-full max-w-[260px] mt-4 bg-white text-black border-4 border-black p-4 shadow-[4px_4px_0_var(--gta-pink)] hover:scale-105 hover:shadow-[8px_8px_0_rgba(0,0,0,0.4)] transition-all duration-300 hidden md:flex flex-col justify-center relative z-10">
                                     <div class="text-[12px] font-bold text-gray-500 uppercase tracking-widest mb-4 border-b-2 border-black pb-1 text-center">OPERATIONAL STATISTICS</div>
                                     <div class="grid grid-cols-1 gap-y-4">
@@ -377,7 +374,6 @@
                                     </div>
                                 </div>
                                 
-                                <!-- MOBILE ONLY STATS -->
                                 <div class="bg-white text-black border-4 border-black p-3 sm:p-5 shadow-[6px_6px_0_var(--gta-pink)] flex md:hidden flex-col justify-center mt-2">
                                     <div class="text-[12px] sm:text-sm font-bold text-gray-500 uppercase tracking-widest mb-3 sm:mb-4 border-b-2 border-black pb-1">OPERATIONAL STATISTICS</div>
                                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
@@ -412,7 +408,6 @@
                                     </div>
                                 </div>
 
-                                <!-- DESKTOP ONLY BIO (SHORT - HOME PAGE) -->
                                 <div class="bg-[#fdf8e4] border-4 border-black shadow-[6px_6px_0_rgba(0,0,0,0.3)] p-4 lg:p-6 text-black font-roboto hidden md:flex flex-col justify-start relative h-[350px] mt-2 border-l-4 border-l-[var(--gta-blue)] overflow-hidden">
                                     <div class="text-[12px] font-bold text-gray-600 uppercase tracking-widest mb-2 border-b-2 border-black pb-1 text-left shrink-0">BIOGRAPHY</div>
                                     <div class="dos-desc-short flex-grow overflow-y-auto custom-scrollbar text-base lg:text-[17px] font-roboto leading-relaxed text-black pr-2"></div>
@@ -559,9 +554,7 @@
                             <div class="dos-alias text-3xl sm:text-4xl font-handwriting text-white mb-2 md:mb-4">"Alias"</div>
                         </div>
 
-                        <!-- MANILA FOLDER TABS -->
                         <div class="flex flex-col mt-2 md:mt-4 w-full order-2 flex-1 relative max-w-full">
-                            <!-- Tabs -->
                             <div class="flex overflow-x-auto custom-scrollbar gap-1 sm:gap-2 px-2 sm:px-4 relative z-20 translate-y-1">
                                 <button onclick="switchCrewTab('file')" id="crew-tab-btn-file" class="crew-tab-btn relative z-30 bg-[#fdf8e4] border-4 border-black border-b-[#fdf8e4] px-3 sm:px-5 pt-2 pb-3 font-gta text-xs sm:text-sm text-black rounded-t-lg transition-colors whitespace-nowrap outline-none">FILE</button>
                                 <button onclick="switchCrewTab('stats')" id="crew-tab-btn-stats" class="crew-tab-btn relative z-10 bg-[#d0d0d0] border-4 border-black border-b-black px-3 sm:px-5 pt-2 pb-2 font-gta text-xs sm:text-sm text-black rounded-t-lg hover:bg-[#e0e0e0] transition-colors whitespace-nowrap outline-none">STATS</button>
@@ -570,10 +563,8 @@
                                 <button onclick="switchCrewTab('images')" id="crew-tab-btn-images" class="crew-tab-btn relative z-10 bg-[#d0d0d0] border-4 border-black border-b-black px-3 sm:px-5 pt-2 pb-2 font-gta text-xs sm:text-sm text-black rounded-t-lg hover:bg-[#e0e0e0] transition-colors whitespace-nowrap outline-none">IMAGES</button>
                             </div>
                             
-                            <!-- Content Box (DATABASE PAGE - EXPANDED BIO) -->
                             <div class="bg-[#fdf8e4] border-4 border-black shadow-[6px_6px_0_rgba(0,0,0,0.5)] p-4 sm:p-6 text-black font-roboto relative z-10 h-[650px] md:h-[480px] flex flex-col overflow-hidden">
                                 
-                                <!-- FILE TAB -->
                                 <div id="crew-tab-file" class="crew-tab-content flex-1 flex flex-col overflow-hidden">
                                     <div class="flex flex-col w-full md:hidden border-b border-gray-400 pb-3 mb-3 flex-shrink-0">
                                         <div class="flex items-center justify-between w-full mb-2">
@@ -597,7 +588,6 @@
                                     <div class="dos-desc-long flex-grow text-[15px] sm:text-[17px] font-roboto leading-relaxed text-black pr-2 overflow-hidden"></div>
                                 </div>
 
-                                <!-- STATS TAB -->
                                 <div id="crew-tab-stats" class="crew-tab-content flex-1 flex flex-col hidden pr-2">
                                     <div class="text-[14px] lg:text-base font-bold text-gray-600 uppercase tracking-widest mb-6 border-b-2 border-black pb-2 text-left shrink-0">OPERATIONAL STATISTICS</div>
                                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6">
@@ -628,7 +618,6 @@
                                     </div>
                                 </div>
 
-                                <!-- INFO TAB -->
                                 <div id="crew-tab-info" class="crew-tab-content flex-1 flex flex-col hidden pr-2">
                                     <div class="text-[14px] lg:text-base font-bold text-gray-600 uppercase tracking-widest mb-4 border-b-2 border-black pb-2 text-left shrink-0">KNOWN INTELLIGENCE</div>
                                     <div class="space-y-5 mt-2">
@@ -647,7 +636,6 @@
                                     </div>
                                 </div>
 
-                                <!-- VEHICLE INFO TAB -->
                                 <div id="crew-tab-vehicle" class="crew-tab-content flex-1 flex flex-col hidden pr-2">
                                     <div class="text-[14px] lg:text-base font-bold text-gray-600 uppercase tracking-widest mb-4 border-b-2 border-black pb-2 text-left shrink-0">VEHICLE SPECIFICS</div>
                                     <div class="bg-gray-200 border-2 border-black p-4 sm:p-5 shadow-inner mt-2 shrink-0">
@@ -664,7 +652,6 @@
                                     </div>
                                 </div>
 
-                                <!-- IMAGES TAB -->
                                 <div id="crew-tab-images" class="crew-tab-content flex-1 flex flex-col hidden items-center justify-center overflow-hidden">
                                     <div class="text-[14px] lg:text-base font-bold text-gray-600 uppercase tracking-widest mb-4 border-b-2 border-black pb-2 text-left w-full shrink-0">SURVEILLANCE IMAGES</div>
                                     <div class="flex-1 flex flex-col items-center justify-center text-gray-500 opacity-60">
@@ -967,13 +954,13 @@
                 stats: { hangout: "The Lab", vehicle: "Mercedes", location: "Los Santos", attributes: { stamina: 60, shooting: 75, strength: 80, driving: 70 } }, stars: 5, hidden: true, searchTerms: ['varsh'] 
             },
             { 
-                name: "Tom", alias: "Hursh", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Gym Leader", status: "Wanted",
+                name: "Tom", alias: "Hursh", img: "https://i.imgur.com/lvbYVX3.jpeg", role: "Gym Leader", status: "Wanted",
                 desc: "A rock climbing instructor forced into crime to pay off massive debts. The crew uses his incredible climbing skills to scale tall buildings and sneak past ground-level security.", 
                 longDesc: "On the surface, Tom is a friendly, athletic instructor at a high-end rock climbing gym. However, after falling into massive debt with dangerous loan sharks, he was forced to offer his skills to the syndicate. Tom's incredible physical stamina and free-climbing abilities make him the perfect infiltrator. The crew uses him to scale the outside of towering skyscrapers and enter through rooftop vents, completely bypassing the heavy security guards, alarms, and metal detectors located on the ground floor.",
                 stats: { hangout: "Rock Climbing Gyms", vehicle: "Honda Accord", location: "Los Santos", attributes: { stamina: 85, shooting: 77, strength: 83, driving: 77 } }, stars: 5, hidden: true, searchTerms: ['tomik'] 
             },
             { 
-                name: "Aldo", alias: "Sandstorm", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Hacker", status: "Wanted",
+                name: "Aldo", alias: "Sandstorm", img: "https://i.imgur.com/lvbYVX3.jpeg", role: "Hacker", status: "Wanted",
                 desc: "A master hacker known only as 'Sandstorm'. Hidden in his server room, Aldo can control traffic lights, break into corporate networks, and delete police security footage in real-time.", 
                 longDesc: "Operating completely in the shadows under the hacker alias 'Sandstorm', Aldo is the crew's invisible shield. From his highly secure server room, he acts as the digital 'eyes and ears' during every major job. He has the ability to hack into city traffic lights to cause massive jams that block police cruisers. Aldo can also slip past heavy corporate firewalls to steal digital funds and wipe out security camera footage in real-time, ensuring the crew leaves absolutely no digital evidence behind.",
                 stats: { hangout: "Control Rooms", vehicle: "Ford Focus", location: "Los Santos", attributes: { stamina: 94, shooting: 93, strength: 81, driving: 76 } }, stars: 5, hidden: true 
@@ -985,25 +972,25 @@
                 stats: { hangout: "Bars", vehicle: "Lexus", location: "Los Santos", attributes: { stamina: 67, shooting: 75, strength: 77, driving: 77 } }, stars: 5, hideFromGrid: true, searchTerms: ['gaydon'] 
             },
             { 
-                name: "Arabo", alias: "Big Bo", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Transporter", status: "Wanted",
+                name: "Arabo", alias: "Big Bo", img: "https://i.imgur.com/lvbYVX3.jpeg", role: "Transporter", status: "Wanted",
                 desc: "A legendary transporter who never asks questions and never misses a delivery. Arabo drives heavily armored trucks to move the crew's most valuable and dangerous cargo straight through police blockades.", 
                 longDesc: "Arabo is known throughout the criminal underworld as the most reliable heavy transporter money can buy. His absolute rule is that he never asks what is inside the cargo, and he never misses a deadline. Driving heavily armored, 18-wheel commercial trucks, Arabo is responsible for moving the crew's largest shipments of stolen cash and heavy weapons. If the police attempt to stop his rig, Arabo has the driving skills and the heavy machinery required to bash straight through their barricades and keep moving.",
                 stats: { hangout: "Everywhere", vehicle: "Trucks", location: "Los Santos", attributes: { stamina: 90, shooting: 94, strength: 84, driving: 96 } }, stars: 5, hidden: true 
             },
             { 
-                name: "Argin", alias: "The Machine", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Street Racer", status: "Wanted",
+                name: "Argin", alias: "The Machine", img: "https://i.imgur.com/lvbYVX3.jpeg", role: "Street Racer", status: "Wanted",
                 desc: "An underground street racing champion. Argin is the crew's backup getaway driver, used when pure speed is more important than heavy armor. He knows every alleyway to lose police helicopters.", 
                 longDesc: "Argin is a legendary champion in the city's illegal midnight street racing scene. He acts as the crew's secondary getaway driver, specifically called in when top speed is required over heavy defense. Driving heavily tuned imported sports cars, Argin has the lightning-fast reflexes needed to weave through heavy highway traffic at 150 miles per hour. He knows every hidden alleyway, parking garage, and bridge in the city, making it incredibly easy for him to outrun ground units and hide from police helicopters.",
                 stats: { hangout: "Street Races", vehicle: "JDM Vehicles", location: "Los Santos", attributes: { stamina: 67, shooting: 80, strength: 80, driving: 98 } }, stars: 5, hidden: true 
             },
             { 
-                name: "Unknown", alias: "Slim", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Mentor", status: "Wanted",
+                name: "Unknown", alias: "Slim", img: "https://i.imgur.com/lvbYVX3.jpeg", role: "Mentor", status: "Wanted",
                 desc: "A highly respected ex-con who mentors the crew. Slim uses his deep knowledge of rival gang territories and police patrol routes to help plan operations and avoid unnecessary turf wars.", 
                 longDesc: "Known only by the street name 'Slim', this older operative is a veteran of the criminal underworld who spent years locked up in federal prison. Today, he acts as a wise mentor and strategic advisor to the crew. Slim has a massive network of contacts and a deep understanding of where rival gangs operate and where police patrols are the heaviest. He reviews the crew's robbery plans to ensure they don't accidentally step on another gang's territory, preventing unwanted street wars that draw police attention.",
                 stats: { hangout: "Los Santos", vehicle: "Unknown", location: "Los Santos", attributes: { stamina: 67, shooting: 82, strength: 77, driving: 55 } }, stars: 5, hidden: true, searchTerms: ['tj'] 
             },
             { 
-                name: "Jake", alias: "MJ Verde", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Producer", status: "Wanted",
+                name: "Jake", alias: "MJ Verde", img: "https://i.imgur.com/lvbYVX3.jpeg", role: "Producer", status: "Wanted",
                 desc: "A famous music producer who secretly cleans the crew's money through fake studio fees and merchandise sales. His exclusive VIP parties are perfect covers for high-level criminal deals.", 
                 longDesc: "Jake is a famous, platinum-selling hip-hop producer who is deeply respected in the entertainment industry. Behind the fame, he uses his massive recording studios and record label to quietly wash the crew's stolen cash. He does this by faking thousands of album sales, booking fake studio time, and selling non-existent concert merchandise. On top of the money laundering, his massive, loud VIP mansion parties are frequently used as the perfect distraction for the crew to quietly conduct multi-million dollar deals in the back rooms.",
                 stats: { hangout: "Los Santos", vehicle: "Unknown", location: "Los Santos", attributes: { stamina: 62, shooting: 80, strength: 80, driving: 60 } }, stars: 5, hidden: true, searchTerms: ['hassan'] 
@@ -1015,19 +1002,19 @@
                 stats: { hangout: "Los Santos", vehicle: "Harley Davidson Motorcycles", location: "Los Santos", attributes: { stamina: 75, shooting: 75, strength: 80, driving: 25 } }, stars: 5, hidden: true 
             },
             { 
-                name: "Vlad", alias: "Big Gucci", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Arms Dealer", status: "Wanted",
+                name: "Vlad", alias: "Big Gucci", img: "https://i.imgur.com/lvbYVX3.jpeg", role: "Arms Dealer", status: "Wanted",
                 desc: "The crew's main weapons supplier. Vlad runs private shooting ranges where he carefully removes serial numbers from military-grade guns and explosives before handing them over to the team.", 
                 longDesc: "Vlad is a professional illegal arms dealer and the crew's only trusted source for heavy weaponry. He legally owns a string of private, indoor shooting ranges, which allows him to easily order and stockpile massive amounts of firearms and ammunition. Before passing any weapons to the crew, Vlad uses heavy machinery to grind off all serial numbers and untraceable modifications, ensuring that any guns left behind at a crime scene can never be traced back to him or the syndicate.",
                 stats: { hangout: "Shooting Range", vehicle: "Toyota Prius", location: "Los Santos", attributes: { stamina: 75, shooting: 94, strength: 90, driving: 80 } }, stars: 5, hidden: true, searchTerms: ['vladimir'] 
             },
             { 
-                name: "Karp", alias: "The Missing Piece", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Boxer", status: "Wanted",
+                name: "Karp", alias: "The Missing Piece", img: "https://i.imgur.com/lvbYVX3.jpeg", role: "Boxer", status: "Wanted",
                 desc: "An undefeated underground boxer. Karp is used for close-quarters missions where firing a gun is too risky. He can silently and brutally take down security guards with his bare hands.", 
                 longDesc: "Karp is an intimidating, undefeated champion in the city's illegal, bare-knuckle boxing rings. The crew brings him in specifically for stealth operations where firing a loud weapon would trigger an alarm or alert the police. Because of his immense physical strength and brutal fighting experience, Karp can easily sneak up on armed security guards and knock them out cold with his bare hands. He is highly disciplined and follows orders perfectly, making him a reliable weapon for quiet, close-quarters combat.",
                 stats: { hangout: "Boxing Gyms", vehicle: "G-Wagon", location: "Los Santos", attributes: { stamina: 99, shooting: 50, strength: 95, driving: 65 } }, stars: 5, hidden: true 
             },
             { 
-                name: "Kevin K", alias: "The OX", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Engineer", status: "Wanted",
+                name: "Kevin K", alias: "The OX", img: "https://i.imgur.com/lvbYVX3.jpeg", role: "Engineer", status: "Wanted",
                 desc: "A structural engineer who helps the crew break into buildings. Kevin studies stolen city blueprints to find weak walls and blind spots, allowing the team to bypass alarms entirely.", 
                 longDesc: "Kevin K is a highly educated structural engineer who works a normal corporate job during the day. At night, he illegally secures classified city blueprints and building schematics for the syndicate. Kevin studies the architecture of the crew's targets, identifying exactly where the walls are the weakest, where the security cameras cannot see, and where the vault alarms are wired. His brilliant analysis allows the crew to smash through walls and floors in the exact right spot to completely bypass main security systems.",
                 stats: { hangout: "Card Shops", vehicle: "Escallade", location: "Los Santos", attributes: { stamina: 45, shooting: 87, strength: 75, driving: 50 } }, stars: 5, hidden: true, searchTerms: ['ox', 'ok'] 
@@ -1039,7 +1026,7 @@
                 stats: { hangout: "Streets", vehicle: "Ferrari F430", location: "Spain", attributes: { stamina: 85, shooting: 70, strength: 94, driving: 84 } }, stars: 5, hidden: true, searchTerms: ['ricardo'] 
             },
             { 
-                name: "Fredrick", alias: "The Who", img: "https://i.imgur.com/VJT1oKT.jpeg", role: "Gambler", status: "In Custody",
+                name: "Fredrick", alias: "The Who", img: "https://i.imgur.com/lvbYVX3.jpeg", role: "Gambler", status: "In Custody",
                 desc: "A high-stakes gambler with massive debts to the mob. Fredrick uses his access to VIP casino rooms to spy on rich executives and feed valuable insider information back to the crew.", 
                 longDesc: "Fredrick is a severe gambling addict who owes tens of millions of dollars to very dangerous people. Because he dresses well and acts like a high-roller, he is allowed into the most exclusive, private VIP casino rooms in the city. The crew uses Fredrick as a spy. As he plays poker with wealthy bankers, corrupt politicians, and corporate executives, he carefully listens to their conversations. He then reports this valuable insider information back to the syndicate, hoping to slowly pay off his massive debts.",
                 stats: { hangout: "Casinos", vehicle: "Honda Civic", location: "Los Santos", attributes: { stamina: 55, shooting: 87, strength: 83, driving: 63 } }, stars: 5, hidden: true, searchTerms: ['who'] 
