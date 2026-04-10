@@ -281,11 +281,18 @@
                                     <div class="dos-stars flex justify-center gap-1 text-[var(--gta-yellow)] text-xl drop-shadow-[0_0_5px_rgba(255,204,0,0.5)]"></div>
                                 </div>
 
+                                <!-- MOBILE ONLY BIO (SHORT - HOME PAGE) -->
                                 <div class="w-full max-w-[280px] mt-3 bg-[#fdf8e4] text-black border-4 border-black shadow-[4px_4px_0_rgba(0,0,0,0.3)] p-3 sm:p-4 font-roboto hover:scale-105 hover:shadow-[8px_8px_0_rgba(0,0,0,0.4)] transition-all duration-300 relative h-[380px] flex md:hidden flex-col justify-start">
                                     <div class="overflow-hidden h-full flex flex-col justify-start">
                                         <div class="flex flex-col w-full md:hidden border-b border-gray-400 pb-2 mb-2 flex-shrink-0">
                                             <div class="flex items-center justify-between w-full mb-1.5">
-                                                <div class="dos-alias text-2xl font-handwriting text-[var(--gta-pink)] leading-none">"Alias"</div>
+                                                <div class="flex items-center gap-2">
+                                                    <div class="dos-alias text-2xl font-handwriting text-[var(--gta-pink)] leading-none">"Alias"</div>
+                                                    <div class="flex items-center gap-1.5 dos-status-container">
+                                                        <div class="dos-status-dot w-1.5 h-1.5 rounded-full animate-pulse opacity-80"></div>
+                                                        <span class="dos-status-text font-gta text-xs tracking-widest uppercase">WANTED</span>
+                                                    </div>
+                                                </div>
                                                 <div class="dos-stars-wrapper flex justify-end">
                                                     <div class="dos-stars flex justify-end gap-0.5 text-[var(--gta-yellow)] [&>svg]:w-4 [&>svg]:h-4"></div>
                                                 </div>
@@ -294,10 +301,6 @@
                                                 <div class="bg-white text-black px-2 py-1 shadow-[2px_2px_0_var(--gta-blue)] border border-black inline-block self-start">
                                                     <span class="dos-role font-gta text-xs leading-none uppercase">ROLE</span>
                                                 </div>
-                                                <div class="flex items-center gap-1.5 dos-status-container">
-                                                    <div class="dos-status-dot w-2 h-2 rounded-full animate-pulse opacity-80"></div>
-                                                    <span class="dos-status-text font-gta text-xs tracking-widest uppercase">WANTED</span>
-                                                </div>
                                             </div>
                                         </div>
                                         <span class="text-[10px] md:text-xs text-gray-600 uppercase tracking-widest font-bold mb-1 block opacity-70 shrink-0">BIOGRAPHY</span>
@@ -305,6 +308,7 @@
                                     </div>
                                 </div>
 
+                                <!-- DESKTOP ONLY STATS -->
                                 <div class="w-full max-w-[260px] mt-4 bg-white text-black border-4 border-black p-4 shadow-[4px_4px_0_var(--gta-pink)] hover:scale-105 hover:shadow-[8px_8px_0_rgba(0,0,0,0.4)] transition-all duration-300 hidden md:flex flex-col justify-center relative z-10">
                                     <div class="text-[12px] font-bold text-gray-500 uppercase tracking-widest mb-4 border-b-2 border-black pb-1 text-center">OPERATIONAL STATISTICS</div>
                                     <div class="grid grid-cols-1 gap-y-4">
@@ -348,14 +352,16 @@
                             <div class="w-full md:w-7/12 p-2 sm:p-6 md:p-8 flex flex-col relative z-10 bg-white">
                                 <div class="border-b-4 border-black pb-4 mb-5 hidden md:block">
                                     <h3 class="dos-name text-4xl sm:text-5xl md:text-6xl font-gta text-black leading-none drop-shadow-[2px_2px_0_rgba(0,0,0,0.2)] break-words">NAME</h3>
-                                    <div class="dos-alias text-xl sm:text-3xl font-handwriting text-[var(--gta-pink)] mt-1 mb-3">"Alias"</div>
-                                    <div class="flex items-center gap-4">
-                                        <div class="bg-black text-white px-3 py-1 shadow-[3px_3px_0_var(--gta-blue)] border-2 border-black inline-block hover:scale-105 transition-transform cursor-default">
-                                            <span class="dos-role font-gta text-sm sm:text-lg">ROLE</span>
-                                        </div>
+                                    <div class="flex items-center gap-4 mt-1 mb-3">
+                                        <div class="dos-alias text-xl sm:text-3xl font-handwriting text-[var(--gta-pink)] leading-none">"Alias"</div>
                                         <div class="flex items-center gap-2 dos-status-container">
                                             <div class="dos-status-dot w-2 h-2 rounded-full animate-pulse opacity-80"></div>
                                             <span class="dos-status-text font-gta text-sm sm:text-lg tracking-widest uppercase">WANTED</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center gap-4">
+                                        <div class="bg-black text-white px-3 py-1 shadow-[3px_3px_0_var(--gta-blue)] border-2 border-black inline-block hover:scale-105 transition-transform cursor-default">
+                                            <span class="dos-role font-gta text-sm sm:text-lg">ROLE</span>
                                         </div>
                                     </div>
                                 </div>
@@ -374,6 +380,7 @@
                                     </div>
                                 </div>
                                 
+                                <!-- MOBILE ONLY STATS -->
                                 <div class="bg-white text-black border-4 border-black p-3 sm:p-5 shadow-[6px_6px_0_var(--gta-pink)] flex md:hidden flex-col justify-center mt-2">
                                     <div class="text-[12px] sm:text-sm font-bold text-gray-500 uppercase tracking-widest mb-3 sm:mb-4 border-b-2 border-black pb-1">OPERATIONAL STATISTICS</div>
                                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
@@ -408,6 +415,7 @@
                                     </div>
                                 </div>
 
+                                <!-- DESKTOP ONLY BIO (SHORT - HOME PAGE) -->
                                 <div class="bg-[#fdf8e4] border-4 border-black shadow-[6px_6px_0_rgba(0,0,0,0.3)] p-4 lg:p-6 text-black font-roboto hidden md:flex flex-col justify-start relative h-[350px] mt-2 border-l-4 border-l-[var(--gta-blue)] overflow-hidden">
                                     <div class="text-[12px] font-bold text-gray-600 uppercase tracking-widest mb-2 border-b-2 border-black pb-1 text-left shrink-0">BIOGRAPHY</div>
                                     <div class="dos-desc-short flex-grow overflow-y-auto custom-scrollbar text-base lg:text-[17px] font-roboto leading-relaxed text-black pr-2"></div>
@@ -537,11 +545,6 @@
                         
                         <div class="w-[85%] md:w-full bg-[var(--gta-red)] text-white font-gta text-xl sm:text-3xl text-center py-2 border-2 border-white shadow-[4px_4px_0_rgba(0,0,0,1)] uppercase mt-2 md:mt-0"><span class="dos-role"></span></div>
                         
-                        <div class="flex items-center justify-center gap-2 mt-1 mb-1 w-[85%] md:w-full hidden md:flex dos-status-container">
-                            <div class="dos-status-dot w-2 h-2 rounded-full animate-pulse opacity-80"></div>
-                            <span class="dos-status-text font-gta text-sm sm:text-base tracking-widest uppercase">WANTED</span>
-                        </div>
-
                         <div class="dos-stars-wrapper w-[85%] md:w-full bg-black border-2 border-white p-2 sm:p-3 shadow-[4px_4px_0_rgba(0,0,0,1)] mt-1 md:mt-0">
                             <div class="dos-stars flex justify-center gap-1 text-[var(--gta-yellow)] text-lg sm:text-2xl drop-shadow-[0_0_5px_rgba(255,204,0,0.5)]"></div>
                         </div>
@@ -551,10 +554,18 @@
                         
                         <div class="order-1 text-center md:text-left mb-2 md:mb-0">
                             <h3 class="dos-name text-4xl sm:text-6xl md:text-7xl font-gta text-[var(--gta-pink)] leading-none drop-shadow-[2px_2px_0_#fff] mb-1 uppercase hidden md:block"></h3>
-                            <div class="dos-alias text-3xl sm:text-4xl font-handwriting text-white mb-2 md:mb-4">"Alias"</div>
+                            <div class="flex items-center justify-center md:justify-start gap-4 mb-2 md:mb-4">
+                                <div class="dos-alias text-3xl sm:text-4xl font-handwriting text-white leading-none">"Alias"</div>
+                                <div class="flex items-center gap-2 dos-status-container hidden md:flex">
+                                    <div class="dos-status-dot w-2 h-2 rounded-full animate-pulse opacity-80"></div>
+                                    <span class="dos-status-text font-gta text-sm sm:text-lg tracking-widest uppercase">WANTED</span>
+                                </div>
+                            </div>
                         </div>
 
+                        <!-- MANILA FOLDER TABS -->
                         <div class="flex flex-col mt-2 md:mt-4 w-full order-2 flex-1 relative max-w-full">
+                            <!-- Tabs -->
                             <div class="flex overflow-x-auto custom-scrollbar gap-1 sm:gap-2 px-2 sm:px-4 relative z-20 translate-y-1">
                                 <button onclick="switchCrewTab('file')" id="crew-tab-btn-file" class="crew-tab-btn relative z-30 bg-[#fdf8e4] border-4 border-black border-b-[#fdf8e4] px-3 sm:px-5 pt-2 pb-3 font-gta text-xs sm:text-sm text-black rounded-t-lg transition-colors whitespace-nowrap outline-none">FILE</button>
                                 <button onclick="switchCrewTab('stats')" id="crew-tab-btn-stats" class="crew-tab-btn relative z-10 bg-[#d0d0d0] border-4 border-black border-b-black px-3 sm:px-5 pt-2 pb-2 font-gta text-xs sm:text-sm text-black rounded-t-lg hover:bg-[#e0e0e0] transition-colors whitespace-nowrap outline-none">STATS</button>
@@ -563,12 +574,20 @@
                                 <button onclick="switchCrewTab('images')" id="crew-tab-btn-images" class="crew-tab-btn relative z-10 bg-[#d0d0d0] border-4 border-black border-b-black px-3 sm:px-5 pt-2 pb-2 font-gta text-xs sm:text-sm text-black rounded-t-lg hover:bg-[#e0e0e0] transition-colors whitespace-nowrap outline-none">IMAGES</button>
                             </div>
                             
+                            <!-- Content Box (DATABASE PAGE - EXPANDED BIO) -->
                             <div class="bg-[#fdf8e4] border-4 border-black shadow-[6px_6px_0_rgba(0,0,0,0.5)] p-4 sm:p-6 text-black font-roboto relative z-10 h-[650px] md:h-[480px] flex flex-col overflow-hidden">
                                 
+                                <!-- FILE TAB -->
                                 <div id="crew-tab-file" class="crew-tab-content flex-1 flex flex-col overflow-hidden">
                                     <div class="flex flex-col w-full md:hidden border-b border-gray-400 pb-3 mb-3 flex-shrink-0">
                                         <div class="flex items-center justify-between w-full mb-2">
-                                            <div class="dos-alias text-3xl font-handwriting text-[var(--gta-pink)] leading-none">"Alias"</div>
+                                            <div class="flex items-center gap-3">
+                                                <div class="dos-alias text-3xl font-handwriting text-[var(--gta-pink)] leading-none">"Alias"</div>
+                                                <div class="flex items-center gap-1.5 dos-status-container">
+                                                    <div class="dos-status-dot w-1.5 h-1.5 rounded-full animate-pulse opacity-80"></div>
+                                                    <span class="dos-status-text font-gta text-xs tracking-widest uppercase">WANTED</span>
+                                                </div>
+                                            </div>
                                             <div class="dos-stars-wrapper flex justify-end">
                                                 <div class="dos-stars flex justify-end gap-1 text-[var(--gta-yellow)] [&>svg]:w-5 [&>svg]:h-5"></div>
                                             </div>
@@ -577,10 +596,6 @@
                                             <div class="bg-[var(--gta-red)] text-white px-3 py-1 border border-black inline-block self-start shadow-[2px_2px_0_rgba(0,0,0,1)]">
                                                 <span class="dos-role font-gta text-sm leading-none uppercase">ROLE</span>
                                             </div>
-                                            <div class="flex items-center gap-1.5 dos-status-container">
-                                                <div class="dos-status-dot w-2 h-2 rounded-full animate-pulse opacity-80"></div>
-                                                <span class="dos-status-text font-gta text-sm tracking-widest uppercase">WANTED</span>
-                                            </div>
                                         </div>
                                     </div>
 
@@ -588,6 +603,7 @@
                                     <div class="dos-desc-long flex-grow text-[15px] sm:text-[17px] font-roboto leading-relaxed text-black pr-2 overflow-hidden"></div>
                                 </div>
 
+                                <!-- STATS TAB -->
                                 <div id="crew-tab-stats" class="crew-tab-content flex-1 flex flex-col hidden pr-2">
                                     <div class="text-[14px] lg:text-base font-bold text-gray-600 uppercase tracking-widest mb-6 border-b-2 border-black pb-2 text-left shrink-0">OPERATIONAL STATISTICS</div>
                                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6">
@@ -618,6 +634,7 @@
                                     </div>
                                 </div>
 
+                                <!-- INFO TAB -->
                                 <div id="crew-tab-info" class="crew-tab-content flex-1 flex flex-col hidden pr-2">
                                     <div class="text-[14px] lg:text-base font-bold text-gray-600 uppercase tracking-widest mb-4 border-b-2 border-black pb-2 text-left shrink-0">KNOWN INTELLIGENCE</div>
                                     <div class="space-y-5 mt-2">
@@ -636,6 +653,7 @@
                                     </div>
                                 </div>
 
+                                <!-- VEHICLE INFO TAB -->
                                 <div id="crew-tab-vehicle" class="crew-tab-content flex-1 flex flex-col hidden pr-2">
                                     <div class="text-[14px] lg:text-base font-bold text-gray-600 uppercase tracking-widest mb-4 border-b-2 border-black pb-2 text-left shrink-0">VEHICLE SPECIFICS</div>
                                     <div class="bg-gray-200 border-2 border-black p-4 sm:p-5 shadow-inner mt-2 shrink-0">
@@ -652,6 +670,7 @@
                                     </div>
                                 </div>
 
+                                <!-- IMAGES TAB -->
                                 <div id="crew-tab-images" class="crew-tab-content flex-1 flex flex-col hidden items-center justify-center overflow-hidden">
                                     <div class="text-[14px] lg:text-base font-bold text-gray-600 uppercase tracking-widest mb-4 border-b-2 border-black pb-2 text-left w-full shrink-0">SURVEILLANCE IMAGES</div>
                                     <div class="flex-1 flex flex-col items-center justify-center text-gray-500 opacity-60">
