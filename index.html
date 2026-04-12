@@ -523,8 +523,19 @@
                 </div>
             </div>
 
-            <div id="suspect-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 md:gap-5 mb-12">
+            <div class="relative mb-12 min-h-[250px]">
+                <div id="suspect-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 md:gap-5">
                 </div>
+                
+                <!-- SECRET FULL DATA OVERLAY -->
+                <div id="fulldata-overlay" class="absolute inset-0 z-[60] bg-black border-2 border-green-500 p-2 sm:p-4 hidden flex-col shadow-[4px_4px_0_rgba(0,255,0,0.2)] font-mono text-green-500">
+                    <div class="flex justify-between items-center border-b border-green-800 pb-2 mb-2 shrink-0">
+                        <span class="text-xs sm:text-sm font-bold animate-pulse">VCPD_ROOT_ACCESS // DIRECTORY_DUMP</span>
+                        <button onclick="closeFullDataView()" class="text-green-500 hover:text-black hover:bg-green-500 outline-none transition-colors border border-green-500 px-2 py-0.5 text-xs">CLOSE</button>
+                    </div>
+                    <div id="fulldata-content" class="flex-1 overflow-y-auto custom-scrollbar grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 pr-1 content-start"></div>
+                </div>
+            </div>
 
             <div id="crew-detail-panel" class="dossier-view gta-panel p-0 border-4 border-[var(--gta-blue)] flex flex-col bg-[#111] text-white transition-all duration-300 opacity-0 translate-y-4 shadow-[12px_12px_0_rgba(0,255,255,0.2)] hover:shadow-[12px_12px_0_var(--gta-blue)] scroll-mt-24 reveal-fx reveal-pop" style="transition-delay: 200ms;">
                 
@@ -861,7 +872,8 @@
         }
 
         // --- TIMER LOGIC ---
-        const releaseDate = new Date("November 19, 2026 00:00:00").getTime();
+        // Adjusted to November 19, 2026 at 00:00:00 Pacific Standard Time (UTC-8)
+        const releaseDate = new Date("2026-11-19T00:00:00-08:00").getTime();
         function updateTimer() {
             const now = new Date().getTime();
             const distance = releaseDate - now;
@@ -1248,6 +1260,13 @@
             const statusEl = document.getElementById(statusId);
             if (q.length < 1) return;
 
+            // HIDDEN COMMAND: /fulldata
+            if (q === '/fulldata') {
+                inputEl.value = '';
+                openFullDataView();
+                return;
+            }
+
             let foundIndex = crewData.findIndex(c => 
                 c.name.toLowerCase() === q || 
                 c.alias.toLowerCase() === q || 
@@ -1313,6 +1332,39 @@
             document.getElementById('lightbox').classList.add('hidden');
         }
 
+        // --- HACKED DB VIEW LOGIC ---
+        function openFullDataView() {
+            const container = document.getElementById('fulldata-content');
+            let htmlData = "";
+            
+            crewData.forEach((c, idx) => {
+                htmlData += `
+                <button onclick="selectSuspectFromFullData(${idx})" class="text-left text-xs sm:text-sm text-green-400 hover:bg-green-900 hover:text-white transition-colors outline-none py-1.5 px-2 w-full whitespace-normal break-words leading-tight flex items-start gap-1">
+                    <span class="opacity-70">></span> <span>${c.name.toUpperCase()}</span>
+                </button>
+                `;
+            });
+            
+            container.innerHTML = htmlData;
+            
+            const view = document.getElementById('fulldata-overlay');
+            view.classList.remove('hidden');
+            view.classList.add('flex');
+        }
+
+        function closeFullDataView() {
+            const view = document.getElementById('fulldata-overlay');
+            view.classList.add('hidden');
+            view.classList.remove('flex');
+        }
+
+        function selectSuspectFromFullData(index) {
+            closeFullDataView();
+            setTimeout(() => {
+                selectSuspectFromGrid(index);
+            }, 50);
+        }
+
         // --- MANILA FOLDER TABS LOGIC ---
         function switchCrewTab(tabName) {
             // Hide all tab content
@@ -1335,6 +1387,13 @@
         document.addEventListener('keydown', (e) => {
             if (document.activeElement.tagName === 'INPUT') return;
             if (!document.getElementById('lightbox').classList.contains('hidden')) return;
+            
+            // Close hacked view on ESC
+            if (!document.getElementById('fulldata-overlay').classList.contains('hidden')) {
+                if (e.key === 'Escape') closeFullDataView();
+                return;
+            }
+
             if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') navCarousel(-1);
             else if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') navCarousel(1);
         });
