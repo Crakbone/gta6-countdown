@@ -1352,8 +1352,9 @@
                 "Never leave a trace. Never leave a friend behind.",
                 "The perfect crime is the one they never know happened."
             ];
-            const hash = new Date().toDateString().split('').reduce((a,b)=>a+b.charCodeAt(0), 0) + 13;
-            motdEl.innerText = `"${messages[hash % messages.length]}"`;
+            const now = new Date();
+            const daysSinceEpoch = Math.floor((now.getTime() - (now.getTimezoneOffset() * 60000)) / 86400000);
+            motdEl.innerText = `"${messages[daysSinceEpoch % messages.length]}"`;
         }
 
         renderCrewMenu();
