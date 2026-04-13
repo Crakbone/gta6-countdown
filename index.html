@@ -993,7 +993,7 @@
                 stats: { hangout: "Rock Climbing Gyms", vehicle: "Honda Accord", location: "Los Santos", attributes: { stamina: 85, shooting: 77, strength: 83, driving: 77 } }, stars: 5, hidden: true, searchTerms: ['tomik'] 
             },
             { 
-                name: "Aldo", alias: "Sandstorm", img: noImagePlaceholder, role: "Hacker", status: "Wanted",
+                name: "Aldo", alias: "Sandstorm", img: "https://i.imgur.com/axs3r0X.jpeg", role: "Hacker", status: "Wanted",
                 desc: "A master hacker known only as 'Sandstorm'. Hidden in his server room, Aldo can control traffic lights, break into corporate networks, and delete police security footage in real-time.", 
                 longDesc: "Operating completely in the shadows under the hacker alias 'Sandstorm', Aldo is the crew's invisible shield. From his highly secure server room, he acts as the digital 'eyes and ears' during every major job. He has the ability to hack into city traffic lights to cause massive jams that block police cruisers. Aldo can also slip past heavy corporate firewalls to steal digital funds and wipe out security camera footage in real-time, ensuring the crew leaves absolutely no digital evidence behind.",
                 stats: { hangout: "Control Rooms", vehicle: "Ford Focus", location: "Los Santos", attributes: { stamina: 94, shooting: 93, strength: 81, driving: 76 } }, stars: 5, hidden: true 
@@ -1119,6 +1119,8 @@
             });
         }
 
+        let dossierTimeout;
+
         function openDossier(index) {
             const c = crewData[index];
             currentIdx = index;
@@ -1130,8 +1132,28 @@
                 dos.classList.add('opacity-0', 'translate-y-4');
             });
 
-            setTimeout(() => {
-                document.querySelectorAll('.dos-img').forEach(el => el.src = c.img);
+            // FULLY CLEAR PREVIOUS DATA TO PREVENT GHOSTING
+            document.querySelectorAll('.dos-img').forEach(el => el.removeAttribute('src'));
+            document.querySelectorAll('.dos-name').forEach(el => el.innerText = 'LOADING...');
+            document.querySelectorAll('.dos-alias').forEach(el => el.innerText = '...');
+            document.querySelectorAll('.dos-role').forEach(el => el.innerText = '');
+            document.querySelectorAll('.dos-hangout').forEach(el => el.innerText = '');
+            document.querySelectorAll('.dos-vehicle').forEach(el => el.innerText = '');
+            document.querySelectorAll('.dos-location').forEach(el => el.innerText = '');
+            document.querySelectorAll('.dos-desc-short').forEach(el => el.innerHTML = '');
+            document.querySelectorAll('.dos-desc-long').forEach(el => el.innerHTML = '');
+
+            if (dossierTimeout) clearTimeout(dossierTimeout);
+
+            dossierTimeout = setTimeout(() => {
+                document.querySelectorAll('.dos-img').forEach(el => {
+                    el.onerror = function() {
+                        if (this.src !== noImagePlaceholder) {
+                            this.src = noImagePlaceholder;
+                        }
+                    };
+                    el.src = c.img || noImagePlaceholder;
+                });
                 document.querySelectorAll('.dos-name').forEach(el => el.innerText = c.name);
                 document.querySelectorAll('.dos-alias').forEach(el => el.innerText = `"${c.alias}"`);
                 document.querySelectorAll('.dos-role').forEach(el => el.innerText = c.role);
@@ -1287,9 +1309,10 @@
 
             if (foundIndex !== -1) {
                 inputEl.value = '';
-                openDossier(foundIndex);
                 if (!document.getElementById('page-crew').classList.contains('hidden')) {
                     selectSuspectFromGrid(foundIndex);
+                } else {
+                    openDossier(foundIndex);
                 }
             } else {
                 statusEl.classList.remove('hidden');
