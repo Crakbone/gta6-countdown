@@ -893,6 +893,8 @@
 
 
         // --- VIP GUEST LIST LOGIC ---
+        const noImagePlaceholder = "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23111'/%3E%3Ccircle cx='200' cy='150' r='70' fill='%23222'/%3E%3Cpath d='M80 400c0-100 60-140 120-140s120 40 120 140' fill='%23222'/%3E%3Cg transform='rotate(-10 200 200)'%3E%3Crect x='20' y='180' width='360' height='50' fill='%23000' opacity='0.7'/%3E%3Ctext x='200' y='215' font-family='Arial, sans-serif' font-size='30' font-weight='900' fill='%23ffcc00' text-anchor='middle' letter-spacing='2'%3ENO IMAGE ON FILE%3C/text%3E%3C/g%3E%3C/svg%3E";
+
         const crewData = [
             { 
                 name: "Ace", alias: "Big Ace", img: "https://i.imgur.com/BQbHUy3.jpeg", role: "The Supplier", status: "Wanted",
@@ -985,13 +987,13 @@
                 stats: { hangout: "The Lab", vehicle: "Mercedes", location: "Los Santos", attributes: { stamina: 60, shooting: 75, strength: 80, driving: 70 } }, stars: 5, hidden: true, searchTerms: ['varsh'] 
             },
             { 
-                name: "Tom", alias: "Hursh", img: "https://i.imgur.com/lvbYVX3.jpeg", role: "Gym Leader", status: "Wanted",
+                name: "Tom", alias: "Hursh", img: noImagePlaceholder, role: "Gym Leader", status: "Wanted",
                 desc: "A rock climbing instructor forced into crime to pay off massive debts. The crew uses his incredible climbing skills to scale tall buildings and sneak past ground-level security.", 
                 longDesc: "On the surface, Tom is a friendly, athletic instructor at a high-end rock climbing gym. However, after falling into massive debt with dangerous loan sharks, he was forced to offer his skills to the syndicate. Tom's incredible physical stamina and free-climbing abilities make him the perfect infiltrator. The crew uses him to scale the outside of towering skyscrapers and enter through rooftop vents, completely bypassing the heavy security guards, alarms, and metal detectors located on the ground floor.",
                 stats: { hangout: "Rock Climbing Gyms", vehicle: "Honda Accord", location: "Los Santos", attributes: { stamina: 85, shooting: 77, strength: 83, driving: 77 } }, stars: 5, hidden: true, searchTerms: ['tomik'] 
             },
             { 
-                name: "Aldo", alias: "Sandstorm", img: "https://i.imgur.com/lvbYVX3.jpeg", role: "Hacker", status: "Wanted",
+                name: "Aldo", alias: "Sandstorm", img: noImagePlaceholder, role: "Hacker", status: "Wanted",
                 desc: "A master hacker known only as 'Sandstorm'. Hidden in his server room, Aldo can control traffic lights, break into corporate networks, and delete police security footage in real-time.", 
                 longDesc: "Operating completely in the shadows under the hacker alias 'Sandstorm', Aldo is the crew's invisible shield. From his highly secure server room, he acts as the digital 'eyes and ears' during every major job. He has the ability to hack into city traffic lights to cause massive jams that block police cruisers. Aldo can also slip past heavy corporate firewalls to steal digital funds and wipe out security camera footage in real-time, ensuring the crew leaves absolutely no digital evidence behind.",
                 stats: { hangout: "Control Rooms", vehicle: "Ford Focus", location: "Los Santos", attributes: { stamina: 94, shooting: 93, strength: 81, driving: 76 } }, stars: 5, hidden: true 
@@ -1003,25 +1005,25 @@
                 stats: { hangout: "Bars", vehicle: "Lexus", location: "Los Santos", attributes: { stamina: 67, shooting: 75, strength: 77, driving: 77 } }, stars: 5, hideFromGrid: true, searchTerms: ['gaydon'] 
             },
             { 
-                name: "Arabo", alias: "Big Bo", img: "https://i.imgur.com/lvbYVX3.jpeg", role: "Transporter", status: "Wanted",
+                name: "Arabo", alias: "Big Bo", img: noImagePlaceholder, role: "Transporter", status: "Wanted",
                 desc: "A legendary transporter who never asks questions and never misses a delivery. Arabo drives heavily armored trucks to move the crew's most valuable and dangerous cargo straight through police blockades.", 
                 longDesc: "Arabo is known throughout the criminal underworld as the most reliable heavy transporter money can buy. His absolute rule is that he never asks what is inside the cargo, and he never misses a deadline. Driving heavily armored, 18-wheel commercial trucks, Arabo is responsible for moving the crew's largest shipments of stolen cash and heavy weapons. If the police attempt to stop his rig, Arabo has the driving skills and the heavy machinery required to bash straight through their barricades and keep moving.",
                 stats: { hangout: "Everywhere", vehicle: "Trucks", location: "Los Santos", attributes: { stamina: 90, shooting: 94, strength: 84, driving: 96 } }, stars: 5, hidden: true 
             },
             { 
-                name: "Argin", alias: "The Machine", img: "https://i.imgur.com/lvbYVX3.jpeg", role: "Street Racer", status: "Wanted",
+                name: "Argin", alias: "The Machine", img: noImagePlaceholder, role: "Street Racer", status: "Wanted",
                 desc: "An underground street racing champion. Argin is the crew's backup getaway driver, used when pure speed is more important than heavy armor. He knows every alleyway to lose police helicopters.", 
                 longDesc: "Argin is a legendary champion in the city's illegal midnight street racing scene. He acts as the crew's secondary getaway driver, specifically called in when top speed is required over heavy defense. Driving heavily tuned imported sports cars, Argin has the lightning-fast reflexes needed to weave through heavy highway traffic at 150 miles per hour. He knows every hidden alleyway, parking garage, and bridge in the city, making it incredibly easy for him to outrun ground units and hide from police helicopters.",
                 stats: { hangout: "Street Races", vehicle: "JDM Vehicles", location: "Los Santos", attributes: { stamina: 67, shooting: 80, strength: 80, driving: 98 } }, stars: 5, hidden: true 
             },
             { 
-                name: "Unknown", alias: "Slim", img: "https://i.imgur.com/lvbYVX3.jpeg", role: "Mentor", status: "Wanted",
+                name: "Unknown", alias: "Slim", img: noImagePlaceholder, role: "Mentor", status: "Wanted",
                 desc: "A highly respected ex-con who mentors the crew. Slim uses his deep knowledge of rival gang territories and police patrol routes to help plan operations and avoid unnecessary turf wars.", 
                 longDesc: "Known only by the street name 'Slim', this older operative is a veteran of the criminal underworld who spent years locked up in federal prison. Today, he acts as a wise mentor and strategic advisor to the crew. Slim has a massive network of contacts and a deep understanding of where rival gangs operate and where police patrols are the heaviest. He reviews the crew's robbery plans to ensure they don't accidentally step on another gang's territory, preventing unwanted street wars that draw police attention.",
                 stats: { hangout: "Los Santos", vehicle: "Unknown", location: "Los Santos", attributes: { stamina: 67, shooting: 82, strength: 77, driving: 55 } }, stars: 5, hidden: true, searchTerms: ['tj'] 
             },
             { 
-                name: "Jake", alias: "MJ Verde", img: "https://i.imgur.com/lvbYVX3.jpeg", role: "Producer", status: "Wanted",
+                name: "Jake", alias: "MJ Verde", img: noImagePlaceholder, role: "Producer", status: "Wanted",
                 desc: "A famous music producer who secretly cleans the crew's money through fake studio fees and merchandise sales. His exclusive VIP parties are perfect covers for high-level criminal deals.", 
                 longDesc: "Jake is a famous, platinum-selling hip-hop producer who is deeply respected in the entertainment industry. Behind the fame, he uses his massive recording studios and record label to quietly wash the crew's stolen cash. He does this by faking thousands of album sales, booking fake studio time, and selling non-existent concert merchandise. On top of the money laundering, his massive, loud VIP mansion parties are frequently used as the perfect distraction for the crew to quietly conduct multi-million dollar deals in the back rooms.",
                 stats: { hangout: "Los Santos", vehicle: "Unknown", location: "Los Santos", attributes: { stamina: 62, shooting: 80, strength: 80, driving: 60 } }, stars: 5, hidden: true, searchTerms: ['hassan'] 
@@ -1033,19 +1035,19 @@
                 stats: { hangout: "Los Santos", vehicle: "Harley Davidson Motorcycles", location: "Los Santos", attributes: { stamina: 75, shooting: 75, strength: 80, driving: 25 } }, stars: 5, hidden: true 
             },
             { 
-                name: "Vlad", alias: "Big Gucci", img: "https://i.imgur.com/lvbYVX3.jpeg", role: "Arms Dealer", status: "Wanted",
+                name: "Vlad", alias: "Big Gucci", img: noImagePlaceholder, role: "Arms Dealer", status: "Wanted",
                 desc: "The crew's main weapons supplier. Vlad runs private shooting ranges where he carefully removes serial numbers from military-grade guns and explosives before handing them over to the team.", 
                 longDesc: "Vlad is a professional illegal arms dealer and the crew's only trusted source for heavy weaponry. He legally owns a string of private, indoor shooting ranges, which allows him to easily order and stockpile massive amounts of firearms and ammunition. Before passing any weapons to the crew, Vlad uses heavy machinery to grind off all serial numbers and untraceable modifications, ensuring that any guns left behind at a crime scene can never be traced back to him or the syndicate.",
                 stats: { hangout: "Shooting Range", vehicle: "Toyota Prius", location: "Los Santos", attributes: { stamina: 75, shooting: 94, strength: 90, driving: 80 } }, stars: 5, hidden: true, searchTerms: ['vladimir'] 
             },
             { 
-                name: "Karp", alias: "The Missing Piece", img: "https://i.imgur.com/lvbYVX3.jpeg", role: "Boxer", status: "Wanted",
+                name: "Karp", alias: "The Missing Piece", img: noImagePlaceholder, role: "Boxer", status: "Wanted",
                 desc: "An undefeated underground boxer. Karp is used for close-quarters missions where firing a gun is too risky. He can silently and brutally take down security guards with his bare hands.", 
                 longDesc: "Karp is an intimidating, undefeated champion in the city's illegal, bare-knuckle boxing rings. The crew brings him in specifically for stealth operations where firing a loud weapon would trigger an alarm or alert the police. Because of his immense physical strength and brutal fighting experience, Karp can easily sneak up on armed security guards and knock them out cold with his bare hands. He is highly disciplined and follows orders perfectly, making him a reliable weapon for quiet, close-quarters combat.",
                 stats: { hangout: "Boxing Gyms", vehicle: "G-Wagon", location: "Los Santos", attributes: { stamina: 99, shooting: 50, strength: 95, driving: 65 } }, stars: 5, hidden: true 
             },
             { 
-                name: "Kevin K", alias: "The OX", img: "https://i.imgur.com/lvbYVX3.jpeg", role: "Engineer", status: "Wanted",
+                name: "Kevin K", alias: "The OX", img: noImagePlaceholder, role: "Engineer", status: "Wanted",
                 desc: "A structural engineer who helps the crew break into buildings. Kevin studies stolen city blueprints to find weak walls and blind spots, allowing the team to bypass alarms entirely.", 
                 longDesc: "Kevin K is a highly educated structural engineer who works a normal corporate job during the day. At night, he illegally secures classified city blueprints and building schematics for the syndicate. Kevin studies the architecture of the crew's targets, identifying exactly where the walls are the weakest, where the security cameras cannot see, and where the vault alarms are wired. His brilliant analysis allows the crew to smash through walls and floors in the exact right spot to completely bypass main security systems.",
                 stats: { hangout: "Card Shops", vehicle: "Escallade", location: "Los Santos", attributes: { stamina: 45, shooting: 87, strength: 75, driving: 50 } }, stars: 5, hidden: true, searchTerms: ['ox', 'ok'] 
@@ -1057,7 +1059,7 @@
                 stats: { hangout: "Streets", vehicle: "Ferrari F430", location: "Spain", attributes: { stamina: 85, shooting: 70, strength: 94, driving: 84 } }, stars: 5, hidden: true, searchTerms: ['ricardo'] 
             },
             { 
-                name: "Fredrick", alias: "The Who", img: "https://i.imgur.com/lvbYVX3.jpeg", role: "Gambler", status: "In Custody",
+                name: "Fredrick", alias: "The Who", img: noImagePlaceholder, role: "Gambler", status: "In Custody",
                 desc: "A high-stakes gambler with massive debts to the mob. Fredrick uses his access to VIP casino rooms to spy on rich executives and feed valuable insider information back to the crew.", 
                 longDesc: "Fredrick is a severe gambling addict who owes tens of millions of dollars to very dangerous people. Because he dresses well and acts like a high-roller, he is allowed into the most exclusive, private VIP casino rooms in the city. The crew uses Fredrick as a spy. As he plays poker with wealthy bankers, corrupt politicians, and corporate executives, he carefully listens to their conversations. He then reports this valuable insider information back to the syndicate, hoping to slowly pay off his massive debts.",
                 stats: { hangout: "Casinos", vehicle: "Honda Civic", location: "Los Santos", attributes: { stamina: 55, shooting: 87, strength: 83, driving: 63 } }, stars: 5, hidden: true, searchTerms: ['who'] 
