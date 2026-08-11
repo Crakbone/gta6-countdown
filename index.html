@@ -189,7 +189,7 @@
 
                         <div class="grid md:hidden grid-cols-2 gap-2 sm:gap-3 w-full relative z-10 pt-2 pb-2">
                             <div class="bg-[var(--gta-pink)] border-4 border-black shadow-[4px_4px_0_#000] flex flex-col items-center justify-center py-5 sm:py-6 px-2 transition-transform">
-                                <span class="timer-days font-gta text-[3.5rem] min-[375px]:text-[4.5rem] leading-none text-black tabular-nums tracking-tighter">000</span>
+                                <span class="timer-days font-gta text-[3.5rem] min-[375px]:text-[4.5rem] leading-none text-black tabular-nums tracking-tighter">00</span>
                                 <div class="bg-black text-white font-gta text-[10px] sm:text-xs px-3 py-1 mt-2 tracking-[0.2em]">DAYS</div>
                             </div>
                             <div class="bg-[var(--gta-blue)] border-4 border-black shadow-[4px_4px_0_#000] flex flex-col items-center justify-center py-5 sm:py-6 px-2 transition-transform">
@@ -792,7 +792,7 @@
 
                 <div class="reveal-fx reveal-pop" style="transition-delay: 100ms;">
                     <div class="bg-[var(--gta-pink)] border-4 sm:border-[6px] border-black shadow-[8px_8px_0_#000] md:shadow-[12px_12px_0_#000] flex flex-col items-center justify-center p-4 sm:p-6 md:p-8 -rotate-2 hover:rotate-0 transition-transform duration-300">
-                        <span class="timer-days font-gta text-[4.5rem] sm:text-[6rem] md:text-[8rem] lg:text-[10rem] leading-none text-black tabular-nums tracking-tighter">000</span>
+                        <span class="timer-days font-gta text-[4.5rem] sm:text-[6rem] md:text-[8rem] lg:text-[10rem] leading-none text-black tabular-nums tracking-tighter">00</span>
                         <div class="bg-black text-white font-gta text-base sm:text-xl md:text-2xl px-3 sm:px-4 py-1 mt-2 tracking-[0.2em]">DAYS</div>
                     </div>
                 </div>
@@ -883,7 +883,7 @@
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            document.querySelectorAll('.timer-days').forEach(el => el.innerText = String(days).padStart(3, '0'));
+            document.querySelectorAll('.timer-days').forEach(el => el.innerText = String(days).padStart(2, '0'));
             document.querySelectorAll('.timer-hours').forEach(el => el.innerText = String(hours).padStart(2, '0'));
             document.querySelectorAll('.timer-minutes').forEach(el => el.innerText = String(minutes).padStart(2, '0'));
             document.querySelectorAll('.timer-seconds').forEach(el => el.innerText = String(seconds).padStart(2, '0'));
