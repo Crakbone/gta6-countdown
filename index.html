@@ -2705,17 +2705,41 @@
             revealObserver.observe(el);
         });
 
+        function replayPageIntro(page) {
+            const revealElements = Array.from(page.querySelectorAll('.reveal-fx'));
+
+            revealElements.forEach(el => {
+                revealObserver.unobserve(el);
+                el.classList.remove('is-revealed');
+            });
+
+            // Force the hidden state to render before replaying the entrance effect.
+            void page.offsetWidth;
+
+            requestAnimationFrame(() => {
+                revealElements.forEach((el, index) => {
+                    const rect = el.getBoundingClientRect();
+                    const isVisible = rect.bottom > 0 && rect.top < window.innerHeight * 0.98;
+
+                    if (isVisible) {
+                        setTimeout(() => {
+                            el.classList.add('is-revealed');
+                            revealObserver.observe(el);
+                        }, Math.min(index * 55, 330));
+                    } else {
+                        revealObserver.observe(el);
+                    }
+                });
+            });
+        }
+
         // --- NAVIGATION LOGIC (SPA) ---
         function navigate(pageId) {
             document.querySelectorAll('.page-section').forEach(page => {
                 page.classList.add('hidden');
             });
-            document.getElementById('page-' + pageId).classList.remove('hidden');
-
-            document.querySelectorAll('.is-revealed').forEach(el => el.classList.remove('is-revealed'));
-            setTimeout(() => {
-                document.querySelectorAll('.reveal-fx').forEach(el => revealObserver.observe(el));
-            }, 50);
+            const activePage = document.getElementById('page-' + pageId);
+            activePage.classList.remove('hidden');
 
             document.querySelectorAll('.nav-link').forEach(link => {
                 link.classList.remove('text-[var(--gta-pink)]');
@@ -2726,6 +2750,7 @@
             activeNav.classList.add('text-[var(--gta-pink)]');
 
             window.scrollTo(0, 0);
+            replayPageIntro(activePage);
         }
 
         // --- TIMER LOGIC ---
