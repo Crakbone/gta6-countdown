@@ -2605,8 +2605,8 @@
                             <i data-lucide="chevron-left" class="w-6 h-6 sm:w-8 sm:h-8"></i>
                         </button>
 
-                        <button onclick="openCurrentGalleryImage()" class="w-full aspect-[4/3] sm:aspect-[16/9] flex items-center justify-center bg-[#09070f] outline-none group">
-                            <img id="gallery-main-image" src="" alt="Gallery artwork" class="w-full h-full object-contain group-hover:scale-[1.01] transition-transform duration-500">
+                        <button onclick="openCurrentGalleryImage()" class="w-full aspect-[4/3] sm:aspect-[16/9] flex items-center justify-center bg-[#09070f] overflow-hidden outline-none group">
+                            <img id="gallery-main-image" src="" alt="Gallery artwork" class="w-full h-full object-cover object-center scale-[1.01] group-hover:scale-[1.04] transition-transform duration-500">
                         </button>
 
                         <button onclick="navigateGallery(1)" aria-label="Next gallery image" class="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 bg-white/90 border-2 border-black flex items-center justify-center hover:bg-[var(--gta-pink)] hover:text-white transition-colors shadow-[3px_3px_0_#000] outline-none">
@@ -3277,7 +3277,7 @@
 
             thumbnails.innerHTML = galleryArtwork.map((art, index) => `
                 <button onclick="showGallerySlide(${index})" aria-label="Show ${art.title} artwork" class="gallery-thumb aspect-video overflow-hidden border-2 border-black bg-black outline-none transition-all duration-200 hover:-translate-y-1" data-gallery-index="${index}">
-                    <img src="${art.src}" alt="" class="w-full h-full object-cover opacity-75 hover:opacity-100 transition-opacity">
+                    <img src="${art.src}" alt="" class="w-full h-full object-cover object-center scale-[1.02] opacity-75 hover:opacity-100 transition-all duration-300">
                 </button>
             `).join('');
 
