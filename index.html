@@ -1963,14 +1963,33 @@
 <style id="crew-tile-banner-styles">
  #page-home .crew-tile-banner { --tile-slant:clamp(16px, 3vw, 46px); display:flex; width:100%; height:clamp(160px, 30vw, 480px); gap:0; overflow:hidden; background:#160c27; }
  #page-home .crew-tile-banner::after { display:none; }
- .crew-banner-tile { position:relative; display:block; flex:1 1 0; min-width:0; height:100%; padding:0; border:0; overflow:hidden; background:#160c27; cursor:default; transition:flex-grow .35s ease; clip-path:polygon(var(--tile-slant) 0, 100% 0, calc(100% - var(--tile-slant)) 100%, 0 100%); }
+ .crew-banner-tile { position:relative; isolation:isolate; display:block; flex:1 1 0; min-width:0; height:100%; padding:0; border:0; overflow:hidden; background:#160c27; cursor:default; transform-origin:center; transition:flex-grow .35s ease; clip-path:polygon(var(--tile-slant) 0, 100% 0, calc(100% - var(--tile-slant)) 100%, 0 100%); }
  .crew-banner-tile + .crew-banner-tile { margin-left:calc(5px - var(--tile-slant)); }
  .crew-banner-tile:first-child { clip-path:polygon(0 0, 100% 0, calc(100% - var(--tile-slant)) 100%, 0 100%); }
  .crew-banner-tile:last-child { clip-path:polygon(var(--tile-slant) 0, 100% 0, 100% 100%, 0 100%); }
  .crew-banner-tile img { display:block; width:100%; height:100%; object-fit:cover; object-position:50% 38%; transition:transform .35s ease; }
+ .crew-banner-tile::after { content:""; position:absolute; inset:0; z-index:2; pointer-events:none; opacity:0; background:linear-gradient(110deg,transparent 25%,rgba(255,255,255,.66) 48%,rgba(85,231,255,.28) 52%,transparent 74%); transform:translateX(-140%) skewX(-12deg); }
+ .crew-banner-tile:nth-child(1) { --tile-delay:.04s; --tile-x:-34px; --tile-y:28px; --tile-rotate:-5deg; }
+ .crew-banner-tile:nth-child(2) { --tile-delay:.13s; --tile-x:-22px; --tile-y:-30px; --tile-rotate:4deg; }
+ .crew-banner-tile:nth-child(3) { --tile-delay:.22s; --tile-x:-10px; --tile-y:34px; --tile-rotate:-3deg; }
+ .crew-banner-tile:nth-child(4) { --tile-delay:.31s; --tile-x:10px; --tile-y:-34px; --tile-rotate:3deg; }
+ .crew-banner-tile:nth-child(5) { --tile-delay:.40s; --tile-x:22px; --tile-y:30px; --tile-rotate:-4deg; }
+ .crew-banner-tile:nth-child(6) { --tile-delay:.49s; --tile-x:34px; --tile-y:-28px; --tile-rotate:5deg; }
+ .reveal-fx.is-revealed .crew-tile-banner .crew-banner-tile { animation:crew-tile-pop .72s cubic-bezier(.2,.82,.24,1.15) var(--tile-delay) both; }
+ .reveal-fx.is-revealed .crew-tile-banner .crew-banner-tile::after { animation:crew-tile-sheen .62s ease-out calc(var(--tile-delay) + .24s) both; }
+ @keyframes crew-tile-pop {
+   0% { opacity:0; transform:translate3d(var(--tile-x),var(--tile-y),0) rotate(var(--tile-rotate)) scale(.82); filter:saturate(.45) brightness(.65); }
+   65% { opacity:1; transform:translate3d(0,0,0) rotate(0) scale(1.035); filter:saturate(1.18) brightness(1.08); }
+   100% { opacity:1; transform:translate3d(0,0,0) rotate(0) scale(1); filter:none; }
+ }
+ @keyframes crew-tile-sheen {
+   0% { opacity:0; transform:translateX(-140%) skewX(-12deg); }
+   20% { opacity:.9; }
+   100% { opacity:0; transform:translateX(140%) skewX(-12deg); }
+ }
  @media (hover:hover) and (pointer:fine) { .crew-banner-tile:hover { flex-grow:1.2; } .crew-banner-tile:hover img { transform:scale(1.025); } }
  @media (max-width:600px) { #page-home .crew-tile-banner { --tile-slant:14px; height:clamp(130px, 34vw, 200px); } .crew-banner-tile + .crew-banner-tile { margin-left:calc(3px - var(--tile-slant)); } }
- @media (prefers-reduced-motion:reduce) { .crew-banner-tile, .crew-banner-tile img { transition:none; } }
+ @media (prefers-reduced-motion:reduce) { .crew-banner-tile, .crew-banner-tile img { transition:none; } .reveal-fx.is-revealed .crew-tile-banner .crew-banner-tile, .reveal-fx.is-revealed .crew-tile-banner .crew-banner-tile::after { animation:none; } }
  </style>
 <style id="crew-hub-panel-styles">
  #page-home .crew-hub-panel { align-self:stretch; min-width:0; display:flex; flex-direction:column; overflow:hidden; border:1px solid rgba(255,255,255,.3); border-radius:22px; background:linear-gradient(145deg,#fff4f6,#eee3f6); color:#281837; box-shadow:0 18px 45px #160c2733; }
